@@ -22,7 +22,7 @@ using System.Reflection;
 
 
 [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="db_tiengnhat_sv")]
-public partial class dbcsdllDataContext : System.Data.Linq.DataContext
+public partial class dbcsdlDataContext : System.Data.Linq.DataContext
 {
 	
 	private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -226,31 +226,31 @@ public partial class dbcsdllDataContext : System.Data.Linq.DataContext
   partial void DeletetbTracNghiem_TestGroup(tbTracNghiem_TestGroup instance);
   #endregion
 	
-	public dbcsdllDataContext() : 
+	public dbcsdlDataContext() : 
 			base(global::System.Configuration.ConfigurationManager.ConnectionStrings["db_tiengnhat_svConnectionString"].ConnectionString, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public dbcsdllDataContext(string connection) : 
+	public dbcsdlDataContext(string connection) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public dbcsdllDataContext(System.Data.IDbConnection connection) : 
+	public dbcsdlDataContext(System.Data.IDbConnection connection) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public dbcsdllDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+	public dbcsdlDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();
 	}
 	
-	public dbcsdllDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+	public dbcsdlDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 			base(connection, mappingSource)
 	{
 		OnCreated();

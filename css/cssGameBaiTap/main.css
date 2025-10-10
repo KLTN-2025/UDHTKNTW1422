@@ -1,0 +1,324 @@
+﻿:root {
+    --background--: rgb(198, 234, 250);
+    --white-color: #fff;
+    --black-color: #000;
+    --text-input: rgb(238, 106, 83);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background--);
+}
+
+.math1-lesson2 {
+    background: var(--white-color);
+    z-index: 1;
+    margin-top: 35px;
+    /*margin-bottom: 16px;*/
+    border-radius: 2px;
+    padding: 10px;
+    box-shadow: 0px 2px 2px #00000085;
+}
+
+.math1-lesson2-header__title-img {
+    position: relative;
+    top: -40px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.math1-lesson2-header__content-img {
+    margin: 0 auto;
+}
+
+.math1-lesson2-header__title-img-action {
+    margin: 20px 0 0 23.008px;
+}
+
+.container-content {
+    margin: 20px 23.008px;
+}
+
+.sentences-3__title {
+    margin-left: 57px;
+    margin-top: 4px;
+    display: block;
+}
+
+.maths1-lesson2-3__border-left {
+    border-right: 2px dashed #999;
+}
+
+.math1-lesson2__sentences3-title {
+    margin-bottom: 12px;
+}
+
+    .math1-lesson2__sentences3-title p {
+        margin-left: 46px;
+    }
+
+.math1-lesson2-3a__answer {
+    display: flex;
+}
+
+.math1-lesson2-3a__answer-a input, .math1-lesson2-3a__answer-b input {
+    margin-left: 8px;
+    height: 24px;
+    width: 28px;
+    cursor: pointer;
+}
+
+.math1-lesson2-3a__answer-a span, .math1-lesson2-3a__answer-b span {
+    font-size: 2.4rem;
+}
+
+.math1-lesson2-3a__answer-a img {
+    width: 70%;
+    margin-left: -40px;
+}
+
+.math1-lesson2-3a__answer-a, .math1-lesson2-3a__answer-b {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.math1-lesson2-3a__answer-b {
+    margin-right: 24px;
+}
+
+    .math1-lesson2-3a__answer-b img {
+        width: 70%;
+    }
+
+.math1-lesson2-3b__answer-a img {
+    margin-left: -20px;
+}
+
+.math1-lesson2-3b__answer-b img {
+    margin-left: -24px
+}
+
+.container-maths1-lesson2-sentences3-page16-17 .margin-auto-4px {
+    width: 50%;
+}
+
+.container-maths1-lesson2-sentences3-page16-17 input {
+    position: unset;
+    width: 30px;
+}
+
+.container-maths1-lesson2-sentences3-page16-17 p {
+    margin-left: 24px;
+    font-size: 2rem;
+    padding: 8px 0;
+    text-align: center;
+}
+
+.container-maths1-lesson2-sentences4-page16-17 .content-center img {
+    width: 60%;
+}
+
+.maths1-lesson2-sentences1-page18-19-answer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: 12px 0;
+}
+
+.maths1-lesson2-sentences2-page18-19__img-position {
+    position: relative;
+    right: -40px;
+}
+
+.container-maths1-lesson2-sentences1-page18-19 input,
+.container-maths1-lesson2-sentences2-page18-19 input {
+    width: 28px;
+    height: 24px;
+}
+
+.math1-lesson2-header__img map {
+    cursor: pointer;
+}
+
+.maths1-lesson1-page32-33__background {
+    border-radius: 24px;
+    padding: 24px 0;
+    margin: 8px 0;
+    position: relative;
+}
+
+    .maths1-lesson1-page32-33__background:first-child {
+        background: rgb(250, 192, 191);
+    }
+
+    .maths1-lesson1-page32-33__background:nth-child(2) {
+        background: rgb(255, 226, 166);
+    }
+
+    .maths1-lesson1-page32-33__background:last-child {
+        background: rgb(156, 211, 156);
+    }
+
+.img-lesson1-page32-33 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.answer-lesson1-page32-33 span {
+    font-size: 2rem;
+    margin-right: 4px;
+}
+
+.answer-lesson1-page32-33 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 52px;
+}
+
+.answer-lesson1-page32-33__img {
+    margin: 0 4px;
+}
+
+.maths1-lesson1-page32-33__background .sentences-img {
+    --height: 40px;
+    border-top-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    width: var(--height);
+    height: var(--height);
+    line-height: var(--height);
+    display: block;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+}
+
+.maths1-lesson1-page32-33__background:nth-of-type(3n-2) .sentences-img {
+    background: var(--orange);
+}
+
+.maths1-lesson1-page32-33__background:nth-of-type(3n) .sentences-img {
+    background: var(--pink);
+}
+
+.maths1-lesson1-page32-33__background:nth-of-type(3n-1) .sentences-img {
+    background: var(--primary);
+}
+
+.maths1-lesson1-page34-35 span {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.maths1-lesson1-page34-35 {
+    background: rgb(255, 226, 166);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.maths1-lesson2-page34-35__img-size-title {
+    width: 60%;
+}
+
+.maths1-lesson1-page36-37__size-img {
+    width: 150px;
+}
+
+.content-input-6-1 {
+    background: rgb(160, 197, 238);
+}
+
+.content-input-6-2 {
+    background: rgb(198, 176, 244);
+}
+
+.content-input-6-3 {
+    background: rgb(244, 195, 171);
+}
+
+.maths1-lesson1-page36-37 .col:nth-child(2n+1), .maths1-lesson3-page36-37 .col:nth-child(2n+1) {
+    /*border-right: 1px solid #999;*/
+    border-bottom: 1px solid #999;
+}
+
+.maths1-lesson3-page36-37 .col:nth-child(2n+1) {
+    border-right: 1px solid #999;
+}
+
+.maths1-lesson1-page36-37 .col:nth-child(n+1), .maths1-lesson3-page36-37 .col:nth-child(n+1) {
+    border-bottom: 1px solid #999;
+}
+
+.maths1-lesson2-page36-37 span {
+    margin: 0 12px;
+}
+
+.maths1-lesson2-page36-37 .content-input-3 {
+    width: 12%;
+    height: 40px;
+}
+
+.maths1-lesson3-page36-37 .content-input-6 {
+    height: 60px;
+    width: 60px;
+    left: 60px;
+    border-radius: 50%;
+    background: rgb(239, 56, 36);
+    top: 41px;
+}
+
+.maths1-lesson3-page36-37 .content-input-6-2 {
+    background: rgb(254, 190, 48);
+}
+
+.wrong-answer, .correct-answer {
+    height: 110px;
+    width: 110px;
+    top: 15px;
+    border-radius: 25px;
+}
+
+.wrong-answer-3, .correct-answer-3 {
+    width: 112px !important;
+    height: 112px !important;
+    top: 14px !important;
+    left: 37px !important;
+}
+
+.wrong-answer, .wrong-answer-2, .wrong-answer-3, .wrong-answer-4 {
+    /*background: red !important;*/
+    border: 4px solid red;
+    color: #fff;
+}
+
+.wrong-answer-3 {
+    background: rgba(232, 57,31,1) !important;
+    border: none;
+}
+
+.correct-answer-3 {
+    background: rgba(140,230,194, 1) !important;
+}
+
+.correct-answer, .correct-answer-2, .correct-answer-4 {
+    /*background: green !important;*/
+    border: 4px solid green;
+    color: #fff;
+}
+
+
+
+.Submit-Point {
+    top: 351px !important;
+}

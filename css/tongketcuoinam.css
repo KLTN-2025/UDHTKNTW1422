@@ -1,0 +1,226 @@
+﻿/*body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }*/
+
+@font-face {
+    font-family: 'Lobster';
+    src: url('../../../fonts/Lobster-Regular.ttf') format('truetype');
+}
+.summary {
+    background-image: url('../../../images/tongketcuoinam-bg.png');
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 10rem;
+}
+
+.top {
+    background-image: url('../../../images/tongketcuoinam-tieude.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+    height: 8rem;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: Lobster;
+}
+
+.menu {
+    background-color: #3c3e7f;
+    padding: 5px;
+}
+
+.menu-text {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-text-part a {
+    margin: 0 15px;
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.content {
+    background: #ffffff;
+    margin-bottom: 20px;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: rgb(50 50 93 / 19%) 0px 13px 27px -5px, rgb(0 0 0 / 0%) 0px 8px 16px -8px;
+}
+
+    .content .content-name {
+        margin: 0.5rem 0;
+        font-family: Lobster;
+        font-size: 1.5rem;
+    }
+
+        .content .content-name img {
+            width: 2rem;
+            margin-right: 0.5rem;
+        }
+
+.bottom {
+    text-align: center;
+    background-color: #1c2959;
+    color: white;
+    padding: 10px 0;
+}
+
+.table-index {
+    border: 3px groove;
+    width: 100%;
+}
+
+.list {
+    list-style-type: disc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table-left1 {
+    background-color: #e4d6fe;
+    border: 3px groove;
+    font-weight: bold;
+}
+
+.table-left2 {
+    background-color: #fbf1e9;
+    border: 3px groove;
+    font-weight: bold;
+}
+
+.table-right {
+    background-color: white;
+}
+
+.table-target {
+    width: 100%;
+}
+
+    .table-target th {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+.evaluate {
+    display: flex;
+}
+
+.evaluate-left {
+    width: 50%;
+    padding-top: 2%;
+    padding-right: 5%;
+    height: 100%;
+}
+
+.evaluate-right {
+    width: 45%;
+    padding-left: 5%;
+}
+
+.evaluate-note {
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.-false {
+    color: red;
+}
+
+.-pass {
+    color: green;
+}
+
+.evaluate-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.evaluate-content-left {
+    background-color: pink;
+    text-align: center;
+    width: 50%;
+}
+
+.evaluate-content-right {
+    background-color: navajowhite;
+    text-align: center;
+    width: 50%;
+}
+
+.content-solition-left-1 {
+    font-weight: bold;
+    background-color: #e4d6fe;
+    border: 3px groove
+}
+
+.content-solition-left-2 {
+    font-weight: bold;
+    background-color: #fbf1e9;
+    border: 3px groove
+}
+
+.content-solition-right {
+    background-color: white;
+    border: 3px groove
+}
+
+.content-pont {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .content-pont .column {
+        width: 45%;
+    }
+
+        .content-pont .column span {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .content-pont .column ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+.board {
+    width: 100%;
+}
+
+.think {
+    padding-bottom: 15px;
+    font-weight: bold;
+    font-family: Lobster;
+}
+
+.student {
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .menu-text {
+        flex-direction: column;
+    }
+
+    .menu-text-part {
+        margin: 10px 0;
+    }
+}

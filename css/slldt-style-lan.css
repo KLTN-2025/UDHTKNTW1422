@@ -1,0 +1,7 @@
+﻿.modal-header {
+    background: linear-gradient(90deg, rgb(223 10 10) 0%, rgb(91 4 4) 100%);
+    color: white;
+}
+.close span{
+    color: white
+}

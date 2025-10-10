@@ -44,14 +44,17 @@
         color: #fff;
         background-color: #ffe81a;
     }
+
 .btn-primary.disabled, .btn-primary:disabled {
     background-color: #ff0007;
     border-color: #ff0007;
 }
+
 .index2-content {
 }
 
     .index2-content .title {
+        margin-bottom: 10px;
     }
 
     .index2-content .sumary {

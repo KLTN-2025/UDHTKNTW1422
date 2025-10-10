@@ -98,7 +98,7 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    padding: 1em 1.25em .8em 1.25em;
+    padding: .5em .6em .4em .6em;
     margin: .5em;
     display: inline-block;
     position: relative;
@@ -131,13 +131,10 @@
         -webkit-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */ hsl(39, 100%, 40%) 0 .1em 3px, hsl(39, 100%, 30%) 0 .3em 1px, /* color border */ rgba(0,0,0,0.2) 0 .5em 5px;
         -moz-box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */ hsl(39, 100%, 40%) 0 .1em 3px, hsl(39, 100%, 30%) 0 .3em 1px, /* color border */ rgba(0,0,0,0.2) 0 .5em 5px;
         box-shadow: inset rgba(255,254,255,0.6) 0 0.3em .3em, inset rgba(0,0,0,0.15) 0 -0.1em .3em, /* inner shadow */ hsl(39, 100%, 40%) 0 .1em 3px, hsl(39, 100%, 30%) 0 .3em 1px, /* color border */ rgba(0,0,0,0.2) 0 .5em 5px;
-        background-image: linear-gradient(180deg,#7c8aff,#3c4fe0);
-        box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
     }
 
         .button.pink:hover {
             text-decoration: none;
-            box-shadow: 0 8px 22px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
         }
 
         .button.pink:active {
@@ -173,40 +170,3 @@
     text-align: center;
     color: red;
 }
-
-.button-bottom {
-    justify-content: center;
-    margin-bottom: 2rem;
-    display: flex;
-}
-
-    .button-bottom .btn-success {
-        display: flex;
-        align-items: center;
-        font-family: inherit;
-        font-weight: 500;
-        font-size: 16px;
-        padding: 0.7em 1.4em 0.7em 1.1em;
-        color: white;
-        background: #ad5389;
-        background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
-        border: none;
-        box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
-        letter-spacing: 0.05em;
-        border-radius: 20em;
-        cursor: pointer;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        width: 130px;
-        justify-content: center;
-    }
-
-        .button-bottom .btn-success:hover {
-            box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
-        }
-
-        .button-bottom .btn-success:active {
-            box-shadow: 0 0.3em 1em -0.5em #14a73e98;
-            transform: translateY(7px);
-        }

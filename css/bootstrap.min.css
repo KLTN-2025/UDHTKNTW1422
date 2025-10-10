@@ -2593,15 +2593,15 @@ fieldset[disabled] a.btn {
 
 .btn-danger {
     color: #fff;
-    background-color: #9c0e0e;
-    border-color: #9c0e0e;
+    background-color: #dc3545;
+    border-color: #dc3545
 }
 
-    .btn-danger:hover {
-        color: #fff;
-        background-color: #9c0e0e;
-        border-color: #9c0e0e;
-    }
+.btn-danger:hover {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130
+}
 
 .btn-danger.focus,
 .btn-danger:focus {

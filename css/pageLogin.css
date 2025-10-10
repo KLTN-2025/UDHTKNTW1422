@@ -1,0 +1,137 @@
+﻿.page-view.login {
+  font-family: monospace;
+  text-align: -webkit-center;
+  background-image: url(/image_SoLienLacDienTu/img_Login/hinh_nen_vietnhat.jpg);
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-view.login .page-view-main .logo {
+  max-width: 300px;
+  margin: 0 auto 3rem;
+}
+.page-view.login .page-view-main .Login_Dn {
+  color: #AF1F28;
+  text-align: center;
+  font-size: calc(2.25rem + 2vmin);
+  display: block;
+}
+.page-view.login .page-view-main .button_Dn a {
+  display: inline-block;
+  text-align: center;
+  background-color: #AF1F28;
+  margin: 2rem auto;
+  width: 60%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  color: white;
+  outline: none;
+  box-shadow: 2px 7px 23px 7px rgba(128, 128, 128, 0.2901960784);
+  border-radius: 21px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  outline: none;
+  line-height: 2;
+  text-decoration: none;
+  font-size: calc(1.5rem + 2vmin);
+}
+.page-view.login .page-view-main .Login_ph {
+  font-size: calc(10px + 2vmin);
+  color: #000000;
+}
+.page-view.login .page-view-main .input100 {
+  font-size: calc(1rem + 2vmin);
+  width: 60%;
+  margin: 0 auto;
+  padding: 1%;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid black;
+}
+
+/*
+.frame a {
+    line-height: 7rem;
+
+    font-size: 136%;
+
+    cursor: pointer;
+    text-decoration: inherit;
+}*/
+/*------------------------------------------------------------------
+[ Focus ]*/
+.focus-input100 {
+  font-size: 256%;
+  width: 60%;
+  margin: 4%;
+  height: 6%;
+  padding: 1%;
+  line-height: 1.5;
+  color: #666666;
+  display: block;
+  background: #e6e6e6;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid red;
+}
+
+.input100:focus + .focus-input100 {
+  -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
+  animation: anim-shadow 0.5s ease-in-out forwards;
+}
+
+@-webkit-keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 70px 25px;
+    opacity: 0;
+  }
+}
+@keyframes anim-shadow {
+  to {
+    box-shadow: 0px 0px 70px 25px;
+    opacity: 0;
+  }
+}
+.symbol-input100 {
+  font-size: 15px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  border-radius: 25px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 35px;
+  pointer-events: none;
+  color: #666666;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.input100:focus + .focus-input100 + .symbol-input100 {
+  color: #57b846;
+  padding-left: 28px;
+}
+
+.logo-eye {
+  margin-left: -12%;
+  margin-top: 6%;
+  width: 8%;
+  position: absolute;
+}

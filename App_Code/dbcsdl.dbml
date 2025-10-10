@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_tiengnhat_sv" Class="dbcsdllDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_tiengnhat_sv" Class="dbcsdlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=103.90.235.75,1433;Initial Catalog=db_tiengnhat_sv;User ID=admin_sv" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="db_tiengnhat_svConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.admin_AccessGroupUserForm" Member="admin_AccessGroupUserForms">
     <Type Name="admin_AccessGroupUserForm">
