@@ -1,0 +1,828 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_tiengnhat_sv" Class="dbcsdllDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=103.90.235.75,1433;Initial Catalog=db_tiengnhat_sv;User ID=admin_sv" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="db_tiengnhat_svConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.admin_AccessGroupUserForm" Member="admin_AccessGroupUserForms">
+    <Type Name="admin_AccessGroupUserForm">
+      <Column Name="guf_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="guf_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="groupuser_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="form_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_TestResult" Member="tbTracNghiem_TestResults">
+    <Type Name="tbTracNghiem_TestResult">
+      <Column Name="result_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="result_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="result_total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="result_true" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="paid_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="result_all" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="result_point" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="result_hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="student_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="student_code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="test_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="testgroup_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baitap_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="result_time" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_AccessGroupUserModule" Member="admin_AccessGroupUserModules">
+    <Type Name="admin_AccessGroupUserModule">
+      <Column Name="gum_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="gum_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="groupuser_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="module_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_AccessUserForm" Member="admin_AccessUserForms">
+    <Type Name="admin_AccessUserForm">
+      <Column Name="uf_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="uf_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="form_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_Form" Member="admin_Forms">
+    <Type Name="admin_Form">
+      <Column Name="form_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="form_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="form_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="form_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="form_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="module_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_GroupUser" Member="admin_GroupUsers">
+    <Type Name="admin_GroupUser">
+      <Column Name="groupuser_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="groupuser_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="groupuser_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_Module" Member="admin_Modules">
+    <Type Name="admin_Module">
+      <Column Name="module_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="module_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="module_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="module_icon" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="module_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.admin_User" Member="admin_Users">
+    <Type Name="admin_User">
+      <Column Name="username_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username_username" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_password" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_fullname" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="username_phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="groupuser_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bophan_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="username_truongbophan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="bophan_thongkebaocao_nhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="coso_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="username_diachi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_capday" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_bophan_kiemnhiem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbBaiHoc" Member="tbBaiHocs">
+    <Type Name="tbBaiHoc">
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="baihoc_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_position" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baihoc_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baihoc_back" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baihoc_next" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baihoc_avatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="chudebaihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_loaigame" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbBoPhan" Member="tbBoPhans">
+    <Type Name="tbBoPhan">
+      <Column Name="bophan_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bophan_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="bophan_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="bophan_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bophan_thongkebaocao_nhom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bophan_cap" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="bophan_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbChuDeBaiHoc" Member="tbChuDeBaiHocs">
+    <Type Name="tbChuDeBaiHoc">
+      <Column Name="chudebaihoc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="chudebaihoc_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chudebaihoc_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_CauHoi" Member="tbGameTiengNhat_CauHois">
+    <Type Name="tbGameTiengNhat_CauHoi">
+      <Column Name="cauhoi_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chudebaihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cauhoi_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_mp3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_dapandung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_image1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_titlecauhoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_amthanhtrung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_video" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_titlecauhoi_in" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_CauTraLoi" Member="tbGameTiengNhat_CauTraLois">
+    <Type Name="tbGameTiengNhat_CauTraLoi">
+      <Column Name="cautraloi_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chudebaihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cautraloi_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cautraloi_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cauhoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cautraloi_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cautraloi_mp3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cautraloi_dapandung" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="cautraloi_text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_GhepChu" Member="tbGameTiengNhat_GhepChus">
+    <Type Name="tbGameTiengNhat_GhepChu">
+      <Column Name="ghepchu_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ghepchu_noidung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghepchu_mp3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghepchu_phienam" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghepchu_phiendich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ghepchu_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_LatHinh" Member="tbGameTiengNhat_LatHinhs">
+    <Type Name="tbGameTiengNhat_LatHinh">
+      <Column Name="lathinh_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lathinh_code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lathinh_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lathinh_mp3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lathinh_noidung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_Noi" Member="tbGameTiengNhat_Nois">
+    <Type Name="tbGameTiengNhat_Noi">
+      <Column Name="noi_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="noi_img1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_mp3_1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_img2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_mp3_2" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_dapan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_noidung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_amthanh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="noi_tenamthanh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_NhanBiet" Member="tbGameTiengNhat_NhanBiets">
+    <Type Name="tbGameTiengNhat_NhanBiet">
+      <Column Name="nhanbiet_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chudebaihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nhanbiet_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanbiet_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanbiet_mp3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanbiet_video" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanbiet_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanbiet_nhom" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanbiet_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="class_style" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanbiet_pdf" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_TuVung" Member="tbGameTiengNhat_TuVungs">
+    <Type Name="tbGameTiengNhat_TuVung">
+      <Column Name="tuvung_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuvung_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tuvung_noidung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tuvung_mp3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tuvung_phienam" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tuvung_phiendich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tuvung_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGameTiengNhat_Video" Member="tbGameTiengNhat_Videos">
+    <Type Name="tbGameTiengNhat_Video">
+      <Column Name="video_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="video_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="video_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="video_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="video_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGiaoVienDayKhoi" Member="tbGiaoVienDayKhois">
+    <Type Name="tbGiaoVienDayKhoi">
+      <Column Name="giaoviendaykhoi_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbGiaoVienTrongLop" Member="tbGiaoVienTrongLops">
+    <Type Name="tbGiaoVienTrongLop">
+      <Column Name="gvtl_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="taikhoan_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="gvcn" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbHocSinh" Member="tbHocSinhs">
+    <Type Name="tbHocSinh">
+      <Column Name="hocsinh_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hocsinh_code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="hocsinh_ngaysinh" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hocsinh_gioitinh" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="hocsinh_noio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_tenba" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_sdtba" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_eamilba" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_nghenghiepba" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_tenme" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_sdtme" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_eamilme" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_nghenghiepme" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_hohocsinh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_email" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_pass" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_taikhoan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="coso_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hocsinh_mahocphi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_taikhoanphuhuynh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hocsinh_passphuhuynh" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbHocSinhTrongLop" Member="tbHocSinhTrongLops">
+    <Type Name="tbHocSinhTrongLop">
+      <Column Name="hstl_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hocsinh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbHoctap_NamHoc" Member="tbHoctap_NamHocs">
+    <Type Name="tbHoctap_NamHoc">
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="namhoc_nienkhoa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="namhoc_hocky" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbHocTap_NamHoc_HocKy" Member="tbHocTap_NamHoc_HocKies">
+    <Type Name="tbHocTap_NamHoc_HocKy">
+      <Column Name="nhhk_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nhhk_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbHocTap_Tuan" Member="tbHocTap_Tuans">
+    <Type Name="tbHocTap_Tuan">
+      <Column Name="tuan_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tuan_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuan_hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="tuan_tungay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tuan_denngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="tuan_name_cuabo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbImage" Member="tbImages">
+    <Type Name="tbImage">
+      <Column Name="image_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="image_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="image_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="image_vitri" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbImage_Lich" Member="tbImage_Liches">
+    <Type Name="tbImage_Lich">
+      <Column Name="image_lich" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="image_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="image_group" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="image_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="image_thang" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbKhoi" Member="tbKhois">
+    <Type Name="tbKhoi">
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="khoi_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="coso_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="khoi_hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbLoaiGame" Member="tbLoaiGames">
+    <Type Name="tbLoaiGame">
+      <Column Name="loaigame_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="loaigame_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="loaigame_ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="loaigame_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbLop" Member="tbLops">
+    <Type Name="tbLop">
+      <Column Name="lop_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="lop_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lop_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="coso_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lop_tinhtrang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbQuanTri_BaoCaoDinhKy" Member="tbQuanTri_BaoCaoDinhKies">
+    <Type Name="tbQuanTri_BaoCaoDinhKy">
+      <Column Name="baocaodinhky_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cuochop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baocaodinhky_createdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baocaodinhky_linkvideo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="baocaodinhky_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbQuanTri_CuocHop" Member="tbQuanTri_CuocHops">
+    <Type Name="tbQuanTri_CuocHop">
+      <Column Name="cuochop_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bophan_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cuochop_createdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="cuochop_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochop_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="cuochop_format" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochop_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochop_trangthai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbQuanTri_CuocHop_ChiTiet" Member="tbQuanTri_CuocHop_ChiTiets">
+    <Type Name="tbQuanTri_CuocHop_ChiTiet">
+      <Column Name="cuochopchitiet_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cuochop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cuochopchitiet_thu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochopchitiet_ngay" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="cuochopchitiet_gio" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochopchitiet_linkhop" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chct_DiemTichLuy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbQuanTri_CuocHopDinhKy" Member="tbQuanTri_CuocHopDinhKies">
+    <Type Name="tbQuanTri_CuocHopDinhKy">
+      <Column Name="cuochop_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cuochop_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochop_ngayhop" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="cuochop_giohop" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochop_hinhthuc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochop_path_baocao" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cuochop_diemtichluy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cuochop_trangthai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="bophan_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cuochop_ngaytao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="cuochop_xembaocao" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbQuanTri_Images_BaoCao" Member="tbQuanTri_Images_BaoCaos">
+    <Type Name="tbQuanTri_Images_BaoCao">
+      <Column Name="imgbaocao_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="baocaodinhky_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="imgbaocao_path" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cuochop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="imgbaocao_ngaynop" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="diemtichluy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbQuanTri_NhanXetBaoCaoHangTuan" Member="tbQuanTri_NhanXetBaoCaoHangTuans">
+    <Type Name="tbQuanTri_NhanXetBaoCaoHangTuan">
+      <Column Name="nhanxet_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cuochop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nhanxet_noidung" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nhanxet_ngay" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="nhanxet_hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbSach" Member="tbSaches">
+    <Type Name="tbSach">
+      <Column Name="sach_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sach_title" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sach_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbSoLLDT_LichSuHocSinhXemBaiHoc" Member="tbSoLLDT_LichSuHocSinhXemBaiHocs">
+    <Type Name="tbSoLLDT_LichSuHocSinhXemBaiHoc">
+      <Column Name="lichsuxembai_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hocsinh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hstl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsuxembai_thoigianbatdau" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lichsuxembai_thoigianhetthuc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lichsuxembai_solan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbSoLLDT_LichSuLamBaiHocSinh" Member="tbSoLLDT_LichSuLamBaiHocSinhs">
+    <Type Name="tbSoLLDT_LichSuLamBaiHocSinh">
+      <Column Name="lichsulambai_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hocsinh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hstl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chude_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_vitribaitap" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_sao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_solanlambai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_thoigianbatdau" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lichsulambai_thoigianhetthuc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lichsulambai_thoigianlambai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lichsulambai_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lichsulambai_dekiemtra" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_diem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbSoLLDT_LichSuLamBaiHocSinh_ChiTiet" Member="tbSoLLDT_LichSuLamBaiHocSinh_ChiTiets">
+    <Type Name="tbSoLLDT_LichSuLamBaiHocSinh_ChiTiet">
+      <Column Name="lichsulambai_chitiet_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="hocsinh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hstl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sach_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baihoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_vitribaitap" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_sao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_solanlambai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_thoigianbatdau" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_thoigianhetthuc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_thoigianlambai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_dekiemtra" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lichsulambai_chitiet_diem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTKB_GiaoVienDayMon_Test" Member="tbTKB_GiaoVienDayMon_Tests">
+    <Type Name="tbTKB_GiaoVienDayMon_Test">
+      <Column Name="giaovienmon_test_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="giaovien_ma" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mon_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="giaovien_daylop" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="giaovienmon_background" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="giaovienmon_color" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTKB_Mon" Member="tbTKB_Mons">
+    <Type Name="tbTKB_Mon">
+      <Column Name="mon_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="cap_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mon_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mon_maunen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mon_mauchu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mon_loai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="mon_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mon_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="mon_hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_Answer" Member="tbTracNghiem_Answers">
+    <Type Name="tbTracNghiem_Answer">
+      <Column Name="answer_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="answer_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_true" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_Answer_Part23" Member="tbTracNghiem_Answer_Part23s">
+    <Type Name="tbTracNghiem_Answer_Part23">
+      <Column Name="answer_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="answer_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_true" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_BaiKiemTra" Member="tbTracNghiem_BaiKiemTras">
+    <Type Name="tbTracNghiem_BaiKiemTra">
+      <Column Name="baikiemtra_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="baikiemtra_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baikiemtra_ngaytao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="baikiemtra_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baikiemtra_thoigianlambai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="baikiemtra_tinhtrang" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_BaiKiemTra_Answer" Member="tbTracNghiem_BaiKiemTra_Answers">
+    <Type Name="tbTracNghiem_BaiKiemTra_Answer">
+      <Column Name="answer_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="answer_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_true" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_BaiKiemTra_Question" Member="tbTracNghiem_BaiKiemTra_Questions">
+    <Type Name="tbTracNghiem_BaiKiemTra_Question">
+      <Column Name="question_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="question_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_createdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="question_giaithich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baikiemtra_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_BaiLuyenTap" Member="tbTracNghiem_BaiLuyenTaps">
+    <Type Name="tbTracNghiem_BaiLuyenTap">
+      <Column Name="luyentap_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="luyentap_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="luyentap_position" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="luyentap_status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="luyentap_linkvideo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="luyentap_baitaptuluan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="luyentap_path" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="matrande_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="luyentap_danhsachbai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="luyentap_tilecauhoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="luyentap_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_Chapter" Member="tbTracNghiem_Chapters">
+    <Type Name="tbTracNghiem_Chapter">
+      <Column Name="chapter_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="monhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chapter_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_DacTa" Member="tbTracNghiem_DacTas">
+    <Type Name="tbTracNghiem_DacTa">
+      <Column Name="dacta_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dacta_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mon_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="lession_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dacta_loai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chapter_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_DuyetCauHoi" Member="tbTracNghiem_DuyetCauHois">
+    <Type Name="tbTracNghiem_DuyetCauHoi">
+      <Column Name="duyetcauhoi_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_part" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="duyetcauhoi_phanhoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="duyetcauhoi_status" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_GiaoVienDayMon" Member="tbTracNghiem_GiaoVienDayMons">
+    <Type Name="tbTracNghiem_GiaoVienDayMon">
+      <Column Name="tracnghiem_giaoviendaymon_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mon_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_Lesson" Member="tbTracNghiem_Lessons">
+    <Type Name="tbTracNghiem_Lesson">
+      <Column Name="lesson_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="lesson_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="chapter_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_LuyenTap_Heart" Member="tbTracNghiem_LuyenTap_Hearts">
+    <Type Name="tbTracNghiem_LuyenTap_Heart">
+      <Column Name="luyentap_heart_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="test_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hocsinh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="luyentap_heart_class" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_LuyenTap_Star" Member="tbTracNghiem_LuyenTap_Stars">
+    <Type Name="tbTracNghiem_LuyenTap_Star">
+      <Column Name="luyentap_star_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="test_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hocsinh_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="luyentap_star_class" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_MaTraDeThi" Member="tbTracNghiem_MaTraDeThis">
+    <Type Name="tbTracNghiem_MaTraDeThi">
+      <Column Name="matrade_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tracnghiem_chuong_chude" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tracnghiem_noidung_kienthuc" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="tracnghiem_nhanbiet" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tracnghiem_nhanbiet_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tracnghiem_diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tuluan_nhanbiet" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tuluan_nhanbiet_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuluan_nhanbiet_diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tracnghiem_thonghieu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tracnghiem_thonghieu_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuluan_thonghieu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tuluan_thonghieu_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuluan_thonghieu_diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tracnghiem_vandung" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tracnghiem_vandung_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuluan_vandung" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tuluan_vandung_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuluan_vandung_diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tracnghiem_vandungcao" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tracnghiem_vandungcao_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuluan_vandungcao" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tuluan_vandungcao_socau" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tuluan_vandungcao_diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_MaTranChiTiet" Member="tbTracNghiem_MaTranChiTiets">
+    <Type Name="tbTracNghiem_MaTranChiTiet">
+      <Column Name="matranchitiet_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="matranchitiet_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="matranchitiet_socau" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="matranchitiet_diem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="matranchitiet_phantram" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lession_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="test_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="matranchitiet_diemchitiet" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_Question" Member="tbTracNghiem_Questions">
+    <Type Name="tbTracNghiem_Question">
+      <Column Name="question_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="question_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_createdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="question_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chapter_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="question_dangcauhoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_giaithich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lesson_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_level" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_dacta" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_diem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="diemtichluy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_solanlap" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_solansai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="question_trangthaiduyet" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nguoiduyet_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_group" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="baikiemtra_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_baikiemtra" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_Question_Part23" Member="tbTracNghiem_Question_Part23s">
+    <Type Name="tbTracNghiem_Question_Part23">
+      <Column Name="question_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="question_content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_createdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="question_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="chapter_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="question_dangcauhoi" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_giaithich" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lesson_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_level" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_dacta" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="question_diem" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="diemtichluy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_solanlap" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_solansai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="question_trangthaiduyet" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="nguoiduyet_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_part" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_ResultChiTiet" Member="tbTracNghiem_ResultChiTiets">
+    <Type Name="tbTracNghiem_ResultChiTiet">
+      <Column Name="resultchitiet_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="resulttest_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_true" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="resultchitiet_answerchecked" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="answer_true_id" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="answer_checked_id" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="result_part" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="resultchitiet_point" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_ResultTest" Member="tbTracNghiem_ResultTests">
+    <Type Name="tbTracNghiem_ResultTest">
+      <Column Name="resulttest_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="resulttest_result" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="test_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="resulttest_datetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="hocsinh_code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="result_type" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="result_thoigianlambai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="result_tinhtrang_chambai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="hstl_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="namhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="result_danhgia" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="result_chuyendiemthuongxuyen" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_Test" Member="tbTracNghiem_Tests">
+    <Type Name="tbTracNghiem_Test">
+      <Column Name="test_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="baithicate_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_id" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="test_createdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="username_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="khoi_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monhoc_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="test_show" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="luyentap_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="test_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="lesson_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="test_thoigianlambai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="test_soluongcauhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="test_link_nopbai" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_TestDetail" Member="tbTracNghiem_TestDetails">
+    <Type Name="tbTracNghiem_TestDetail">
+      <Column Name="detail_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="test_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="question_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="englishquestion_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbTracNghiem_TestGroup" Member="tbTracNghiem_TestGroups">
+    <Type Name="tbTracNghiem_TestGroup">
+      <Column Name="testgroup_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="test_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="testgroup_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="testgroup_sort" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="testgroup_description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="testgroup_conten" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="testgroup_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="testgroup_video" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="testgroup_mp3" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="testgroup_hidden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="testgroup_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
