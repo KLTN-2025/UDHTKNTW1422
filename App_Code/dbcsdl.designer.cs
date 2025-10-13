@@ -224,6 +224,12 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
   partial void InserttbTracNghiem_TestGroup(tbTracNghiem_TestGroup instance);
   partial void UpdatetbTracNghiem_TestGroup(tbTracNghiem_TestGroup instance);
   partial void DeletetbTracNghiem_TestGroup(tbTracNghiem_TestGroup instance);
+  partial void InserttbAccount(tbAccount instance);
+  partial void UpdatetbAccount(tbAccount instance);
+  partial void DeletetbAccount(tbAccount instance);
+  partial void InserttbAccount_Children(tbAccount_Children instance);
+  partial void UpdatetbAccount_Children(tbAccount_Children instance);
+  partial void DeletetbAccount_Children(tbAccount_Children instance);
   #endregion
 	
 	public dbcsdlDataContext() : 
@@ -773,6 +779,22 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<tbTracNghiem_TestGroup>();
+		}
+	}
+	
+	public System.Data.Linq.Table<tbAccount> tbAccounts
+	{
+		get
+		{
+			return this.GetTable<tbAccount>();
+		}
+	}
+	
+	public System.Data.Linq.Table<tbAccount_Children> tbAccount_Childrens
+	{
+		get
+		{
+			return this.GetTable<tbAccount_Children>();
 		}
 	}
 }
@@ -16782,6 +16804,535 @@ public partial class tbTracNghiem_TestGroup : INotifyPropertyChanging, INotifyPr
 				this._testgroup_link = value;
 				this.SendPropertyChanged("testgroup_link");
 				this.Ontestgroup_linkChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="db_owner.tbAccount")]
+public partial class tbAccount : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _account_id;
+	
+	private string _account_sodienthoai;
+	
+	private string _account_matkhau;
+	
+	private string _account_email;
+	
+	private System.Nullable<bool> _account_active;
+	
+	private string _account_ghichu;
+	
+	private EntitySet<tbAccount_Children> _tbAccount_Childrens;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onaccount_idChanging(int value);
+    partial void Onaccount_idChanged();
+    partial void Onaccount_sodienthoaiChanging(string value);
+    partial void Onaccount_sodienthoaiChanged();
+    partial void Onaccount_matkhauChanging(string value);
+    partial void Onaccount_matkhauChanged();
+    partial void Onaccount_emailChanging(string value);
+    partial void Onaccount_emailChanged();
+    partial void Onaccount_activeChanging(System.Nullable<bool> value);
+    partial void Onaccount_activeChanged();
+    partial void Onaccount_ghichuChanging(string value);
+    partial void Onaccount_ghichuChanged();
+    #endregion
+	
+	public tbAccount()
+	{
+		this._tbAccount_Childrens = new EntitySet<tbAccount_Children>(new Action<tbAccount_Children>(this.attach_tbAccount_Childrens), new Action<tbAccount_Children>(this.detach_tbAccount_Childrens));
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int account_id
+	{
+		get
+		{
+			return this._account_id;
+		}
+		set
+		{
+			if ((this._account_id != value))
+			{
+				this.Onaccount_idChanging(value);
+				this.SendPropertyChanging();
+				this._account_id = value;
+				this.SendPropertyChanged("account_id");
+				this.Onaccount_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_sodienthoai", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+	public string account_sodienthoai
+	{
+		get
+		{
+			return this._account_sodienthoai;
+		}
+		set
+		{
+			if ((this._account_sodienthoai != value))
+			{
+				this.Onaccount_sodienthoaiChanging(value);
+				this.SendPropertyChanging();
+				this._account_sodienthoai = value;
+				this.SendPropertyChanged("account_sodienthoai");
+				this.Onaccount_sodienthoaiChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_matkhau", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+	public string account_matkhau
+	{
+		get
+		{
+			return this._account_matkhau;
+		}
+		set
+		{
+			if ((this._account_matkhau != value))
+			{
+				this.Onaccount_matkhauChanging(value);
+				this.SendPropertyChanging();
+				this._account_matkhau = value;
+				this.SendPropertyChanged("account_matkhau");
+				this.Onaccount_matkhauChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_email", DbType="NVarChar(100)")]
+	public string account_email
+	{
+		get
+		{
+			return this._account_email;
+		}
+		set
+		{
+			if ((this._account_email != value))
+			{
+				this.Onaccount_emailChanging(value);
+				this.SendPropertyChanging();
+				this._account_email = value;
+				this.SendPropertyChanged("account_email");
+				this.Onaccount_emailChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_active", DbType="Bit")]
+	public System.Nullable<bool> account_active
+	{
+		get
+		{
+			return this._account_active;
+		}
+		set
+		{
+			if ((this._account_active != value))
+			{
+				this.Onaccount_activeChanging(value);
+				this.SendPropertyChanging();
+				this._account_active = value;
+				this.SendPropertyChanged("account_active");
+				this.Onaccount_activeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_ghichu", DbType="NVarChar(MAX)")]
+	public string account_ghichu
+	{
+		get
+		{
+			return this._account_ghichu;
+		}
+		set
+		{
+			if ((this._account_ghichu != value))
+			{
+				this.Onaccount_ghichuChanging(value);
+				this.SendPropertyChanging();
+				this._account_ghichu = value;
+				this.SendPropertyChanged("account_ghichu");
+				this.Onaccount_ghichuChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbAccount_tbAccount_Children", Storage="_tbAccount_Childrens", ThisKey="account_id", OtherKey="account_id")]
+	public EntitySet<tbAccount_Children> tbAccount_Childrens
+	{
+		get
+		{
+			return this._tbAccount_Childrens;
+		}
+		set
+		{
+			this._tbAccount_Childrens.Assign(value);
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+	
+	private void attach_tbAccount_Childrens(tbAccount_Children entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbAccount = this;
+	}
+	
+	private void detach_tbAccount_Childrens(tbAccount_Children entity)
+	{
+		this.SendPropertyChanging();
+		entity.tbAccount = null;
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="db_owner.tbAccount_Children")]
+public partial class tbAccount_Children : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _account_children_id;
+	
+	private int _account_id;
+	
+	private string _account_children_fullname;
+	
+	private System.Nullable<int> _lop_id;
+	
+	private string _account_children_ghichu;
+	
+	private System.Nullable<int> _account_children_thoigianlambai;
+	
+	private System.Nullable<bool> _account_children_active;
+	
+	private string _account_children_image;
+	
+	private System.Nullable<System.DateTime> _account_children_ngaysinh;
+	
+	private string _account_children_gioitinh;
+	
+	private EntityRef<tbAccount> _tbAccount;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onaccount_children_idChanging(int value);
+    partial void Onaccount_children_idChanged();
+    partial void Onaccount_idChanging(int value);
+    partial void Onaccount_idChanged();
+    partial void Onaccount_children_fullnameChanging(string value);
+    partial void Onaccount_children_fullnameChanged();
+    partial void Onlop_idChanging(System.Nullable<int> value);
+    partial void Onlop_idChanged();
+    partial void Onaccount_children_ghichuChanging(string value);
+    partial void Onaccount_children_ghichuChanged();
+    partial void Onaccount_children_thoigianlambaiChanging(System.Nullable<int> value);
+    partial void Onaccount_children_thoigianlambaiChanged();
+    partial void Onaccount_children_activeChanging(System.Nullable<bool> value);
+    partial void Onaccount_children_activeChanged();
+    partial void Onaccount_children_imageChanging(string value);
+    partial void Onaccount_children_imageChanged();
+    partial void Onaccount_children_ngaysinhChanging(System.Nullable<System.DateTime> value);
+    partial void Onaccount_children_ngaysinhChanged();
+    partial void Onaccount_children_gioitinhChanging(string value);
+    partial void Onaccount_children_gioitinhChanged();
+    #endregion
+	
+	public tbAccount_Children()
+	{
+		this._tbAccount = default(EntityRef<tbAccount>);
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int account_children_id
+	{
+		get
+		{
+			return this._account_children_id;
+		}
+		set
+		{
+			if ((this._account_children_id != value))
+			{
+				this.Onaccount_children_idChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_id = value;
+				this.SendPropertyChanged("account_children_id");
+				this.Onaccount_children_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_id", DbType="Int NOT NULL")]
+	public int account_id
+	{
+		get
+		{
+			return this._account_id;
+		}
+		set
+		{
+			if ((this._account_id != value))
+			{
+				if (this._tbAccount.HasLoadedOrAssignedValue)
+				{
+					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+				}
+				this.Onaccount_idChanging(value);
+				this.SendPropertyChanging();
+				this._account_id = value;
+				this.SendPropertyChanged("account_id");
+				this.Onaccount_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_fullname", DbType="NVarChar(100)")]
+	public string account_children_fullname
+	{
+		get
+		{
+			return this._account_children_fullname;
+		}
+		set
+		{
+			if ((this._account_children_fullname != value))
+			{
+				this.Onaccount_children_fullnameChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_fullname = value;
+				this.SendPropertyChanged("account_children_fullname");
+				this.Onaccount_children_fullnameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lop_id", DbType="Int")]
+	public System.Nullable<int> lop_id
+	{
+		get
+		{
+			return this._lop_id;
+		}
+		set
+		{
+			if ((this._lop_id != value))
+			{
+				this.Onlop_idChanging(value);
+				this.SendPropertyChanging();
+				this._lop_id = value;
+				this.SendPropertyChanged("lop_id");
+				this.Onlop_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_ghichu", DbType="NVarChar(MAX)")]
+	public string account_children_ghichu
+	{
+		get
+		{
+			return this._account_children_ghichu;
+		}
+		set
+		{
+			if ((this._account_children_ghichu != value))
+			{
+				this.Onaccount_children_ghichuChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_ghichu = value;
+				this.SendPropertyChanged("account_children_ghichu");
+				this.Onaccount_children_ghichuChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_thoigianlambai", DbType="Int")]
+	public System.Nullable<int> account_children_thoigianlambai
+	{
+		get
+		{
+			return this._account_children_thoigianlambai;
+		}
+		set
+		{
+			if ((this._account_children_thoigianlambai != value))
+			{
+				this.Onaccount_children_thoigianlambaiChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_thoigianlambai = value;
+				this.SendPropertyChanged("account_children_thoigianlambai");
+				this.Onaccount_children_thoigianlambaiChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_active", DbType="Bit")]
+	public System.Nullable<bool> account_children_active
+	{
+		get
+		{
+			return this._account_children_active;
+		}
+		set
+		{
+			if ((this._account_children_active != value))
+			{
+				this.Onaccount_children_activeChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_active = value;
+				this.SendPropertyChanged("account_children_active");
+				this.Onaccount_children_activeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_image", DbType="NVarChar(255)")]
+	public string account_children_image
+	{
+		get
+		{
+			return this._account_children_image;
+		}
+		set
+		{
+			if ((this._account_children_image != value))
+			{
+				this.Onaccount_children_imageChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_image = value;
+				this.SendPropertyChanged("account_children_image");
+				this.Onaccount_children_imageChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_ngaysinh", DbType="Date")]
+	public System.Nullable<System.DateTime> account_children_ngaysinh
+	{
+		get
+		{
+			return this._account_children_ngaysinh;
+		}
+		set
+		{
+			if ((this._account_children_ngaysinh != value))
+			{
+				this.Onaccount_children_ngaysinhChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_ngaysinh = value;
+				this.SendPropertyChanged("account_children_ngaysinh");
+				this.Onaccount_children_ngaysinhChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_children_gioitinh", DbType="NVarChar(10)")]
+	public string account_children_gioitinh
+	{
+		get
+		{
+			return this._account_children_gioitinh;
+		}
+		set
+		{
+			if ((this._account_children_gioitinh != value))
+			{
+				this.Onaccount_children_gioitinhChanging(value);
+				this.SendPropertyChanging();
+				this._account_children_gioitinh = value;
+				this.SendPropertyChanged("account_children_gioitinh");
+				this.Onaccount_children_gioitinhChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbAccount_tbAccount_Children", Storage="_tbAccount", ThisKey="account_id", OtherKey="account_id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+	public tbAccount tbAccount
+	{
+		get
+		{
+			return this._tbAccount.Entity;
+		}
+		set
+		{
+			tbAccount previousValue = this._tbAccount.Entity;
+			if (((previousValue != value) 
+						|| (this._tbAccount.HasLoadedOrAssignedValue == false)))
+			{
+				this.SendPropertyChanging();
+				if ((previousValue != null))
+				{
+					this._tbAccount.Entity = null;
+					previousValue.tbAccount_Childrens.Remove(this);
+				}
+				this._tbAccount.Entity = value;
+				if ((value != null))
+				{
+					value.tbAccount_Childrens.Add(this);
+					this._account_id = value.account_id;
+				}
+				else
+				{
+					this._account_id = default(int);
+				}
+				this.SendPropertyChanged("tbAccount");
 			}
 		}
 	}

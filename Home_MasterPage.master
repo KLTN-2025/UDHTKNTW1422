@@ -1,0 +1,124 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Home_MasterPage.master.cs" Inherits="Home_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="full-screen" content="yes" />
+    <meta name="x5-full-screen" content="true" />
+    <link rel="apple-touch-icon" href="/images/.png" />             <%-- <--logo--%>
+    <link rel="shortcut icon" href="/images/.png" />
+    <meta name="360-full-screen" content="true" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link href="css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="css/owl.theme.default.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="css/themify-icons.css" rel="stylesheet" />
+    <script src="js/bootstrap462/jquery.slim.min.js"></script>
+    <script src="js/bootstrap462/bootstrap.bundle.min.js"></script>
+    <script src="js/current-device.min.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <link href="css/gameTieuHoc.min.css" rel="stylesheet" />
+    <link href="css/loading.css" rel="stylesheet" />
+    <script type="text/javascript">
+        window.check_viewport = function () {
+            const screenWidth = window.outerWidth > 0 ? window.outerWidth : window.screen.width;
+            let content = "";
+
+            if (screenWidth > 520) {
+                // Viewport cho màn hình > 520px
+                content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
+            } else {
+                // Viewport cho màn hình ≤ 520px
+                const scale = screenWidth / 520;
+                content = `width=520, user-scalable=no, initial-scale=${scale}, minimum-scale=${scale}, maximum-scale=${scale}`;
+            }
+
+            // Tìm hoặc cập nhật thẻ <meta name="viewport">
+            let docViewport = document.head.querySelector('meta[name="viewport"]');
+
+            if (docViewport) {
+                if (docViewport.getAttribute("content") !== content) {
+                    docViewport.setAttribute("content", content);
+                }
+            } else {
+                docViewport = document.createElement("meta");
+                docViewport.setAttribute("name", "viewport");
+                docViewport.setAttribute("content", content);
+                document.head.appendChild(docViewport);
+            }
+        };
+
+        // Gọi ngay khi trang load
+        window.check_viewport();
+
+        // Lắng nghe sự kiện resize để cập nhật viewport
+        window.addEventListener("resize", function () {
+            clearTimeout(window.check_viewport_timer);
+            window.check_viewport_timer = setTimeout(window.check_viewport, 200);
+        });
+        function DisplayLoadingIcon() {
+            $("#img-loading-icon").show();
+        }
+        function HiddenLoadingIcon() {
+            $("#img-loading-icon").hide();
+        }
+    </script>
+    <style>
+        
+    </style>
+    <asp:ContentPlaceHolder ID="Header" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="loading" id="img-loading-icon" style="display: none">
+        <div class="loading">Loading&#8230;</div>
+    </div>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="Menu" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="TopWrapper" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="Wrapper" runat="server">
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="BottomWrapper" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="menu-bottom">
+
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-between link-menu">
+                        <a class="btn-menu" id="menu-home" href="/app-tieu-hoc"  onclick="DisplayLoadingIcon()"><i class="bi bi-house-door"></i>
+                            <p>Trang chủ</p>
+                        </a>
+                        <a class="btn-menu" id="menu-static" href="/app-tieu-hoc-thong-ke" onclick="DisplayLoadingIcon()"><i class="bi bi-graph-up-arrow"></i>
+
+                            <p>Thống kê</p>
+                        </a>
+                        <a class="btn-menu home-center" href="/app-tieu-hoc"  onclick="DisplayLoadingIcon()">
+                            <img src="/images/logo_white.png" alt="Alternate Text" /></a>
+                        <a class="btn-menu" id="menu-contact" href="/app-tieu-hoc-lien-he" onclick="DisplayLoadingIcon()"> 
+                            <i class="bi bi-headset"></i>
+                            <p>Hỗ  trợ </p>
+                        </a>
+                        <a class="btn-menu" id="menu-user" href="/app-tieu-hoc-quan-li-tai-khoan"  onclick="DisplayLoadingIcon()"><i class="bi bi-person"></i>
+                            <p>Tài khoản</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="Footer" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

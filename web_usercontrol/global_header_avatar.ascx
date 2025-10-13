@@ -7,11 +7,12 @@
     <div class="info-right">
         <div class="info-right__name"><%=fullname %></div>
         <div class="info-right__star">
-            <%--/images/icon-star-2.png--%>
-            <img src="/images/icon-calendar-2.png" alt="Alternate Text">
+            <img src="/images/icon/icon-calendar-2.png" alt="Alternate Text">
             <span>&nbsp;<%=conlai_songay %> ngày</span>
+            <img src="/images/icon/icon-star-2.png" class="img-star ml-5" alt="Alternate Text">
+            <span>&nbsp;<%=sosao %></span>
         </div>
         <a href="#" id="btnLogout" runat="server" onserverclick="btnLogout_ServerClick" class="info-right__logout">
-            <img src="/images/icon-logout-thcs.png" alt="Alternate Text" /></a>
+            <img src="/images/icon/icon-logout-thcs.png" alt="Alternate Text" /></a>
     </div>
 </div>

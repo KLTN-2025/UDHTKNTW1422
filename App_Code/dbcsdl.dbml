@@ -825,4 +825,30 @@
       <Column Name="testgroup_link" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="db_owner.tbAccount" Member="tbAccounts">
+    <Type Name="tbAccount">
+      <Column Name="account_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="account_sodienthoai" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="account_matkhau" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="account_email" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="account_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="account_ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="tbAccount_tbAccount_Children" Member="tbAccount_Childrens" ThisKey="account_id" OtherKey="account_id" Type="tbAccount_Children" />
+    </Type>
+  </Table>
+  <Table Name="db_owner.tbAccount_Children" Member="tbAccount_Childrens">
+    <Type Name="tbAccount_Children">
+      <Column Name="account_children_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="account_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="account_children_fullname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="lop_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="account_children_ghichu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="account_children_thoigianlambai" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="account_children_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="account_children_image" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="account_children_ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="account_children_gioitinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Association Name="tbAccount_tbAccount_Children" Member="tbAccount" ThisKey="account_id" OtherKey="account_id" Type="tbAccount" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
 </Database>
