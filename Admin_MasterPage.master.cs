@@ -64,8 +64,8 @@ public partial class Admin_MasterPage : System.Web.UI.MasterPage
                               open = db.admin_Forms.Where(x => "/" + x.form_link == HttpContext.Current.Request.Url.AbsolutePath && x.module_id == tb.module_id).Count() > 0 ? "collapse in" : ""
                           };
             //db.Admin_Forms.FirstOrDefault(x=>x.module_id == tb.module_id).form_link
-            rpModule.DataSource = getMenu;
-            rpModule.DataBind();
+            //rpModule.DataSource = getMenu;
+            //rpModule.DataBind();
         }
     }
     private void loadMenu()
@@ -96,8 +96,8 @@ public partial class Admin_MasterPage : System.Web.UI.MasterPage
                           open = db.admin_Forms.Where(x => "/" + x.form_link == HttpContext.Current.Request.Url.AbsolutePath && x.module_id == m.module_id).Count() > 0 ? "collapse in" : ""
                       };
 
-        rpModule.DataSource = getMenu;
-        rpModule.DataBind();
+        //rpModule.DataSource = getMenu;
+        //rpModule.DataBind();
     }
     protected void rpModule_ItemDataBound(object sender, RepeaterItemEventArgs e)
     {
