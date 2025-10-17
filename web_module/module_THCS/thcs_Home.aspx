@@ -1,35 +1,32 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home_MasterPage.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home_MasterPage.master" AutoEventWireup="true" CodeFile="thcs_Home.aspx.cs" Inherits="web_module_module_THCS_thcs_Home" %>
 
 <%@ Register Src="~/web_usercontrol/global_header_avatar.ascx" TagPrefix="uc1" TagName="global_header_avatar" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="Menu" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
+<asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" Runat="Server">
     <div class="home page-view ">
         <uc1:global_header_avatar runat="server" ID="global_header_avatar" />
         <div class="block-body">
             <div id="section-class">
-                <a id="id_Lop1" runat="server" href="/app-danh-muc-khoi-tieu-hoc-1" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
+                <a id="id_Lop6" runat="server" href="/app-danh-muc-khoi-thcs-6" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
                     <div class="class-item__name green-text">Lớp 6</div>
                     <i class="fa fa-lock" aria-hidden="true" id="iconLock1" runat="server"></i>
-                </a><a id="id_Lop2" runat="server" href="/app-danh-muc-khoi-tieu-hoc-2" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
+                </a><a id="id_Lop7" runat="server" href="/app-danh-muc-khoi-thcs-7" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
                     <div class="class-item__name green-text">Lớp 7</div>
                     <i class="fa fa-lock" aria-hidden="true" id="iconLock2" runat="server"></i>
-                </a><a id="id_Lop3" runat="server" href="/app-danh-muc-khoi-tieu-hoc-3" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
+                </a><a id="id_Lop8" runat="server" href="/app-danh-muc-khoi-thcs-8" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
                     <div class="class-item__name green-text">Lớp 8</div>
                     <i class="fa fa-lock " aria-hidden="true" id="iconLock3" runat="server"></i>
-                </a><a id="id_Lop4" runat="server" href="/app-danh-muc-khoi-tieu-hoc-4" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
+                </a><a id="id_Lop9" runat="server" href="/app-danh-muc-khoi-thcs-9" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
                     <div class="class-item__name green-text">Lớp 9</div>
                     <i class="fa fa-lock" aria-hidden="true" id="iconLock4" runat="server"></i>
-                </a><%--<a id="id_Lop5" runat="server" href="/app-danh-muc-khoi-tieu-hoc-5" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
-                    <div class="class-item__name green-text">Lớp 5</div>
-                    <i class="fa fa-lock" aria-hidden="true" id="iconLock5" runat="server"></i>
-                </a>--%>
+                </a>
             </div>
 
             <div class="banner-block">
@@ -58,9 +55,9 @@
         </div>
     </div>
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" runat="Server">
+<asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content6" ContentPlaceHolderID="Footer" runat="Server">
+<asp:Content ID="Content6" ContentPlaceHolderID="Footer" Runat="Server">
     <script>
         jQuery("#slide-main").owlCarousel({
             animateOut: "slideOutDown",

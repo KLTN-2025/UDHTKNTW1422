@@ -404,12 +404,18 @@
         <elementListCompartment Id="7b6af1a1-3d09-420d-ac4a-8d6efc707930" absoluteBounds="30.14, 13.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(29.375 : 14.3565991210937); (30.125 : 14.3565991210937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(29.375 : 14.3565991210937); (30.125 : 14.3565991210937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/dbcsdlDataContext/tbAccount/tbAccount_tbAccount_Children" />
       <nodes>
         <classShapeMoniker Id="b7a918d2-cc51-4f6c-b743-aa03b4d310a0" />
         <classShapeMoniker Id="206a7c9f-70ac-4e30-a9d8-1356f887e307" />
       </nodes>
     </associationConnector>
+    <classShape Id="6be51547-b44e-47ba-a56e-20cbc6241b84" absoluteBounds="0.875, 3, 2, 1.9631982421875">
+      <DataClassMoniker Name="/dbcsdlDataContext/tbKhoiLop" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d07feac-3af9-44a8-952c-c82ccb91526e" absoluteBounds="0.88999999999999968, 3.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

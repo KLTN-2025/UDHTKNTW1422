@@ -10978,7 +10978,7 @@ body {
 
 .page-view.m-bottom {
     padding-bottom: 4rem;
-    background: linear-gradient(101deg,#00b897,#32a600);
+    background: linear-gradient(270deg, #ff3a3a, #b51a1a);
 }
 
 .home {
@@ -11044,7 +11044,7 @@ body {
             }
 
             .block-body #section-class .class-item.lock-button {
-                color: #198754;
+                color: #3A3A3A;
             }
 
                 .block-body #section-class .class-item.lock-button .fa-lock {
@@ -11075,7 +11075,7 @@ body {
             }
 
     .block-body .color {
-        background: linear-gradient(19deg,rgba(0,184,151,.38),rgba(50,166,0,.25));
+        background: linear-gradient(19deg, rgb(255 255 255 / 38%), rgb(255 255 255 / 25%));
     }
 
     .block-body #slide-alert .owl-nav {
@@ -12957,7 +12957,7 @@ body {
 .green-text-up {
     width: 100%;
     font-weight: bold;
-    color: #00763d !important;
+    color: #b51a1a !important;
     text-transform: uppercase;
     letter-spacing: 2px;
     display: inline-block;
@@ -12970,7 +12970,7 @@ body {
 }
 
 .green-text {
-    color: #00763d !important;
+    color: #ff0000 !important;
 }
 
 .custom-input {
@@ -13241,7 +13241,7 @@ body {
         position: absolute;
         top: -10px;
         right: 10px;
-        background-color: #008000;
+        background-color: #b51a1a;
         color: #fff;
         font-size: 12px;
         padding: 2px .5rem 0;

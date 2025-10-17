@@ -230,6 +230,9 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
   partial void InserttbAccount_Children(tbAccount_Children instance);
   partial void UpdatetbAccount_Children(tbAccount_Children instance);
   partial void DeletetbAccount_Children(tbAccount_Children instance);
+  partial void InserttbKhoiLop(tbKhoiLop instance);
+  partial void UpdatetbKhoiLop(tbKhoiLop instance);
+  partial void DeletetbKhoiLop(tbKhoiLop instance);
   #endregion
 	
 	public dbcsdlDataContext() : 
@@ -795,6 +798,14 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<tbAccount_Children>();
+		}
+	}
+	
+	public System.Data.Linq.Table<tbKhoiLop> tbKhoiLops
+	{
+		get
+		{
+			return this.GetTable<tbKhoiLop>();
 		}
 	}
 }
@@ -17333,6 +17344,188 @@ public partial class tbAccount_Children : INotifyPropertyChanging, INotifyProper
 					this._account_id = default(int);
 				}
 				this.SendPropertyChanged("tbAccount");
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="db_owner.tbKhoiLop")]
+public partial class tbKhoiLop : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _khoilop_id;
+	
+	private string _khoilop_name;
+	
+	private string _khoilop_ghichu;
+	
+	private System.Nullable<bool> _khoilop_active;
+	
+	private string _khoilop_video;
+	
+	private string _khoilop_image;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onkhoilop_idChanging(int value);
+    partial void Onkhoilop_idChanged();
+    partial void Onkhoilop_nameChanging(string value);
+    partial void Onkhoilop_nameChanged();
+    partial void Onkhoilop_ghichuChanging(string value);
+    partial void Onkhoilop_ghichuChanged();
+    partial void Onkhoilop_activeChanging(System.Nullable<bool> value);
+    partial void Onkhoilop_activeChanged();
+    partial void Onkhoilop_videoChanging(string value);
+    partial void Onkhoilop_videoChanged();
+    partial void Onkhoilop_imageChanging(string value);
+    partial void Onkhoilop_imageChanged();
+    #endregion
+	
+	public tbKhoiLop()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_khoilop_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int khoilop_id
+	{
+		get
+		{
+			return this._khoilop_id;
+		}
+		set
+		{
+			if ((this._khoilop_id != value))
+			{
+				this.Onkhoilop_idChanging(value);
+				this.SendPropertyChanging();
+				this._khoilop_id = value;
+				this.SendPropertyChanged("khoilop_id");
+				this.Onkhoilop_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_khoilop_name", DbType="NVarChar(10)")]
+	public string khoilop_name
+	{
+		get
+		{
+			return this._khoilop_name;
+		}
+		set
+		{
+			if ((this._khoilop_name != value))
+			{
+				this.Onkhoilop_nameChanging(value);
+				this.SendPropertyChanging();
+				this._khoilop_name = value;
+				this.SendPropertyChanged("khoilop_name");
+				this.Onkhoilop_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_khoilop_ghichu", DbType="NVarChar(10)")]
+	public string khoilop_ghichu
+	{
+		get
+		{
+			return this._khoilop_ghichu;
+		}
+		set
+		{
+			if ((this._khoilop_ghichu != value))
+			{
+				this.Onkhoilop_ghichuChanging(value);
+				this.SendPropertyChanging();
+				this._khoilop_ghichu = value;
+				this.SendPropertyChanged("khoilop_ghichu");
+				this.Onkhoilop_ghichuChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_khoilop_active", DbType="Bit")]
+	public System.Nullable<bool> khoilop_active
+	{
+		get
+		{
+			return this._khoilop_active;
+		}
+		set
+		{
+			if ((this._khoilop_active != value))
+			{
+				this.Onkhoilop_activeChanging(value);
+				this.SendPropertyChanging();
+				this._khoilop_active = value;
+				this.SendPropertyChanged("khoilop_active");
+				this.Onkhoilop_activeChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_khoilop_video", DbType="NVarChar(MAX)")]
+	public string khoilop_video
+	{
+		get
+		{
+			return this._khoilop_video;
+		}
+		set
+		{
+			if ((this._khoilop_video != value))
+			{
+				this.Onkhoilop_videoChanging(value);
+				this.SendPropertyChanging();
+				this._khoilop_video = value;
+				this.SendPropertyChanged("khoilop_video");
+				this.Onkhoilop_videoChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_khoilop_image", DbType="NVarChar(MAX)")]
+	public string khoilop_image
+	{
+		get
+		{
+			return this._khoilop_image;
+		}
+		set
+		{
+			if ((this._khoilop_image != value))
+			{
+				this.Onkhoilop_imageChanging(value);
+				this.SendPropertyChanging();
+				this._khoilop_image = value;
+				this.SendPropertyChanged("khoilop_image");
+				this.Onkhoilop_imageChanged();
 			}
 		}
 	}

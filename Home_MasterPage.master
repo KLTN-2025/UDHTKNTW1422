@@ -12,8 +12,8 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="full-screen" content="yes" />
     <meta name="x5-full-screen" content="true" />
-    <link rel="apple-touch-icon" href="/images/.png" />             <%-- <--logo--%>
-    <link rel="shortcut icon" href="/images/.png" />
+    <link rel="apple-touch-icon" href="/images/koi-logo_2.png" />             <%-- <--logo--%>
+    <link rel="shortcut icon" href="/images/koi-logo_1.png" />
     <meta name="360-full-screen" content="true" />
     <meta name="mobile-web-app-capable" content="yes" />
     <link href="css/owl.carousel.min.css" rel="stylesheet" />
@@ -105,7 +105,7 @@
                             <p>Thống kê</p>
                         </a>
                         <a class="btn-menu home-center" href="/app-tieu-hoc"  onclick="DisplayLoadingIcon()">
-                            <img src="/images/logo_white.png" alt="Alternate Text" /></a>
+                            <img src="/images/koi-logo_2.png" alt="Alternate Text" /></a>
                         <a class="btn-menu" id="menu-contact" href="/app-tieu-hoc-lien-he" onclick="DisplayLoadingIcon()"> 
                             <i class="bi bi-headset"></i>
                             <p>Hỗ  trợ </p>

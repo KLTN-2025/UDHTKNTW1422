@@ -851,4 +851,14 @@
       <Association Name="tbAccount_tbAccount_Children" Member="tbAccount" ThisKey="account_id" OtherKey="account_id" Type="tbAccount" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
+  <Table Name="db_owner.tbKhoiLop" Member="tbKhoiLops">
+    <Type Name="tbKhoiLop">
+      <Column Name="khoilop_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="khoilop_name" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="khoilop_ghichu" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="khoilop_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="khoilop_video" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="khoilop_image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
