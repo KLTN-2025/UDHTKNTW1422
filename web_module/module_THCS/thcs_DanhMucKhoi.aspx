@@ -45,7 +45,7 @@
                 <%--sách khối 6--%>
                 <div class="books-list" id="div_DanhMucKhoi6" runat="server">
                     <div class="book-item">
-                        <a href="<%= tiengnhat6 %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
+                        <a href="<%= hiragana %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
                             <div class="book-card__cover">
                                 <div class="book-card__book">
                                     <div class="book-card__book-front">
@@ -63,7 +63,7 @@
                         </a>
                     </div>
                     <div class="book-item">
-                        <a href="<%= tiengnhat6 %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
+                        <a href="<%= katakana %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
                             <div class="book-card__cover">
                                 <div class="book-card__book">
                                     <div class="book-card__book-front">
