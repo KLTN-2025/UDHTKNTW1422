@@ -12146,7 +12146,7 @@ body {
     .card-menu.info-user .menu-row:hover .menu-row__left {
         padding-left: .75rem;
         font-weight: 700;
-        color: #00763d;
+        color: #b51a1a;
         transition: all .5s ease;
     }
 
@@ -12204,7 +12204,7 @@ body {
     }
 
     .card-manager-account .header-info-list .info-item__title {
-        color: #00763d;
+        color: #b51a1a;
         line-height: 1;
         font-family: "Coiny",system-ui;
         font-size: 1.25rem;
@@ -12939,7 +12939,7 @@ body {
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background: linear-gradient(90deg,#00c853,#1b5e20);
+    background: linear-gradient(270deg, #ff3a3a, #b51a1a);
     border: none;
     border-radius: 8px;
     cursor: pointer;

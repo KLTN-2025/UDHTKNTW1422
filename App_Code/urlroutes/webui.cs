@@ -142,8 +142,10 @@ public class webui
         //bài kiểm tra
         list.Add("modulebaikiemtratieuhoc|bai-kiem-tra-tieu-hoc-{dekiemtra-id}-{lop-id}-{sach-id}|~/web_module/module_TieuHoc/tieuhoc_BaiKiemTra.aspx");
 
-        //Danh mục sách
+        //My url
         list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc.aspx");
+        //list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_THCS/thcs_QuanLyTaiKhoan.aspx");
+        list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_QuanLyTaiKhoan.aspx");
         return list;
     }
 }
