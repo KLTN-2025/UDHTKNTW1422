@@ -26,7 +26,7 @@
         <div class="login-container ">
             <div class="login-content-right ">
                 <div class="logo">
-                    <img src="../../images/koi-logo_1.png" class="dang" />
+                    <img src="../../images/koi_logo-3.png" class="dang" />
                 </div>
                 <div class="text-login">
                     <h1 class="">ĐĂNG NHẬP</h1>
