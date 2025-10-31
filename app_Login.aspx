@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="app_Login.aspx.cs" Inherits="app_Login" %>
 
+<%@ Register Src="~/web_usercontrol/global_LandingPage_Menu.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
     <script src="admin_js/sweetalert.min.js"></script>
 </asp:Content>
@@ -22,6 +25,7 @@
             animation-duration: 0.1s;
         }
     </style>
+    <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <div class="custom-login-background shadow">
         <div class="login-container ">
             <div class="login-content-right ">

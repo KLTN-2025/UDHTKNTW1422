@@ -4839,7 +4839,7 @@ body {
 .header-page .navbar {
     padding: .25rem 1rem;
     background: #0b8741;
-    background: linear-gradient(90deg,#0b8741 0%,#61ca00 50%,#0b8741 100%);
+    background: linear-gradient(90deg, #b51a1a 0%, #ff3a3a 50%, #b51a1a 100%);
 }
 
     .header-page .navbar .navbar-brand {
@@ -4867,7 +4867,7 @@ body {
     }
 
         .header-page .navbar .nav-link:hover {
-            color: #c2ff8c;
+            color: black;
         }
 
 @media(min-width:576px) {
@@ -6116,7 +6116,7 @@ body {
 .custom-login-background {
     background-color: #f5f5f5;
     min-height: calc(100vh - 48px);
-    background-image: url(/images/image_THCS/bg-login-vertical.jpg);
+    background-image: url(/images/bg-red-dangki_nhap-1.png);
     background-size: cover;
     background-position: top center;
     background-attachment: fixed;
@@ -6168,7 +6168,7 @@ body {
 
 @media(min-width:576px) {
     .custom-login-background {
-        background-image: url(/images/image_THCS/bg-green-dangki-destop-1.png);
+        background-image: url(/images/bg-red-dangki_nhap-1.png);
         background-size: cover;
         background-attachment: unset;
         min-height: calc(100vh - 48px);
