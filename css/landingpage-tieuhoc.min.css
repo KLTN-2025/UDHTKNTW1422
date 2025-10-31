@@ -5680,7 +5680,7 @@ body {
         }
 
         .step-contact .step-header .progress-bar {
-            background-color: #00763d;
+            background-color: #b51a1a;
         }
 
         .step-contact .step-header .step-container {
@@ -5712,8 +5712,8 @@ body {
         }
 
             .step-contact .step-header .step-circle.active, .step-contact .step-header .step-circle.step-one {
-                border: 2px solid #00870a;
-                color: #094706;
+                border: 2px solid #ff3a3a;
+                color: #b51a1a;
             }
 
         .step-contact .step-header .step-line {
@@ -5793,7 +5793,7 @@ body {
 
         .step-contact .step-content .section-contact .form-contact__title {
             font-size: 2rem;
-            color: #00763d;
+            color: #ff3a3a;
             font-weight: 900;
             text-align: center;
             margin-top: 2rem;
@@ -5927,7 +5927,7 @@ body {
 
 @media(min-width:576px) {
     .step-contact {
-        background-image: url(/images/image_THCS/bg-green-dangki-destop-1.png);
+        background-image: url(/images/bg-red-dangki_nhap-1.png);
         background-attachment: unset;
         min-height: calc(100vh - 48px);
     }

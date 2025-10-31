@@ -91,20 +91,20 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="../tieu-hoc-huong-dan-bai-tap">HƯỚNG DẪN </a>
                                 </li>
-                                <li class="nav-item">
+                                <%--<li class="nav-item">
                                     <a class="nav-link" href="/dinotech-tin-tuc">GÓC PHỤ HUYNH </a>
+                                </li>--%>
+                                <li class="nav-item d-md-none">
+                                    <a class="nav-link" href="../app-register">ĐĂNG KÍ </a>
                                 </li>
                                 <li class="nav-item d-md-none">
-                                    <a class="nav-link" href="../tieu-hoc-lien-he">ĐĂNG KÍ </a>
-                                </li>
-                                <li class="nav-item d-md-none">
-                                    <a href="../app-login-tieu-hoc" class="nav-link">ĐĂNG NHẬP</a>
+                                    <a href="../app-login" class="nav-link">ĐĂNG NHẬP</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav d-none d-md-flex">
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="../tieu-hoc-lien-he">ĐĂNG KÍ </a>
+                                    <a class="nav-link" href="../app-register">ĐĂNG KÍ </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="../app-login" class="nav-link">ĐĂNG NHẬP</a>

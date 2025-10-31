@@ -147,6 +147,7 @@ public class webui
         //list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_THCS/thcs_QuanLyTaiKhoan.aspx");
         list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_QuanLyTaiKhoan.aspx");
         list.Add("weblandingpagelogin|app-login|~/app_Login.aspx");
+        list.Add("weblandingpageregister|app-register|~/app_Register.aspx");
 
         return list;
     }

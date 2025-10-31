@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand navbar-light">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="/images/koi_logo-3.png" alt="" srcset="" /></a>
+                <img src="/images/logo_page.png" alt="" srcset="" /></a>
             <div class="collapse navbar-collapse justify-content-md-between">
                 <ul class="navbar-nav">
                     <li class="nav-item">

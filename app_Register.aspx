@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="app_Register.aspx.cs" Inherits="app_Register" %>
 
+<%@ Register Src="~/web_usercontrol/global_LandingPage_Menu.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
@@ -14,7 +17,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" Runat="Server">
-
+    <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <asp:ScriptManager runat="server" />
     <div id="" class="step-contact">
         <div class="container">
@@ -92,6 +95,7 @@
                                                 </div>
                                                 <div class="text-center">
                                                     <asp:Button Text="Lưu" CssClass="buttom-green hvr-pulse-grow" runat="server" ID="btnLuu" OnClientClick="return checkPass()" OnClick="btnLuu_Click" />
+                                                    <%--<asp:Button Text="Lưu" CssClass="buttom-green hvr-pulse-grow" runat="server" ID="btnLuu" />--%>
                                                 </div>
                                             </div>
                                         </div>
