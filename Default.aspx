@@ -71,7 +71,7 @@
             <header class="header-page wow bounceIn">
                 <nav class="navbar navbar-expand navbar-light">
                     <div class="container">
-                        <a class="navbar-brand" href="/dinotech-trang-chu">
+                        <a class="navbar-brand" href="/">
                             <img src="/images/logo_page.png" alt="" srcset="" /></a>
                         <div class="collapse navbar-collapse justify-content-md-between">
                             <ul class="navbar-nav">
