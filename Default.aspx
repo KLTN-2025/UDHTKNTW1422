@@ -6,35 +6,25 @@
 <head runat="server">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <%--<meta name="keywords" content="Dinotech" />
-    <meta name="description" content="Dinotech" />--%>
 
-    <link rel="apple-touch-icon" href="/images/koi-logo_1.png" />
-    <link rel="shortcut icon" href="/images/koi-logo_1.png" />
+    <link rel="apple-touch-icon" href="/images/koi-logo_2.png" />
+    <link rel="shortcut icon" href="/images/koi-logo_2.png" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Home KoiGo!</title>
     <meta name="keywords" content="TỰ DO , CHỦ ĐỘNG , UY TÍN" />
-    <%--<meta name="author" content="KoiGo" />--%>
     <meta name="description" content="---- mang đến sự linh hoạt cho học sinh, cho phép các em học theo tốc độ của riêng mình, bất kể thời gian và không gian." />
-    <%--<meta name="robots" content="index,follow" />
-    <meta property="og:title" content="KoiGo" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://dinotech.vn/" />
-    <meta property="og:image" content="/images/koi-logo_1.png" />--%>
+
     <link href="css/animate.min.css" rel="stylesheet" />
     <link href="css/bootstrap4.6.2.css" rel="stylesheet" />
 
-    <%--<link href="css/gameTHCSVer2.css" rel="stylesheet" />--%>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap462/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet" />
 
-    <%--<link rel="stylesheet" href="/css/styleDinotech.css?v=1" />--%>
     <link href="css/styleDinotech.css" rel="stylesheet" />
     <script src="admin_js/sweetalert.min.js"></script>
-    <%--<link href="css/homedinotechnew.css" rel="stylesheet" />--%>
     <script type="text/javascript">
         window.check_viewport = function () {
             const screenWidth = window.outerWidth > 0 ? window.outerWidth : window.screen.width;
@@ -82,7 +72,7 @@
                 <nav class="navbar navbar-expand navbar-light">
                     <div class="container">
                         <a class="navbar-brand" href="/dinotech-trang-chu">
-                            <img src="/images/koi_logo-3.png" alt="" srcset="" /></a>
+                            <img src="/images/logo_page.png" alt="" srcset="" /></a>
                         <div class="collapse navbar-collapse justify-content-md-between">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
@@ -229,18 +219,11 @@
                                     </div>
                                     <div class="col-md-6 col-lg-5">
                                         <div class="-txt-main">
-                                            <%--<%= noidungtrietli %>--%>
-                                            TỰ DO – CHỦ ĐỘNG – UY TÍN
-                                            Tự do: Dinotech mang đến sự linh hoạt, giúp học sinh học theo tốc độ và thời gian của riêng mình.
-                                            Chủ động: Ứng dụng khơi dậy niềm hứng thú, khuyến khích học sinh chủ động chinh phục mục tiêu học tập.
-                                            Uy tín: Dinotech cam kết chất lượng qua kết quả rõ ràng, giúp học sinh nắm vững kiến thức nhanh và hiệu quả.
-
-                                            <%--<h2 style="font-weight: bold; font-family: 'Open Sans', sans-serif; color: #216b0c;">TỰ DO – CHỦ ĐỘNG – UY TÍN</h2>
-                                            <p><b style="color: red;">Tự do:</b> <b style="color: #216b0c;">DINOTECH</b> mang đến sự linh hoạt, giúp học sinh học theo tốc độ và thời gian của riêng mình.</p>
+                                            <h2 style="font-weight: bold; font-family: 'Open Sans', sans-serif; color: #b51a1a ;">TỰ DO – CHỦ ĐỘNG – UY TÍN</h2>
+                                            <p><b style="color: red;">Tự do:</b> <b style="color: #b51a1a ;">KOIGO</b> mang đến sự linh hoạt, giúp học sinh học theo tốc độ và thời gian của riêng mình.</p>
                                             <p><b style="color: red;">Chủ động:</b> Ứng dụng khơi dậy niềm hứng thú, khuyến khích học sinh chủ động chinh phục mục tiêu học tập.</p>
-                                            <p><b style="color: red;">Uy tín:</b> <b style="color: #216b0c;">DINOTECH</b> cam kết chất lượng qua kết quả rõ ràng, giúp học sinh nắm vững kiến thức nhanh và hiệu quả.</p>--%>
+                                            <p><b style="color: red;">Uy tín:</b> <b style="color: #b51a1a ;">KOIGO</b> cam kết chất lượng qua kết quả rõ ràng, giúp học sinh nắm vững kiến thức nhanh và hiệu quả.</p>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -308,7 +291,7 @@
             <section class="block-3">
                 <div class="header-main wow bounceIn">
                     <h2 class="">Cùng khám phá quy trình học tập khi<br />
-                        đăng kí khoá học tại Dinotech</h2>
+                        đăng kí khoá học tại KoiGo</h2>
                 </div>
                 <div class="wow bounceIn">
                     <img width="100%" class="d-none d-md-block" src="images/image_THCS/block-4.png" alt="khám phá" />

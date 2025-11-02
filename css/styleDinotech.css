@@ -1225,7 +1225,7 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     text-align: center;
-    color: green;
+    color: #b51a1a;
     font-size: clamp(1.5rem, 4vw, 3rem);
     margin: 1.5rem 0;
 }
@@ -1702,7 +1702,7 @@ body {
             }
 
         .block-footer .form-register .form-title {
-            color: #216b0c;
+            color: #b51a1a;
             font-weight: 700;
             font-size: 1.25rem;
             font-family: "Baloo 2", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
