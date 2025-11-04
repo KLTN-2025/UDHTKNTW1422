@@ -146,6 +146,8 @@ public class webui
         list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc.aspx");
         //list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_THCS/thcs_QuanLyTaiKhoan.aspx");
         list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_QuanLyTaiKhoan.aspx");
+        list.Add("modulethongtincanhan|app-thong-tin-ca-nhan|~/web_module/module_ThongTinCaNhan.aspx");
+        list.Add("moduledoimatkhau|app-doi-mat-khau|~/web_module/module_DoiMatKhau.aspx");
         list.Add("weblandingpagelogin|app-login|~/app_Login.aspx");
         list.Add("weblandingpageregister|app-register|~/app_Register.aspx");
 

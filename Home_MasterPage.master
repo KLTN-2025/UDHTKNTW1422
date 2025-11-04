@@ -13,7 +13,7 @@
     <meta name="full-screen" content="yes" />
     <meta name="x5-full-screen" content="true" />
     <link rel="apple-touch-icon" href="/images/koi-logo_2.png" />             <%-- <--logo--%>
-    <link rel="shortcut icon" href="/images/koi-logo_1.png" />
+    <link rel="shortcut icon" href="/images/koi-logo_2.png" />
     <meta name="360-full-screen" content="true" />
     <meta name="mobile-web-app-capable" content="yes" />
     <link href="css/owl.carousel.min.css" rel="stylesheet" />

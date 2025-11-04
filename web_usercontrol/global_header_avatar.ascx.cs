@@ -25,7 +25,6 @@ public partial class web_usercontrol_global_header_avatar : System.Web.UI.UserCo
                       join tk in db.tbAccounts on tkcr.account_id equals tk.account_id
                       where tk.account_sodienthoai == Request.Cookies["taikhoan"].Value
                       select tkcr).FirstOrDefault().account_children_image;
-        link_image = link_image ?? "/images/user_noimage.jpg";
 
         //đếm sao làm được của toàn bộ 5 khối của HS
         var dataHocSinh = (from hs in db.tbAccounts

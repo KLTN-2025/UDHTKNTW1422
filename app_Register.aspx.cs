@@ -45,6 +45,7 @@ public partial class app_Register : System.Web.UI.Page
         account_Children.account_children_active = true;
         account_Children.lop_id = Convert.ToInt32(ddlLop.SelectedValue);
         account_Children.account_id = account.account_id;
+        account_Children.account_children_image = "/images/user_noimage.jpg";
         db.tbAccount_Childrens.InsertOnSubmit(account_Children);
         db.SubmitChanges();
         ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "AlertBox", "swal('Đăng kí tài khoản thành công!', '','success').then(function(){window.location = '/app-login';})", true);

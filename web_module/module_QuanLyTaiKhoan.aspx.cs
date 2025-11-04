@@ -21,4 +21,14 @@ public partial class web_module_module_QuanLyTaiKhoan : System.Web.UI.Page
         //if (conlai_songay <= 3)
         //    canhbao_hethan = "Sắp hết hạn";
     }
+
+    protected void btnDangXuat_ServerClick(object sender, EventArgs e)
+    {
+        HttpCookie ck = new HttpCookie("taikhoan");
+        string s = ck.Value;
+        ck.Value = "";  //set a blank value to the cookie 
+        ck.Expires = DateTime.Now.AddDays(-1);
+        Response.Cookies.Add(ck);
+        Response.Redirect("/");
+    }
 }

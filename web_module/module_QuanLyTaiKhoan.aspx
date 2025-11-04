@@ -27,7 +27,7 @@
             </a>--%>
             <div class="frame-page page-style-2">
                 <div class="card-manager-account">
-                    <div class="header-info-list">
+                    <%--<div class="header-info-list">
                         <div class="info-item">
                             <div class="info-item__title ">THỜI HẠN</div>
                             <div class="info-item__text"><%=conlai_songay %> ngày</div>
@@ -43,13 +43,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                     <div class="card-menu info-user shadow ">
-                        <a href="/app-thong-tin-ca-nhan-thcs" class="menu-row">
+                        <a href="/app-thong-tin-ca-nhan" class="menu-row">
                             <div class="menu-row__left" for="">Thông tin cá nhân tài khoản</div>
                             <div class="menu-row__right" for=""><i class="bi bi-chevron-right"></i></div>
                         </a>
-                        <a href="/app-doi-mat-khau-thcs" class="menu-row">
+                        <a href="/app-doi-mat-khau" class="menu-row">
                             <div class="menu-row__left" for="">Đổi mật khẩu</div>
                             <div class="menu-row__right" for=""><i class="bi bi-chevron-right"></i></div>
                         </a>
@@ -59,9 +59,8 @@
                         </a>
                     </div>
                     <div class="buttom-mix">
-                        <a id="btnSave" href="#" class="buttom-green hvr-pulse-grow">ĐĂNG XUẤT</a>
+                        <a id="btnDangXuat" href="#" runat="server" class="buttom-green hvr-pulse-grow" onserverclick="btnDangXuat_ServerClick">ĐĂNG XUẤT</a>
                     </div>
-
                 </div>
             </div>
         </div>
