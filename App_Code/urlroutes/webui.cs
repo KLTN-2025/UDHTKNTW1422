@@ -61,6 +61,61 @@ public class webui
         list.Add("moduledanhmucvatpham|danh-muc-vat-pham|~/web_module/module_TieuHoc/module_ThanhToan/tieuhoc_DanhMucVatPham.aspx");
         list.Add("moduledoiqua|doi-qua|~/web_module/module_TieuHoc/module_ThanhToan/tieuhoc_DoiQua.aspx");
 
+
+        //Sách khối 6
+        //Bảng chứ cái Higarana
+        list.Add("SachTiengNhatKhoi6Bai1|sach-tieng-nhat-1-67-255|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai1LuyenTap|sach-tieng-nhat-1-67-256|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai1LuyenTap2|sach-tieng-nhat-1-67-257|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai2|sach-tieng-nhat-1-67-258|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai2LuyenTap|sach-tieng-nhat-1-67-259|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai2LuyenTap2|sach-tieng-nhat-1-67-260|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai3|sach-tieng-nhat-1-67-261|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai3LuyenTap|sach-tieng-nhat-1-67-262|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai3LuyenTap2|sach-tieng-nhat-1-67-263|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai4|sach-tieng-nhat-1-67-264|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai4LuyenTap|sach-tieng-nhat-1-67-265|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai4LuyenTap2|sach-tieng-nhat-1-67-266|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai5|sach-tieng-nhat-1-67-267|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai5LuyenTap|sach-tieng-nhat-1-67-268|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai5LuyenTap2|sach-tieng-nhat-1-67-269|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai6|sach-tieng-nhat-1-67-270|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai6LuyenTap|sach-tieng-nhat-1-67-271|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai6LuyenTap2|sach-tieng-nhat-1-67-272|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai7|sach-tieng-nhat-1-67-273|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai7LuyenTap|sach-tieng-nhat-1-67-274|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai7LuyenTap2|sach-tieng-nhat-1-67-275|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai8|sach-tieng-nhat-1-67-276|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai8LuyenTap|sach-tieng-nhat-1-67-277|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai8LuyenTap2|sach-tieng-nhat-1-67-278|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai9|sach-tieng-nhat-1-67-279|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai9LuyenTap|sach-tieng-nhat-1-67-280|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai9LuyenTap2|sach-tieng-nhat-1-67-281|~/web_module/Khoi_6/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi6Bai10|sach-tieng-nhat-1-67-282|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai10LuyenTap|sach-tieng-nhat-1-67-283|~/web_module/Khoi_6/LuyenTap.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai10LuyenTap2|sach-tieng-nhat-1-67-284|~/web_module/Khoi_6/LuyenTap2.aspx");
+        //list.Add("SachTiengNhatKhoi6Bai10LuyenTap2|sach-tieng-nhat-1-67-284|~/web_module/GameCacKhoi/Khoi_6/LuyenTap2.aspx");
+        //Bảng chứ cái Katakana
+        list.Add("SachTiengNhatKatakanaBai1|sach-tieng-nhat-2-68-285|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai1LuyenTap|sach-tieng-nhat-2-68-286|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai2|sach-tieng-nhat-2-68-287|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai2LuyenTap|sach-tieng-nhat-2-68-288|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai3|sach-tieng-nhat-2-68-289|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai3LuyenTap|sach-tieng-nhat-2-68-290|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai4|sach-tieng-nhat-2-68-291|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai4LuyenTap|sach-tieng-nhat-2-68-292|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai5|sach-tieng-nhat-2-68-293|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai5LuyenTap|sach-tieng-nhat-2-68-294|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai6|sach-tieng-nhat-2-68-295|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai6LuyenTap|sach-tieng-nhat-2-68-296|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai7|sach-tieng-nhat-2-68-297|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai7LuyenTap|sach-tieng-nhat-2-68-298|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai8|sach-tieng-nhat-2-68-299|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai8LuyenTap|sach-tieng-nhat-2-68-300|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai9|sach-tieng-nhat-2-68-301|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai9LuyenTap|sach-tieng-nhat-2-68-302|~/web_module/Khoi_6/LuyenTap.aspx");
+        list.Add("SachTiengNhatKatakanaBai10|sach-tieng-nhat-2-68-303|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
+        //list.Add("SachTiengNhatKatakanaBai10LuyenTap|sach-tieng-nhat-2-68-304|~/web_module/Khoi_6/LuyenTap.aspx");
         //APP THCS - THPT
 
         list.Add("moduledanhmucthcs|app-thcs|~/web_module/module_THCS/thcs_Home.aspx");
