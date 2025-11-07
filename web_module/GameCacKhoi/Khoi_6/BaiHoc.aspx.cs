@@ -11,7 +11,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
     dbcsdlDataContext db = new dbcsdlDataContext();
     public string lesson_name, link_prev, link_next, baihoc;
     public int sach_id, chude_id, baihoc_id;
-    public string _id_lesson, hocsinh_name, tinhtrangnext, tinhtrangback;
+    public string _id_lesson, hocsinh_name, tinhtrangnext, tinhtrangback, lop_id;
     Random rnd = new Random();
     public int item = 0, itemchucai = 0;
     public string col_item1, col_item2;
@@ -39,6 +39,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
                          {
                              s.sach_id,
                              s.sach_title,
+                             s.lop_id,
                              bn.baihoc_title,
                              link_prev = bn.baihoc_back,
                              link_next = bn.baihoc_next,
@@ -48,6 +49,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
         link_prev = getBaiHoc.link_prev;
         baihoc = getBaiHoc.baihoc_title;
         Load();
+        lop_id = getBaiHoc.lop_id+"";
     }
     public void Load()
     {
