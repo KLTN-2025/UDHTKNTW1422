@@ -100,7 +100,7 @@
                         <a class="btn-menu" id="menu-home" href="/app-thcs"  onclick="DisplayLoadingIcon()"><i class="bi bi-house-door"></i>
                             <p>Trang chủ</p>
                         </a>
-                        <a class="btn-menu" id="menu-static" href="#" onclick="DisplayLoadingIcon()"><i class="bi bi-graph-up-arrow"></i>
+                        <a class="btn-menu" id="menu-static" href="/app-thong-ke" onclick="DisplayLoadingIcon()"><i class="bi bi-graph-up-arrow"></i>
 
                             <p>Thống kê</p>
                         </a>
