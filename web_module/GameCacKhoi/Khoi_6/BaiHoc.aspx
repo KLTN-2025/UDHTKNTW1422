@@ -37,7 +37,7 @@
         <div class="header-page">
             <div class="container">
                 <div class="header-content">
-                    <a class="header-content__home btn-menu" id="btnHome" href="Default_SoLienLac_HocSinh.aspx" data-id="<%=sach_id %>#<%=_id_lesson %>">
+                    <a class="header-content__home btn-menu" id="btnHome" href="/danh-muc-sach-<%=sach_id %>?khoi=<%=lop_id %>#<%=_id_lesson %>" data-id="<%=sach_id %>#<%=_id_lesson %>">
                         <i class="fa fa-home"></i>
                     </a>
                     <div class="header-content__title"><%=lesson_name %></div>

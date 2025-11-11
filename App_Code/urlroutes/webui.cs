@@ -17,7 +17,7 @@ public class webui
     public List<string> UrlRoutes()
     {
         List<string> list = new List<string>();
-        list.Add("webTrangChu|home-4-cap|~/HomeNew.aspx");
+        list.Add("webTrangChu|koigo-trang-chu|~/Default.aspx");
         // Mầm non
         list.Add("moduleloginmamnon|app-login-mam-non|~/web_module/module_MamNon/mamnon_Login.aspx");
         list.Add("webmamnontrangchu|mam-non-trang-chu|~/landingpage/MamNon/mamnon_Default.aspx");
@@ -204,6 +204,7 @@ public class webui
         list.Add("moduledoimatkhau|app-doi-mat-khau|~/web_module/module_DoiMatKhau.aspx");
         list.Add("weblandingpagelogin|app-login|~/app_Login.aspx");
         list.Add("weblandingpageregister|app-register|~/app_Register.aspx");
+        list.Add("webthongke|app-thong-ke|~/web_module/module_ThongKe.aspx");
 
         return list;
     }

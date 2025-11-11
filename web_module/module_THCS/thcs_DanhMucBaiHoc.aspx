@@ -13,8 +13,8 @@
     <meta name="x5-full-screen" content="true" />
     <meta name="360-full-screen" content="true" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <link rel="apple-touch-icon" href="/images/logo_dinotech.png" />
-    <link rel="shortcut icon" href="/images/logo_dinotech.png" />
+    <link rel="apple-touch-icon" href="/images/koi-logo_2.png" />
+    <link rel="shortcut icon" href="/images/koi-logo_2.png" />
     <title><%=tenSach %></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="/css/books/globalBooks.css" rel="stylesheet" />
@@ -135,10 +135,10 @@
                                                     <div class="rating-list">${ratingHtml}</div>
                                                 </div>
                                             </a>
-                                            <a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>
                                         </div>
                                         `;
                         });
+                                            //<a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>
 
                         const topicHtml = `
                          <div class="unit-list__title">${lesson.chudebaihoc_name}</div>
