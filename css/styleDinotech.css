@@ -1942,7 +1942,7 @@ body {
     }
 
         .input-group-animate .form-input:focus {
-            border: 2px solid #8BC34A;
+            border: 2px solid #dc3545
         }
 
             .input-group-animate .form-input:focus + .lb-input, .input-group-animate .form-input:valid + .lb-input {
