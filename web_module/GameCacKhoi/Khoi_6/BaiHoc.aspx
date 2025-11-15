@@ -1,13 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BaiHoc.aspx.cs" Inherits="web_module_GameCacKhoi_Khoi_6_BaiHoc" %>
 
+<%@ Register Src="~/web_usercontrol/global_Popup.ascx" TagPrefix="uc1" TagName="global_Popup" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <link href="/css/icofont.css" rel="stylesheet" />
+    <link href="/css/icofont.css" rel="stylesheet" />
     <link href="/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/css/books/globalBooks.css" rel="stylesheet" />
-     <style>
+    <style>
         .button-submit {
             text-align: center;
             padding-bottom: 4rem;
@@ -19,7 +22,7 @@
                 width: 170px;
             }
     </style>
-        <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
     <title><%= baihoc %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -34,6 +37,7 @@
 <body class="page-contest --bg-body-2">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+        <uc1:global_Popup runat="server" id="global_Popup" />
         <div class="header-page">
             <div class="container">
                 <div class="header-content">
@@ -54,7 +58,7 @@
             </div>
         </div>
 
-    
+
         <%--chữ cái--%>
         <div class="frame-game --math">
             <div class="container">

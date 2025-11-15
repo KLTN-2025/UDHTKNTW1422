@@ -1,198 +1,191 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Script.Serialization;
+
 public partial class web_usercontrol_global_Popup : System.Web.UI.UserControl
 {
     dbcsdlDataContext db = new dbcsdlDataContext();
+    public string lesson_name, link_prev, link_next, hocsinh_name;
+    public int sach_id, chude_id, baihoc_id;
     public DateTime startTime;
     public DateTime endTime;
     public TimeSpan elapsedtime;
     public int idGame;
     public int sao;
-    public int idChildren;
-    string soDienThoai;
-    string matKhau;
-    int chiTietBaiTap;
-    public int idStudent;
-    public int vitribaitap_id, baitap_id, sach_id, lop_id;
+    public int hocsinh_id, namhoc_id;
+
     protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnSatrt_ServerClick(object sender, EventArgs e)
     {
         string url = HttpContext.Current.Request.Url.AbsolutePath;
         string[] arr = url.Split('-');
-        vitribaitap_id = Convert.ToInt32(arr[arr.Length - 1]);
-        baitap_id = Convert.ToInt32(arr[arr.Length - 2]);
-        sach_id = Convert.ToInt32(arr[arr.Length - 3]);
-        lop_id = Convert.ToInt32(arr[arr.Length - 4]);
-        nameBaiTapModal.InnerHtml = "Bai" + ":  " + baitap_id + "-" + vitribaitap_id;
-        if (Request.Cookies["taikhoan"] != null && !string.IsNullOrEmpty(Request.Cookies["taikhoan"].Value))
-        {
-            soDienThoai = Request.Cookies["taikhoan"].Value;
-        }
-
-    }
-
-    protected void loadServerPopup_ServerClick(object sender, EventArgs e)
-    {
-
-        var idAccount = (from ch in db.tbAccounts where ch.account_sodienthoai == soDienThoai select ch.account_id).FirstOrDefault();
-        var idAccountChildren = (from ck in db.tbAccount_Childrens
-                                 where ck.account_id == idAccount && ck.children_active == true
-                                 select ck.children_id).FirstOrDefault();
-        if (Convert.ToInt32(txtSao.Value) != 0)
-        {
-
-
-            var getBaiTapHienTai = (from at in db.tbChiTietBaiTaps
-                                    where at.chitietbaitap_id == vitribaitap_id && at.baitap_id == baitap_id
-                                    select at).FirstOrDefault();
-
-            var idBaiTapConLai = (from at in db.tbChiTietBaiTaps
-                                  where at.chitietbaitap_vitribaitap > getBaiTapHienTai.chitietbaitap_vitribaitap && at.baitap_id == baitap_id
-                                  //select at).FirstOrDefault(); // lấy được số 3
-                                  select new
-                                  {
-                                      at.baitap_id,
-                                      at.chitietbaitap_id,
-                                      at.chitietbaitap_vitribaitap,
-                                      at.chitietbaitap_linkbaitap,
-                                      sao = (from ls in db.tbLichSuLamBaiHocSinhs
-                                             where ls.chitietbaitap_id == at.chitietbaitap_id && ls.children_id == idStudent
-                                             select ls.lichsulambai_sao).FirstOrDefault() ?? 0,
-                                      status = (from ls1 in db.tbLichSuLamBaiHocSinhs
-                                                where ls1.chitietbaitap_id == at.chitietbaitap_id && ls1.children_id == idStudent
-                                                select ls1.lichsulambai_status).FirstOrDefault() ?? "disable",
-                                  }).FirstOrDefault();
-            var getidhientai = (from lshs in db.tbLichSuLamBaiHocSinhs where lshs.children_id == idAccountChildren && lshs.chitietbaitap_id == getBaiTapHienTai.chitietbaitap_vitribaitap select lshs).FirstOrDefault();
-            getidhientai.lichsulambai_thoigianketthuc = DateTime.Now;
-
-            if (idBaiTapConLai != null)
-            {
-                var childrenIdDaCo = from kt in db.tbLichSuLamBaiHocSinhs
-                                     where kt.children_id == idAccountChildren && kt.chitietbaitap_id == idBaiTapConLai.chitietbaitap_id
-                                     select kt;
-                string linkbaitapValue = idBaiTapConLai.chitietbaitap_linkbaitap;
-                int saoValue = idBaiTapConLai.sao;
-                int baitapid = Convert.ToInt32(idBaiTapConLai.baitap_id);
-                int vitribaitapValue = Convert.ToInt32(idBaiTapConLai.chitietbaitap_vitribaitap);
-                int chitiet = Convert.ToInt32(idBaiTapConLai.chitietbaitap_id);
-                var inforBaitapNext = new
-                {
-                    LinkBaiTap = linkbaitapValue,
-                    Sao = saoValue,
-                    BaitapId = baitapid,
-                    VitriBaiTap = vitribaitapValue,
-                    ChitietBaiTap = chitiet
-                };
-                string infoJson = new JavaScriptSerializer().Serialize(inforBaitapNext);
-                HttpCookie infoCookie = new HttpCookie("next");
-                infoCookie.HttpOnly = false;
-                infoCookie.Value = infoJson;
-                infoCookie.Expires = DateTime.Now.AddMinutes(365); // Thời gian sống của cookie (đơn vị là phút)
-                Response.Cookies.Add(infoCookie);
-
-                if (childrenIdDaCo.Count() == 0)
-                {
-                    tbLichSuLamBaiHocSinh insertLichSuLamBaiHS = new tbLichSuLamBaiHocSinh();
-                    insertLichSuLamBaiHS.children_id = idAccountChildren;
-                    insertLichSuLamBaiHS.chitietbaitap_id = idBaiTapConLai.chitietbaitap_id;
-                    insertLichSuLamBaiHS.lichsulambai_status = "active";
-                    db.tbLichSuLamBaiHocSinhs.InsertOnSubmit(insertLichSuLamBaiHS);
-                    db.SubmitChanges();
-                }
-            }
-            else
-            {
-                var baiTapPosition = (from ot in db.tbBaiTaps
-                                      where ot.baitap_id == baitap_id && ot.lop_id == lop_id && ot.sach_id == sach_id
-                                      select ot.baitap_Position).FirstOrDefault();
-
-                var baiTapPositionMoi = (from qt in db.tbBaiTaps
-                                         where qt.baitap_Position > baiTapPosition && qt.lop_id == lop_id && qt.sach_id == sach_id
-                                         select qt.baitap_id).FirstOrDefault();
-
-                var idChiTietBTMoi = (from pt in db.tbChiTietBaiTaps
-                                      where pt.baitap_id == Convert.ToInt32(baiTapPositionMoi)
-                                      select pt).FirstOrDefault();
-
-                var childrenIdDaCo = from kt in db.tbLichSuLamBaiHocSinhs where kt.children_id == idAccountChildren && kt.chitietbaitap_id == idChiTietBTMoi.chitietbaitap_id select kt;
-                if (childrenIdDaCo.Count() == 0)
-                {
-                    tbLichSuLamBaiHocSinh insertLichSuLamBaiHS = new tbLichSuLamBaiHocSinh();
-                    insertLichSuLamBaiHS.children_id = idAccountChildren;
-                    insertLichSuLamBaiHS.chitietbaitap_id = idChiTietBTMoi.chitietbaitap_id;
-                    insertLichSuLamBaiHS.lichsulambai_status = "active";
-                    db.tbLichSuLamBaiHocSinhs.InsertOnSubmit(insertLichSuLamBaiHS);
-                    db.SubmitChanges();
-                }
-
-            }
-            var getidhocsinh = (from lshs in db.tbLichSuLamBaiHocSinhs where lshs.children_id == idAccountChildren && lshs.chitietbaitap_id == getBaiTapHienTai.chitietbaitap_vitribaitap select lshs).FirstOrDefault();
-            DateTime? batdau = getidhocsinh.lichsulambai_thoigianbatdau;
-            DateTime? ketthuc = getidhocsinh.lichsulambai_thoigianketthuc;
-            TimeSpan khoangcach = (DateTime)ketthuc - (DateTime)batdau;
-            double tongSoGiay = khoangcach.TotalSeconds;
-            tbLichSuLamBaiHocSinh lichSuLamBaiHocSinh = db.tbLichSuLamBaiHocSinhs.Where(x => x.children_id == idAccountChildren && x.chitietbaitap_id == vitribaitap_id).FirstOrDefault();
-            if (lichSuLamBaiHocSinh.lichsulambai_status == "active")
-            {
-                lichSuLamBaiHocSinh.lichsulambai_solanlambai = 1;
-                lichSuLamBaiHocSinh.lichsulambai_status = "select";
-                lichSuLamBaiHocSinh.lichsulambai_thoigianlambai = Convert.ToString(tongSoGiay);
-                lichSuLamBaiHocSinh.lichsulambai_sao = Convert.ToInt32(txtSao.Value);
-            }
-            else
-            {
-                lichSuLamBaiHocSinh.lichsulambai_solanlambai++;
-                lichSuLamBaiHocSinh.lichsulambai_status = "select";
-                lichSuLamBaiHocSinh.lichsulambai_thoigianlambai = Convert.ToString(tongSoGiay);
-                if (lichSuLamBaiHocSinh.lichsulambai_sao == null)
-                    lichSuLamBaiHocSinh.lichsulambai_sao = Convert.ToInt32(txtSao.Value);
-                else if (lichSuLamBaiHocSinh.lichsulambai_sao < Convert.ToInt32(txtSao.Value))
-                {
-                    lichSuLamBaiHocSinh.lichsulambai_sao = Convert.ToInt32(txtSao.Value);
-                }
-            }
-            db.SubmitChanges();
-        }
+        //if (arr.Length == 5)
+        //{
+        //    sach_id = Convert.ToInt32(arr[arr.Length - 3]);
+        //    baihoc_id = Convert.ToInt32(arr[arr.Length - 1]);
+        //}
         //else
         //{
-        //    tbLichSuLamBaiHocSinh lichSuLamBaiHocSinh = db.tbLichSuLamBaiHocSinhs.Where(x => x.children_id == idAccountChildren && x.chitietbaitap_id == vitribaitap_id).FirstOrDefault();
-        //    lichSuLamBaiHocSinh.lichsulambai_solanlambai++;
-        //    db.SubmitChanges();
+        //    sach_id = Convert.ToInt32(arr[arr.Length - 2]);
+        //    baihoc_id = Convert.ToInt32(arr[arr.Length - 1]);
         //}
-    }
+        //if (baihoc_id == 96 || baihoc_id == 104 || baihoc_id == 120 || baihoc_id == 129 || baihoc_id == 135)
+        //{
+        //    sach_id = 2;
+        //}
+        //else if (baihoc_id == 199 || baihoc_id == 207 || baihoc_id == 219 || baihoc_id == 229 || baihoc_id == 239)
+        //{
+        //    sach_id = 4;
+        //}
+        sach_id = Convert.ToInt32(arr[arr.Length - 3]);
+        chude_id = Convert.ToInt32(arr[arr.Length - 2]);
+        baihoc_id = Convert.ToInt32(arr[arr.Length - 1]);
+        idGame = Convert.ToInt32(txtOrderGamePopup.Value);
+        sao = Convert.ToInt32(txtSao.Value);
+        startTime = Convert.ToDateTime(txtTimeStartPopup.Value);
 
-    protected void returnTrangChu_ServerClick(object sender, EventArgs e)
-    {
-        var idAccount = (from ch in db.tbAccounts where ch.account_sodienthoai == soDienThoai select ch.account_id).FirstOrDefault();
-        var idAccountChildren = (from ck in db.tbAccount_Childrens
-                                 where ck.account_id == idAccount && ck.children_active == true
-                                 select ck.lop_id).FirstOrDefault();
-        if (Convert.ToInt32(idAccountChildren) < 1)
-        {
-            var url = "/app-mam-non";
-            Response.Redirect(url);
+        var selectData = from ls in db.tbSoLLDT_LichSuLamBaiHocSinhs
+                         where ls.baihoc_id == baihoc_id && ls.lichsulambai_vitribaitap == idGame && ls.hocsinh_id == hocsinh_id
+                         select ls;
 
-        }
-        else if (Convert.ToInt32(idAccountChildren) < 6)
+
+        if (selectData.Count() == 0)
         {
-            var url = "/app-tieu-hoc-trang-chu";
-            Response.Redirect(url);
-        }
-        else if (Convert.ToInt32(idAccountChildren) < 10)
-        {
-            var url = "/app-THCS";
-            Response.Redirect(url);
+            insertData();
         }
         else
         {
-            var url = "/app-THPT";
-            Response.Redirect(url);
+            updateData();
         }
     }
+    protected void insertData()
+    {
+        //startTime = DateTime.Now;
+        endTime = DateTime.Now;
+        //var getHSTL = (from hstl in db.tbHocSinhTrongLops where hstl.hocsinh_id == hocsinh_id orderby hstl.hocsinh_id descending select hstl).First();
+        //var getNamHoc = (from nh in db.tbHoctap_NamHocs orderby nh.namhoc_id descending select nh).First();
+        tbSoLLDT_LichSuLamBaiHocSinh insertls = new tbSoLLDT_LichSuLamBaiHocSinh();
+        insertls.hocsinh_id = hocsinh_id;
+        //insertls.hstl_id = getHSTL.hstl_id;
+        //insertls.namhoc_id = getNamHoc.namhoc_id;
+        insertls.lichsulambai_thoigianbatdau = startTime;
+        insertls.lichsulambai_thoigianhetthuc = endTime;
+        insertls.sach_id = sach_id;
+        insertls.baihoc_id = baihoc_id;
+        insertls.lichsulambai_vitribaitap = idGame;
+        insertls.lichsulambai_sao = sao;
+        insertls.lichsulambai_diem = txtDiem.Value;
+        if (sao == 0)
+        {
+            //màu xanh dương
+            insertls.lichsulambai_status = "select";
+        }
+        else
+        {
+            //màu vàng gold
+            insertls.lichsulambai_status = "active";
+        }
+        insertls.lichsulambai_solanlambai = 1;
+        db.tbSoLLDT_LichSuLamBaiHocSinhs.InsertOnSubmit(insertls);
+        //insert chi tiết từng lần chơi game
+        tbSoLLDT_LichSuLamBaiHocSinh_ChiTiet insertlsct = new tbSoLLDT_LichSuLamBaiHocSinh_ChiTiet();
+        insertlsct.hocsinh_id = hocsinh_id;
+        //insertlsct.hstl_id = getHSTL.hstl_id;
+        //insertlsct.namhoc_id = getNamHoc.namhoc_id;
+        insertlsct.lichsulambai_chitiet_thoigianbatdau = startTime;
+        insertlsct.lichsulambai_chitiet_thoigianhetthuc = endTime;
+        insertlsct.sach_id = sach_id;
+        insertlsct.baihoc_id = baihoc_id;
+        insertlsct.lichsulambai_chitiet_vitribaitap = idGame;
+        insertlsct.lichsulambai_chitiet_sao = sao;
+        insertlsct.lichsulambai_chitiet_diem = txtDiem.Value;
+        if (sao == 0)
+        {
+            //màu xanh dương
+            insertlsct.lichsulambai_chitiet_status = "select";
+        }
+        else
+        {
+            //màu vàng gold
+            insertlsct.lichsulambai_chitiet_status = "active";
+        }
+        insertlsct.lichsulambai_chitiet_solanlambai = 1;
+        db.tbSoLLDT_LichSuLamBaiHocSinh_ChiTiets.InsertOnSubmit(insertlsct);
+        db.SubmitChanges();
+        //ScriptManager.RegisterStartupScript(upPopup, upPopup.GetType(), "popupScript", "funcHienPopup();", true);
+    }
+    protected void updateData()
+    {
+        endTime = DateTime.Now;
+        tbSoLLDT_LichSuLamBaiHocSinh update = (from ls in db.tbSoLLDT_LichSuLamBaiHocSinhs
+                                               where ls.baihoc_id == baihoc_id && ls.lichsulambai_vitribaitap == idGame && ls.hocsinh_id == hocsinh_id
+                                               select ls).FirstOrDefault();
+        //orderby ls.lichsulambai_thoigianbatdau descending
+        //select ls).FirstOrDefault();
+        update.lichsulambai_thoigianbatdau = startTime;
+        update.lichsulambai_thoigianhetthuc = endTime;
+        update.lichsulambai_solanlambai = update.lichsulambai_solanlambai + 1;
+        var selectStart = from ls in db.tbSoLLDT_LichSuLamBaiHocSinhs
+                          where ls.baihoc_id == baihoc_id && ls.lichsulambai_vitribaitap == idGame && ls.lichsulambai_sao < sao && ls.hocsinh_id == hocsinh_id
+                          select ls;
+        //nếu mà lần làm bài sau điểm tốt hơn phần làm bài trước thì update lại điểm
+        double diemOld = Convert.ToDouble(update.lichsulambai_diem);
+        double diemNew = Convert.ToDouble(txtDiem.Value);
+        if (diemOld < diemNew)
+            update.lichsulambai_diem = txtDiem.Value;
+        if (selectStart.Count() == 1)
+        {
+            update.lichsulambai_sao = sao;
+            update.lichsulambai_status = "active";
+        }
+        var getsolan = from lsct in db.tbSoLLDT_LichSuLamBaiHocSinh_ChiTiets
+                       where lsct.baihoc_id == baihoc_id && lsct.lichsulambai_chitiet_vitribaitap == idGame && lsct.hocsinh_id == hocsinh_id
+                       orderby lsct.lichsulambai_chitiet_id descending
+                       select lsct;
+        //insert chi tiết từng lần chơi game
+        tbSoLLDT_LichSuLamBaiHocSinh_ChiTiet insertlsct = new tbSoLLDT_LichSuLamBaiHocSinh_ChiTiet();
+        insertlsct.hocsinh_id = hocsinh_id;
+        //insertlsct.hstl_id = getHSTL.hstl_id;
+        //insertlsct.namhoc_id = getNamHoc.namhoc_id;
+        insertlsct.lichsulambai_chitiet_thoigianbatdau = startTime;
+        insertlsct.lichsulambai_chitiet_thoigianhetthuc = endTime;
+        insertlsct.sach_id = sach_id;
+        insertlsct.baihoc_id = baihoc_id;
+        insertlsct.lichsulambai_chitiet_vitribaitap = idGame;
+        insertlsct.lichsulambai_chitiet_sao = sao;
+        insertlsct.lichsulambai_chitiet_diem = txtDiem.Value;
+        if (sao == 0)
+        {
+            //màu xanh dương
+            insertlsct.lichsulambai_chitiet_status = "select";
+        }
+        else
+        {
+            //màu vàng gold
+            insertlsct.lichsulambai_chitiet_status = "active";
+        }
+        insertlsct.lichsulambai_chitiet_solanlambai = getsolan.First().lichsulambai_chitiet_solanlambai + 1;
+        db.tbSoLLDT_LichSuLamBaiHocSinh_ChiTiets.InsertOnSubmit(insertlsct);
+        db.SubmitChanges();
+    }
+
+    protected void btnHome_ServerClick(object sender, EventArgs e)
+    {
+        tbSoLLDT_LichSuHocSinhXemBaiHoc insert = new tbSoLLDT_LichSuHocSinhXemBaiHoc();
+        //var getHSTL = (from hstl in db.tbHocSinhTrongLops where hstl.hocsinh_id == hocsinh_id orderby hstl.hocsinh_id descending select hstl).First();
+        var checkHocSinh = from ls in db.tbSoLLDT_LichSuHocSinhXemBaiHocs where ls.hocsinh_id == hocsinh_id/* && ls.hstl_id == getHSTL.hstl_id */select ls;
+        if (checkHocSinh.Any())
+        {
+            checkHocSinh.First().lichsuxembai_thoigianhetthuc = DateTime.Now;
+        }
+        db.SubmitChanges();
+    }
+
 }

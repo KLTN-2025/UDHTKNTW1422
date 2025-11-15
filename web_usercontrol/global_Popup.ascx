@@ -1,61 +1,123 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="global_Popup.ascx.cs" Inherits="web_usercontrol_global_Popup" %>
-<link href="../css/categoryTieuHoc.min.css" rel="stylesheet" />
-<audio hidden="hidden" class="media" id="uadiowin" src="/mp3Game/win1.mp3" controls="controls"></audio>
-<audio hidden="hidden" class="media" id="uadiolose" src="/mp3Game/lose.mp3" controls="controls"></audio>
-<div id="popup-submit" style="display: none">
-    <div class="bg-modal-view">
-        <div class="box-modal">
-            <span class="btn-close" onclick="closePopup()">
-                <img src="/images/btn-close-modal.png" alt="Alternate Text" /></span>
-            <div class="box-modal__title">
-                <div class="box-modal__content">
-                    <p>Hoàn thành</p>
-                </div>
-                <h2 id="nameBaiTapModal" runat="server" style="text-align: center"></h2>
+<link href="../css/modalStyle.min.css" rel="stylesheet" />
+
+<audio hidden="hidden" class="media" id="uadiowin" src="/Musics/win1.mp3" controls="controls"></audio>
+<audio hidden="hidden" class="media" id="uadiolose" src="/Musics/lose.mp3" controls="controls"></audio>
+
+<div id="modal-view">
+    <div class="modal-result">
+        <div class="modal-result-content">
+            <img src="/images/bg-modal-main.png" class="modal-result-content__bg" alt="" />
+            <%--<div class="modal-logo">
+                <img src="/images/logo-popup-vietnhat.png" alt="Alternate Text" />
+
+            </div>--%>
+            <div class="modal-result-content__star">
+                <img src="" class="--star" id="popup-img" />
+                <img src="/images/star-effect.gif" class="--effect" alt="Alternate Text" />
             </div>
-            <div class="box-modal__star">
-                <img src="" id="imgSao" />
+
+            <div class="modal-result-content__txt --txt-1">
+                <%--BẠN ĐÃ LÀM ĐÚNG--%>
+                ĐIỂM:
             </div>
-            <div class="box-modal__button">
-                <a id="playGame" class="btn-play" href="javascript:void(0);" onclick="startGame()">
-                    <img src="/images/btn-play.png" /></a>
-            </div>
+            <div class="modal-result-content__txt --txt-2" id="txtresult"></div>
+            <button type="button" id="submit-load" onclick="funcHome()" class="modal-result-content__btn --home">&nbsp;</button>
+            <button type="button" id="submit-home" onclick="funcReload()" class="modal-result-content__btn --exit">&nbsp;</button>
         </div>
-        <input type="text" id="txtLink" runat="server" name="name" value="" style="display: none" />
-        <input type="hidden" id="txtbaitapid" runat="server" />
     </div>
 </div>
 <asp:UpdatePanel ID="upPopup" runat="server">
     <ContentTemplate>
         <div style="display: none">
-            <%--<a id="btnSatrt" runat="server" onserverclick="btnSatrt_ServerClick"></a>--%>
+            <a id="btnSatrt" runat="server" onserverclick="btnSatrt_ServerClick"></a>
             <input type="text" id="txtSao" runat="server" name="name" value="" />
-            <%--<input type="text" id="txtTimeStartPopup" runat="server" name="name" value="" />--%>
-            <a id="loadServerPopup" runat="server" onserverclick="loadServerPopup_ServerClick"></a>
-            <a id="returnTrangChu" runat="server" onserverclick="returnTrangChu_ServerClick"></a>
-            <%--<input type="text" id="txtOrderGamePopup" runat="server" name="name" value="" />--%>
+            <input type="text" id="txtDiem" runat="server" name="name" value="" />
+            <input type="text" id="txtKetQua" runat="server" name="name" value="" />
+            <input type="text" id="txtTimeStartPopup" runat="server" name="name" value="" />
+            <input type="text" id="txtOrderGamePopup" runat="server" name="name" value="" />
         </div>
     </ContentTemplate>
 </asp:UpdatePanel>
+<a id="btnHome" runat="server" onserverclick="btnHome_ServerClick"></a>
 <script>
-    function showPopup(sao) {
-        //debugger
-        document.getElementById("popup-submit").style.display = "block";
-        document.getElementById('imgSao').src = "/images/icon-" + sao + "-star.png";
-        document.getElementById('<%=txtSao.ClientID%>').value = sao;
-        document.getElementById('<%=loadServerPopup.ClientID%>').click();
-    }
+    function btnSubmit(sao, ketqua, timeStart, OrderGame) {
+        //debugger 
+        var solanbaihoc = $('#txtKQ').val();
+        var sodiemlonnhat = $('#txtSoDiemLonNhat').val();
+        console.log("solanbaihoc " + solanbaihoc);
+        console.log("ketqua " + ketqua);
+        console.log("sodiemlonnhat " + sodiemlonnhat);
+        if (solanbaihoc == 1 && sodiemlonnhat >= 8) {
+            console.log("1");
+            $('#btnNextLesson').attr('style', '');
+        }
+        else if (solanbaihoc >= 3 && sodiemlonnhat >= 8) {
+            console.log("3");
+            $('#btnNextLesson').attr('style', '');
+        }
+        else {
+            console.log("444");
+        }
+        $("#<%=txtSao.ClientID %>").val(sao);
+        $("#<%=txtTimeStartPopup.ClientID %>").val(timeStart);
+        $("#<%=txtDiem.ClientID %>").val(ketqua);
+        $("#<%=txtOrderGamePopup.ClientID %>").val(OrderGame);
+        $("#<%=txtKetQua.ClientID %>").val(ketqua);
+        //console.log("OrderGamePopup " + OrderGame)
+        uadiowin.load();
+        if (sao == '3') {
+            $('#popup-img').attr('src', '../../../images/game-3-star.png');
+           
 
-    function closePopup() {
-        document.getElementById("<%=returnTrangChu.ClientID%>").click();
+            //$('#popup-img-1').attr('src', '../../../images/anhgif/3_sao.gif');
+            setTimeout(() => {
+                uadiowin.play();
+            }, "1500");
+        }
+        else if (sao == '2') {
+            $('#popup-img').attr('src', '../../../images/game-2-star.png');
+            //$('#popup-img-1').attr('src', '../../../images/anhgif/2_sao.gif');
+            setTimeout(() => {
+                uadiowin.play();
+            }, "1500");
+        }
+        else {
+            $('#popup-img').attr('src', '../../../images/game-1-star.png');
+            //$('#popup-img-1').attr('src', '../../../images/anhgif/1_sao.gif');
+            //uadiowin.play();
+            setTimeout(() => {
+                uadiolose.play();
+            }, "1500");
+            
+        }
+        $("#txtresult").text(ketqua + " / 10")
+        /*document.getElementById("popup-submit").style.display = 'block';*/
+        let modalSubmit = document.getElementById("modal-view");
+        modalSubmit.classList.add("show");
+        <%--document.getElementById("<%=btnSatrt.ClientID %>").click();--%>
+        let btnElement = document.getElementById("<%=btnSatrt.ClientID %>");
+        if (!btnElement) {
+            console.error("btnSatrt not found!");
+        } else {
+            console.log("btnSatrt found:", btnElement);
+            btnElement.click();
+        }
+        
     }
-    function startGame() {
-        window.location.href = "/app-tieu-hoc-trang-chu";
+    function funcHome() {
+        document.getElementById("btnHome").click();
     }
+    function funcReload() {
+        //var url = location.href;
+        //window.location.href = url;
+        let modalSubmit = document.getElementById("modal-view");
+        modalSubmit.classList.remove("show");
+        //document.getElementById("popup-submit").style.display = 'none';
+        uadiowin.pause();
 
-    // Sử dụng hàm để tạo cookie với tên là "myCookie" và giá trị là "Hello, this is my cookie value."
-    //function deleteCookie(cookieName) {
-    //    document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    //}
-
+    }
+    function funcNext() {
+        document.getElementById("btnNextLesson").click();
+    }
 </script>

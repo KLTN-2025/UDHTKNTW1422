@@ -74,7 +74,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
         int diemBaiHoc = 0;
         int.TryParse(getDiemBaiHoc, out diemBaiHoc);
         // Kiểm tra điều kiện
-        if (getXemBaiHoc == 2 && diemCaoNhat >= 8)
+        if (getXemBaiHoc == 2 && diemCaoNhat >= 2)
         {
             tinhtrangnext = "";
             txtKQ.Value = getXemBaiHoc + "";
