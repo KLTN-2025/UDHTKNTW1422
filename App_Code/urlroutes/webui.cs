@@ -115,8 +115,40 @@ public class webui
         list.Add("SachTiengNhatKatakanaBai9LuyenTap|sach-tieng-nhat-2-68-302|~/web_module/GameCacKhoi/Khoi_6/LuyenTap.aspx");
         list.Add("SachTiengNhatKatakanaBai10|sach-tieng-nhat-2-68-303|~/web_module/GameCacKhoi/Khoi_6/BaiHoc.aspx");
         list.Add("SachTiengNhatKatakanaBai10LuyenTap|sach-tieng-nhat-2-68-304|~/web_module/GameCacKhoi/Khoi_6/LuyenTap.aspx");
-        //APP THCS - THPT
 
+        //Sách khối 7
+        list.Add("SachTiengNhatKhoi7Bai1|sach-tieng-nhat-1-33-143|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai1LuyenTap|sach-tieng-nhat-1-67-256|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai1LuyenTap2|sach-tieng-nhat-1-67-257|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai2|sach-tieng-nhat-1-67-258|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai2LuyenTap|sach-tieng-nhat-1-67-259|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai2LuyenTap2|sach-tieng-nhat-1-67-260|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai3|sach-tieng-nhat-1-67-261|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai3LuyenTap|sach-tieng-nhat-1-67-262|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai3LuyenTap2|sach-tieng-nhat-1-67-263|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai4|sach-tieng-nhat-1-67-264|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai4LuyenTap|sach-tieng-nhat-1-67-265|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai4LuyenTap2|sach-tieng-nhat-1-67-266|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai5|sach-tieng-nhat-1-67-267|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai5LuyenTap|sach-tieng-nhat-1-67-268|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai5LuyenTap2|sach-tieng-nhat-1-67-269|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai6|sach-tieng-nhat-1-67-270|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai6LuyenTap|sach-tieng-nhat-1-67-271|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai6LuyenTap2|sach-tieng-nhat-1-67-272|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai7|sach-tieng-nhat-1-67-273|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai7LuyenTap|sach-tieng-nhat-1-67-274|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai7LuyenTap2|sach-tieng-nhat-1-67-275|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai8|sach-tieng-nhat-1-67-276|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai8LuyenTap|sach-tieng-nhat-1-67-277|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai8LuyenTap2|sach-tieng-nhat-1-67-278|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai9|sach-tieng-nhat-1-67-279|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai9LuyenTap|sach-tieng-nhat-1-67-280|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai9LuyenTap2|sach-tieng-nhat-1-67-281|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+        list.Add("SachTiengNhatKhoi7Bai10|sach-tieng-nhat-1-67-282|~/web_module/GameCacKhoi/Khoi_7/BaiHoc.aspx");
+        list.Add("SachTiengNhatKhoi7Bai10LuyenTap|sach-tieng-nhat-1-67-283|~/web_module/GameCacKhoi/Khoi_7/LuyenTap.aspx");
+        list.Add("SachTiengNhatKhoi7Bai10LuyenTap2|sach-tieng-nhat-1-67-284|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
+
+        //APP THCS - THPT
         list.Add("moduledanhmucthcs|app-thcs|~/web_module/module_THCS/thcs_Home.aspx");
         list.Add("moduledanhmucthpt|app-thpt|~/web_module/module_THPT/thpt_Home.aspx");
         list.Add("moduledanhmuckhoithcs|app-danh-muc-khoi-thcs-{khoi-id}|~/web_module/module_THCS/thcs_DanhMucKhoi.aspx");

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BaiHoc.aspx.cs" Inherits="web_module_GameCacKhoi_Khoi_6_BaiHoc" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="BaiHoc.aspx.cs" Inherits="web_module_GameCacKhoi_Khoi_7_BaiHoc" %>
 
 <%@ Register Src="~/web_usercontrol/global_Popup.ascx" TagPrefix="uc1" TagName="global_Popup" %>
 
@@ -34,10 +34,10 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
-<body class="page-contest --bg-body-2">
+<body>
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
-        <uc1:global_Popup runat="server" id="global_Popup" />
+        <uc1:global_Popup runat="server" ID="global_Popup" />
         <div class="header-page">
             <div class="container">
                 <div class="header-content">
@@ -209,161 +209,4 @@
         </div>
     </form>
 </body>
-<script>
-    let audio;
-    function pauseAudio() {
-        if (audio && !audio.paused) {
-            audio.pause();
-            audio.currentTime = 0;
-        }
-    }
-    const playSound = (url) => {
-        pauseAudio();
-        audio = new Audio(url);
-        audio.play();
-    }
-    const viewGuide = (idShow) => {
-        jQuery('.guide-video-item').hide();
-        jQuery('#guide-video-' + idShow).fadeIn();
-        jQuery('.character-item').removeClass('active');
-        jQuery('#character-item-' + idShow).addClass('active');
-    }
-    window.onload = function () {
-        var firstVideoID = document.getElementById('<%= hfFirstVideoID.ClientID %>').value;
-        if (firstVideoID) {
-            viewGuide(firstVideoID);
-        }
-    };
-    function next() {
-        let btnElement = document.getElementById("<%=btnNext.ClientID %>");
-        btnElement.click();
-    }
-    function back() {
-        let btnElementback = document.getElementById("<%=btnBack.ClientID %>");
-        btnElementback.click();
-    }
-    //viewGuide('1');
-    async function myTraLoiMultiple(id, vitri, dapan) {
-        $('#audioselect').get(0).play();
-        var currentAnswer = document.querySelector(`a[data-id="${id}"]`);
-        var parentElement = currentAnswer.closest('.form-mutichoise__answer');
-        var allAnswers = parentElement.querySelectorAll('.answer-item__gather');
-        allAnswers.forEach(answer => {
-            var answerId = answer.getAttribute('data-id');
-            var ic_Dung = document.getElementById("ic_Dung" + answerId);
-            var ic_Sai = document.getElementById("ic_Sai" + answerId);
-            var ic_Check = document.getElementById("ic_Check" + answerId);
-            if (ic_Dung) {
-                ic_Dung.style.display = "none";
-            }
-            if (ic_Sai) {
-                ic_Sai.style.display = "none";
-            }
-            if (ic_Check) {
-                ic_Check.style.display = "none";
-            }
-        });
-        var ic_Sai = document.getElementById("ic_Sai" + id);
-        var ic_Dung = document.getElementById("ic_Dung" + id);
-        var ic_Check = document.getElementById("ic_Check" + id);
-        var kiemtraaddclass = ic_Dung.closest('.tracnghiem');
-        ic_Check.style.display = "block";
-        var container = kiemtraaddclass.closest('.form-mutichoise__answer');
-        container.querySelectorAll('.tracnghiem').forEach(item => {
-            item.classList.remove('dung');
-        });
-        if (ic_Check.style.display = "block" && dapan == "True") {
-            kiemtraaddclass.classList.add('dung');
-        }
-    }
-    var caudungtracnghiem = 0, tongtracnghiem = 0;
-    function btnSubmitTracNghiem() {
-        
-        var elementtongtracnghiem = document.getElementById('<%= txtTongTracNghiem.ClientID%>');
-        if (elementtongtracnghiem == null || elementtongtracnghiem.value == null || elementtongtracnghiem.value == "") {
-            tongtracnghiem = 0;
-        } else {
-            tongtracnghiem = parseInt(elementtongtracnghiem.value, 10);
-        }
-        var answerItems = document.querySelectorAll('.tracnghiem.dung');
-        caudungtracnghiem = answerItems.length;
-        const answerItem = document.querySelectorAll('.tracnghiem');
-
-        answerItem.forEach(item => {
-            item.style.pointerEvents = 'none';
-            const icCheck = item.querySelector('.btn-check');
-            const icDung = item.querySelector('.btn-true');
-            const icSai = item.querySelector('.btn-false');
-            const dapAn = item.getAttribute('data-answer-tn');
-            if (icCheck.style.display === 'block') {
-                if (dapAn === 'True') {
-                    icDung.style.display = 'block';
-                    icCheck.style.display = "none";
-                } else {
-                    icSai.style.display = 'block';
-                    icCheck.style.display = "none";
-                }
-            }
-
-        });
-        let diem = 0;
-        let tongdiem = 0;
-        if (tongtracnghiem == 5) {
-            diem = caudungtracnghiem * 2;
-            tongdiem = tongtracnghiem * 2;
-        }
-        else {
-            diem = caudungtracnghiem * 2.5;
-            tongdiem = tongtracnghiem * 2.5;
-        }
-        setTimeout(function () {
-            let sao;
-            let ketqua;
-            if (diem > 8) {
-                sao = '3';
-            }
-            else if (diem > 5) {
-                sao = '2';
-                document.getElementById("btnNextLesson").style.pointerEvents = "auto";
-                document.getElementById("btnNextLesson").style.opacity = "1";
-            }
-            else {
-                sao = '1';
-            }
-            ketqua = diem;
-            let timeStart = $("#<%=txtTimeStart.ClientID %>").val();
-            let sodiemlonnhatdaco = $("#<%=txtSoDiemLonNhatDaCo.ClientID %>").val();
-            let solanlambai = $("#<%=txtKQ.ClientID %>").val();
-            if (solanlambai >= 3) {
-                if (sodiemlonnhatdaco < ketqua) {
-                    document.getElementById("txtSoDiemLonNhat").value = ketqua;
-                }
-                else {
-                    document.getElementById("txtSoDiemLonNhat").value = sodiemlonnhatdaco;
-                }
-            }
-            else {
-                document.getElementById("txtSoDiemLonNhat").value = ketqua;
-            }
-            let OrderGame = 1;
-            var submitNopBai = document.getElementById('dv_Submit');
-            if (submitNopBai) {
-                submitNopBai.style.display = "none";
-            }
-            btnSubmit(sao, diem, timeStart, OrderGame);
-            var submitNopBai = document.getElementById('dv_Submit');
-            if (submitNopBai) {
-                submitNopBai.style.display = "none";
-            }
-            var submitLamLai = document.getElementById('dv_reset');
-            if (submitLamLai) {
-                submitLamLai.style.display = "block";
-            }
-        }, 3000);
-
-    }
-    function lambai() {
-        document.getElementById('<%= btnLamLaiBaiTap.ClientID%>').click();
-    }
-</script>
 </html>

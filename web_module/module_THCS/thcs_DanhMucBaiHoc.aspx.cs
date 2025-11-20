@@ -53,7 +53,7 @@ public partial class web_module_module_THCS_thcs_DanhMucBaiHoc : System.Web.UI.P
             }
             else
             {
-                Response.Redirect("/login.html");
+                Response.Redirect("/app-login");
                 // Xử lý khi không tìm thấy phần tử trong truy vấn LINQ
             }
         }

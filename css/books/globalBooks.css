@@ -11309,15 +11309,15 @@ input[type=button].btn-block {
   z-index: 2;
 }
 .title-page__text {
-  background: #71bf45;
-  margin-left: -4px;
-  padding: 3px 8px 3px 10px;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 4px;
-  min-width: 50px;
-  text-align: center;
-  white-space: nowrap;
+    background: #2098d1;
+    margin-left: -4px;
+    padding: 3px 8px 3px 10px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 4px;
+    min-width: 50px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 @media (min-width: 992px) {
@@ -19376,13 +19376,13 @@ button:focus {
 .page-contest .pair-horizontal__row.--top {
   margin-bottom: 3rem;
 }
-.page-contest .frame-game-new {
-  background: #fff;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #71bf45;
-  border-radius: 12px;
-}
+    .page-contest .frame-game-new {
+        background: #fff;
+        border-width: 3px;
+        border-style: solid;
+        border-color: #8e191b;
+        border-radius: 12px;
+    }
 .page-contest .checkbox-list {
   background-color: #fff;
   display: -webkit-box;

@@ -11234,7 +11234,7 @@ body {
 .block-content {
     padding: 0 1rem;
     min-height: calc(100vh - 180px);
-    background-color: #f9f9ff;
+    background-color: #fef0d4;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     box-shadow: 0 -10px 45px -10px rgba(0,0,0,.75);

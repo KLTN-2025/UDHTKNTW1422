@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
+public partial class web_module_GameCacKhoi_Khoi_7_BaiHoc : System.Web.UI.Page
 {
     dbcsdlDataContext db = new dbcsdlDataContext();
     public string lesson_name, link_prev, link_next, baihoc;
@@ -28,7 +28,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
         sach_id = Convert.ToInt32(arr[arr.Length - 3]);
         chude_id = Convert.ToInt32(arr[arr.Length - 2]);
         baihoc_id = Convert.ToInt32(arr[arr.Length - 1]);
-        
+
         _id_lesson = "id_" + baihoc_id;
         txtTimeStart.Value = Convert.ToString(DateTime.Now);
         var getBaiHoc = (from bn in db.tbBaiHocs
@@ -49,7 +49,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
         link_prev = getBaiHoc.link_prev;
         baihoc = getBaiHoc.baihoc_title;
         Load();
-        lop_id = getBaiHoc.lop_id+"";
+        lop_id = getBaiHoc.lop_id + "";
     }
     public void Load()
     {
@@ -74,7 +74,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
         int diemBaiHoc = 0;
         int.TryParse(getDiemBaiHoc, out diemBaiHoc);
         // Kiểm tra điều kiện
-        if (getXemBaiHoc == 2 && diemCaoNhat >= 4)
+        if (getXemBaiHoc == 2 && diemCaoNhat >= 2)
         {
             tinhtrangnext = "";
             txtKQ.Value = getXemBaiHoc + "";
@@ -92,7 +92,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
             txtKQ.Value = getXemBaiHoc + "";
             txtSoDiemLonNhatDaCo.Value = Convert.ToString(diemCaoNhat);
         }
-      
+
 
         //từ vựng
         var getVocabulary = (from nb in db.tbGameTiengNhat_NhanBiets
@@ -318,7 +318,6 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
         db.tbSoLLDT_LichSuHocSinhXemBaiHocs.InsertOnSubmit(insert);
         db.SubmitChanges();
         Response.Redirect(link_next);
-
     }
 
     protected void btnBack_ServerClick(object sender, EventArgs e)

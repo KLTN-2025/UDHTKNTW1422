@@ -76,10 +76,19 @@
                         <div class="collapse navbar-collapse justify-content-md-between">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">BẢNG GIÁ</a>
+                                    <a class="nav-link" href="/koigo-trang-chu">TRANG CHỦ </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">VỀ CHÚNG TÔI </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">TIN TỨC </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">HƯỚNG DẪN </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">LIÊN HỆ </a>
                                 </li>
                                 <%--<li class="nav-item">
                                     <a class="nav-link" href="/dinotech-tin-tuc">GÓC PHỤ HUYNH </a>
@@ -219,10 +228,10 @@
                                     </div>
                                     <div class="col-md-6 col-lg-5">
                                         <div class="-txt-main">
-                                            <h2 style="font-weight: bold; font-family: 'Open Sans', sans-serif; color: #b51a1a ;">TỰ DO – CHỦ ĐỘNG – UY TÍN</h2>
-                                            <p><b style="color: red;">Tự do:</b> <b style="color: #b51a1a ;">KOIGO</b> mang đến sự linh hoạt, giúp học sinh học theo tốc độ và thời gian của riêng mình.</p>
+                                            <h2 style="font-weight: bold; font-family: 'Open Sans', sans-serif; color: #b51a1a;">TỰ DO – CHỦ ĐỘNG – UY TÍN</h2>
+                                            <p><b style="color: red;">Tự do:</b> <b style="color: #b51a1a;">KOIGO</b> mang đến sự linh hoạt, giúp học sinh học theo tốc độ và thời gian của riêng mình.</p>
                                             <p><b style="color: red;">Chủ động:</b> Ứng dụng khơi dậy niềm hứng thú, khuyến khích học sinh chủ động chinh phục mục tiêu học tập.</p>
-                                            <p><b style="color: red;">Uy tín:</b> <b style="color: #b51a1a ;">KOIGO</b> cam kết chất lượng qua kết quả rõ ràng, giúp học sinh nắm vững kiến thức nhanh và hiệu quả.</p>
+                                            <p><b style="color: red;">Uy tín:</b> <b style="color: #b51a1a;">KOIGO</b> cam kết chất lượng qua kết quả rõ ràng, giúp học sinh nắm vững kiến thức nhanh và hiệu quả.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -442,7 +451,7 @@ Khuyến khích học sinh<span class="highlight"> phấn đấu, nâng cao </sp
                                     </div>
                                     <div class="text-center">
                                         <a href="javascript:void(0)" class="btn-register hvr-" id="btnSubmitLienHe" runat="server" onclick="return checkNullLienHe()">
-                                            <img src="/images/image_THCS/btn-register.png" alt="Alternate Text" /></a>
+                                            <img src="/images/btn-register.png" alt="Alternate Text" /></a>
                                     </div>
                                 </div>
 

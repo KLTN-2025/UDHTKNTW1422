@@ -7,10 +7,19 @@
             <div class="collapse navbar-collapse justify-content-md-between">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">BẢNG GIÁ</a>
+                        <a class="nav-link" href="/koigo-trang-chu">TRANG CHỦ </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">VỀ CHÚNG TÔI </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TIN TỨC </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">HƯỚNG DẪN </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">LIÊN HỆ </a>
                     </li>
                     <%--<li class="nav-item">
                         <a class="nav-link" href="../dinotech-tin-tuc">GÓC PHỤ HUYNH </a>
