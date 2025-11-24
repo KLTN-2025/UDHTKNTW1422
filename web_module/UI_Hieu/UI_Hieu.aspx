@@ -14,7 +14,7 @@
             --bs-blue: #0d6efd;
             --primary-blue: #2299ff; /* Màu xanh chủ đạo */
         }
-
+        k
         body {
             font-family: Arial, sans-serif;
             background-color: #f7f9fc; /* Nền nhẹ */
@@ -194,22 +194,14 @@
             '6': [
                 { title: "Tiếng Anh 6 - Global Success", placeholderText: "T.Anh 6", bgColor: "f0f8ff", textColor: "4a8cff" },
                 { title: "Toán 6 - Chân trời sáng tạo", placeholderText: "Toán 6", bgColor: "e6f7ff", textColor: "4a8cff" },
-                { title: "Ngữ Văn 6 - Tập 1", placeholderText: "Ngữ Văn 6", bgColor: "fff8f0", textColor: "ff9c4a" },
-                { title: "Khoa học tự nhiên 6", placeholderText: "KHTN 6", bgColor: "f0f8ff", textColor: "4a8cff" },
-                { title: "Tin học 6", placeholderText: "Tin học 6", bgColor: "e6ffe6", textColor: "3cb371" },
-                { title: "Giáo dục công dân 6", placeholderText: "GDCD 6", bgColor: "fff0f5", textColor: "ff1493" },
             ],
             '7': [
                 { title: "Tiếng Anh 7 - Global Success", placeholderText: "T.Anh 7", bgColor: "f0f8ff", textColor: "4a8cff" },
                 { title: "Toán 7 - Cánh Diều", placeholderText: "Toán 7", bgColor: "fff0f5", textColor: "ff1493" },
-                { title: "Lịch sử & Địa lý 7", placeholderText: "LS&ĐL 7", bgColor: "f3f3f3", textColor: "6c757d" },
-                { title: "Ngữ Văn 7 - Tập 2", placeholderText: "Ngữ Văn 7", bgColor: "e6f7ff", textColor: "4a8cff" },
             ],
             '8': [
                 { title: "Tiếng Anh 8 - Global Success", placeholderText: "T.Anh 8", bgColor: "f0f8ff", textColor: "4a8cff" },
                 { title: "Tin học 8", placeholderText: "Tin học 8", bgColor: "e6ffe6", textColor: "3cb371" },
-                { title: "Vật lý 8", placeholderText: "Vật lý 8", bgColor: "fff0f5", textColor: "ff1493" },
-                { title: "Hóa học 8", placeholderText: "Hóa học 8", bgColor: "f0f8ff", textColor: "4a8cff" },
             ],
             '9': [
                 { title: "Tiếng Anh 9 - Global Success", placeholderText: "T.Anh 9", bgColor: "f0f8ff", textColor: "4a8cff" },
