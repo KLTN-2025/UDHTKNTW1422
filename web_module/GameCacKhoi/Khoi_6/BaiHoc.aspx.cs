@@ -140,8 +140,8 @@ public partial class web_module_GameCacKhoi_Khoi_6_BaiHoc : System.Web.UI.Page
                           ch.cauhoi_amthanhtrung,
                       });
         txtTongTracNghiem.Value = Convert.ToString(listID.Count());
-        rpnoidungtracnghiem.DataSource = listID;
-        rpnoidungtracnghiem.DataBind();
+        //rpnoidungtracnghiem.DataSource = listID;
+        //rpnoidungtracnghiem.DataBind();
         int max = listID.Count();
         List<int> termsList = new List<int>();
         Random rn = new Random();

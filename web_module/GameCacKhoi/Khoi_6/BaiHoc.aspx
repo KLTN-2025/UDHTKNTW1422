@@ -37,7 +37,7 @@
 <body class="page-contest --bg-body-2">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
-        <uc1:global_Popup runat="server" id="global_Popup" />
+        <uc1:global_Popup runat="server" ID="global_Popup" />
         <div class="header-page">
             <div class="container">
                 <div class="header-content">
@@ -121,16 +121,335 @@
             </div>
         </div>
         <%----%>
+        <%--game nói--%>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+            :root {
+                --primary-color: #356aff;
+                --bg-color: #fff;
+                --text-color: #000;
+                --light-text-color: #a5a5a5;
+                --body-bg-color: #f5f5f5;
+            }
+
+
+
+
+            .speech-to-text {
+                /* width: 400px;
+                                padding: 20px;
+                                border-radius: 10px;*/
+                background-color: var(--bg-color);
+            }
+
+                .speech-to-text .heading {
+                    font-size: 25px;
+                    font-weight: 500;
+                    margin-bottom: 10px;
+                }
+
+                .speech-to-text .options select {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid var(--light-text-color);
+                    border-radius: 5px;
+                    outline: none;
+                }
+
+                .speech-to-text .options div:not(:last-child) select {
+                    margin-bottom: 20px;
+                }
+
+                .speech-to-text .options p {
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                    color: var(--light-text-color);
+                }
+
+                .speech-to-text .line {
+                    position: relative;
+                    width: 100%;
+                    height: 1px;
+                    background-color: var(--light-text-color);
+                    opacity: 0.5;
+                    margin: 30px 0;
+                }
+
+                .speech-to-text .btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-bottom: 20px;
+                    height: 60px;
+                    padding: 20px;
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 20px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    color: #fff;
+                    background-color: var(--primary-color);
+                }
+
+                    .speech-to-text .btn ion-icon {
+                        font-size: 30px;
+                    }
+
+                    .speech-to-text .btn:disabled {
+                        background-color: var(--light-text-color);
+                        cursor: not-allowed;
+                    }
+
+                .speech-to-text .record img {
+                    width: 30px;
+                    height: 30px;
+                    display: none;
+                }
+
+                .speech-to-text .record.recording img {
+                    display: block;
+                }
+
+                .speech-to-text .record.recording ion-icon {
+                    display: none;
+                }
+
+                .speech-to-text .result {
+                    width: 100%;
+                    min-height: 200px;
+                    padding: 10px;
+                    border: 1px solid var(--light-text-color);
+                    border-radius: 5px;
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 20px;
+                    color: var(--text-color);
+                }
+
+                    .speech-to-text .result p {
+                        display: inline;
+                        margin-left: 3px;
+                        color: var(--light-text-color);
+                    }
+
+                .speech-to-text .buttons {
+                    display: flex;
+                    gap: 20px;
+                }
+        </style>
+        <div class="frame-game --math">
+            <div class="container">
+                <div class="frame-game-new --style-1">
+                    <div class="title-page --style-3 _mt-34">
+                        <span class="title-page__text">3/Nói</span>
+                    </div>
+                    <div class="speech-to-text">
+                        <p class="heading">Chuyển âm thanh thành chữ</p>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="options">
+                                    <div class="anguage">
+                                        <p>Chọn ngôn ngữ</p>
+                                        <select name="input-language" id="language"></select>
+                                    </div>
+                                </div>
+                                <div class="line"></div>
+                                <button type="button" class="btn record">
+                                    <div class="icon">
+                                        <ion-icon name="mic-outline"></ion-icon>
+                                        <img src="bars.svg" alt="" />
+                                    </div>
+                                    <p>Bắt đầu ghi âm</p>
+                                </button>
+                            </div>
+                            <div class="col-8">
+                                <p class="heading">Kết quả :</p>
+                                <div
+                                    class="result"
+                                    spellcheck="false"
+                                    placeholder="Text will be shown here">
+                                    <p class="interim"></p>
+                                </div>
+                                <div class="buttons">
+                                    <button type="button" class="btn clear">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                        <p>Clear</p>
+                                    </button>
+                                    <button class="btn download" disabled>
+                                        <ion-icon name="cloud-download-outline"></ion-icon>
+                                        <p>Download</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- IONICONS -->
+            <script
+                type="module"
+                src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script
+                nomodule
+                src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+            <!-- LANGUAGES -->
+            <script type="text/javascript">
+                const languages = [
+                    {
+                        no: "16",
+                        name: "English",
+                        native: "English",
+                        code: "en",
+                    },
+                    {
+                        no: "33",
+                        name: "Japanese",
+                        native: "日本語",
+                        code: "ja",
+                    },
+                    {
+                        no: "56",
+                        name: "Vietnamese",
+                        native: "Tiếng Việt",
+                        code: "vi",
+                    },
+                ];
+            </script>
+
+            <!-- SCRIPT -->
+            <script type="text/javascript">
+                const recordBtn = document.querySelector(".record"),
+                    result = document.querySelector(".result"),
+                    downloadBtn = document.querySelector(".download"),
+                    inputLanguage = document.querySelector("#language"),
+                    clearBtn = document.querySelector(".clear");
+
+                let SpeechRecognition =
+                    window.SpeechRecognition || window.webkitSpeechRecognition,
+                    recognition,
+                    recording = false;
+
+                function populateLanguages() {
+                    languages.forEach((lang) => {
+                        const option = document.createElement("option");
+                        option.value = lang.code;
+                        option.innerHTML = lang.name;
+                        inputLanguage.appendChild(option);
+                    });
+                }
+
+                populateLanguages();
+
+                function speechToText() {
+                    try {
+                        recognition = new SpeechRecognition();
+                        recognition.lang = inputLanguage.value;
+                        recognition.interimResults = true;
+                        recordBtn.classList.add("recording");
+                        recordBtn.querySelector("p").innerHTML = "Listening...";
+                        recognition.start();
+                        recognition.onresult = (event) => {
+                            const speechResult = event.results[0][0].transcript;
+                            //detect when intrim results
+                            if (event.results[0].isFinal) {
+                                result.innerHTML += " " + speechResult;
+                                result.querySelector("p").remove();
+                            } else {
+                                //creative p with class interim if not already there
+                                if (!document.querySelector(".interim")) {
+                                    const interim = document.createElement("p");
+                                    interim.classList.add("interim");
+                                    result.appendChild(interim);
+                                }
+                                //update the interim p with the speech result
+                                document.querySelector(".interim").innerHTML = " " + speechResult;
+                            }
+                            downloadBtn.disabled = false;
+                        };
+                        recognition.onspeechend = () => {
+                            speechToText();
+                        };
+                        recognition.onerror = (event) => {
+                            stopRecording();
+                            if (event.error === "no-speech") {
+                                alert("No speech was detected. Stopping...");
+                            } else if (event.error === "audio-capture") {
+                                alert(
+                                    "No microphone was found. Ensure that a microphone is installed."
+                                );
+                            } else if (event.error === "not-allowed") {
+                                alert("Permission to use microphone is blocked.");
+                            } else if (event.error === "aborted") {
+                                alert("Listening Stopped.");
+                            } else {
+                                alert("Error occurred in recognition: " + event.error);
+                            }
+                        };
+                    } catch (error) {
+                        recording = false;
+
+                        console.log(error);
+                    }
+                }
+
+                recordBtn.addEventListener("click", () => {
+                    if (!recording) {
+                        speechToText();
+                        recording = true;
+                    } else {
+                        stopRecording();
+                    }
+                });
+
+                function stopRecording() {
+                    recognition.stop();
+                    recordBtn.querySelector("p").innerHTML = "Start Listening";
+                    recordBtn.classList.remove("recording");
+                    recording = false;
+                }
+
+                function download() {
+                    const text = result.innerText;
+                    const filename = "speech.txt";
+
+                    const element = document.createElement("a");
+                    element.setAttribute(
+                        "href",
+                        "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+                    );
+                    element.setAttribute("download", filename);
+                    element.style.display = "none";
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+                }
+
+                downloadBtn.addEventListener("click", download);
+
+                clearBtn.addEventListener("click", () => {
+                    result.innerHTML = "";
+                    downloadBtn.disabled = true;
+                });
+            </script>
+        </div>
+
         <%--game trắc nghiệm--%>
         <div class="frame-game --math">
             <div class="container">
                 <div class="frame-game-new --style-1">
                     <div class="title-page --style-3 _mt-34">
-                        <asp:Repeater ID="rpnoidungtracnghiem" runat="server">
+                        <%--<asp:Repeater ID="rpnoidungtracnghiem" runat="server">
                             <ItemTemplate>
                                 <%#Eval("cauhoi_content") %>
                             </ItemTemplate>
-                        </asp:Repeater>
+                        </asp:Repeater>--%>
+                        <span class="title-page__text">4/Trắc nghiệm</span>
                     </div>
                     <div class="">
                         <div class="form-mutichoise ">
@@ -185,6 +504,7 @@
                 </div>
             </div>
         </div>
+
         <%--Nộp bài--%>
         <div class="button-submit" id="dv_Submit" runat="server">
             <a href="javascript:void(0)" id="submitTongBaiKiemTra" onclick="btnSubmitTracNghiem()">
@@ -278,7 +598,7 @@
     }
     var caudungtracnghiem = 0, tongtracnghiem = 0;
     function btnSubmitTracNghiem() {
-        
+
         var elementtongtracnghiem = document.getElementById('<%= txtTongTracNghiem.ClientID%>');
         if (elementtongtracnghiem == null || elementtongtracnghiem.value == null || elementtongtracnghiem.value == "") {
             tongtracnghiem = 0;
