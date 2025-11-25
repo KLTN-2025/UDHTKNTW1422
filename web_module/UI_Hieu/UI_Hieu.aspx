@@ -14,6 +14,7 @@
             --bs-blue: #0d6efd;
             --primary-blue: #2299ff; /* Màu xanh chủ đạo */
         }
+
         k
         body {
             font-family: Arial, sans-serif;
@@ -139,7 +140,27 @@
             line-height: 1.3;
         }
     </style>
+    <style>
+        .video-cate iframe {
+            width: 100%;
+            height: 20rem;
+            border-radius: 20px;
+        }
 
+        .block-book {
+            background: unset;
+            min-height: unset;
+            padding-bottom: unset;
+        }
+
+        .book-card:hover {
+            color: #00763d;
+        }
+
+        .book-card__title {
+            font-weight: 600;
+        }
+    </style>
     <script src="admin_js/sweetalert.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="Server">
@@ -149,7 +170,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <asp:ScriptManager runat="server" />
-    <div id="" class="step-contact" style="flex-wrap:wrap">
+    <div id="" class="step-contact" style="flex-wrap: wrap">
         <div class="container-fluid top-nav">
             <div class="container">
                 <div class="d-flex align-items-center">
@@ -159,7 +180,7 @@
                         <a href="#" class="grade-tab-number" data-grade="7">7</a>
                         <a href="#" class="grade-tab-number" data-grade="8">8</a>
                         <a href="#" class="grade-tab-number" data-grade="9">9</a>
-                        <a href="#" class="grade-tab-number" data-grade="10">10</a>
+                        <%--<a href="#" class="grade-tab-number" data-grade="10">Lớp 10</a>--%>
                     </div>
                 </div>
             </div>
@@ -173,7 +194,7 @@
                     HỌC LIỆU SGK TIẾNG ANH - LỚP 6
                 <span class="info-icon" title="Thông tin thêm">&#9432;</span>
                 </h2>
-                <p class="subtitle" id="content-subtitle">Sách Mềm 2.0</p>
+                
             </div>
 
             <!-- Phần Danh sách Card Sách (Container) -->
@@ -186,35 +207,27 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" runat="Server">
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Footer" runat="Server">
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eE7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eE7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
         // Dữ liệu sách mẫu (Mock Data) cho các lớp 6-10
         const mockBookData = {
             '6': [
-                { title: "Tiếng Anh 6 - Global Success", placeholderText: "T.Anh 6", bgColor: "f0f8ff", textColor: "4a8cff" },
-                { title: "Toán 6 - Chân trời sáng tạo", placeholderText: "Toán 6", bgColor: "e6f7ff", textColor: "4a8cff" },
+                { title: "Bảng chữ cái Hiragana"/*, placeholderText: "T.Anh 6", bgColor: "f0f8ff", textColor: "4a8cff"*/,ime:"Bang_chu_cai_Hiragana/Hiragana.jpg"},
+                { title: "Toán 6 - Chân trời sáng tạo"/*, placeholderText: "Toán 6", bgColor: "e6f7ff", textColor: "4a8cff"*/ },
             ],
             '7': [
-                { title: "Tiếng Anh 7 - Global Success", placeholderText: "T.Anh 7", bgColor: "f0f8ff", textColor: "4a8cff" },
-                { title: "Toán 7 - Cánh Diều", placeholderText: "Toán 7", bgColor: "fff0f5", textColor: "ff1493" },
+                { title: "Tiếng Anh 7 - Global Success"/*, placeholderText: "T.Anh 7", bgColor: "f0f8ff", textColor: "4a8cff"*/ },
+                { title: "Toán 7 - Cánh Diều"/*, placeholderText: "Toán 7", bgColor: "fff0f5", textColor: "ff1493"*/ },
             ],
             '8': [
-                { title: "Tiếng Anh 8 - Global Success", placeholderText: "T.Anh 8", bgColor: "f0f8ff", textColor: "4a8cff" },
-                { title: "Tin học 8", placeholderText: "Tin học 8", bgColor: "e6ffe6", textColor: "3cb371" },
+                { title: "Tiếng Anh 8 - Global Success"/*, placeholderText: "T.Anh 8", bgColor: "f0f8ff", textColor: "4a8cff" */},
+                { title: "Tin học 8"/*, placeholderText: "Tin học 8", bgColor: "e6ffe6", textColor: "3cb371" */},
             ],
             '9': [
-                { title: "Tiếng Anh 9 - Global Success", placeholderText: "T.Anh 9", bgColor: "f0f8ff", textColor: "4a8cff" },
-                { title: "Ngữ Văn 9 - Tập 2", placeholderText: "Ngữ Văn 9", bgColor: "e6f7ff", textColor: "4a8cff" },
+                { title: "Tiếng Anh 9 - Global Success"/*, placeholderText: "T.Anh 9", bgColor: "f0f8ff", textColor: "4a8cff"*/ },
+                { title: "Ngữ Văn 9 - Tập 2"/*, placeholderText: "Ngữ Văn 9", bgColor: "e6f7ff", textColor: "4a8cff"*/ },
             ],
-            '10': [
-                { title: "Tiếng Anh 10 - Global Success", placeholderText: "T.Anh 10", bgColor: "f0f8ff", textColor: "4a8cff" },
-                { title: "Toán 10 - Chuyên đề", placeholderText: "Toán 10", bgColor: "fff0f5", textColor: "ff1493" },
-            ],
-            // Dữ liệu mặc định cho các lớp không có dữ liệu cụ thể
-            'default': [
-                { title: "Nội dung lớp [X] đang cập nhật", placeholderText: "Coming Soon", bgColor: "f7f7f7", textColor: "6c757d" },
-            ]
         };
 
         // Hàm tạo một thẻ (card) sách với giao diện bìa sách 3D
@@ -224,7 +237,7 @@
                     <a href="#" class="book-container">
                         <div class="book-card book-cover-effect">
                             <div class="book-card-img-container">
-                                <img src="https://placehold.co/400x580/${book.bgColor}/${book.textColor}?text=${book.placeholderText.replace(/\s/g, '+')}" 
+                                <img src="/images/${book.ime}" 
                                      alt="${book.title}" class="img-fluid book-image-style">
                             </div>
                         </div>
@@ -234,6 +247,32 @@
             `;
             return cardHtml;
         };
+<%--        <link href="../../css/listBooks.css" rel="stylesheet" />
+        const createBookCard = (book) => {
+            const cardHtml = `
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                   <div class="book-item">
+                        <a href="<%= hiragana %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
+                            <div class="book-card__cover">
+                                <div class="book-card__book">
+                                    <div class="book-card__book-front">
+                                        <img class="book-card__img" src="/images/Bang_chu_cai_Hiragana/Hiragana.jpg">
+                                    </div>
+                                    <div class="book-card__book-back"></div>
+                                    <div class="book-card__book-side"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="book-card__title">
+                                    Bảng chữ cái Hiragana
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            `;
+            return cardHtml;--%>
+        //};
 
         // Hàm chính để render sách dựa trên lớp được chọn
         const renderBooks = (grade) => {
@@ -246,7 +285,7 @@
                 HỌC LIỆU SGK TIẾNG ANH - ${gradeTitle}
                 <span class="info-icon" title="Thông tin thêm">&#9432;</span>
             `;
-            
+
             // 2. Lấy dữ liệu
             let books = mockBookData[grade];
 
@@ -255,13 +294,13 @@
                 books = mockBookData['default'].map(book => ({
                     ...book,
                     title: book.title.replace('[X]', grade),
-                    placeholderText: book.placeholderText + ' ' + grade 
+                    placeholderText: book.placeholderText + ' ' + grade
                 }));
             }
 
             // 3. Xóa nội dung cũ
             container.innerHTML = '';
-            
+
             // 4. Tạo và thêm HTML mới
             books.forEach(book => {
                 container.innerHTML += createBookCard(book);
@@ -288,7 +327,7 @@
                 tab.addEventListener('click', (e) => {
                     e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
                     const grade = tab.getAttribute('data-grade');
-                    
+
                     setActiveGrade(tab);
                     renderBooks(grade);
                 });
@@ -299,7 +338,7 @@
             const defaultTab = document.querySelector(`.grade-tab-number[data-grade="${defaultGrade}"]`);
             if (defaultTab) {
                 // Đảm bảo tab 6 có class active ngay từ đầu
-                defaultTab.classList.add('active'); 
+                defaultTab.classList.add('active');
                 renderBooks(defaultGrade);
             }
         });
