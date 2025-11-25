@@ -59,7 +59,7 @@ public partial class admin_page_module_access_admin_AccessModule : System.Web.UI
             {
                 query = new cls_AccessModule();
                 if (query.Module_Xoa(Convert.ToInt32(item)))
-                    alert.alert_Success(Page, "Xóa thành công", "");
+                    ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @"  swal({title: 'Xóa thành công!', icon: 'success' }).then(function() {grvList.UnselectRows(); HiddenLoadingIcon();});", true);
                 else
                     alert.alert_Error(Page, "Xóa thất bại", "");
             }
@@ -72,13 +72,13 @@ public partial class admin_page_module_access_admin_AccessModule : System.Web.UI
         cls_AccessModule query = new cls_AccessModule();
         if (Session["_id"].ToString() == "0")
             if (query.Module_Them(txtModule.Text, Convert.ToInt32(txtPosition.Value), txtIcon.Text))
-                alert.alert_Success(Page, "Thêm thành công", "");
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @" swal({  title: 'Thêm thành công!', icon: 'success' }).then(function() {grvList.UnselectRows(); HiddenLoadingIcon();});", true);
             else
                 alert.alert_Error(Page, "Thêm thất bại", "");
         else
             if (query.Module_Sua(Convert.ToInt32(Session["_id"].ToString()), txtModule.Text, Convert.ToInt32(txtPosition.Value), txtIcon.Text))
-                alert.alert_Success(Page, "Cập nhật thành công", "");
-            else
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @" swal({  title: 'Cập nhật thành công!', icon: 'success' }).then(function() {grvList.UnselectRows(); HiddenLoadingIcon();});", true);
+        else
                 alert.alert_Error(Page, "Cập nhật thất bại", "");
     }
 }
