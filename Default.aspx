@@ -64,6 +64,32 @@
         });
 
     </script>
+    <style>
+        /* Custom style for nested dropdown */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+
+            /* Submenu opens to the right */
+            .dropdown-submenu .dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-left: 0.1rem;
+                margin-right: 0.1rem;
+            }
+
+
+        /* Hover effect to open dropdowns */
+        .dropdown:hover > .dropdown-menu {
+            display: block;
+        }
+
+
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -81,12 +107,50 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">VỀ CHÚNG TÔI </a>
                                 </li>
-                                <li class="nav-item">
+                                <%-- <li class="nav-item">
                                     <a class="nav-link" href="#">TIN TỨC </a>
+                                </li>--%>
+                                <li class="nav-item dropdown">
+                                    <a
+                                        class="nav-link dropdown-toggle"
+                                        href="#"
+                                        id="mainDropdown"
+                                        role="button"
+                                        data-toggle="dropdown">KHỐI
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="mainDropdown">
+                                        <!-- Submenu -->
+                                        <div class="dropdown-submenu">
+                                            <a
+                                                class="dropdown-item dropdown-toggle"
+                                                href="#"
+                                                id="submenuDropdown">THCS
+</a>
+                                            <div class="dropdown-menu" aria-labelledby="submenuDropdown">
+                                                <a class="dropdown-item" href="#">Khối 6</a>
+                                                <a class="dropdown-item" href="#">Khối 7</a>
+                                                <a class="dropdown-item" href="#">Khối 8</a>
+                                                <a class="dropdown-item" href="#">Khối 9</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="dropdown-submenu">
+                                            <a
+                                                class="dropdown-item dropdown-toggle"
+                                                href="#"
+                                                id="submenuDropdown2">THPT
+              </a>
+                                            <div class="dropdown-menu" aria-labelledby="submenuDropdown2">
+                                                <a class="dropdown-item" href="#">Khối 10</a>
+                                                <a class="dropdown-item" href="#">Khối 11</a>
+                                                <a class="dropdown-item" href="#">Khối 12</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
-                                <li class="nav-item">
+                                <%--<li class="nav-item">
                                     <a class="nav-link" href="#">HƯỚNG DẪN </a>
-                                </li>
+                                </li>--%>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">LIÊN HỆ </a>
                                 </li>
