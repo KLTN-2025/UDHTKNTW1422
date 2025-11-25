@@ -16160,13 +16160,13 @@ input[type=button].btn-block {
 .form-mutichoise__answer.--style-3 .answer-item.--decimal .answer-item__input {
   width: 100%;
 }
-.form-mutichoise__answer.--item-3 .answer-item {
-  width: 30%;
-  position: relative;
-  border: 2px solid #71bf45;
-  border-radius: 0.5rem;
-  padding: 0.25rem;
-}
+    .form-mutichoise__answer.--item-3 .answer-item {
+        width: 30%;
+        position: relative;
+        border: 2px solid #8e191b;
+        border-radius: 0.5rem;
+        padding: 0.25rem;
+    }
 .form-mutichoise__answer.--item-3 .answer-item.--no-border {
   border: 2px solid transparent;
 }
@@ -19740,8 +19740,15 @@ button:focus {
 .list-vocabulary.--item-4 .item-vocabulary {
   width: 20%;
 }
-.list-vocabulary.--item-5 .item-vocabulary {
+/*.list-vocabulary.--item-5 .item-vocabulary-wrapper .item-vocabulary {
+    width: 20%;
+}*/
+ 
+ /*.list-vocabulary.--item-5 .item-vocabulary {
   width: 20%;
+}*/
+.item-vocabulary-wrapper {
+    width: 20%;
 }
 
 .item-vocabulary {

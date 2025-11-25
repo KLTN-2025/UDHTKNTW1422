@@ -70,7 +70,73 @@
                             </ItemTemplate>
                         </asp:Repeater>
                     </div>
+                    <style>
+                        @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+                        .mic-container {
+                            text-align: center;
+                            margin-top: 10px;
+                        }
+
+                        .btn-mic {
+                            background: #f0f0f0;
+                            color: #333;
+                            border: 1px solid #ccc;
+                            border-radius: 50%;
+                            width: 40px;
+                            height: 40px;
+                            cursor: pointer;
+                            font-size: 18px;
+                            transition: all 0.3s;
+                        }
+
+                            .btn-mic:hover {
+                                background-color: #ddd;
+                            }
+
+                            /* Class này sẽ được JS add vào khi đang thu âm */
+                            .btn-mic.recording {
+                                background-color: #ff4d4d; /* Màu đỏ báo hiệu đang thu */
+                                color: white;
+                                animation: pulse-red 1s infinite;
+                            }
+
+                        @keyframes pulse-red {
+                            0% {
+                                box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+                            }
+
+                            70% {
+                                box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+                            }
+
+                            100% {
+                                box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+                            }
+                        }
+                    </style>
                     <div class="list-vocabulary --item-<%= itemchucai %>">
+                        <asp:Repeater runat="server" ID="rpVocabulary">
+                            <ItemTemplate>
+                                <div class="item-vocabulary-wrapper">
+                                    <div class="item-vocabulary hvr-pulse" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("nhanbiet_mp3") %>">
+                                        <div class="item-vocabulary__img">
+                                            <img src="<%#Eval("nhanbiet_image") %>" />
+                                        </div>
+                                        <div class="item-vocabulary__txt"><%#Eval("nhanbiet_title") %></div>
+                                    </div>
+                                    <div class="mic-container">
+                                        <button type="button" class="btn-mic" id="btn-mic-<%#Eval("nhanbiet_id") %>" onclick="toggleRecording(this, '<%#Eval("nhanbiet_id") %>')">
+                                            <i class="fa fa-microphone"></i>
+                                        </button>
+                                        <%--<audio id="audio-playback-<%#Eval("nhanbiet_id") %>" controls style="display: none; width: 100%; margin-top: 5px;"></audio>--%>
+                                        <input id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" type="text" placeholder="Nhấn Mic để bắt đầu nói..." />
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                    <%--<div class="list-vocabulary --item-<%= itemchucai %>">
                         <asp:Repeater runat="server" ID="rpVocabulary">
                             <ItemTemplate>
                                 <div class="item-vocabulary hvr-pulse" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("nhanbiet_mp3") %>">
@@ -81,7 +147,126 @@
                                 </div>
                             </ItemTemplate>
                         </asp:Repeater>
-                    </div>
+                    </div>--%>
+                    <script>
+                        window.itemRecognitions = {};
+
+                        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+                        async function startRecognition(btn, id, icon) {
+                            if (!SpeechRecognition) {
+                                alert("Trình duyệt của bạn không hỗ trợ Speech Recognition API. Hãy dùng Chrome hoặc Edge.");
+                                return;
+                            }
+
+                            try {
+                                const recognition = new SpeechRecognition();
+
+                                // Cấu hình ngôn ngữ (Hardcode sang Nhật/Việt hoặc dùng giá trị mặc định)
+                                recognition.lang = 'ja-JP'; // Ví dụ: Tiếng Nhật. Thay bằng 'vi-VN' nếu cần.
+                                recognition.interimResults = true; // Cho phép hiển thị kết quả tạm thời
+                                recognition.continuous = false; // Tắt nghe liên tục
+
+                                window.itemRecognitions[id] = recognition;
+
+                                // Lấy thẻ input tương ứng
+                                const resultInput = document.getElementById('input-result-' + id);
+                                if (resultInput) {
+                                    resultInput.value = ''; // Xóa nội dung cũ
+                                }
+
+                                // Xử lý khi có kết quả (real-time)
+                                recognition.onresult = (event) => {
+                                    let interimTranscript = '';
+                                    let finalTranscript = '';
+
+                                    for (let i = event.resultIndex; i < event.results.length; ++i) {
+                                        const transcript = event.results[i][0].transcript;
+                                        if (event.results[i].isFinal) {
+                                            finalTranscript += transcript;
+                                        } else {
+                                            interimTranscript += transcript;
+                                        }
+                                    }
+
+                                    // 2. Cập nhật kết quả vào Input
+                                    if (resultInput) {
+                                        // Hiển thị kết quả tạm thời (nếu có) hoặc kết quả cuối cùng
+                                        resultInput.value = finalTranscript || interimTranscript;
+                                    }
+                                };
+
+                                // Xử lý khi quá trình nhận dạng kết thúc (tự động sau khi người dùng ngừng nói)
+                                recognition.onend = () => {
+                                    stopRecognition(btn, id, icon);
+                                };
+
+                                // Xử lý lỗi
+                                recognition.onerror = (event) => {
+                                    console.error("Lỗi Recognition:", event.error);
+                                    // Ta vẫn cần dừng và reset UI
+                                    stopRecognition(btn, id, icon);
+                                };
+
+                                recognition.start();
+
+                                // UI Updates
+                                btn.classList.add('recording');
+                                if (icon) {
+                                    icon.classList.remove('fa-microphone');
+                                    icon.classList.add('fa-stop');
+                                }
+                                console.log(`Recognition Started for ID: ${id}`);
+
+                            } catch (err) {
+                                console.error("Lỗi Start Recognition:", err);
+                                alert("Lỗi khởi tạo Recognition: " + err.message);
+                            }
+                        }
+
+                        // Hàm dừng nhận dạng
+                        function stopRecognition(btn, id, icon) {
+                            const recognition = window.itemRecognitions[id];
+
+                            if (recognition) {
+                                // 1. Dừng nhận dạng
+                                recognition.stop();
+
+                                // 2. Xóa đối tượng recognition khỏi bộ nhớ toàn cục
+                                delete window.itemRecognitions[id];
+                                console.log(`Recognition Stopped and Cleaned up for ID: ${id}`);
+                            } else {
+                                console.warn(`Attempted to stop non-existent recognition for ID: ${id}`);
+                            }
+
+                            // Luôn reset giao diện về trạng thái ban đầu
+                            btn.classList.remove('recording');
+                            if (icon) {
+                                icon.classList.remove('fa-stop');
+                                icon.classList.add('fa-microphone');
+                            }
+                        }
+
+                        // Hàm Toggle (Giống như cũ, chỉ đổi tên hàm gọi)
+                        async function toggleRecording(btn, id) {
+                            const uniqueId = String(id).trim();
+
+                            if (!uniqueId || uniqueId === '0') {
+                                console.error("ID không hợp lệ:", id);
+                                return;
+                            }
+
+                            let icon = btn.querySelector('i');
+
+                            if (btn.classList.contains('recording')) {
+                                // Lần 2: Dừng
+                                stopRecognition(btn, uniqueId, icon);
+                            } else {
+                                // Lần 1: Bắt đầu
+                                startRecognition(btn, uniqueId, icon);
+                            }
+                        }
+                    </script>
                 </div>
             </div>
         </div>
@@ -122,7 +307,7 @@
         </div>
         <%----%>
         <%--game nói--%>
-        <style>
+        <%--        <style>
             @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 
             :root {
@@ -137,9 +322,6 @@
 
 
             .speech-to-text {
-                /* width: 400px;
-                                padding: 20px;
-                                border-radius: 10px;*/
                 background-color: var(--bg-color);
             }
 
@@ -438,7 +620,7 @@
                 });
             </script>
         </div>
-
+        --%>
         <%--game trắc nghiệm--%>
         <div class="frame-game --math">
             <div class="container">
