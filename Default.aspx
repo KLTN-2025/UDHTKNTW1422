@@ -64,7 +64,7 @@
         });
 
     </script>
-    <style>
+    <%--<style>
         /* Custom style for nested dropdown */
         .dropdown-submenu {
             position: relative;
@@ -89,7 +89,7 @@
         .dropdown-submenu:hover > .dropdown-menu {
             display: block;
         }
-    </style>
+    </style>--%>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -101,16 +101,16 @@
                             <img src="/images/logo_page.png" alt="" srcset="" /></a>
                         <div class="collapse navbar-collapse justify-content-md-between">
                             <ul class="navbar-nav">
-                                <li class="nav-item">
+                               <%-- <li class="nav-item">
                                     <a class="nav-link" href="/koigo-trang-chu">TRANG CHỦ </a>
-                                </li>
+                                </li>--%>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">VỀ CHÚNG TÔI </a>
+                                    <a class="nav-link" href="#">KHỐI 7</a>
                                 </li>
                                 <%-- <li class="nav-item">
                                     <a class="nav-link" href="#">TIN TỨC </a>
                                 </li>--%>
-                                <li class="nav-item dropdown">
+                                <%--<li class="nav-item dropdown">
                                     <a
                                         class="nav-link dropdown-toggle"
                                         href="#"
@@ -147,12 +147,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <%--<li class="nav-item">
-                                    <a class="nav-link" href="#">HƯỚNG DẪN </a>
                                 </li>--%>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">LIÊN HỆ </a>
+                                    <a class="nav-link" href="#">KHỐI 9</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">KHỐI 8</a>
                                 </li>
                                 <%--<li class="nav-item">
                                     <a class="nav-link" href="/dinotech-tin-tuc">GÓC PHỤ HUYNH </a>
