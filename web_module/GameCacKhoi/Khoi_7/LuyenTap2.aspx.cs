@@ -93,7 +93,7 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
         }
         else
         {
-            tinhtrangnext = "opacity: 0.5;pointer-events: none;";
+            //tinhtrangnext = "opacity: 0.5;pointer-events: none;";
             txtKQ.Value = getXemBaiHoc + "";
             txtSoDiemLonNhatDaCo.Value = Convert.ToString(diemCaoNhat);
         }
