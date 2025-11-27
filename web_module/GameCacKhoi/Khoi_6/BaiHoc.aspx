@@ -23,7 +23,8 @@
             }
     </style>
     <script src="/js/jquery-3.5.1.min.js"></script>
-    <script src="https://unpkg.com/wanakana@5.0.0/umd/wanakana.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wanakana@latest/lib/wanakana.min.js"></script>
+    <%--<script src="https://unpkg.com/wanakana"></script>--%>
     <title><%= baihoc %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
