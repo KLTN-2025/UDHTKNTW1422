@@ -105,6 +105,9 @@
                                     <a class="nav-link" href="/koigo-trang-chu">TRANG CHỦ </a>
                                 </li>--%>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="#">KHỐI 6</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="#">KHỐI 7</a>
                                 </li>
                                 <%-- <li class="nav-item">
@@ -149,10 +152,10 @@
                                     </div>
                                 </li>--%>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">KHỐI 9</a>
+                                    <a class="nav-link" href="#">KHỐI 8</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">KHỐI 8</a>
+                                    <a class="nav-link" href="#">KHỐI 9</a>
                                 </li>
                                 <%--<li class="nav-item">
                                     <a class="nav-link" href="/dinotech-tin-tuc">GÓC PHỤ HUYNH </a>
