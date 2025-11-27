@@ -42,10 +42,8 @@ public partial class admin_page_module_function_module_NhapLieuGame_module_GameN
     {
         Session["noi_id"] = 0;
         txtTieuDe.Text = "";
-        txtViTriGame.Text = "";
         txtNoiDung1.Text = "";
         txtNoiDung2.Text = "";
-        hdTieuDeAudioTieuDe.Value = "";
         HiddenFieldaudioAmThanh1.Value = "";
         HiddenFieldaudioAmThanh2.Value = "";
         HiddenFieldHinhAnh1.Value = "";
@@ -102,9 +100,9 @@ public partial class admin_page_module_function_module_NhapLieuGame_module_GameN
 
     protected void btnLuuNoi_Click(object sender, EventArgs e)
     {
-        if (ddlSach.SelectedIndex == -1 || ddlBaiHoc.SelectedIndex == -1 || txtViTriGame.Text == "")
+        if (ddlSach.SelectedIndex == -1 || ddlBaiHoc.SelectedIndex == -1)
         {
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "text", "showError('" + ddlSach.SelectedIndex + "','" + ddlBaiHoc.SelectedIndex + "','" + txtViTriGame.Text + "')", true);
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "text", "showError('" + ddlSach.SelectedIndex + "','" + ddlBaiHoc.SelectedIndex + "')", true);
             return;
         }
         else
@@ -129,8 +127,6 @@ public partial class admin_page_module_function_module_NhapLieuGame_module_GameN
             {
                 Directory.CreateDirectory(folderPathImage);
             }
-            string amthanhtieude = FileUploadTieuDe.HasFile ? SaveAudioFile(FileUploadTieuDe, folderPath, relativeFolder) : string.IsNullOrWhiteSpace(hdTieuDeAudioTieuDe.Value) ? null
-                    : hdTieuDeAudioTieuDe.Value;
             string amthanh1 = FileUploadAmThanh1.HasFile ? SaveAudioFile(FileUploadAmThanh1, folderPath, relativeFolder) : string.IsNullOrWhiteSpace(HiddenFieldaudioAmThanh1.Value) ? null
                     : HiddenFieldaudioAmThanh1.Value;
             string amthanh2 = FileUploadAmThanh2.HasFile ? SaveAudioFile(FileUploadAmThanh2, folderPath, relativeFolder) : string.IsNullOrWhiteSpace(HiddenFieldaudioAmThanh2.Value) ? null
@@ -159,16 +155,13 @@ public partial class admin_page_module_function_module_NhapLieuGame_module_GameN
                 var getdulieumoiluu = from c in db.tbGameTiengNhat_Nois where c.sach_id == Convert.ToInt32(ddlSach.SelectedItem.Value) && c.baihoc_id == Convert.ToInt32(ddlBaiHoc.SelectedItem.Value) orderby c.noi_id descending select c;
                 getdulieu.First().noi_dapan = Convert.ToString(getdulieumoiluu.First().noi_id);
                 db.SubmitChanges();
-                amthanhtieude = null;
                 amthanh1 = null;
                 amthanh2 = null;
                 hinhAnh1 = null;
                 hinhAnh2 = null;
                 txtTieuDe.Text = "";
-                txtViTriGame.Text = "";
                 txtNoiDung1.Text = "";
                 txtNoiDung2.Text = "";
-                hdTieuDeAudioTieuDe.Value = "";
                 HiddenFieldaudioAmThanh1.Value = "";
                 HiddenFieldaudioAmThanh2.Value = "";
                 HiddenFieldHinhAnh1.Value = "";
@@ -187,16 +180,13 @@ public partial class admin_page_module_function_module_NhapLieuGame_module_GameN
                 checkdata.First().noi_mp3_2 = amthanh2;
                 checkdata.First().noi_img2 = string.IsNullOrWhiteSpace(txtNoiDung2.Text) ? null : txtNoiDung2.Text;
                 db.SubmitChanges();
-                amthanhtieude = null;
                 amthanh1 = null;
                 amthanh2 = null;
                 hinhAnh1 = null;
                 hinhAnh2 = null;
                 txtTieuDe.Text = "";
-                txtViTriGame.Text = "";
                 txtNoiDung1.Text = "";
                 txtNoiDung2.Text = "";
-                hdTieuDeAudioTieuDe.Value = "";
                 HiddenFieldaudioAmThanh1.Value = "";
                 HiddenFieldaudioAmThanh2.Value = "";
                 HiddenFieldHinhAnh1.Value = "";

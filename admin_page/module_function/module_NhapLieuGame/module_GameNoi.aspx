@@ -34,7 +34,7 @@
                     <asp:DropDownList ID="ddlChonSach" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlChonSach_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                     <asp:DropDownList ID="ddlChonBai" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlChonBai_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                 </div>--%>
-                <dx:ASPxGridView ID="grvNoi" runat="server" ClientInstanceName="grvNoi" KeyFieldName="connect_id" Width="100%">
+                <dx:ASPxGridView ID="grvNoi" runat="server" ClientInstanceName="grvNoi" KeyFieldName="noi_id" Width="100%">
                     <Columns>
                         <dx:GridViewCommandColumn ShowSelectCheckbox="True" SelectAllCheckboxMode="Page" VisibleIndex="0" Width="0%">
                         </dx:GridViewCommandColumn>
@@ -80,23 +80,9 @@
                                     <label>Tiêu đề (1 bài nhập 1 lần):</label>
                                     <asp:TextBox ID="txtTieuDe" runat="server" CssClass="form-control" autocomplete="off" Width="70%" />
                                 </div>
-                                <div style="display: flex; flex-direction: column; width: 50%;">
-                                    <label>Vị trí game:</label>
-                                    <asp:TextBox ID="txtViTriGame" runat="server" CssClass="form-control" onkeypress="return onlyNumberKey(event)" autocomplete="off" Width="70%" />
-                                </div>
                             </div>
 
                             <br />
-                            <label>Âm thanh tiêu đề ( 1 bài nhập 1 lần ):</label>
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <asp:FileUpload ID="FileUploadTieuDe" runat="server" accept=".mp3" onchange="myAudioComplete(this, 'audioTieuDe')" />
-                                <br />
-                                <button type="button" class="btn btn-chang" onclick="document.getElementById('audioTieuDe').play();"></button>
-                                <audio controls="controls" id="audioTieuDe" style="max-width: 80%;">
-                                    <source src="" type="audio/mp3" />
-                                </audio>
-                                <asp:HiddenField ID="hdTieuDeAudioTieuDe" runat="server" />
-                            </div>
                         </div>
                         <div class="form-group">
                             <div style="display: flex; justify-content: space-between; gap: 30px;">
