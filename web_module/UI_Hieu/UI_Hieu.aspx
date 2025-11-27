@@ -10,157 +10,21 @@
             margin-top: 1rem;
         }
 
-        :root {
-            --bs-blue: #0d6efd;
-            --primary-blue: #2299ff; /* Màu xanh chủ đạo */
-        }
-
-        k
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f9fc; /* Nền nhẹ */
-        }
-
-        /* Thanh điều hướng cấp trên cùng (Chỉ còn Lớp) */
-        .top-nav {
-            background-color: #fff;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        /* Tab số (lớp) */
-        .grade-tab-number {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            text-align: center;
-            font-size: 14px;
-            color: #6c757d;
-            text-decoration: none;
-            border-radius: 50%;
-            margin: 0 5px;
-            transition: all 0.2s;
-        }
-
-            .grade-tab-number:hover {
-                color: var(--primary-blue);
-            }
-
-            .grade-tab-number.active {
-                color: var(--primary-blue);
-                font-weight: 700;
-                border: 2px solid var(--primary-blue);
-                background-color: #fff;
-            }
-
-        /* Phần tiêu đề nội dung */
-        .content-header {
-            padding: 30px 0 15px 0;
-        }
-
-            .content-header h2 {
-                font-weight: 700;
-                color: #333;
-                margin-bottom: 5px;
-                font-size: 1.8rem;
-            }
-
-            .content-header .info-icon {
-                color: #6c757d;
-                font-size: 16px;
-                margin-left: 5px;
-                cursor: pointer;
-            }
-
-            .content-header .subtitle {
-                font-size: 1rem;
-                color: #6c757d;
-                margin-top: 10px;
-            }
-
-        /* Card sách: Bây giờ là Bìa Sách */
-        .book-container {
-            /* Giữ container cho hiệu ứng hover và title */
-            display: block;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .book-card {
-            background-color: #fff;
-            border-radius: 10px; /* Góc bo tròn */
-            overflow: hidden;
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* Thêm box shadow nhẹ */
-            border: 1px solid #eee; /* Viền nhẹ */
-        }
-
-        /* Hiệu ứng 3D như xếp chồng */
-        .book-cover-effect {
+        .back_ui {
+            background-color: #f3cd8b;
+            padding: 40px;
+            border-radius: 9%;
             position: relative;
-            transform: translateZ(0); /* Kích hoạt 3D context */
-            /* Tạo hiệu ứng sách xếp chồng bằng multiple box-shadow */
-            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), /* Đường viền nhẹ */
-            2px 2px 0 0 #f0f0f0, /* Lớp 1 (trang) */
-            4px 4px 0 0 #e0e0e0, /* Lớp 2 (trang) */
-            6px 6px 15px rgba(0, 0, 0, 0.2); /* Bóng đổ chính */
-        }
-
-            .book-cover-effect:hover {
-                transform: translate(-2px, -2px); /* Dịch chuyển nhẹ khi hover */
-                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 2px 2px 0 0 #f0f0f0, 4px 4px 0 0 #e0e0e0, 8px 8px 25px rgba(0, 0, 0, 0.3); /* Bóng đổ lớn hơn khi hover */
-            }
-
-        .book-card-img-container {
-            position: relative;
-            /* Tỷ lệ cho bìa sách (cao hơn) - khoảng 1:1.45 (400x580) */
-            padding-bottom: 145%;
-            overflow: hidden;
-        }
-
-            .book-card-img-container img {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 10px;
-            }
-
-        /* Tiêu đề bên ngoài (màu xanh lá đậm) */
-        .book-title-external {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1e8449; /* Màu xanh lá đậm như trong hình */
-            text-align: center;
-            margin-top: 1rem;
-            line-height: 1.3;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         }
     </style>
-    <style>
-        .video-cate iframe {
-            width: 100%;
-            height: 20rem;
-            border-radius: 20px;
-        }
 
-        .block-book {
-            background: unset;
-            min-height: unset;
-            padding-bottom: unset;
-        }
-
-        .book-card:hover {
-            color: #00763d;
-        }
-
-        .book-card__title {
-            font-weight: 600;
-        }
-    </style>
+    <link href="../../css/listBooks.css" rel="stylesheet" />
     <script src="admin_js/sweetalert.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="Server">
@@ -170,36 +34,45 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <asp:ScriptManager runat="server" />
-    <div id="" class="step-contact" style="flex-wrap: wrap">
-        <div class="container-fluid top-nav">
-            <div class="container">
-                <div class="d-flex align-items-center">
-                    <!-- Dãy số từ 6 đến 10 -->
-                    <div class="d-none d-sm-block" id="grade-numbers">
-                        <a href="#" class="grade-tab-number" data-grade="6">6</a>
-                        <a href="#" class="grade-tab-number" data-grade="7">7</a>
-                        <a href="#" class="grade-tab-number" data-grade="8">8</a>
-                        <a href="#" class="grade-tab-number" data-grade="9">9</a>
-                        <%--<a href="#" class="grade-tab-number" data-grade="10">Lớp 10</a>--%>
+    <div id="" class="step-contact" style="justify-content: center;">
+        <div class="back_ui">
+            <div class="book-item">
+                <a href="danh-muc-sach-1?khoi=6#id_255" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
+                    <div class="book-card__cover">
+                        <div class="book-card__book">
+                            <div class="book-card__book-front">
+                                <img class="book-card__img" src="/images/Bang_chu_cai_Hiragana/Hiragana.jpg">
+                            </div>
+                            <div class="book-card__book-back"></div>
+                            <div class="book-card__book-side"></div>
+                        </div>
                     </div>
-                </div>
+                    <div>
+                        <div class="book-card__title">
+                            Bảng chữ cái Hiragana
+                               
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-
-        <div class="container">
-            <!-- Phần Tiêu đề Nội dung -->
-            <div class="content-header">
-                <h2 class="d-flex align-items-center" id="content-title">
-                    <!-- Nội dung sẽ được cập nhật bởi JS -->
-                    HỌC LIỆU SGK TIẾNG ANH - LỚP 6
-                <span class="info-icon" title="Thông tin thêm">&#9432;</span>
-                </h2>
-                
-            </div>
-
-            <!-- Phần Danh sách Card Sách (Container) -->
-            <div class="row" id="book-list-container">
-                <!-- Card sách sẽ được render tại đây bằng JavaScript -->
+            <div class="book-item">
+                <a href="danh-muc-sach-1?khoi=6#id_255" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
+                    <div class="book-card__cover">
+                        <div class="book-card__book">
+                            <div class="book-card__book-front">
+                                <img class="book-card__img" src="/images/Bang_chu_cai_Hiragana/Hiragana.jpg">
+                            </div>
+                            <div class="book-card__book-back"></div>
+                            <div class="book-card__book-side"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="book-card__title">
+                            Bảng chữ cái Hiragana
+                               
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -210,7 +83,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eE7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
-        // Dữ liệu sách mẫu (Mock Data) cho các lớp 6-10
+<%--        // Dữ liệu sách mẫu (Mock Data) cho các lớp 6-10
         const mockBookData = {
             '6': [
                 { title: "Bảng chữ cái Hiragana"/*, placeholderText: "T.Anh 6", bgColor: "f0f8ff", textColor: "4a8cff"*/,ime:"Bang_chu_cai_Hiragana/Hiragana.jpg"},
@@ -247,7 +120,7 @@
             `;
             return cardHtml;
         };
-<%--        <link href="../../css/listBooks.css" rel="stylesheet" />
+        <link href="../../css/listBooks.css" rel="stylesheet" />
         const createBookCard = (book) => {
             const cardHtml = `
                 <div class="col-6 col-md-3 col-lg-2 mb-4">
@@ -271,7 +144,7 @@
                     </div>
                 </div>
             `;
-            return cardHtml;--%>
+            return cardHtml;
         //};
 
         // Hàm chính để render sách dựa trên lớp được chọn
@@ -341,8 +214,8 @@
                 defaultTab.classList.add('active');
                 renderBooks(defaultGrade);
             }
-        });
-    </script>
+        });--%>
+</script>
 
 </asp:Content>
 
