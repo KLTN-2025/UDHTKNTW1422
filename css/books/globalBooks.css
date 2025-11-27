@@ -14058,10 +14058,11 @@ input[type=button].btn-block {
   }
 }
 .game-header__title {
-  font-weight: 700;
-  font-family: "Baloo 2", sans-serif;
-  font-size: 1rem;
-  color: #1d7915;
+    font-weight: 700;
+    font-family: "Baloo 2", sans-serif;
+    font-size: 1rem;
+    color: black;
+    margin-bottom: 30px;
 }
 .game-header__title .btn-sound-question {
   display: inline-block;
@@ -15770,9 +15771,9 @@ input[type=button].btn-block {
   color: #000;
   text-decoration: none;
 }
-.lesson-item:hover {
-  color: #71bf45;
-}
+    .lesson-item:hover {
+        color: #b51a1a;
+    }
 .lesson-item__avatar {
   width: 20%;
   min-width: 20%;
@@ -17582,7 +17583,7 @@ input[type=button].btn-block {
   color: #fff;
   outline: none;
   box-shadow: 0px 0px 0px 3px #226e54 inset;
-  -webkit-box-shadow: 0px 0px 0px 3px #226e54 inset;
+  -webkit-box-shadow: 0px 0px 0px 3px #070707  inset;
   -moz-box-shadow: 0px 0px 0px 3px #226e54 inset;
 }
 .pair-horizontal.--style-1 .pair-horizontal__row--item.true {
@@ -19841,14 +19842,14 @@ button:focus {
 .table-vocabulary table {
   width: 100%;
 }
-.table-vocabulary table thead td, .table-vocabulary table thead th {
-  font-size: 1rem;
-  font-weight: 700;
-  background-color: #429d11;
-  color: #fff;
-  border-left: 4px solid;
-  border-right: 4px solid;
-}
+    .table-vocabulary table thead td, .table-vocabulary table thead th {
+        font-size: 1rem;
+        font-weight: 700;
+        background-color: #8e191b;
+        color: white;
+        border-left: 4px solid;
+        border-right: 4px solid;
+    }
 .table-vocabulary table tr td, .table-vocabulary table tr th {
   text-align: center;
   padding: 0.5rem;
@@ -19857,9 +19858,9 @@ button:focus {
 .table-vocabulary .combine-vocabulary {
   display: inline-block;
 }
-.table-vocabulary .combine-vocabulary .single-word .hvr-ripple-out:before {
-  border-color: #e2ff99;
-}
+    .table-vocabulary .combine-vocabulary .single-word .hvr-ripple-out:before {
+        border-color: #fff;
+    }
 .table-vocabulary .combine-vocabulary .combine-words {
   /*background-color: #e1e1e1;*/
 }
@@ -19885,12 +19886,12 @@ button:focus {
   align-items: center;
   justify-content: center;
 }
-.combine-vocabulary .single-word .txt-japan {
-  padding: 0.25rem 0.5rem;
-  background-color: rgba(182, 255, 0, 0.4);
-  margin: 2px 4px;
-  cursor: pointer;
-}
+    .combine-vocabulary .single-word .txt-japan {
+        padding: 0.25rem 0.5rem;
+        background-color: rgb(242 132 132 / 58%);
+        margin: 2px 4px;
+        cursor: pointer;
+    }
 .combine-vocabulary .combine-words .txt-japan {
   text-align: center;
   cursor: pointer;
