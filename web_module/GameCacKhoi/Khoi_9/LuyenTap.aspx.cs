@@ -5,10 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
-
-public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap : System.Web.UI.Page
+public partial class web_module_GameCacKhoi_Khoi_9_LuyenTap : System.Web.UI.Page
 {
+
     dbcsdlDataContext db = new dbcsdlDataContext();
     public string lesson_name, link_prev, link_next, baihoc;
     public int sach_id, chude_id, baihoc_id;
