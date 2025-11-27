@@ -23,6 +23,7 @@
             }
     </style>
     <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/wanakana@5.0.0/umd/wanakana.min.js"></script>
     <title><%= baihoc %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,7 +186,6 @@
                             </ItemTemplate>
                         </asp:Repeater>
                     </div>--%>
-                    <script src="https://unpkg.com/wanakana@5.0.0/umd/wanakana.min.js"></script>
                     <script>
                         function normalizeAndConvertText(id, text) {
                             // 1. Chuẩn hóa cơ bản: trim và xóa dấu chấm câu tiếng Nhật
