@@ -114,6 +114,45 @@
                                 box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
                             }
                         }
+
+                        .result-correct {
+                            border: 2px solid #2ecc71 !important;
+                            background-color: #eafaf1 !important;
+                            color: #27ae60 !important;
+                            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+                            transition: all 0.3s ease;
+                        }
+
+                        /* Sai: Viền đỏ, nền đỏ nhạt */
+                        .result-incorrect {
+                            border: 2px solid #e74c3c !important;
+                            background-color: #fdedec !important;
+                            color: #c0392b !important;
+                            animation: shake 0.5s;
+                        }
+
+                        /* Hiệu ứng rung lắc khi sai */
+                        @keyframes shake {
+                            0% {
+                                transform: translateX(0);
+                            }
+
+                            25% {
+                                transform: translateX(-5px);
+                            }
+
+                            50% {
+                                transform: translateX(5px);
+                            }
+
+                            75% {
+                                transform: translateX(-5px);
+                            }
+
+                            100% {
+                                transform: translateX(0);
+                            }
+                        }
                     </style>
                     <div class="list-vocabulary --item-<%= itemchucai %>">
                         <asp:Repeater runat="server" ID="rpVocabulary">
@@ -130,7 +169,8 @@
                                             <i class="fa fa-microphone"></i>
                                         </button>
                                         <%--<audio id="audio-playback-<%#Eval("nhanbiet_id") %>" controls style="display: none; width: 100%; margin-top: 5px;"></audio>--%>
-                                        <input id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" type="text" placeholder="Nhấn Mic để bắt đầu nói..." />
+                                        <%--<input id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" type="text" placeholder="Nhấn Mic để bắt đầu nói..." style="display: none;"/>--%>
+                                        <input id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" data-answer='<%#Eval("nhanbiet_nhom") %>' type="text" readonly placeholder="Nhấn Mic để bắt đầu nói..." />
                                     </div>
                                 </div>
                             </ItemTemplate>
@@ -150,32 +190,35 @@
                     </div>--%>
                     <script>
                         window.itemRecognitions = {};
+                        const audioCorrect = new Audio('/mp3/audio_right.mp3'); 
+                        const audioWrong = new Audio('/mp3/audio_false.mp3');
 
                         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
                         async function startRecognition(btn, id, icon) {
                             if (!SpeechRecognition) {
-                                alert("Trình duyệt của bạn không hỗ trợ Speech Recognition API. Hãy dùng Chrome hoặc Edge.");
+                                alert("Trình duyệt không hỗ trợ. Hãy dùng Chrome/Edge.");
                                 return;
                             }
 
                             try {
                                 const recognition = new SpeechRecognition();
 
-                                // Cấu hình ngôn ngữ (Hardcode sang Nhật/Việt hoặc dùng giá trị mặc định)
-                                recognition.lang = 'ja-JP'; // Ví dụ: Tiếng Nhật. Thay bằng 'vi-VN' nếu cần.
-                                recognition.interimResults = true; // Cho phép hiển thị kết quả tạm thời
-                                recognition.continuous = false; // Tắt nghe liên tục
+                                // Cấu hình Tiếng Nhật (Quan trọng: Phải khớp với cột nhanbiet_nhom của mày là tiếng Nhật)
+                                recognition.lang = 'ja-JP';
+                                recognition.interimResults = true;
+                                recognition.continuous = false;
 
                                 window.itemRecognitions[id] = recognition;
 
-                                // Lấy thẻ input tương ứng
                                 const resultInput = document.getElementById('input-result-' + id);
+
+                                // Reset trạng thái cũ trước khi thu âm mới
                                 if (resultInput) {
-                                    resultInput.value = ''; // Xóa nội dung cũ
+                                    resultInput.value = '';
+                                    resultInput.classList.remove('result-correct', 'result-incorrect'); // Xóa màu cũ
                                 }
 
-                                // Xử lý khi có kết quả (real-time)
                                 recognition.onresult = (event) => {
                                     let interimTranscript = '';
                                     let finalTranscript = '';
@@ -189,22 +232,46 @@
                                         }
                                     }
 
-                                    // 2. Cập nhật kết quả vào Input
                                     if (resultInput) {
-                                        // Hiển thị kết quả tạm thời (nếu có) hoặc kết quả cuối cùng
+                                        // Hiện chữ đang nói
                                         resultInput.value = finalTranscript || interimTranscript;
+
+                                        // --- ĐOẠN CHECK ĐÚNG SAI Ở ĐÂY ---
+                                        if (finalTranscript) {
+                                            // 1. Lấy đáp án đúng từ HTML
+                                            let correctAnswer = resultInput.getAttribute('data-answer');
+
+                                            // 2. Chuẩn hóa dữ liệu để so sánh (Trim, Lowercase, xóa dấu chấm câu tiếng Nhật "。")
+                                            let userText = finalTranscript.trim().toLowerCase().replace(/[。、]/g, "");
+                                            let dbText = correctAnswer.trim().toLowerCase().replace(/[。、]/g, "");
+
+                                            // Debug xem nó nhận diện ra cái gì (Bật F12 xem nếu thấy lạ)
+                                            console.log(`User: ${userText} | DB: ${dbText}`);
+
+                                            // 3. So sánh và đổi màu
+                                            if (userText === dbText) {
+                                                resultInput.classList.add('result-correct');
+                                                resultInput.classList.remove('result-incorrect');
+
+                                                audioCorrect.currentTime = 0; 
+                                                audioCorrect.play().catch(e => console.log("Lỗi play audio:", e));
+                                            } else {
+                                                resultInput.classList.add('result-incorrect');
+                                                resultInput.classList.remove('result-correct');
+
+                                                audioWrong.currentTime = 0;
+                                                audioWrong.play().catch(e => console.log("Lỗi play audio:", e));
+                                            }
+                                        }
                                     }
                                 };
 
-                                // Xử lý khi quá trình nhận dạng kết thúc (tự động sau khi người dùng ngừng nói)
                                 recognition.onend = () => {
                                     stopRecognition(btn, id, icon);
                                 };
 
-                                // Xử lý lỗi
                                 recognition.onerror = (event) => {
-                                    console.error("Lỗi Recognition:", event.error);
-                                    // Ta vẫn cần dừng và reset UI
+                                    console.error("Lỗi:", event.error);
                                     stopRecognition(btn, id, icon);
                                 };
 
@@ -216,11 +283,9 @@
                                     icon.classList.remove('fa-microphone');
                                     icon.classList.add('fa-stop');
                                 }
-                                console.log(`Recognition Started for ID: ${id}`);
 
                             } catch (err) {
-                                console.error("Lỗi Start Recognition:", err);
-                                alert("Lỗi khởi tạo Recognition: " + err.message);
+                                console.error("Lỗi Start:", err);
                             }
                         }
 
@@ -247,7 +312,6 @@
                             }
                         }
 
-                        // Hàm Toggle (Giống như cũ, chỉ đổi tên hàm gọi)
                         async function toggleRecording(btn, id) {
                             const uniqueId = String(id).trim();
 
