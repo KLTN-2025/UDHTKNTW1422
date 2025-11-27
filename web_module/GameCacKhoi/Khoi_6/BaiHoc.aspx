@@ -115,23 +115,21 @@
                             }
                         }
 
-                        .result-correct {
-                            border: 2px solid #2ecc71 !important;
-                            background-color: #eafaf1 !important;
-                            color: #27ae60 !important;
-                            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+                        /* Đúng: Viền xanh, đổ bóng xanh */
+                        .card-correct {
+                            border: 3px solid #2ecc71 !important; /* !important để đè lên style cũ */
+                            box-shadow: 0 0 15px rgba(46, 204, 113, 0.6) !important;
                             transition: all 0.3s ease;
                         }
 
-                        /* Sai: Viền đỏ, nền đỏ nhạt */
-                        .result-incorrect {
-                            border: 2px solid #e74c3c !important;
-                            background-color: #fdedec !important;
-                            color: #c0392b !important;
+                        /* Sai: Viền đỏ, hiệu ứng rung lắc */
+                        .card-incorrect {
+                            border: 3px solid #e74c3c !important;
+                            box-shadow: 0 0 15px rgba(231, 76, 60, 0.6) !important;
                             animation: shake 0.5s;
                         }
 
-                        /* Hiệu ứng rung lắc khi sai */
+                        /* Giữ nguyên hiệu ứng rung lắc cũ */
                         @keyframes shake {
                             0% {
                                 transform: translateX(0);
@@ -158,7 +156,7 @@
                         <asp:Repeater runat="server" ID="rpVocabulary">
                             <ItemTemplate>
                                 <div class="item-vocabulary-wrapper">
-                                    <div class="item-vocabulary hvr-pulse" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("nhanbiet_mp3") %>">
+                                    <div class="item-vocabulary hvr-pulse" id="card-vocabulary-<%#Eval("nhanbiet_id") %>" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("nhanbiet_mp3") %>">
                                         <div class="item-vocabulary__img">
                                             <img src="<%#Eval("nhanbiet_image") %>" />
                                         </div>
@@ -190,7 +188,7 @@
                     </div>--%>
                     <script>
                         window.itemRecognitions = {};
-                        const audioCorrect = new Audio('/mp3/audio_right.mp3'); 
+                        const audioCorrect = new Audio('/mp3/audio_right.mp3');
                         const audioWrong = new Audio('/mp3/audio_false.mp3');
 
                         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -204,64 +202,62 @@
                             try {
                                 const recognition = new SpeechRecognition();
 
-                                // Cấu hình Tiếng Nhật (Quan trọng: Phải khớp với cột nhanbiet_nhom của mày là tiếng Nhật)
                                 recognition.lang = 'ja-JP';
                                 recognition.interimResults = true;
                                 recognition.continuous = false;
 
                                 window.itemRecognitions[id] = recognition;
 
+                                // 1. Tìm Input (để lấy đáp án và giá trị text)
                                 const resultInput = document.getElementById('input-result-' + id);
 
-                                // Reset trạng thái cũ trước khi thu âm mới
-                                if (resultInput) {
-                                    resultInput.value = '';
-                                    resultInput.classList.remove('result-correct', 'result-incorrect'); // Xóa màu cũ
+                                // 2. Tìm cái Card (để đổi màu border) -> TARGET MỚI CỦA MÀY ĐÂY
+                                const targetCard = document.getElementById('card-vocabulary-' + id);
+
+                                // Reset trạng thái cũ
+                                if (targetCard) {
+                                    targetCard.classList.remove('card-correct', 'card-incorrect');
                                 }
+                                if (resultInput) resultInput.value = '';
 
                                 recognition.onresult = (event) => {
-                                    let interimTranscript = '';
                                     let finalTranscript = '';
 
                                     for (let i = event.resultIndex; i < event.results.length; ++i) {
-                                        const transcript = event.results[i][0].transcript;
                                         if (event.results[i].isFinal) {
-                                            finalTranscript += transcript;
-                                        } else {
-                                            interimTranscript += transcript;
+                                            finalTranscript += event.results[i][0].transcript;
                                         }
                                     }
 
-                                    if (resultInput) {
-                                        // Hiện chữ đang nói
-                                        resultInput.value = finalTranscript || interimTranscript;
+                                    // Khi có kết quả cuối cùng
+                                    if (finalTranscript && resultInput && targetCard) {
+                                        // Gán giá trị vào input ẩn (để debug hoặc lưu sau này nếu cần)
+                                        resultInput.value = finalTranscript;
 
-                                        // --- ĐOẠN CHECK ĐÚNG SAI Ở ĐÂY ---
-                                        if (finalTranscript) {
-                                            // 1. Lấy đáp án đúng từ HTML
-                                            let correctAnswer = resultInput.getAttribute('data-answer');
+                                        // Lấy đáp án từ input ẩn
+                                        let correctAnswer = resultInput.getAttribute('data-answer');
 
-                                            // 2. Chuẩn hóa dữ liệu để so sánh (Trim, Lowercase, xóa dấu chấm câu tiếng Nhật "。")
-                                            let userText = finalTranscript.trim().toLowerCase().replace(/[。、]/g, "");
-                                            let dbText = correctAnswer.trim().toLowerCase().replace(/[。、]/g, "");
+                                        // Chuẩn hóa chuỗi
+                                        let userText = finalTranscript.trim().toLowerCase().replace(/[。、]/g, "");
+                                        let dbText = correctAnswer.trim().toLowerCase().replace(/[。、]/g, "");
 
-                                            // Debug xem nó nhận diện ra cái gì (Bật F12 xem nếu thấy lạ)
-                                            console.log(`User: ${userText} | DB: ${dbText}`);
+                                        console.log(`User: ${userText} | DB: ${dbText}`);
 
-                                            // 3. So sánh và đổi màu
-                                            if (userText === dbText) {
-                                                resultInput.classList.add('result-correct');
-                                                resultInput.classList.remove('result-incorrect');
+                                        // --- SO SÁNH VÀ ĐỔI MÀU CARD ---
+                                        if (userText === dbText) {
+                                            // ĐÚNG
+                                            targetCard.classList.add('card-correct');
+                                            targetCard.classList.remove('card-incorrect');
 
-                                                audioCorrect.currentTime = 0; 
-                                                audioCorrect.play().catch(e => console.log("Lỗi play audio:", e));
-                                            } else {
-                                                resultInput.classList.add('result-incorrect');
-                                                resultInput.classList.remove('result-correct');
+                                            audioCorrect.currentTime = 0;
+                                            audioCorrect.play().catch(e => { });
+                                        } else {
+                                            // SAI
+                                            targetCard.classList.add('card-incorrect');
+                                            targetCard.classList.remove('card-correct');
 
-                                                audioWrong.currentTime = 0;
-                                                audioWrong.play().catch(e => console.log("Lỗi play audio:", e));
-                                            }
+                                            audioWrong.currentTime = 0;
+                                            audioWrong.play().catch(e => { });
                                         }
                                     }
                                 };
@@ -277,7 +273,7 @@
 
                                 recognition.start();
 
-                                // UI Updates
+                                // UI Updates cho nút Mic
                                 btn.classList.add('recording');
                                 if (icon) {
                                     icon.classList.remove('fa-microphone');
