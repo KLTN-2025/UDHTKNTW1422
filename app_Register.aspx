@@ -47,7 +47,7 @@
                                                 <div class="input-group-animate">
 
                                                     <input id="txtHoTen" type="text" class="form-input validateForm" runat="server" name="txtName" value="" autocomplete="off" required />
-                                                    <label for="" class="lb-input">Họ tên bé *</label>
+                                                    <label for="" class="lb-input">Họ và tên *</label>
                                                 </div>
                                                 <div class="input-group-animate">
 

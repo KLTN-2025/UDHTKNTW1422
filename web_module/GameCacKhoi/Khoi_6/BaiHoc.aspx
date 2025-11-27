@@ -114,12 +114,49 @@
                                 box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
                             }
                         }
+
+                        /* Đúng: Viền xanh, đổ bóng xanh */
+                        .card-correct {
+                            border: 3px solid #2ecc71 !important; /* !important để đè lên style cũ */
+                            box-shadow: 0 0 15px rgba(46, 204, 113, 0.6) !important;
+                            transition: all 0.3s ease;
+                        }
+
+                        /* Sai: Viền đỏ, hiệu ứng rung lắc */
+                        .card-incorrect {
+                            border: 3px solid #e74c3c !important;
+                            box-shadow: 0 0 15px rgba(231, 76, 60, 0.6) !important;
+                            animation: shake 0.5s;
+                        }
+
+                        /* Giữ nguyên hiệu ứng rung lắc cũ */
+                        @keyframes shake {
+                            0% {
+                                transform: translateX(0);
+                            }
+
+                            25% {
+                                transform: translateX(-5px);
+                            }
+
+                            50% {
+                                transform: translateX(5px);
+                            }
+
+                            75% {
+                                transform: translateX(-5px);
+                            }
+
+                            100% {
+                                transform: translateX(0);
+                            }
+                        }
                     </style>
                     <div class="list-vocabulary --item-<%= itemchucai %>">
                         <asp:Repeater runat="server" ID="rpVocabulary">
                             <ItemTemplate>
                                 <div class="item-vocabulary-wrapper">
-                                    <div class="item-vocabulary hvr-pulse" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("nhanbiet_mp3") %>">
+                                    <div class="item-vocabulary hvr-pulse" id="card-vocabulary-<%#Eval("nhanbiet_id") %>" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("nhanbiet_mp3") %>">
                                         <div class="item-vocabulary__img">
                                             <img src="<%#Eval("nhanbiet_image") %>" />
                                         </div>
@@ -130,7 +167,7 @@
                                             <i class="fa fa-microphone"></i>
                                         </button>
                                         <%--<audio id="audio-playback-<%#Eval("nhanbiet_id") %>" controls style="display: none; width: 100%; margin-top: 5px;"></audio>--%>
-                                        <input id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" type="text" placeholder="Nhấn Mic để bắt đầu nói..." />
+                                        <input type="text" id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" data-answer='<%#Eval("nhanbiet_nhom") %>' data-checked='false' readonly placeholder="Nhấn Mic để bắt đầu nói..." />
                                     </div>
                                 </div>
                             </ItemTemplate>
@@ -150,35 +187,83 @@
                     </div>--%>
                     <script>
                         window.itemRecognitions = {};
+                        const audioCorrect = new Audio('/mp3/audio_right.mp3');
+                        const audioWrong = new Audio('/mp3/audio_false.mp3');
 
                         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
                         async function startRecognition(btn, id, icon) {
                             if (!SpeechRecognition) {
-                                alert("Trình duyệt của bạn không hỗ trợ Speech Recognition API. Hãy dùng Chrome hoặc Edge.");
+                                alert("Trình duyệt không hỗ trợ. Hãy dùng Chrome/Edge.");
                                 return;
                             }
 
                             try {
                                 const recognition = new SpeechRecognition();
 
-                                // Cấu hình ngôn ngữ (Hardcode sang Nhật/Việt hoặc dùng giá trị mặc định)
-                                recognition.lang = 'ja-JP'; // Ví dụ: Tiếng Nhật. Thay bằng 'vi-VN' nếu cần.
-                                recognition.interimResults = true; // Cho phép hiển thị kết quả tạm thời
-                                recognition.continuous = false; // Tắt nghe liên tục
+                                recognition.lang = 'ja-JP';
+                                recognition.interimResults = true;
+                                recognition.continuous = false;
 
                                 window.itemRecognitions[id] = recognition;
 
-                                // Lấy thẻ input tương ứng
+                                // 1. Tìm Input (để lấy đáp án và giá trị text)
                                 const resultInput = document.getElementById('input-result-' + id);
-                                if (resultInput) {
-                                    resultInput.value = ''; // Xóa nội dung cũ
-                                }
 
-                                // Xử lý khi có kết quả (real-time)
+                                // 2. Tìm cái Card (để đổi màu border) -> TARGET MỚI CỦA MÀY ĐÂY
+                                const targetCard = document.getElementById('card-vocabulary-' + id);
+
+                                // Reset trạng thái cũ
+                                if (targetCard) {
+                                    targetCard.classList.remove('card-correct', 'card-incorrect');
+                                }
+                                if (resultInput) resultInput.value = '';
+
+                                //recognition.onresult = (event) => {
+                                //    let finalTranscript = '';
+
+                                //    for (let i = event.resultIndex; i < event.results.length; ++i) {
+                                //        if (event.results[i].isFinal) {
+                                //            finalTranscript += event.results[i][0].transcript;
+                                //        }
+                                //    }
+
+                                //    // Khi có kết quả cuối cùng
+                                //    if (finalTranscript && resultInput && targetCard) {
+                                //        // Gán giá trị vào input ẩn (để debug hoặc lưu sau này nếu cần)
+                                //        resultInput.value = finalTranscript;
+
+                                //        // Lấy đáp án từ input ẩn
+                                //        let correctAnswer = resultInput.getAttribute('data-answer');
+
+                                //        // Chuẩn hóa chuỗi
+                                //        let userText = finalTranscript.trim().toLowerCase().replace(/[。、]/g, "");
+                                //        let dbText = correctAnswer.trim().toLowerCase().replace(/[。、]/g, "");
+
+                                //        console.log(`User: ${userText} | DB: ${dbText}`);
+
+                                //        // --- SO SÁNH VÀ ĐỔI MÀU CARD ---
+                                //        if (userText === dbText) {
+                                //            // ĐÚNG
+                                //            targetCard.classList.add('card-correct');
+                                //            targetCard.classList.remove('card-incorrect');
+
+                                //            audioCorrect.currentTime = 0;
+                                //            audioCorrect.play().catch(e => { });
+                                //        } else {
+                                //            // SAI
+                                //            targetCard.classList.add('card-incorrect');
+                                //            targetCard.classList.remove('card-correct');
+
+                                //            audioWrong.currentTime = 0;
+                                //            audioWrong.play().catch(e => { });
+                                //        }
+                                //    }
+                                //};
+
                                 recognition.onresult = (event) => {
-                                    let interimTranscript = '';
                                     let finalTranscript = '';
+                                    let interimTranscript = '';
 
                                     for (let i = event.resultIndex; i < event.results.length; ++i) {
                                         const transcript = event.results[i][0].transcript;
@@ -189,38 +274,39 @@
                                         }
                                     }
 
-                                    // 2. Cập nhật kết quả vào Input
+                                    const resultInput = document.getElementById('input-result-' + id);
                                     if (resultInput) {
-                                        // Hiển thị kết quả tạm thời (nếu có) hoặc kết quả cuối cùng
                                         resultInput.value = finalTranscript || interimTranscript;
+                                    }
+
+                                    // GỌI HÀM CHECK VÀ TÍNH ĐIỂM NGAY KHI CÓ KẾT QUẢ CUỐI CÙNG
+                                    if (finalTranscript) {
+                                        checkPronunciationAndScore(id, finalTranscript);
                                     }
                                 };
 
-                                // Xử lý khi quá trình nhận dạng kết thúc (tự động sau khi người dùng ngừng nói)
+                                // ... (phần còn lại của hàm startRecognition giữ nguyên)
+
                                 recognition.onend = () => {
                                     stopRecognition(btn, id, icon);
                                 };
 
-                                // Xử lý lỗi
                                 recognition.onerror = (event) => {
-                                    console.error("Lỗi Recognition:", event.error);
-                                    // Ta vẫn cần dừng và reset UI
+                                    console.error("Lỗi:", event.error);
                                     stopRecognition(btn, id, icon);
                                 };
 
                                 recognition.start();
 
-                                // UI Updates
+                                // UI Updates cho nút Mic
                                 btn.classList.add('recording');
                                 if (icon) {
                                     icon.classList.remove('fa-microphone');
                                     icon.classList.add('fa-stop');
                                 }
-                                console.log(`Recognition Started for ID: ${id}`);
 
                             } catch (err) {
-                                console.error("Lỗi Start Recognition:", err);
-                                alert("Lỗi khởi tạo Recognition: " + err.message);
+                                console.error("Lỗi Start:", err);
                             }
                         }
 
@@ -247,7 +333,6 @@
                             }
                         }
 
-                        // Hàm Toggle (Giống như cũ, chỉ đổi tên hàm gọi)
                         async function toggleRecording(btn, id) {
                             const uniqueId = String(id).trim();
 
@@ -689,7 +774,7 @@
 
         <%--Nộp bài--%>
         <div class="button-submit" id="dv_Submit" runat="server">
-            <a href="javascript:void(0)" id="submitTongBaiKiemTra" onclick="btnSubmitTracNghiem()">
+            <a href="javascript:void(0)" id="submitTongBaiKiemTra" onclick="checkSubmitTongBaiKiemTra()">
                 <img class="buttonCalculation" src="/images/btn-baikiemtra-submit.png" />
             </a>
             <audio hidden="hidden" class="media" id="audioselect" src="/Musics/audio_select.mp3" controls="controls" style="display: none"></audio>
@@ -801,6 +886,90 @@
                 if (dapAn === 'True') {
                     icDung.style.display = 'block';
                     icCheck.style.display = "none";
+                    caudungtracnghiem++;
+                } else {
+                    icSai.style.display = 'block';
+                    icCheck.style.display = "none";
+                }
+            }
+
+        });
+    }
+    var caudungnoi = 0, tongnoi = 4;
+    function btnSubmitNoi(id, finalTranscript) {
+        // 1. Tìm các phần tử cần thiết
+        const resultInput = document.getElementById('input-result-' + id);
+        const targetCard = document.getElementById('card-vocabulary-' + id);
+
+        // Đảm bảo không bị lỗi nếu phần tử không tồn tại
+        if (!resultInput || !targetCard || !finalTranscript) return;
+
+        // 2. Lấy đáp án và chuẩn hóa chuỗi
+        let correctAnswer = resultInput.getAttribute('data-answer');
+
+        // Chuẩn hóa chuỗi (Bỏ dấu chấm câu, chuyển về chữ thường)
+        let userText = finalTranscript.trim().toLowerCase().replace(/[。、]/g, "");
+        let dbText = correctAnswer.trim().toLowerCase().replace(/[。、]/g, "");
+
+        // Khai báo biến đếm
+        let isCorrect = (userText === dbText);
+
+        // 3. Xử lý logic ĐÚNG/SAI
+        if (isCorrect) {
+            // ĐÚNG
+            targetCard.classList.add('card-correct');
+            targetCard.classList.remove('card-incorrect');
+
+            audioCorrect.currentTime = 0;
+            audioCorrect.play().catch(e => { });
+
+        } else {
+            // SAI
+            targetCard.classList.add('card-incorrect');
+            targetCard.classList.remove('card-correct');
+
+            audioWrong.currentTime = 0;
+            audioWrong.play().catch(e => { });
+        }
+
+        // 4. Cập nhật Điểm số TOÀN CỤC
+
+        // *QUAN TRỌNG NHẤT*: Dùng thuộc tính data-checked để đảm bảo mỗi câu chỉ được tính điểm MỘT LẦN
+        const isQuestionChecked = targetCard.getAttribute('data-checked');
+
+        if (isQuestionChecked === 'false') {
+            // Tính câu đúng
+            if (isCorrect) {
+                caudungnoi++;
+            }
+
+            // Đánh dấu đã tính điểm câu này
+            targetCard.setAttribute('data-checked', 'true');
+        }
+    }
+    <%--var caudungtracnghiem = 0, tongtracnghiem = 0;
+    function btnSubmitTracNghiem() {
+
+        var elementtongtracnghiem = document.getElementById('<%= txtTongTracNghiem.ClientID%>');
+        if (elementtongtracnghiem == null || elementtongtracnghiem.value == null || elementtongtracnghiem.value == "") {
+            tongtracnghiem = 0;
+        } else {
+            tongtracnghiem = parseInt(elementtongtracnghiem.value, 10);
+        }
+        var answerItems = document.querySelectorAll('.tracnghiem.dung');
+        caudungtracnghiem = answerItems.length;
+        const answerItem = document.querySelectorAll('.tracnghiem');
+
+        answerItem.forEach(item => {
+            item.style.pointerEvents = 'none';
+            const icCheck = item.querySelector('.btn-check');
+            const icDung = item.querySelector('.btn-true');
+            const icSai = item.querySelector('.btn-false');
+            const dapAn = item.getAttribute('data-answer-tn');
+            if (icCheck.style.display === 'block') {
+                if (dapAn === 'True') {
+                    icDung.style.display = 'block';
+                    icCheck.style.display = "none";
                 } else {
                     icSai.style.display = 'block';
                     icCheck.style.display = "none";
@@ -863,6 +1032,54 @@
             }
         }, 3000);
 
+    }--%>
+    /*Nộp bài*/
+    function checkSubmitTongBaiKiemTra() {
+
+        btnSubmitTracNghiem();
+        console.log("Câu đúng game trắc nghiệm : " + caudungtracnghiem);
+        console.log("Tổng câu game trắc nghiệm : " + tongtracnghiem);
+
+        btnSubmitNoi();
+        console.log("Câu đúng game nói : " + caudungnoi);
+        console.log("Tổng câu game nói : " + tongnoi);
+
+        /*Tính sao*/
+        let tongsocaudung = 0;
+        let tongsocau = 0;
+        tongsocaudung = caudungtracnghiem + caudungnoi
+        tongsocau = tongtracnghiem + tongnoi
+        console.log("tổng câu đúng" + tongsocaudung)
+        console.log("tổng" + tongsocau)
+        setTimeout(function () {
+            let sao;
+            let ketqua;
+            if ((tongsocaudung / tongsocau) * 100 > 80) {
+                sao = '3'
+            }
+            else if ((tongsocaudung / tongsocau) * 100 > 50) {
+                sao = '2'
+            }
+            else {
+                sao = '1'
+            }
+            ketqua = "" + tongsocaudung + " / " + tongsocau;
+            let timeStart = $("#<%=txtTimeStart.ClientID %>").val();
+            let OrderGame = 1;
+            var submitNopBai = document.getElementById('body_dv_Submit');
+            if (submitNopBai) {
+                submitNopBai.style.display = "none";
+            }
+            console.log("sao" + sao);
+            console.log("ketqua" + ketqua);
+            console.log("timeStart" + timeStart);
+            console.log("OrderGame" + OrderGame);
+            btnSubmit(sao, ketqua, timeStart, OrderGame);
+            var submitReset = document.getElementById('body_dv_Reset');
+            if (submitReset) {
+                submitReset.style.display = "block";
+            }
+        }, 3000);
     }
     function lambai() {
         document.getElementById('<%= btnLamLaiBaiTap.ClientID%>').click();

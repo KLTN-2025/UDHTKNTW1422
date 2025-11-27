@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LuyenTap.aspx.cs" Inherits="web_module_GameCacKhoi_Khoi_7_LuyenTap" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LuyenTap.aspx.cs" Inherits="web_module_GameCacKhoi_Khoi_8_LuyenTap" %>
 
 <!DOCTYPE html>
 

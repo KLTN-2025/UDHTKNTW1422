@@ -6,19 +6,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-
-public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Page
+public partial class web_module_GameCacKhoi_Khoi_9_BaiHoc : System.Web.UI.Page
 {
     dbcsdlDataContext db = new dbcsdlDataContext();
     public string lesson_name, link_prev, link_next, baihoc;
     public int sach_id, chude_id, baihoc_id;
-    public string _id_lesson, hocsinh_name, tinhtrangnext;
+    public string _id_lesson, hocsinh_name, tinhtrangnext, tinhtrangback, lop_id;
     Random rnd = new Random();
-    public int item = 0;
+    public int item = 0, itemchucai = 0;
     public string col_item1, col_item2;
     public int noi;
     private DataTable tableMultiple;
-    public string[] arrLoaiGame;
     public int hocsinh_id;
     public DateTime startTime;
     public DateTime endTime;
@@ -30,6 +28,7 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
         sach_id = Convert.ToInt32(arr[arr.Length - 3]);
         chude_id = Convert.ToInt32(arr[arr.Length - 2]);
         baihoc_id = Convert.ToInt32(arr[arr.Length - 1]);
+
         _id_lesson = "id_" + baihoc_id;
         txtTimeStart.Value = Convert.ToString(DateTime.Now);
         var getBaiHoc = (from bn in db.tbBaiHocs
@@ -40,8 +39,8 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
                          {
                              s.sach_id,
                              s.sach_title,
+                             s.lop_id,
                              bn.baihoc_title,
-                             bn.baihoc_loaigame,
                              link_prev = bn.baihoc_back,
                              link_next = bn.baihoc_next,
                          }).FirstOrDefault();
@@ -49,12 +48,8 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
         link_next = getBaiHoc.link_next;
         link_prev = getBaiHoc.link_prev;
         baihoc = getBaiHoc.baihoc_title;
-        txtID_LoaiGame.Value = getBaiHoc.baihoc_loaigame;
-        if (!string.IsNullOrEmpty(getBaiHoc.baihoc_loaigame))
-        {
-            arrLoaiGame = getBaiHoc.baihoc_loaigame.Split(',');
-        }
         Load();
+        lop_id = getBaiHoc.lop_id + "";
     }
     public void Load()
     {
@@ -79,7 +74,7 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
         int diemBaiHoc = 0;
         int.TryParse(getDiemBaiHoc, out diemBaiHoc);
         // Kiểm tra điều kiện
-        if (getXemBaiHoc == 2 && diemCaoNhat >= 8)
+        if (getXemBaiHoc == 2 && diemCaoNhat >= 2)
         {
             tinhtrangnext = "";
             txtKQ.Value = getXemBaiHoc + "";
@@ -97,72 +92,69 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
             txtKQ.Value = getXemBaiHoc + "";
             txtSoDiemLonNhatDaCo.Value = Convert.ToString(diemCaoNhat);
         }
+
+
+        //từ vựng
+        var getVocabulary = (from nb in db.tbGameTiengNhat_NhanBiets
+                             where nb.sach_id == sach_id && nb.chudebaihoc_id == chude_id && nb.baihoc_id == baihoc_id
+                             select nb).ToList();
+        int rd = rnd.Next();
+        var title = (from nb in db.tbGameTiengNhat_NhanBiets
+                     where nb.sach_id == sach_id && nb.chudebaihoc_id == chude_id && nb.baihoc_id == baihoc_id
+                     select nb);
+        itemchucai = title.Count();
+        rpDoc.DataSource = title.Take(1);
+        rpDoc.DataBind();
+        rpVocabulary.DataSource = getVocabulary;
+        rpVocabulary.DataBind();
+        //rpVocabulary.DataSource = getVocabulary.OrderByDescending(x => (~(x.nhanbiet_id & rd)) & (x.nhanbiet_id | rd));
+        //rpVocabulary.DataBind();
+        item = getVocabulary.Count();
         //video
-        int indexVideo = Array.IndexOf(arrLoaiGame, "4");
-        if (indexVideo != -1)
+        var getVideoImgae = from v in db.tbGameTiengNhat_Videos
+                            where v.sach_id == sach_id
+                                 && v.chude_id == chude_id
+                                 && v.baihoc_id == baihoc_id
+                                  && v.video_content == "video"
+                            select v;
+        rpVideo.DataSource = getVideoImgae;
+        rpVideo.DataBind();
+        rpImage.DataSource = getVideoImgae;
+        rpImage.DataBind();
+        rptitle.DataSource = getVideoImgae;
+        rptitle.DataBind();
+        if (getVideoImgae.Any())
         {
-            var getVideoBaiHoc = from v in db.tbGameTiengNhat_Videos
-                                 where v.sach_id == sach_id
-                                      && v.chude_id == chude_id
-                                      && v.baihoc_id == baihoc_id
-                                      && v.video_content == "videobaihoc"
-                                 select v;
-            rpTieuDe.DataSource = getVideoBaiHoc;
-            rpTieuDe.DataBind();
-            var firstVideo = getVideoBaiHoc.FirstOrDefault();
-            if (firstVideo != null && !string.IsNullOrEmpty(firstVideo.video_link))
-            {
-                VideoList.Attributes["src"] = firstVideo.video_link;
-            }
-        }
-        else
-        {
-            dv_Video.Visible = false;
-        }
-        //Từ vựng
-        int indexTuVung = Array.IndexOf(arrLoaiGame, "5");
-        if (indexTuVung != -1)
-        {
-            var getTuVung = from tv in db.tbGameTiengNhat_TuVungs
-                            where tv.sach_id == sach_id && tv.chude_id == chude_id && tv.baihoc_id == baihoc_id && tv.tuvung_phienam != null && tv.tuvung_phiendich != null
-                            select tv;
-            rpTieuDeTuVung.DataSource = getTuVung;
-            rpTieuDeTuVung.DataBind();
-            rpTuVung.DataSource = getTuVung;
-            rpTuVung.DataBind();
-        }
-        else
-        {
-            dv_DocTuVung.Visible = false;
-        }
-        //Ghép chữ
-        int indexGhepChu = Array.IndexOf(arrLoaiGame, "6");
-        if (indexGhepChu != -1)
-        {
-            var getGhepChuTieuDe = from gc in db.tbGameTiengNhat_GhepChus
-                                   where gc.sach_id == sach_id && gc.chude_id == chude_id && gc.baihoc_id == baihoc_id
-                                   select gc;
-            var getGhepChu = db.tbGameTiengNhat_GhepChus
-                      .Where(gc => gc.sach_id == sach_id && gc.chude_id == chude_id && gc.baihoc_id == baihoc_id)
-                      .ToList() // Chuyển về danh sách để xử lý trong C#
-                      .OrderBy(x => Guid.NewGuid()) // Xáo trộn danh sách
-                      .Take(5); // Lấy ngẫu nhiên 5 phần tử
-            txtTongGhepChu.Value = Convert.ToString(getGhepChu.Count());
-            rpGhepChu.DataSource = getGhepChu;
-            rpGhepChu.DataBind();
-            rpTieuDeGhepChu.DataSource = getGhepChuTieuDe;
-            rpTieuDeGhepChu.DataBind();
-        }
-        else
-        {
-            dv_GhepChu.Visible = false;
+            hfFirstVideoID.Value = getVideoImgae.First().video_id.ToString();
         }
         //Trắc nghiệm
-        int indexTracNghiem = Array.IndexOf(arrLoaiGame, "2");
-        if (indexTracNghiem != -1)
+        var listID = (from ch in db.tbGameTiengNhat_CauHois
+                      where ch.sach_id == sach_id && ch.baihoc_id == baihoc_id && ch.cauhoi_group == "TracNghiem" && ch.cauhoi_image1 == null
+                      select new
+                      {
+                          ch.cauhoi_id,
+                          ch.cauhoi_mp3,
+                          ch.cauhoi_image,
+                          ch.cauhoi_content,
+                          ch.cauhoi_titlecauhoi,
+                          ch.cauhoi_amthanhtrung,
+                      });
+        txtTongTracNghiem.Value = Convert.ToString(listID.Count());
+        rpnoidungtracnghiem.DataSource = listID;
+        rpnoidungtracnghiem.DataBind();
+        int max = listID.Count();
+        List<int> termsList = new List<int>();
+        Random rn = new Random();
+        for (int i = 0; i < max; i++)
         {
-            var listID = (from ch in db.tbGameTiengNhat_CauHois
-                          where ch.sach_id == sach_id && ch.baihoc_id == baihoc_id && ch.cauhoi_group == "TracNghiem" && ch.cauhoi_image1 == null
+            int see = rn.Next();
+            int index = rn.Next(0, listID.Count());
+            int _id = listID.OrderByDescending(x => (~(x.cauhoi_id & see)) & (x.cauhoi_id | see)).Select(x => x.cauhoi_id).Skip(index).Take(1).First();
+            listID = listID.Where(x => x.cauhoi_id != _id);
+            termsList.Add(_id);
+        }
+        var listResult = (from ch in db.tbGameTiengNhat_CauHois
+                          where termsList.Contains(ch.cauhoi_id)
                           select new
                           {
                               ch.cauhoi_id,
@@ -171,71 +163,38 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
                               ch.cauhoi_content,
                               ch.cauhoi_titlecauhoi,
                               ch.cauhoi_amthanhtrung,
+                              tracnghiem = ch.cauhoi_mp3 == null ? "display:none" : "display:inline"
                           });
 
-            rpnoidungtracnghiem.DataSource = listID;
-            rpnoidungtracnghiem.DataBind();
-            int max = listID.Count();
-            List<int> termsList = new List<int>();
-            Random rn = new Random();
-            for (int i = 0; i < max; i++)
-            {
-                int see = rn.Next();
-                int index = rn.Next(0, listID.Count());
-                int _id = listID.OrderByDescending(x => (~(x.cauhoi_id & see)) & (x.cauhoi_id | see)).Select(x => x.cauhoi_id).Skip(index).Take(1).First();
-                listID = listID.Where(x => x.cauhoi_id != _id);
-                termsList.Add(_id);
-            }
-            var listResult = (from ch in db.tbGameTiengNhat_CauHois
-                              where termsList.Contains(ch.cauhoi_id)
-                              select new
-                              {
-                                  ch.cauhoi_id,
-                                  ch.cauhoi_mp3,
-                                  ch.cauhoi_image,
-                                  ch.cauhoi_content,
-                                  ch.cauhoi_titlecauhoi,
-                                  ch.cauhoi_amthanhtrung,
-                                  tracnghiem = ch.cauhoi_mp3 == null ? "display:none" : "display:inline"
-                              });
-
-            if (listResult.Count() > 0)
-            {
-                int seed = rnd.Next();
-                List<DapAn> Dapan = new List<DapAn>();
-                //listResult = listResult.OrderBy(x => (~(x.cauhoi_id & seed)) & (x.cauhoi_id | seed)).Take(5);
-                listResult = listResult.OrderBy(x => (~(x.cauhoi_id & seed)) & (x.cauhoi_id | seed));
-                tableMultiple = new DataTable();
-                tableMultiple.Columns.Add("cauhoi_id", typeof(int));
-                tableMultiple.Columns.Add("cauhoi_mp3", typeof(string));
-                tableMultiple.Columns.Add("cauhoi_image", typeof(string));
-                tableMultiple.Columns.Add("cauhoi_titlecauhoi", typeof(string));
-                tableMultiple.Columns.Add("cauhoi_amthanhtrung", typeof(string));
-                tableMultiple.Columns.Add("tracnghiem", typeof(string));
-                foreach (var p in listResult)
-                {
-                    tableMultiple.Rows.Add(p.cauhoi_id, p.cauhoi_mp3, p.cauhoi_image, p.cauhoi_titlecauhoi, p.cauhoi_amthanhtrung, p.tracnghiem);
-                    Dapan.Add(new DapAn()
-                    {
-                        cauhoi_titlecauhoi = p.cauhoi_titlecauhoi,
-                        cauhoi_image = p.cauhoi_image,
-                        cauhoi_mp3 = p.cauhoi_mp3,
-                        cauhoi_id = p.cauhoi_id,
-                        tracnghiem = p.tracnghiem,
-                    });
-                }
-                rpCauTraLoi.DataSource = Dapan.Take(5).ToList().OrderBy(x => x.position);
-                rpCauTraLoi.DataBind();
-                txtTongTracNghiem.Value = Convert.ToString(Dapan.Take(5).Count());
-                Session["socauMultiple"] = 1;
-                Session["tableMultiple"] = tableMultiple;
-            }
-        }
-        else
+        if (listResult.Count() > 0)
         {
-            dv_TracNghiem.Visible = false;
+            int seed = rnd.Next();
+            List<DapAn> Dapan = new List<DapAn>();
+            listResult = listResult.OrderBy(x => (~(x.cauhoi_id & seed)) & (x.cauhoi_id | seed)).Take(5);
+            tableMultiple = new DataTable();
+            tableMultiple.Columns.Add("cauhoi_id", typeof(int));
+            tableMultiple.Columns.Add("cauhoi_mp3", typeof(string));
+            tableMultiple.Columns.Add("cauhoi_image", typeof(string));
+            tableMultiple.Columns.Add("cauhoi_titlecauhoi", typeof(string));
+            tableMultiple.Columns.Add("cauhoi_amthanhtrung", typeof(string));
+            tableMultiple.Columns.Add("tracnghiem", typeof(string));
+            foreach (var p in listResult)
+            {
+                tableMultiple.Rows.Add(p.cauhoi_id, p.cauhoi_mp3, p.cauhoi_image, p.cauhoi_titlecauhoi, p.cauhoi_amthanhtrung, p.tracnghiem);
+                Dapan.Add(new DapAn()
+                {
+                    cauhoi_titlecauhoi = p.cauhoi_titlecauhoi,
+                    cauhoi_image = p.cauhoi_image,
+                    cauhoi_mp3 = p.cauhoi_mp3,
+                    cauhoi_id = p.cauhoi_id,
+                    tracnghiem = p.tracnghiem,
+                });
+            }
+            rpCauTraLoi.DataSource = Dapan.ToList().OrderBy(x => x.position);
+            rpCauTraLoi.DataBind();
+            Session["socauMultiple"] = 1;
+            Session["tableMultiple"] = tableMultiple;
         }
-
     }
     public class DapAn
     {
@@ -313,17 +272,6 @@ public partial class web_module_GameCacKhoi_Khoi_7_LuyenTap2 : System.Web.UI.Pag
         rpDapAn.DataBind();
         //txtDapAnTruoc.Value = a.Split(',')[0];
 
-    }
-
-    protected void rpTuVung_ItemDataBound(object sender, RepeaterItemEventArgs e)
-    {
-        Repeater rpTuTuVung = e.Item.FindControl("rpTuTuVung") as Repeater;
-        string tuvung_group = DataBinder.Eval(e.Item.DataItem, "tuvung_group").ToString();
-        var getTuTuVung = from tv in db.tbGameTiengNhat_TuVungs
-                          where tv.sach_id == sach_id && tv.chude_id == chude_id && tv.baihoc_id == baihoc_id && tv.tuvung_phienam == null && tv.tuvung_phiendich == null && tv.tuvung_group == tuvung_group
-                          select tv;
-        rpTuTuVung.DataSource = getTuTuVung;
-        rpTuTuVung.DataBind();
     }
 
     protected void btnLamLaiBaiTap_ServerClick(object sender, EventArgs e)
