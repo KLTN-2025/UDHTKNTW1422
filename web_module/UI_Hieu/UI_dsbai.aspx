@@ -8,6 +8,9 @@
         }
 
         .title_lesson_s {
+            font-size:30px;
+            font-weight:bold;
+            color:black;
         }
     </style>
     <link href="../../css/listBooks.css" rel="stylesheet" />
@@ -25,7 +28,7 @@
             <div id="lessonContainer">
                 <div class="unit-list__title">Học bảng chữ cái Hiragana</div>
                 <div class="container-fluid">
-                    <div>Nội dung bài 1: </div>
+                    <div class="title_lesson_s">Nội dung bài 1: </div>
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4">
                             <div class="lesson-row">
@@ -85,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <div>Nội dung bài 2: </div>
+                    <div class="title_lesson_s">Nội dung bài 2: </div>
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4">
                             <div class="lesson-row">
