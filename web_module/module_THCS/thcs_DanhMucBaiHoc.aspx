@@ -107,7 +107,7 @@
                     container.innerHTML = "";
                     data.forEach(lesson => {
 
-                        let lessonHtml = "";
+                        let lessonHtml = '<div class="row">';
                         lesson.listLessons.forEach(ls => {
                             let ratingHtml = "";
                             ls.lichSuLamBai.forEach(ls1 => {
@@ -123,6 +123,7 @@
                                         `;
                             });
                             lessonHtml += `
+                                    <div class="col-4 col-sm-4 col-md-4">
                                         <div class="lesson-row">
                                             <a href="javascript:void(0)" class="lesson-item" id="id_${ls.baihoc_id}" onclick="xembai(${ls.baihoc_id})">
                                                 <div class="lesson-item__avatar">
@@ -140,6 +141,7 @@
                                                 </div>
                                             </a>
                                         </div>
+                                    </div>
                                         `;
                         });
                                             //<a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>
@@ -164,7 +166,7 @@
         }
     </script>
 </head>
-<body class="body-mobi">
+<body class="body">
     <div class="loading" id="img-loading-icon" style="display: none">
         <div class="loading">Loading&#8230;</div>
     </div>
@@ -179,9 +181,7 @@
             <div id="lessonContainer"></div>
             <a id="btnXemBai" runat="server" onserverclick="btnXemBai_ServerClick" style="display: none"></a>
             <input type="text" id="txtIDBaiHoc" runat="server" style="display: none" />
-
         </div>
-
     </form>
 </body>
 </html>
