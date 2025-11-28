@@ -18,7 +18,13 @@
     <link rel="shortcut icon" href="/images/koi-logo_2.png" />
     <title><%=tenSach %></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="/css/books/globalBooks.css" rel="stylesheet" />
+    <link href="/css/bootstrap4.6.2.css" rel="stylesheet" />
+    <link href="/css/themify-icons.css" rel="stylesheet" />
+    <script src="/js/bootstrap462/jquery.slim.min.js"></script>
+    <script src="/js/bootstrap462/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <link href="/css/styleDinotech.css" rel="stylesheet" />
+    <link href="/css/listBooks.css?v=4" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/current-device.min.js"></script>
     <link href="../../css/loading.css" rel="stylesheet" />
@@ -124,7 +130,7 @@
                                         `;
                             });
                             lessonHtml += `
-                                    <div class="col-4 col-sm-4 col-md-4">
+                                    <div class="col-4 col-sm-4 col-md-3">
                                         <div class="lesson-row">
                                             <a href="javascript:void(0)" class="lesson-item" id="id_${ls.baihoc_id}" onclick="xembai(${ls.baihoc_id})">
                                                 <div class="lesson-item__avatar">
@@ -134,9 +140,7 @@
                                                     <div class="lesson-item__content--title">
                                                         ${ls.baihoc_title}
                                                     </div>
-                                                    <div class="lesson-item__content--view">
-                                                        <i class="fa fa-eye"></i>&nbsp; ${ls.solan}
-                                                    </div>
+                                                    
                                                     <div class="lesson-item__content--decription"></div>
                                                     <div class="rating-list">${ratingHtml}</div>
                                                 </div>
@@ -178,7 +182,7 @@
         <%-- <div class="header-top --bg-tieuhoc">
             <a href="/app-danh-muc-khoi-tieu-hoc-1" onclick="DisplayLoadingIcon()" class="btn-back" id="btnBack" runat="server"><i class="fa fa-angle-left"></i></a>
             <h5><%=tenSach %></h5>
-        </div>--%><div id="" class="step-contact" style="justify-content: center; background-image: url(/images/back_bai.jpg)">
+        </div>--%><div id="" class="step-contact" style="justify-content: center; background-image: url(/images/back_bai.jpg); background-position: center; background-size: cover; background-repeat: no-repeat;">
             <div class="block-main pt-3 pb-5 mb-3 px-3">
                 <div id="lessonContainer"></div>
                 <a id="btnXemBai" runat="server" onserverclick="btnXemBai_ServerClick" style="display: none"></a>

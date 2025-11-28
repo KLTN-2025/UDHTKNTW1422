@@ -21,10 +21,10 @@ public partial class web_module_module_THCS_thcs_DanhMucBaiHoc : System.Web.UI.P
             string khoiValue = Request.QueryString["khoi"];
             //int khoi_id = Convert.ToInt32(RouteData.Values["khoi-id"]);
             //string khoiValue = khoi_id.ToString();
-            if (!string.IsNullOrEmpty(khoiValue))
-                btnBack.HRef = "/app-danh-muc-khoi-thcs-" + khoiValue;
-            else
-                btnBack.HRef = "/app-danh-muc-khoi-thcs-6";
+            //if (!string.IsNullOrEmpty(khoiValue))
+            //    btnBack.HRef = "/app-danh-muc-khoi-thcs-" + khoiValue;
+            //else
+            //    btnBack.HRef = "/app-danh-muc-khoi-thcs-6";
             var checkHocSinh = (from hs in db.tbAccounts where hs.account_sodienthoai == Request.Cookies["taikhoan"].Value select hs);
 
             if (checkHocSinh.Count() > 0)

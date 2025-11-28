@@ -147,6 +147,7 @@
     }
 
 .lesson-item {
+    padding:.75rem;
     margin-bottom: 1rem;
     border-radius: 0.75rem;
     background-color: #fff;
@@ -166,12 +167,16 @@
 .lesson-item__avatar {
     /*width: 20%;
     min-width: 20%;*/
+    
 }
 
-    .lesson-item__avatar img {
+    .lesson-item__avatar img {height: 120px;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
         border-top-left-radius: 0.75rem;
         border-bottom-left-radius: 0.75rem;
-        aspect-ratio: 1;
+        
         display: block;
     }
 
