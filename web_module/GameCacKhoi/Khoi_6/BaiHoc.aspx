@@ -23,6 +23,7 @@
             }
     </style>
     <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/wanakana@5.0.0/umd/wanakana.min.js"></script>
     <title><%= baihoc %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -167,7 +168,7 @@
                                             <i class="fa fa-microphone"></i>
                                         </button>
                                         <%--<audio id="audio-playback-<%#Eval("nhanbiet_id") %>" controls style="display: none; width: 100%; margin-top: 5px;"></audio>--%>
-                                        <input type="text" id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" data-answer='<%#Eval("nhanbiet_nhom") %>' data-checked='false' readonly placeholder="Nhấn Mic để bắt đầu nói..." />
+                                        <input type="text" id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" data-answer='<%#Eval("nhanbiet_nhom") %>' data-checked='false' readonly placeholder="Nhấn Mic để bắt đầu nói..."  />
                                     </div>
                                 </div>
                             </ItemTemplate>
@@ -186,6 +187,24 @@
                         </asp:Repeater>
                     </div>--%>
                     <script>
+                        function normalizeAndConvertText(id, text) {
+                            // 1. Chuẩn hóa cơ bản: trim và xóa dấu chấm câu tiếng Nhật
+                            let cleanedText = text.trim().replace(/[。、]/g, "");
+
+                            // 2. Chuyển ID về số để so sánh
+                            const numericId = parseInt(id, 10);
+
+                            // 3. Thực hiện chuyển đổi
+                            if (numericId >= 47) {
+                                // Nếu ID >= 47 (Katakana): Ép kết quả về Katakana
+                                // Sau đó chuyển hết về chữ thường (lowercase) để so sánh nếu có Romaji
+                                return wanakana.toKatakana(cleanedText).toLowerCase();
+                            } else {
+                                // Nếu ID < 47 (Hiragana): Ép kết quả về Hiragana
+                                return wanakana.toHiragana(cleanedText).toLowerCase();
+                            }
+                        }
+
                         window.itemRecognitions = {};
                         const audioCorrect = new Audio('/mp3/audio_right.mp3');
                         const audioWrong = new Audio('/mp3/audio_false.mp3');
@@ -274,18 +293,55 @@
                                         }
                                     }
 
-                                    const resultInput = document.getElementById('input-result-' + id);
+                                    // Gán kết quả tạm thời
                                     if (resultInput) {
                                         resultInput.value = finalTranscript || interimTranscript;
                                     }
 
-                                    // GỌI HÀM CHECK VÀ TÍNH ĐIỂM NGAY KHI CÓ KẾT QUẢ CUỐI CÙNG
-                                    if (finalTranscript) {
-                                        checkPronunciationAndScore(id, finalTranscript);
+                                    // Khi có kết quả cuối cùng
+                                    if (finalTranscript && resultInput && targetCard) {
+                                        // 1. Lấy và chuẩn hóa đáp án người dùng (bao gồm logic Katakana/Hiragana)
+                                        const convertedUserText = normalizeAndConvertText(id, finalTranscript);
+
+                                        // 2. Lấy và chuẩn hóa đáp án DB
+                                        let correctAnswer = resultInput.getAttribute('data-answer');
+                                        const dbText = normalizeAndConvertText(id, correctAnswer);
+
+                                        // 3. So sánh
+                                        let isCorrect = (convertedUserText === dbText);
+
+                                        console.log(`User (converted): ${convertedUserText} | DB (normalized): ${dbText}`);
+
+                                        // --- LOGIC ĐỔI MÀU & AUDIO ---
+                                        if (isCorrect) {
+                                            targetCard.classList.add('card-correct');
+                                            targetCard.classList.remove('card-incorrect');
+                                            audioCorrect.currentTime = 0;
+                                            audioCorrect.play().catch(e => { });
+                                        } else {
+                                            targetCard.classList.add('card-incorrect');
+                                            targetCard.classList.remove('card-correct');
+                                            audioWrong.currentTime = 0;
+                                            audioWrong.play().catch(e => { });
+                                        }
+
+                                        // --- LOGIC TÍNH ĐIỂM (Bắt buộc phải nằm trong onresult/onend) ---
+                                        //const isQuestionChecked = targetCard.getAttribute('data-checked');
+
+                                        //if (isQuestionChecked === 'false') {
+                                        //    // Tính tổng câu (chỉ tính lần đầu tiên)
+                                        //    window.totalPronunciationQuestions++;
+
+                                        //    // Tính câu đúng
+                                        //    if (isCorrect) {
+                                        //        window.correctPronunciationAnswers++;
+                                        //    }
+
+                                        //    // Đánh dấu đã tính điểm câu này
+                                        //    targetCard.setAttribute('data-checked', 'true');
+                                        //}
                                     }
                                 };
-
-                                // ... (phần còn lại của hàm startRecognition giữ nguyên)
 
                                 recognition.onend = () => {
                                     stopRecognition(btn, id, icon);
@@ -721,21 +777,14 @@
                     <div class="">
                         <div class="form-mutichoise ">
                             <asp:Repeater ID="rpCauTraLoi" runat="server" OnItemDataBound="rpCauTraLoi_ItemDataBound">
-                                <ItemTemplate>
-                                    <div class="mb-1 text-center">
-                                        <div class="form-mutichoise__header--title --style-1">
+                                <ItemTemplate>                                    
+                                    <div class="game-header">
+                                        <div class="game-header__title text-center">
                                             <%#Eval("cauhoi_titlecauhoi") %>
-                                        </div>
-                                    </div>
-                                    <div class="form-mutichoise__question">
-                                        <div class="question-item text-center">
-                                            <audio controls="controls">
-                                                <source src="<%#Eval("cauhoi_mp3") %>" type="audio/mpeg" />
-                                                Your browser does not support the audio element.
-                                            </audio>
-                                            <%-- <a class="question-item__image" id="<%#Eval("cauhoi_id") %>" href="javascript:void(0)" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("cauhoi_mp3") %>">
-                                                <img src="<%#Eval("cauhoi_image") %>" />
-                                            </a>--%>
+                                            <%--Nghe âm thanh để tìm chữ thích hợp ?--%>
+                                            <a class="btn-sound-question" href="javascript:void(0)" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("cauhoi_mp3") %>">
+                                                <img src="/images/btn-game-sound.png" alt="Alternate Text" />
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="form-mutichoise__answer --item-3">
@@ -774,7 +823,7 @@
 
         <%--Nộp bài--%>
         <div class="button-submit" id="dv_Submit" runat="server">
-            <a href="javascript:void(0)" id="submitTongBaiKiemTra" onclick="checkSubmitTongBaiKiemTra()">
+            <a href="javascript:void(0)" id="submitTongBaiKiemTra" onclick="btnSubmitTracNghiem()">
                 <img class="buttonCalculation" src="/images/btn-baikiemtra-submit.png" />
             </a>
             <audio hidden="hidden" class="media" id="audioselect" src="/Musics/audio_select.mp3" controls="controls" style="display: none"></audio>
@@ -863,7 +912,7 @@
             kiemtraaddclass.classList.add('dung');
         }
     }
-    var caudungtracnghiem = 0, tongtracnghiem = 0;
+    <%--var caudungtracnghiem = 0, tongtracnghiem = 0;
     function btnSubmitTracNghiem() {
 
         var elementtongtracnghiem = document.getElementById('<%= txtTongTracNghiem.ClientID%>');
@@ -894,60 +943,60 @@
             }
 
         });
-    }
-    var caudungnoi = 0, tongnoi = 4;
-    function btnSubmitNoi(id, finalTranscript) {
-        // 1. Tìm các phần tử cần thiết
-        const resultInput = document.getElementById('input-result-' + id);
-        const targetCard = document.getElementById('card-vocabulary-' + id);
+    }--%>
+    //var caudungnoi = 0, tongnoi = 4;
+    //function btnSubmitNoi(id, finalTranscript) {
+    //    // 1. Tìm các phần tử cần thiết
+    //    const resultInput = document.getElementById('input-result-' + id);
+    //    const targetCard = document.getElementById('card-vocabulary-' + id);
 
-        // Đảm bảo không bị lỗi nếu phần tử không tồn tại
-        if (!resultInput || !targetCard || !finalTranscript) return;
+    //    // Đảm bảo không bị lỗi nếu phần tử không tồn tại
+    //    if (!resultInput || !targetCard || !finalTranscript) return;
 
-        // 2. Lấy đáp án và chuẩn hóa chuỗi
-        let correctAnswer = resultInput.getAttribute('data-answer');
+    //    // 2. Lấy đáp án và chuẩn hóa chuỗi
+    //    let correctAnswer = resultInput.getAttribute('data-answer');
 
-        // Chuẩn hóa chuỗi (Bỏ dấu chấm câu, chuyển về chữ thường)
-        let userText = finalTranscript.trim().toLowerCase().replace(/[。、]/g, "");
-        let dbText = correctAnswer.trim().toLowerCase().replace(/[。、]/g, "");
+    //    // Chuẩn hóa chuỗi (Bỏ dấu chấm câu, chuyển về chữ thường)
+    //    let userText = finalTranscript.trim().toLowerCase().replace(/[。、]/g, "");
+    //    let dbText = correctAnswer.trim().toLowerCase().replace(/[。、]/g, "");
 
-        // Khai báo biến đếm
-        let isCorrect = (userText === dbText);
+    //    // Khai báo biến đếm
+    //    let isCorrect = (userText === dbText);
 
-        // 3. Xử lý logic ĐÚNG/SAI
-        if (isCorrect) {
-            // ĐÚNG
-            targetCard.classList.add('card-correct');
-            targetCard.classList.remove('card-incorrect');
+    //    // 3. Xử lý logic ĐÚNG/SAI
+    //    if (isCorrect) {
+    //        // ĐÚNG
+    //        targetCard.classList.add('card-correct');
+    //        targetCard.classList.remove('card-incorrect');
 
-            audioCorrect.currentTime = 0;
-            audioCorrect.play().catch(e => { });
+    //        audioCorrect.currentTime = 0;
+    //        audioCorrect.play().catch(e => { });
 
-        } else {
-            // SAI
-            targetCard.classList.add('card-incorrect');
-            targetCard.classList.remove('card-correct');
+    //    } else {
+    //        // SAI
+    //        targetCard.classList.add('card-incorrect');
+    //        targetCard.classList.remove('card-correct');
 
-            audioWrong.currentTime = 0;
-            audioWrong.play().catch(e => { });
-        }
+    //        audioWrong.currentTime = 0;
+    //        audioWrong.play().catch(e => { });
+    //    }
 
-        // 4. Cập nhật Điểm số TOÀN CỤC
+    //    // 4. Cập nhật Điểm số TOÀN CỤC
 
-        // *QUAN TRỌNG NHẤT*: Dùng thuộc tính data-checked để đảm bảo mỗi câu chỉ được tính điểm MỘT LẦN
-        const isQuestionChecked = targetCard.getAttribute('data-checked');
+    //    // *QUAN TRỌNG NHẤT*: Dùng thuộc tính data-checked để đảm bảo mỗi câu chỉ được tính điểm MỘT LẦN
+    //    const isQuestionChecked = targetCard.getAttribute('data-checked');
 
-        if (isQuestionChecked === 'false') {
-            // Tính câu đúng
-            if (isCorrect) {
-                caudungnoi++;
-            }
+    //    if (isQuestionChecked === 'false') {
+    //        // Tính câu đúng
+    //        if (isCorrect) {
+    //            caudungnoi++;
+    //        }
 
-            // Đánh dấu đã tính điểm câu này
-            targetCard.setAttribute('data-checked', 'true');
-        }
-    }
-    <%--var caudungtracnghiem = 0, tongtracnghiem = 0;
+    //        // Đánh dấu đã tính điểm câu này
+    //        targetCard.setAttribute('data-checked', 'true');
+    //    }
+    //}
+    var caudungtracnghiem = 0, tongtracnghiem = 0;
     function btnSubmitTracNghiem() {
 
         var elementtongtracnghiem = document.getElementById('<%= txtTongTracNghiem.ClientID%>');
@@ -1029,55 +1078,6 @@
             var submitLamLai = document.getElementById('dv_reset');
             if (submitLamLai) {
                 submitLamLai.style.display = "block";
-            }
-        }, 3000);
-
-    }--%>
-    /*Nộp bài*/
-    function checkSubmitTongBaiKiemTra() {
-
-        btnSubmitTracNghiem();
-        console.log("Câu đúng game trắc nghiệm : " + caudungtracnghiem);
-        console.log("Tổng câu game trắc nghiệm : " + tongtracnghiem);
-
-        btnSubmitNoi();
-        console.log("Câu đúng game nói : " + caudungnoi);
-        console.log("Tổng câu game nói : " + tongnoi);
-
-        /*Tính sao*/
-        let tongsocaudung = 0;
-        let tongsocau = 0;
-        tongsocaudung = caudungtracnghiem + caudungnoi
-        tongsocau = tongtracnghiem + tongnoi
-        console.log("tổng câu đúng" + tongsocaudung)
-        console.log("tổng" + tongsocau)
-        setTimeout(function () {
-            let sao;
-            let ketqua;
-            if ((tongsocaudung / tongsocau) * 100 > 80) {
-                sao = '3'
-            }
-            else if ((tongsocaudung / tongsocau) * 100 > 50) {
-                sao = '2'
-            }
-            else {
-                sao = '1'
-            }
-            ketqua = "" + tongsocaudung + " / " + tongsocau;
-            let timeStart = $("#<%=txtTimeStart.ClientID %>").val();
-            let OrderGame = 1;
-            var submitNopBai = document.getElementById('body_dv_Submit');
-            if (submitNopBai) {
-                submitNopBai.style.display = "none";
-            }
-            console.log("sao" + sao);
-            console.log("ketqua" + ketqua);
-            console.log("timeStart" + timeStart);
-            console.log("OrderGame" + OrderGame);
-            btnSubmit(sao, ketqua, timeStart, OrderGame);
-            var submitReset = document.getElementById('body_dv_Reset');
-            if (submitReset) {
-                submitReset.style.display = "block";
             }
         }, 3000);
     }

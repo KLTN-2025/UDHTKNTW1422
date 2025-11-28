@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LuyenTap.aspx.cs" Inherits="web_module_GameCacKhoi_Khoi_6_Luyen_Tap" %>
 
+<%@ Register Src="~/web_usercontrol/global_Popup.ascx" TagPrefix="uc1" TagName="global_Popup" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,6 +39,7 @@
 <body class="page-contest --bg-body-2">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+        <uc1:global_Popup runat="server" ID="global_Popup" />
         <div class="header-page">
             <div class="container">
                 <div class="header-content">
@@ -93,7 +97,7 @@
                                 </div>
                                 <div style="display: none">
                                     <a class="ml-1 ml-md-3" href="javascript:void(0)" onclick="btnSubmitGameNoi()">
-                                        <img class="" src="/images/images_button/btn-2.png" id="" alt="" />
+                                        <img class="" src="/images/button/btn-2.png" id="" alt="" />
                                     </a>
 
                                     <input id="id1" type="text" />
@@ -146,13 +150,13 @@
                                                         <div class="answer-item tracnghiem" data-answer-tn="<%#Eval("cautraloi_dapandung") %>">
                                                             <a href="javascript:void(0)" class="answer-item__gather <%#Eval("style_class") %> hvr-push" data-id="<%#Eval("cautraloi_id") %>" onclick="myTraLoiMultiple('<%#Eval("cautraloi_id") %>','<%#Container.ItemIndex+1 %>','<%#Eval("cautraloi_dapandung") %>')">
                                                                 <%#Eval("cautraloi_image") %>
-                                                                <img class="btn btn-true" src="/images/images_button/btn-2.png" id="ic_Dung<%#Eval("cautraloi_id") %>" aria-hidden="true" style="display: none;" />
-                                                                <img class="btn btn-false" src="/images/images_button/btn-6.png" id="ic_Sai<%#Eval("cautraloi_id") %>" aria-hidden="true" style="display: none;" />
-                                                                <img class="btn btn-check" src="/images/images_button/btn-4.png" id="ic_Check<%#Eval("cautraloi_id") %>" aria-hidden="true" style="display: none;" />
+                                                                <img class="btn btn-true" src="/images/button/btn-2.png" id="ic_Dung<%#Eval("cautraloi_id") %>" aria-hidden="true" style="display: none;" />
+                                                                <img class="btn btn-false" src="/images/button/btn-6.png" id="ic_Sai<%#Eval("cautraloi_id") %>" aria-hidden="true" style="display: none;" />
+                                                                <img class="btn btn-check" src="/images/button/btn-4.png" id="ic_Check<%#Eval("cautraloi_id") %>" aria-hidden="true" style="display: none;" />
                                                             </a>
                                                             <a href="javascript:void(0)" class="answer-item__sound" id="mp3_<%#Eval("cautraloi_id") %>" style="<%#Eval("style")%>"
                                                                 onclick="audioDapAn(<%#Eval("cautraloi_id") %>)">
-                                                                <img src="../../../images/images_button/loa-xanhdt-m.png" />
+                                                                <img src="../../../images/button/loa-xanhdt-m.png" />
                                                             </a>
                                                             <audio hidden="hidden" id="audioDapAn_<%#Eval("cautraloi_id") %>" src="../../<%#Eval("cautraloi_mp3") %>" controls="controls" />
                                                         </div>
@@ -165,7 +169,7 @@
                                 </div>
                                 <div style="display: none">
                                     <a href="javascript:void(0)">
-                                        <img class="" src="/images/images_button/btn-2.png" onclick="btnSubmitTracNghiem()" alt="" />
+                                        <img class="" src="/images/button/btn-2.png" onclick="btnSubmitTracNghiem()" alt="" />
                                     </a>
                                     <input type="text" id="txtTongTracNghiem" runat="server" />
                                 </div>
@@ -215,7 +219,7 @@
                     <div style="display: none">
                         <input type="text" id="txtTongLatHinh" runat="server" />
                         <a href="javascript:void(0)">
-                            <img class="" src="/images/images_button/btn-2.png" onclick="btnSubmitLatHinh()" alt="" />
+                            <img class="" src="/images/button/btn-2.png" onclick="btnSubmitLatHinh()" alt="" />
                         </a>
                     </div>
                 </div>
