@@ -23,7 +23,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <asp:ScriptManager runat="server" />
-    <div id="" class="step-contact" style="justify-content: center;">
+    <div id="" class="step-contact" style="justify-content: center; background-image: url(/images/back_bai.jpg)";>
         <div class="block-main pt-3 pb-5 mb-3 px-3">
             <div id="lessonContainer">
                 <div class="unit-list__title">Học bảng chữ cái Hiragana</div>
