@@ -30,7 +30,8 @@ public partial class app_Login : System.Web.UI.Page
             ck.Value = userName;
             ck.Expires = DateTime.Now.AddDays(365);
             Response.Cookies.Add(ck);
-            Response.Redirect("/app-thcs");
+            //Response.Redirect("/app-thcs");
+            Response.Redirect("/koigo-trang-chu");
         }
         else
         {
