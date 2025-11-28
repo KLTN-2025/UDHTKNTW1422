@@ -154,7 +154,7 @@
     box-shadow: 1px 8px 14px 1px rgba(128, 128, 128, 0.2117647059);
     display: -ms-flexbox;
     display: -webkit-box;
-    display: flex;
+    display: block;
     color: #000;
     text-decoration: none;
 }
@@ -164,8 +164,8 @@
     }
 
 .lesson-item__avatar {
-    width: 20%;
-    min-width: 20%;
+    /*width: 20%;
+    min-width: 20%;*/
 }
 
     .lesson-item__avatar img {

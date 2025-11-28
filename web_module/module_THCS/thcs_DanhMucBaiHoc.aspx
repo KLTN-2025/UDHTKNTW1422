@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="thcs_DanhMucBaiHoc.aspx.cs" Inherits="web_module_module_THCS_thcs_DanhMucBaiHoc" %>
 
+<%@ Register Src="~/web_usercontrol/global_LandingPage_Menu.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -144,7 +145,7 @@
                                     </div>
                                         `;
                         });
-                                            //<a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>
+                        //<a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>
 
                         const topicHtml = `
                          <div class="unit-list__title">${lesson.chudebaihoc_name}</div>
@@ -167,20 +168,22 @@
     </script>
 </head>
 <body class="body">
+    <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <div class="loading" id="img-loading-icon" style="display: none">
         <div class="loading">Loading&#8230;</div>
     </div>
     <form id="form1" runat="server">
         <asp:HiddenField ID="hfStudentId" runat="server" />
         <asp:HiddenField ID="hfSachId" runat="server" />
-        <div class="header-top --bg-tieuhoc">
+        <%-- <div class="header-top --bg-tieuhoc">
             <a href="/app-danh-muc-khoi-tieu-hoc-1" onclick="DisplayLoadingIcon()" class="btn-back" id="btnBack" runat="server"><i class="fa fa-angle-left"></i></a>
             <h5><%=tenSach %></h5>
-        </div>
-        <div class="block-main pt-3 pb-5 mb-3 px-3">
-            <div id="lessonContainer"></div>
-            <a id="btnXemBai" runat="server" onserverclick="btnXemBai_ServerClick" style="display: none"></a>
-            <input type="text" id="txtIDBaiHoc" runat="server" style="display: none" />
+        </div>--%><div id="" class="step-contact" style="justify-content: center; background-image: url(/images/back_bai.jpg)">
+            <div class="block-main pt-3 pb-5 mb-3 px-3">
+                <div id="lessonContainer"></div>
+                <a id="btnXemBai" runat="server" onserverclick="btnXemBai_ServerClick" style="display: none"></a>
+                <input type="text" id="txtIDBaiHoc" runat="server" style="display: none" />
+            </div>
         </div>
     </form>
 </body>
