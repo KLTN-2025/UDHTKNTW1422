@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class web_module_module_THCS_thcs_DanhMucBaiHoc : System.Web.UI.Page
+public partial class web_module_module_THCS_thcs_DanhMucBaiHoc_Desktop : System.Web.UI.Page
 {
     dbcsdlDataContext db = new dbcsdlDataContext();
     cls_Alert alert = new cls_Alert();
@@ -152,5 +152,4 @@ public partial class web_module_module_THCS_thcs_DanhMucBaiHoc : System.Web.UI.P
             Response.Redirect(baihocLink);
         }
     }
-
 }
