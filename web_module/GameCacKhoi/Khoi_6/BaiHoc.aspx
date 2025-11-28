@@ -777,27 +777,14 @@
                     <div class="">
                         <div class="form-mutichoise ">
                             <asp:Repeater ID="rpCauTraLoi" runat="server" OnItemDataBound="rpCauTraLoi_ItemDataBound">
-                                <ItemTemplate>
-                                    <div class="mb-1 text-center">
-                                        <div class="form-mutichoise__header--title --style-1">
+                                <ItemTemplate>                                    
+                                    <div class="game-header">
+                                        <div class="game-header__title text-center">
                                             <%#Eval("cauhoi_titlecauhoi") %>
-                                        </div>
-                                        <a class="btn-sound-question" href="javascript:void(0)" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("cauhoi_mp3") %>">
-                                            <img src="/images/btn-game-sound.png" alt="Alternate Text" />
-                                        </a>
-                                    </div>
-                                    <div class="form-mutichoise__question">
-                                        <div class="question-item text-center">
-                                            <%--<audio controls="controls">
-                                                <source src="<%#Eval("cauhoi_mp3") %>" type="audio/mpeg" />
-                                                Your browser does not support the audio element.
-                                            </audio>--%>
-                                            <%--<a class="btn-sound-question" href="javascript:void(0)" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("cauhoi_mp3") %>">
+                                            <%--Nghe âm thanh để tìm chữ thích hợp ?--%>
+                                            <a class="btn-sound-question" href="javascript:void(0)" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("cauhoi_mp3") %>">
                                                 <img src="/images/btn-game-sound.png" alt="Alternate Text" />
-                                            </a>--%>
-                                            <%--<a class="question-item__image" id="<%#Eval("cauhoi_id") %>" href="javascript:void(0)" onclick="playSound(this.getAttribute('data-url'))" data-url="<%#Eval("cauhoi_mp3") %>">
-                                                <img src="<%#Eval("cauhoi_image") %>" />
-                                            </a>--%>
+                                            </a>
                                         </div>
                                     </div>
                                     <div class="form-mutichoise__answer --item-3">

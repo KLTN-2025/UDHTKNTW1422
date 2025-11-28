@@ -41,7 +41,7 @@
         <div class="header-page">
             <div class="container">
                 <div class="header-content">
-                    <a class="header-content__home btn-menu" id="btnHome" href="/danh-muc-sach-<%=sach_id %>?khoi=<%=lop_id %>#<%=_id_lesson %>" data-id="<%=sach_id %>#<%=_id_lesson %>">
+                    <a class="header-content__home btn-menu" id="btnHome" href="">
                         <i class="fa fa-home"></i>
                     </a>
                     <div class="header-content__title"><%=lesson_name %></div>
@@ -443,6 +443,15 @@
     </form>
 </body>
 <script>
+    window.addEventListener("DOMContentLoaded", function () {
+        const idsach = localStorage.getItem("idsach");
+        const idkhoi = localStorage.getItem("idkhoi");
+
+        if (idsach && idkhoi) {
+            const btn = document.getElementById("btnHome");
+            btn.href = `/danh-muc-sach-${idsach}?khoi=${idkhoi}`;
+        }
+    });
     let audio;
     function pauseAudio() {
         if (audio && !audio.paused) {

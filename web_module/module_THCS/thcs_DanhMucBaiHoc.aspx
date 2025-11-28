@@ -71,6 +71,10 @@
         function xembai(id) {
             DisplayLoadingIcon();
             document.getElementById("<%= txtIDBaiHoc.ClientID%>").value = id;
+            //lưu id sach và id khoi vao local stroge
+            localStorage.setItem("idsach", "3");
+            localStorage.setItem("idkhoi", "7");
+
             document.getElementById("<%= btnXemBai.ClientID%>").click();
         }
 
