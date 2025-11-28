@@ -26,6 +26,8 @@
                 </a><a id="id_Lop9" runat="server" href="/app-danh-muc-khoi-thcs-9" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
                     <div class="class-item__name green-text">Lớp 9</div>
                     <%--<i class="fa fa-lock" aria-hidden="true" id="iconLock4" runat="server"></i>--%>
+                     </a><a id="KhoLuyenTap" runat="server" href="/kho-luyen-tap" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
+                    <div class="class-item__name green-text">Test</div>
                 </a>
             </div>
 

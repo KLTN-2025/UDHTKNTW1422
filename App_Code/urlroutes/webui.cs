@@ -178,6 +178,10 @@ public class webui
         list.Add("modulegiahangoithpt|app-gia-han-goi-thpt|~/web_module/module_THPT/thpt_RenewPackage.aspx");
 
 
+        //Kho luyện tập
+        list.Add("webdanhsachbailuyentap|kho-luyen-tap|~/web_module/KhoLuyenTap/tiengnhat_KhoLuyenTap.aspx");
+
+
         //Game Toán+Tiếng_Anh+Tiếng_Việt
         list.Add("moduleTracNghiemHinh|game-trac-nghiem-hinh-{sach-id}-{baihoc-id}-{baihocchitiet_id}|~/web_module/module_GameTieuHoc/Game_Lop_1/Toan/game_Trac_Nghiem_Hinh.aspx");
         list.Add("moduleTracNghiem|game-trac-nghiem-{sach-id}-{baihoc-id}-{baihocchitiet_id}|~/web_module/module_GameTieuHoc/Game_Lop_1/Toan/game_Trac_Nghiem.aspx");
