@@ -151,7 +151,8 @@ public class webui
         //APP THCS - THPT
         list.Add("moduledanhmucthcs|app-thcs|~/web_module/module_THCS/thcs_Home.aspx");
         list.Add("moduledanhmucthpt|app-thpt|~/web_module/module_THPT/thpt_Home.aspx");
-        list.Add("moduledanhmuckhoithcs|app-danh-muc-khoi-thcs-{khoi-id}|~/web_module/module_THCS/thcs_DanhMucSach.aspx");
+        //list.Add("moduledanhmuckhoithcs|app-danh-muc-khoi-thcs-{khoi-id}|~/web_module/module_THCS/thcs_DanhMucSach.aspx");
+        list.Add("moduledanhmuckhoithcs|app-danh-muc-khoi-thcs-{khoi-id}|~/web_module/module_THCS/thcs_DanhMucKhoi.aspx");
         list.Add("moduledanhmuckhoithpt|app-danh-muc-khoi-thpt-{khoi-id}|~/web_module/module_THPT/thpt_DanhMucKhoi.aspx");
         list.Add("modulebaikiemtrathcs|app-bai-kiem-tra-thcs-{khoi-id}|~/web_module/module_THCS/thcs_BaiKiemTra.aspx");
         list.Add("moduledoimatkhauthcs|app-doi-mat-khau-thcs|~/web_module/module_THCS/thcs_DoiMatKhau.aspx");
@@ -233,7 +234,8 @@ public class webui
         list.Add("modulebaikiemtratieuhoc|bai-kiem-tra-tieu-hoc-{dekiemtra-id}-{lop-id}-{sach-id}|~/web_module/module_TieuHoc/tieuhoc_BaiKiemTra.aspx");
 
         //My url
-        list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc.aspx");
+        //list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc.aspx");
+        list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc_Old.aspx");
         //list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_THCS/thcs_QuanLyTaiKhoan.aspx");
         list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_QuanLyTaiKhoan.aspx");
         list.Add("modulethongtincanhan|app-thong-tin-ca-nhan|~/web_module/module_ThongTinCaNhan.aspx");

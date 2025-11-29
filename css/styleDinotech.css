@@ -478,6 +478,7 @@ body {
     padding: 0.25rem 1rem;
     background: #0b8741;
     background: linear-gradient(90deg, #b51a1a 0%, #ff3a3a 50%, #b51a1a 100%);
+    z-index: 999;
 }
 
     .header-page .navbar .navbar-brand {
@@ -904,7 +905,7 @@ body {
     position: relative;
     padding: 3rem 0;
     background-color: transparent;
-    background-image: url(/images/image_THCS/bg-block-3.jpg);
+    background-image: url(/images/bg-red-3.png);
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center;
@@ -1712,7 +1713,7 @@ body {
     .block-footer .contact-info {
         /*margin-bottom: 1.25rem;*/
         position: relative;
-        background-color: #da3a3a;
+        background-color: #ca4232;
         margin-top: 4rem;
         padding: 2rem 0;
     }

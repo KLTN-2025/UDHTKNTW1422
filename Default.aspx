@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+<%@ Register Src="~/web_usercontrol/global_LandingPage_Menu.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -95,71 +98,25 @@
     <form id="form1" runat="server">
         <div class="page-view --home ">
             <header class="header-page wow bounceIn">
-                <nav class="navbar navbar-expand navbar-light">
+                <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
+               <%-- <nav class="navbar navbar-expand navbar-light">
                     <div class="container">
                         <a class="navbar-brand" href="/koigo-trang-chu">
                             <img src="/images/logo_page.png" alt="" srcset="" /></a>
                         <div class="collapse navbar-collapse justify-content-md-between">
                             <ul class="navbar-nav">
-                               <%-- <li class="nav-item">
-                                    <a class="nav-link" href="/koigo-trang-chu">TRANG CHỦ </a>
-                                </li>--%>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/app-danh-muc-khoi-thcs-6">KHỐI 6</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/app-danh-muc-khoi-thcs-7">KHỐI 7</a>
                                 </li>
-                                <%-- <li class="nav-item">
-                                    <a class="nav-link" href="#">TIN TỨC </a>
-                                </li>--%>
-                                <%--<li class="nav-item dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="mainDropdown"
-                                        role="button"
-                                        data-toggle="dropdown">KHỐI
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="mainDropdown">
-                                        <!-- Submenu -->
-                                        <div class="dropdown-submenu">
-                                            <a
-                                                class="dropdown-item dropdown-toggle"
-                                                href="#"
-                                                id="submenuDropdown">THCS
-</a>
-                                            <div class="dropdown-menu" aria-labelledby="submenuDropdown">
-                                                <a class="dropdown-item" href="#">Khối 6</a>
-                                                <a class="dropdown-item" href="#">Khối 7</a>
-                                                <a class="dropdown-item" href="#">Khối 8</a>
-                                                <a class="dropdown-item" href="#">Khối 9</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="dropdown-submenu">
-                                            <a
-                                                class="dropdown-item dropdown-toggle"
-                                                href="#"
-                                                id="submenuDropdown2">THPT
-              </a>
-                                            <div class="dropdown-menu" aria-labelledby="submenuDropdown2">
-                                                <a class="dropdown-item" href="#">Khối 10</a>
-                                                <a class="dropdown-item" href="#">Khối 11</a>
-                                                <a class="dropdown-item" href="#">Khối 12</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>--%>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/app-danh-muc-khoi-thcs-8">KHỐI 8</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/app-danh-muc-khoi-thcs-9">KHỐI 9</a>
                                 </li>
-                                <%--<li class="nav-item">
-                                    <a class="nav-link" href="/dinotech-tin-tuc">GÓC PHỤ HUYNH </a>
-                                </li>--%>
                                 <li class="nav-item d-md-none">
                                     <a class="nav-link" href="../app-register">ĐĂNG KÍ </a>
                                 </li>
@@ -177,11 +134,8 @@
                                 </li>
                             </ul>
                         </div>
-                        <%-- <div class="menu-main">
-                            
-                        </div>--%>
                     </div>
-                </nav>
+                </nav>--%>
             </header>
             <%--<section class="flower">
                 <div class="container">
@@ -234,34 +188,8 @@
                     </div>
                 </div>
             </section>--%>
-            <section class="block-1">
-                <div class="banner-img  wow bounceIn">
-                    <img class="img-bg" src="/images/image_THCS/banner-block-2.jpg" alt="hoc sinh" />
-                </div>
-
-                <%--<div class="container">
-                    <div class="content">
-                        <h2 class="highlight-text gold-text">Nỗ lực học tập<br />
-                            Xây dựng ước mơ!</h2>
-                        <div class="text-container shadow--red">
-                            <p>
-                                <strong>Website</strong> cung cấp môi trường học tập toàn diện các môn.
-                                Từ video bài giảng cho tới luyện tập trắc nghiệm và bài kiểm tra định kì.
-            Các em hãy nỗ lực để xây dựng ước mơ.
-                           
-                            </p>
-                        </div>
-                    </div>
-                </div>--%>
-            </section>
+            
             <section class="block-2">
-                <%--<img class="img-silk" src="/images/image_THCS/silk-block-2.png" alt="hoc sinh" />--%>
-                <%-- <div class="arrow-item wow bounceIn">
-                    <img src="/images/image_THCS/bg-arrow1.png" alt="Alternate Text" />
-                </div>--%>
-
-
-
                 <div class="container">
                     <ul class="nav nav-pills nav-diamond wow bounceIn" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -288,7 +216,7 @@
                                             <button class="-video__btn" id="btnPlayVideo-1" type="button" onclick="funcShowVideo(this.getAttribute('data-id'),this.getAttribute('data-url'))" data-id="1" data-url="https://www.youtube.com/embed/aKTLTwYoZyI?si=0P0cyZFkQRXUBABE&autoplay=1"><span></span></button>--%>
                                             <div id="video-1" class="embed-responsive embed-responsive-16by9">
                                                 .
-                                                <%--<iframe id="iframe-video-1" class="embed-responsive-item" src="<%= linkvideotrietli %>" allowfullscreen=""></iframe>--%>
+                                                <iframe id="iframe-video-1" class="embed-responsive-item" src="https://www.youtube.com/embed/9--ZuwPXs8c?si=u6wHk7xclZ04Rjvz" allowfullscreen=""></iframe>
                                             </div>
                                         </div>
 
@@ -364,13 +292,18 @@
                 </div>
                 <%--<img class="img-footer" src="/images/image_THCS/block-2-footer.png" alt="" />--%>
             </section>
+            <section class="block-1">
+                <div class="banner-img  wow bounceIn">
+                    <img class="img-bg" src="/images/banner-block-2.png" alt="hoc sinh" />
+                </div>
+            </section>
             <section class="block-3">
                 <div class="header-main wow bounceIn">
                     <h2 class="">Cùng khám phá quy trình học tập khi<br />
                         đăng kí khoá học tại KoiGo</h2>
                 </div>
                 <div class="wow bounceIn">
-                    <img width="100%" class="d-none d-md-block" src="images/image_THCS/block-4.png" alt="khám phá" />
+                    <img width="100%" class="d-none d-md-block" src="images/block-4.png" alt="khám phá" />
                     <img width="100%" class="d-md-none" src="images/image_THCS/block-4-phone.jpg" alt="khám phá" />
                 </div>
 
@@ -491,8 +424,8 @@ Khuyến khích học sinh<span class="highlight"> phấn đấu, nâng cao </sp
             <section class="block-footer wow bounceIn">
                 <div class="form-register">
                     <div class="banner-register">
-                        <img class="d-md-none" src="/images/image_THCS/bg-register-left-desktop.png" alt="Alternate Text" />
-                        <img class="d-md-block d-none" src="/images/image_THCS/bg-register-left-desktop.png" alt="Alternate Text" />
+                        <img class="d-md-none" src="/images/bg-register-left-desktop.png" alt="Alternate Text" />
+                        <img class="d-md-block d-none" src="/images/bg-register-left-desktop.png" alt="Alternate Text" />
                     </div>
                     <div class="container">
                         <div class="register-main">
@@ -529,7 +462,7 @@ Khuyến khích học sinh<span class="highlight"> phấn đấu, nâng cao </sp
                     </div>
                 </div>
                 <div class="contact-info">
-                    <img src="/images/image_THCS/block-footer-top.png" class="bg-top" alt="Alternate Text" />
+                    <img src="/images/block-footer-top.png" class="bg-top" alt="Alternate Text" />
                     <div class=" container">
                         <div class="row">
                             <div class="col-sm-4 mb-4 mb-sm-0">

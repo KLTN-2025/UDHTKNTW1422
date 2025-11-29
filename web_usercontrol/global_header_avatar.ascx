@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="global_header_avatar.ascx.cs" Inherits="web_usercontrol_global_header_avatar" %>
 
 <div class="header-avatar-view">
-    <a href="/app-quan-li-tai-khoan-thcs" class="user-avatar">
+    <a href="/app-quan-li-tai-khoan" class="user-avatar">
         <img id="imgAvatar" src="<%=link_image %>" class="user-avatar__image" />
     </a>
     <div class="info-right">
