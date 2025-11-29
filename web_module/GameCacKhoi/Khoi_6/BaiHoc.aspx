@@ -23,7 +23,7 @@
             }
     </style>
     <script src="/js/jquery-3.5.1.min.js"></script>
-    <script src="https://unpkg.com/wanakana@5.0.0/umd/wanakana.min.js"></script>
+    <script src="https://unpkg.com/wanakana"></script>
     <title><%= baihoc %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -116,42 +116,33 @@
                             }
                         }
 
-                        /* Đúng: Viền xanh, đổ bóng xanh */
-                        .card-correct {
-                            border: 3px solid #2ecc71 !important; /* !important để đè lên style cũ */
-                            box-shadow: 0 0 15px rgba(46, 204, 113, 0.6) !important;
-                            transition: all 0.3s ease;
+                        .btn-mic.locked {
+                            pointer-events: none; /* Chặn không cho bấm chuột */
+                            cursor: default;
+                            border-color: transparent; /* Bỏ viền xám nếu thích */
                         }
 
-                        /* Sai: Viền đỏ, hiệu ứng rung lắc */
-                        .card-incorrect {
-                            border: 3px solid #e74c3c !important;
-                            box-shadow: 0 0 15px rgba(231, 76, 60, 0.6) !important;
-                            animation: shake 0.5s;
+                        /* Style cho trường hợp ĐÚNG */
+                        .btn-mic.btn-success {
+                            background-color: #e8f8f5; /* Nền xanh nhạt cho đẹp */
+                            border: 1px solid #2ecc71;
                         }
 
-                        /* Giữ nguyên hiệu ứng rung lắc cũ */
-                        @keyframes shake {
-                            0% {
-                                transform: translateX(0);
+                            .btn-mic.btn-success i {
+                                color: #2ecc71; /* Icon màu xanh */
+                                font-size: 20px;
                             }
 
-                            25% {
-                                transform: translateX(-5px);
-                            }
-
-                            50% {
-                                transform: translateX(5px);
-                            }
-
-                            75% {
-                                transform: translateX(-5px);
-                            }
-
-                            100% {
-                                transform: translateX(0);
-                            }
+                        /* Style cho trường hợp SAI */
+                        .btn-mic.btn-failure {
+                            background-color: #fdebd0; /* Nền đỏ cam nhạt */
+                            border: 1px solid #e74c3c;
                         }
+
+                            .btn-mic.btn-failure i {
+                                color: #e74c3c; /* Icon màu đỏ */
+                                font-size: 20px;
+                            }
                     </style>
                     <div class="list-vocabulary --item-<%= itemchucai %>">
                         <asp:Repeater runat="server" ID="rpVocabulary">
@@ -168,7 +159,7 @@
                                             <i class="fa fa-microphone"></i>
                                         </button>
                                         <%--<audio id="audio-playback-<%#Eval("nhanbiet_id") %>" controls style="display: none; width: 100%; margin-top: 5px;"></audio>--%>
-                                        <input type="text" id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" data-answer='<%#Eval("nhanbiet_nhom") %>' data-checked='false' readonly placeholder="Nhấn Mic để bắt đầu nói..."  />
+                                        <input type="text" id="input-result-<%#Eval("nhanbiet_id") %>" class="input-result form-control" data-answer='<%#Eval("nhanbiet_nhom") %>' data-checked='false' readonly placeholder="Nhấn Mic để bắt đầu nói..." style="display: none;" />
                                     </div>
                                 </div>
                             </ItemTemplate>
@@ -208,9 +199,10 @@
                         window.itemRecognitions = {};
                         const audioCorrect = new Audio('/mp3/audio_right.mp3');
                         const audioWrong = new Audio('/mp3/audio_false.mp3');
+                        var caudungstt = 0, tongstt = document.querySelectorAll('.item-vocabulary-wrapper').length;
+                        console.log("Tổng số câu bài nói: " + tongstt);
 
                         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
                         async function startRecognition(btn, id, icon) {
                             if (!SpeechRecognition) {
                                 alert("Trình duyệt không hỗ trợ. Hãy dùng Chrome/Edge.");
@@ -293,58 +285,59 @@
                                         }
                                     }
 
-                                    // Gán kết quả tạm thời
                                     if (resultInput) {
                                         resultInput.value = finalTranscript || interimTranscript;
                                     }
 
-                                    // Khi có kết quả cuối cùng
-                                    if (finalTranscript && resultInput && targetCard) {
-                                        // 1. Lấy và chuẩn hóa đáp án người dùng (bao gồm logic Katakana/Hiragana)
+                                    // Khi có kết quả cuối cùng (Final)
+                                    if (finalTranscript && resultInput) {
+                                        // 1. Lấy và chuẩn hóa
                                         const convertedUserText = normalizeAndConvertText(id, finalTranscript);
-
-                                        // 2. Lấy và chuẩn hóa đáp án DB
                                         let correctAnswer = resultInput.getAttribute('data-answer');
                                         const dbText = normalizeAndConvertText(id, correctAnswer);
 
-                                        // 3. So sánh
+                                        // 2. So sánh
                                         let isCorrect = (convertedUserText === dbText);
+                                        console.log(`User: ${convertedUserText} | DB: ${dbText} | Result: ${isCorrect}`);
 
-                                        console.log(`User (converted): ${convertedUserText} | DB (normalized): ${dbText}`);
+                                        // --- SỬA LẠI ĐOẠN NÀY: LOGIC ĐỔI ICON & KHÓA NÚT ---
 
-                                        // --- LOGIC ĐỔI MÀU & AUDIO ---
+                                        // Dừng ghi âm ngay lập tức (để icon loading biến mất trước khi ta đổi icon kết quả)
+                                        stopRecognition(btn, id, icon);
+
+                                        // Xóa class mic/stop/recording cũ
+                                        icon.className = ''; // Reset hết class icon
+                                        btn.classList.remove('recording');
+
+                                        // Thêm class để khóa nút (pointer-events: none)
+                                        btn.classList.add('locked');
+
                                         if (isCorrect) {
-                                            targetCard.classList.add('card-correct');
-                                            targetCard.classList.remove('card-incorrect');
+                                            // --- TRƯỜNG HỢP ĐÚNG ---
+                                            // Đổi sang icon tích xanh (fa-check)
+                                            icon.className = 'fa fa-check';
+                                            btn.classList.add('btn-success'); // Thêm class xanh
+
                                             audioCorrect.currentTime = 0;
                                             audioCorrect.play().catch(e => { });
+                                            caudungstt++;
                                         } else {
-                                            targetCard.classList.add('card-incorrect');
-                                            targetCard.classList.remove('card-correct');
+                                            // --- TRƯỜNG HỢP SAI ---
+                                            // Đổi sang icon X đỏ (fa-times)
+                                            icon.className = 'fa fa-times';
+                                            btn.classList.add('btn-failure'); // Thêm class đỏ
+
                                             audioWrong.currentTime = 0;
                                             audioWrong.play().catch(e => { });
                                         }
-
-                                        // --- LOGIC TÍNH ĐIỂM (Bắt buộc phải nằm trong onresult/onend) ---
-                                        //const isQuestionChecked = targetCard.getAttribute('data-checked');
-
-                                        //if (isQuestionChecked === 'false') {
-                                        //    // Tính tổng câu (chỉ tính lần đầu tiên)
-                                        //    window.totalPronunciationQuestions++;
-
-                                        //    // Tính câu đúng
-                                        //    if (isCorrect) {
-                                        //        window.correctPronunciationAnswers++;
-                                        //    }
-
-                                        //    // Đánh dấu đã tính điểm câu này
-                                        //    targetCard.setAttribute('data-checked', 'true');
-                                        //}
                                     }
                                 };
 
                                 recognition.onend = () => {
-                                    stopRecognition(btn, id, icon);
+                                    // Chỉ chạy stop nếu nút chưa bị khóa (chưa có kết quả)
+                                    if (!btn.classList.contains('locked')) {
+                                        stopRecognition(btn, id, icon);
+                                    }
                                 };
 
                                 recognition.onerror = (event) => {
@@ -777,7 +770,7 @@
                     <div class="">
                         <div class="form-mutichoise ">
                             <asp:Repeater ID="rpCauTraLoi" runat="server" OnItemDataBound="rpCauTraLoi_ItemDataBound">
-                                <ItemTemplate>                                    
+                                <ItemTemplate>
                                     <div class="game-header">
                                         <div class="game-header__title text-center">
                                             <%#Eval("cauhoi_titlecauhoi") %>
@@ -1027,14 +1020,15 @@
 
         });
         let diem = 0;
-        let tongdiem = 0;
+        let tongdiem = 10;
         if (tongtracnghiem == 5) {
-            diem = caudungtracnghiem * 2;
-            tongdiem = tongtracnghiem * 2;
+            diem = caudungtracnghiem + caudungstt;
+            //tongdiem = tongtracnghiem + tongstt;
         }
         else {
-            diem = caudungtracnghiem * 2.5;
-            tongdiem = tongtracnghiem * 2.5;
+            const tongCau = tongtracnghiem + tongstt;
+            const weight = 10 / tongCau;
+            diem = (caudungtracnghiem + caudungstt) * weight;
         }
         setTimeout(function () {
             let sao;
@@ -1042,7 +1036,7 @@
             if (diem > 8) {
                 sao = '3';
             }
-            else if (diem > 5) {
+            else if (diem >= 5) {
                 sao = '2';
                 document.getElementById("btnNextLesson").style.pointerEvents = "auto";
                 document.getElementById("btnNextLesson").style.opacity = "1";
