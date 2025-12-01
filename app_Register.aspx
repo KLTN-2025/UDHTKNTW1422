@@ -3,7 +3,7 @@
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         .step-contact .step-content .section-contact .form-contact__title {
@@ -12,11 +12,11 @@
     </style>
     <script src="admin_js/sweetalert.min.js"></script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Menu" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="Server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" Runat="Server">
+<asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" runat="Server">
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" Runat="Server">
+<asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <asp:ScriptManager runat="server" />
     <div id="" class="step-contact">
@@ -72,7 +72,45 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="step step-2" style="<%= style2 %>">
+                        <div class="step step-2" style="display: none;">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11">
+                                    <div class="step-block">
+                                        <h3 class="form-contact__title">Xác thực Email</h3>
+                                        <p>Mã xác thực đã được gửi đến: <span id="lblEmailShow" style="font-weight: bold; color: green"></span></p>
+
+                                        <div class="input-group-animate">
+                                            <input id="txtOTP" type="text" class="form-input" placeholder="Nhập mã 6 số" autocomplete="off" />
+                                            <label class="lb-input">Mã OTP</label>
+                                        </div>
+
+                                        <div class="text-center" style="margin-top: 20px;">
+                                            <div class="row button">
+                                                <button type="button" class="prev-step buttom-green hvr-pulse-grow">QUAY LẠI</button>
+                                                <button type="button" id="btnVerifyOTP" class="buttom-green hvr-pulse-grow">XÁC NHẬN</button>
+                                            </div>
+                                            <br />
+                                            <a href="javascript:void(0)" id="btnResendOTP" style="font-size: 14px; margin-top: 10px; display: inline-block;">Gửi lại mã?</a>
+                                        </div>
+                                        <style>
+                                            .row.button {
+                                                display: flex;
+                                                justify-content: space-between;
+                                                gap: 10px; /* nếu muốn có khoảng cách giữa 2 nút */
+                                            }
+
+                                                .row.button button {
+                                                    flex: 1; /* cho hai nút cùng chiều rộng, muốn khác thì bỏ dòng này */
+                                                }
+                                        </style>
+                                        <%--<div class="text-center" style="margin-top: 10px;">
+                                            <button type="button" class="prev-step">Quay lại</button>
+                                        </div>--%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step step-3" style="<%= style2 %>">
                             <div class="row justify-content-center">
                                 <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11">
                                     <div class="step-block">
@@ -333,8 +371,8 @@
         }
     </script>
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" Runat="Server">
+<asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" runat="Server">
 </asp:Content>
-<asp:Content ID="Content6" ContentPlaceHolderID="Footer" Runat="Server">
+<asp:Content ID="Content6" ContentPlaceHolderID="Footer" runat="Server">
 </asp:Content>
 
