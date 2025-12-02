@@ -30,6 +30,7 @@
                         <div class="step-container d-flex justify-content-between">
                             <div class="step-circle step-one">1</div>
                             <div class="step-circle step-two">2</div>
+                            <div class="step-circle step-three">3</div>
                         </div>
                     </div>
                 </div>
@@ -77,7 +78,7 @@
                                 <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11">
                                     <div class="step-block">
                                         <h3 class="form-contact__title">Xác thực Email</h3>
-                                        <p>Mã xác thực đã được gửi đến: <span id="lblEmailShow" style="font-weight: bold; color: green"></span></p>
+                                        <p>Mã xác thực đã được gửi đến email của bạn: <span id="lblEmailShow" style="font-weight: bold; color: green"></span></p>
 
                                         <div class="input-group-animate">
                                             <input id="txtOTP" type="text" class="form-input" placeholder="Nhập mã 6 số" autocomplete="off" />
@@ -87,7 +88,7 @@
                                         <div class="text-center" style="margin-top: 20px;">
                                             <div class="row button">
                                                 <button type="button" class="prev-step buttom-green hvr-pulse-grow">QUAY LẠI</button>
-                                                <button type="button" id="btnVerifyOTP" class="buttom-green hvr-pulse-grow">XÁC NHẬN</button>
+                                                <button type="button" id="btnVerifyOTP" class="buttom-green hvr-pulse-grow" onclick="submitOtp()">XÁC NHẬN</button>
                                             </div>
                                             <br />
                                             <a href="javascript:void(0)" id="btnResendOTP" style="font-size: 14px; margin-top: 10px; display: inline-block;">Gửi lại mã?</a>
@@ -110,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="step step-3" style="<%= style2 %>">
+                        <div class="step step-3" style="display: none;"<%--style="<%= style2 %>"--%>>
                             <div class="row justify-content-center">
                                 <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11">
                                     <div class="step-block">
@@ -141,6 +142,7 @@
                                 </div>
                             </div>
                         </div>
+                        <a href="javascript:void(0)" id="btnsendMail" runat="server" onserverclick="btnsendMail_ServerClick"></a>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
@@ -230,7 +232,7 @@
         var updateProgressBar;
 
         function displayStep(stepNumber) {
-            if (stepNumber >= 1 && stepNumber <= 2) {
+            if (stepNumber >= 1 && stepNumber <= 3) {
                 $(".step-" + currentStep).hide();
                 $(".step-" + stepNumber).show();
                 currentStep = stepNumber;
@@ -243,9 +245,10 @@
 
 
             $(".next-step").click(function () {
-                if (currentStep < 2) {
+                if (currentStep < 3) {
                     valid = true;
                     isValidPhone = true;
+                    isValidEmail = true;
                     y = $("input.form-input, select"); //get input and select option
                     _validate = $("input.validateForm"); //input required
                     for (i = 0; i < y.length; i++) {
@@ -266,7 +269,12 @@
                     if (!phoneRegex.test(phoneInput)) {
                         isValidPhone = false;
                     }
-
+                    //check validation email
+                    const emailInput = document.getElementById("Wrapper_txtEmail").value;
+                    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!regexEmail.test(emailInput)) {
+                        isValidEmail = false;
+                    }
                     if (valid == false) {
                         swal('Vui lòng nhập đầy đủ thông tin trước khi qua bước tiếp theo', '', 'warning');
                         return;
@@ -275,7 +283,29 @@
                         swal('Vui lòng nhập đúng số điện thoại Việt Nam (10 số, bắt đầu bằng 03, 05, 07, 08 hoặc 09).', '', 'warning').then(function () { document.getElementById("Wrapper_txtSoDienThoai").focus(); })
                         return;
                     }
-                    // Check trùng SĐT qua AJAX (gọi nhanh đến server)
+                    if (isValidEmail == false) {
+                        swal('Email không đúng định dạng.', '', 'warning').then(function () { document.getElementById("Wrapper_txtEmail").focus(); })
+                        return;
+                    }
+                    $("#lblEmailShow").text(emailInput)
+                    // Check trùng SĐT qua AJAX 
+                    // Gọi server gửi OTP mà không reload
+                    //$.ajax({
+                    //    type: "POST",
+                    //    url: "app_Register.aspx/SendOtp",
+                    //    data: JSON.stringify({ email: emailInput }),
+                    //    contentType: "application/json; charset=utf-8",
+                    //    dataType: "json",
+                    //    success: function () {
+                    //        // Chuyển sang step2
+                    //        $("#step1").hide();
+                    //        $("#step2").show();
+                    //    },
+                    //    error: function (err) {
+                    //        alert("Lỗi gửi OTP: " + err.responseText);
+                    //    }
+                    //});
+
                     $.ajax({
                         url: '/Handler/checkPhone_Register.ashx',
                         type: 'GET',
@@ -284,18 +314,42 @@
                             if (response === "exists") {
                                 swal('Số điện thoại này đã được đăng ký trước đó.', '', 'warning');
                             } else if (response === "ok") {
-                                // → Cho qua bước tiếp theo
-                                $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
-                                //gán lại sđt cho input tài khoản
-                                $("#txtTaiKhoan").val(phoneInput);
-                                currentStep++;
-                                setTimeout(function () {
-                                    $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
-                                    $(".step-" + currentStep)
-                                        .show()
-                                        .addClass("animate__animated animate__fadeInRight");
-                                    updateProgressBar();
-                                }, 500);
+                                // 🔥 Gửi OTP trước khi chuyển step
+                                $.ajax({
+                                    url: 'app_Register.aspx/SendOtp',
+                                    type: 'POST',
+                                    data: JSON.stringify({ email: emailInput }),
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (otpResult) {
+
+                                        if (otpResult.d === "OK") {
+
+                                            // Gán lại sđt cho input tài khoản
+                                            $("#txtTaiKhoan").val(phoneInput);
+
+                                            // Chuyển step
+                                            $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+
+                                            currentStep++;
+
+                                            setTimeout(function () {
+                                                $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+                                                $(".step-" + currentStep)
+                                                    .show()
+                                                    .addClass("animate__animated animate__fadeInRight");
+
+                                                updateProgressBar();
+                                            }, 500);
+
+                                        } else {
+                                            swal('Không gửi được OTP. Vui lòng thử lại.', '', 'error');
+                                        }
+                                    },
+                                    error: function () {
+                                        swal('Lỗi máy chủ khi gửi OTP.', '', 'error');
+                                    }
+                                });
                             } else {
                                 swal('Lỗi kiểm tra số điện thoại. Vui lòng thử lại.', '', 'error');
                             }
@@ -304,19 +358,7 @@
                             swal('Không thể kết nối đến máy chủ để kiểm tra số điện thoại.', '', 'error');
                         }
                     });
-                    //else {
-                    //    $(".step-" + currentStep).addClass(
-                    //        "animate__animated animate__fadeOutLeft"
-                    //    );
-                    //    currentStep++;
-                    //    setTimeout(function () {
-                    //        $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
-                    //        $(".step-" + currentStep)
-                    //            .show()
-                    //            .addClass("animate__animated animate__fadeInRight");
-                    //        updateProgressBar();
-                    //    }, 500);
-                    //}
+                    
                 }
             });
 
@@ -368,6 +410,42 @@
             }
 
             return true;
+        }
+        function submitOtp() {
+            $(".next-step").click();
+            var otp = $("#txtOTP").val();
+            if (otp.trim() === "") {
+                alert("Vui lòng nhập OTP!");
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "app_Register.aspx/VerifyOtp",
+                data: JSON.stringify({ otpClient: otp }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (res) {
+                    var result = res.d;
+                    if (result === "OK") {
+                        $(".next-step").click();
+                    }
+                    else if (result === "INVALID") {
+                        swal('OTP không đúng!', '', 'warning')
+                    }
+                    else if (result === "EXPIRED") {
+                        swal('OTP đã hết hạn, vui lòng gửi lại!', '', 'warning')
+                    }
+                },
+                error: function (err) {
+                    alert("Lỗi hệ thống");
+                }
+            });
+        }
+
+        function showStep() {
+            $(".next-step").click();
+
         }
     </script>
 </asp:Content>

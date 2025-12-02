@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -51,4 +53,102 @@ public partial class app_Register : System.Web.UI.Page
         ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "AlertBox", "swal('Đăng kí tài khoản thành công!', '','success').then(function(){window.location = '/app-login';})", true);
 
     }
+
+    protected void btnsendMail_ServerClick(object sender, EventArgs e)
+    {
+        SendMail(txtEmail.Value.Trim());
+        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "text", "showStep()", true); 
+    }
+
+    private bool SendMail(string email)
+    {
+
+        if (email != "")
+        {
+            try
+            {
+                var fromAddress = "thongbaovietnhatschool@gmail.com";//  Email Address from where you send the mail 
+                var toAddress = email;
+                const string fromPassword = "neiabcekdjluofid";
+                string subject, title;
+                title = "Thông báo";
+                subject = "<!DOCTYPE html><html><head><title></title></head><body ><div>" +
+                "<h3 style=\"margin-top:0px; text-align:center; color:#029ada\">Mã OTP của bạn là: <b>12345</b></h3>" +
+                "</div></body></html>";
+                var smtp = new System.Net.Mail.SmtpClient();
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
+                    smtp.Timeout = 20000;
+                }
+                MailMessage mm = new MailMessage();
+                mm.From = new MailAddress(fromAddress, "KoiGo");
+                mm.Subject = title;
+                mm.To.Add(toAddress);
+                mm.IsBodyHtml = true;
+                mm.Body = subject;
+                smtp.Send(mm);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        else
+            return false;
+    }
+    [System.Web.Services.WebMethod]
+    public static string SendOtp(string email)
+    {
+        try
+        {
+            // Tạo OTP
+            Random rnd = new Random();
+            string otp = rnd.Next(100000, 999999).ToString();
+
+            HttpContext.Current.Session["OTP"] = otp;
+
+            // Gửi email
+            MailMessage msg = new MailMessage();
+
+            // QUAN TRỌNG: GÁN FROM
+            msg.From = new MailAddress("thongbaovietnhatschool@gmail.com", "KoiGo!");
+
+            msg.To.Add(email);
+            msg.Subject = "OTP xác thực";
+            msg.Body = "Mã OTP của bạn là: " + otp;
+            msg.IsBodyHtml = false;
+
+            SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            client.EnableSsl = true;
+            client.Credentials = new NetworkCredential("thongbaovietnhatschool@gmail.com", "neiabcekdjluofid");
+
+            client.Send(msg);
+
+            return "OK";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+    [System.Web.Services.WebMethod]
+    public static string VerifyOtp(string otpClient)
+    {
+        var sessionObj = HttpContext.Current.Session["OTP"];
+        string otpServer = sessionObj == null ? null : sessionObj.ToString();
+
+        if (otpServer == null)
+            return "EXPIRED"; // OTP chưa gửi hoặc đã hết hạn
+
+        if (otpClient == otpServer)
+            return "OK";
+
+        return "INVALID";
+    }
+
 }
