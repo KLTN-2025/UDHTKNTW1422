@@ -9,7 +9,7 @@
                     <%--<li class="nav-item">
                         <a class="nav-link" href="/koigo-trang-chu">TRANG CHỦ </a>
                     </li>--%>
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link" href="/app-danh-muc-khoi-thcs-6">KHỐI 6 </a>
                     </li>
                     <li class="nav-item">
@@ -20,7 +20,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/app-danh-muc-khoi-thcs-9">KHỐI 9 </a>
-                    </li>
+                    </li>--%>
                     <%--<li class="nav-item">
                         <a class="nav-link" href="../dinotech-tin-tuc">GÓC PHỤ HUYNH </a>
                     </li>--%>
