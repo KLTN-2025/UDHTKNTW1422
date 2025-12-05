@@ -8,9 +8,9 @@
         }
 
         .title_lesson_s {
-            font-size:30px;
-            font-weight:bold;
-            color:black;
+            font-size: 30px;
+            font-weight: bold;
+            color: black;
         }
     </style>
     <link href="../../css/listBooks.css" rel="stylesheet" />
@@ -23,121 +23,273 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
     <asp:ScriptManager runat="server" />
-    <div id="" class="step-contact" style="justify-content: center; background-image: url(/images/back_bai.jpg)";>
-        <div class="block-main pt-3 pb-5 mb-3 px-3">
-            <div id="lessonContainer">
-                <div class="unit-list__title">Học bảng chữ cái Hiragana</div>
-                <div class="container-fluid">
-                    <div class="title_lesson_s">Nội dung bài 1: </div>
-                    <div class="row">
-                        <div class="col-4 col-sm-4 col-md-4">
-                            <div class="lesson-row">
-                                <a href="javascript:void(0)" class="lesson-item" id="id_255" onclick="xembai(255)" tabindex="-1">
-                                    <div class="lesson-item__avatar">
-                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-a.png">
+    <div class="step-contact" style="justify-content:center; background-image: url(/images/back_bai.jpg)";>
+    <div class="block-main pt-3 pb-5 mb-3 px-3">
+        <div id="lessonContainer">
+            <div class="unit-list__title">Học bảng chữ cái Hiragana</div>
+            <div class="container-fluid">
+                <%--<div id="lesson_thing"></div>--%>
+               <div class="title_lesson_s"> Bài 1 : Hàng A : a, i, u, e, o </div>
+                <div class="row">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="lesson-row">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_255" onclick="xembai(255)" tabindex="-1">
+                                <div class="lesson-item__avatar">
+                                    <img src="/imageGame/Bang_chu_cai_Hiragana/chu-a.png">
+                                </div>
+                                <div class="lesson-item__content">
+                                    <div class="lesson-item__content--title">
+                                       Lý thuyết
                                     </div>
-                                    <div class="lesson-item__content">
-                                        <div class="lesson-item__content--title">
-                                            Bài 1 : Hàng A : a, i, u, e, o
-                                        </div>
-                                        <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 1
-                                        </div>
-                                        <div class="lesson-item__content--decription"></div>
-                                        <div class="rating-list"></div>
+                                    <div class="lesson-item__content--view">
+                                        <i class="fa fa-eye"></i>&nbsp; 1
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-4 col-md-4">
-                            <div class="lesson-row">
-                                <a href="javascript:void(0)" class="lesson-item" id="id_256" onclick="xembai(256)">
-                                    <div class="lesson-item__avatar">
-                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-a.png">
-                                    </div>
-                                    <div class="lesson-item__content">
-                                        <div class="lesson-item__content--title">
-                                            Bài 1 : Luyện tập 1
-                                        </div>
-                                        <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
-                                        </div>
-                                        <div class="lesson-item__content--decription"></div>
-                                        <div class="rating-list"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-4 col-sm-4 col-md-4">
-                            <div class="lesson-row">
-                                <a href="javascript:void(0)" class="lesson-item" id="id_257" onclick="xembai(257)">
-                                    <div class="lesson-item__avatar">
-                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-a.png">
-                                    </div>
-                                    <div class="lesson-item__content">
-                                        <div class="lesson-item__content--title">
-                                            Bài 1 : Luyện tập 2
-                                        </div>
-                                        <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
-                                        </div>
-                                        <div class="lesson-item__content--decription"></div>
-                                        <div class="rating-list"></div>
-                                    </div>
-                                </a>
-                            </div>
+                                    <div class="lesson-item__content--decription"></div>
+                                    <div class="rating-list"></div>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="title_lesson_s">Nội dung bài 2: </div>
-                    <div class="row">
-                        <div class="col-4 col-sm-4 col-md-4">
-                            <div class="lesson-row">
-                                <a href="javascript:void(0)" class="lesson-item" id="id_258" onclick="xembai(258)">
-                                    <div class="lesson-item__avatar">
-                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ka.png">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="lesson-row">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_256" onclick="xembai(256)">
+                                <div class="lesson-item__avatar">
+                                    <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-a.png">
+                                </div>
+                                <div class="lesson-item__content">
+                                    <div class="lesson-item__content--title">
+                                        Luyện tập
                                     </div>
-                                    <div class="lesson-item__content">
-                                        <div class="lesson-item__content--title">
-                                            Bài 2 : Hàng Ka : ka, ki, ku, ke, ko
-                                        </div>
-                                        <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
-                                        </div>
-                                        <div class="lesson-item__content--decription"></div>
-                                        <div class="rating-list"></div>
+                                    <div class="lesson-item__content--view">
+                                        <i class="fa fa-eye"></i>&nbsp; 0
                                     </div>
-                                </a>
-                            </div>
+                                    <div class="lesson-item__content--decription"></div>
+                                    <div class="rating-list"></div>
+                                </div>
+                            </a>
                         </div>
-                        <div class="col-4 col-sm-4 col-md-4">
-                            <div class="lesson-row">
-                                <a href="javascript:void(0)" class="lesson-item" id="id_259" onclick="xembai(259)">
-                                    <div class="lesson-item__avatar">
-                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ka.png">
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="lesson-row">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_257" onclick="xembai(257)">
+                                <div class="lesson-item__avatar">
+                                    <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-a.png">
+                                </div>
+                                <div class="lesson-item__content">
+                                    <div class="lesson-item__content--title">
+                                        Luyện tập (nâng cao)
                                     </div>
-                                    <div class="lesson-item__content">
-                                        <div class="lesson-item__content--title">
-                                            Bài 2 : Luyện tập 1
-                                        </div>
-                                        <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
-                                        </div>
-                                        <div class="lesson-item__content--decription"></div>
-                                        <div class="rating-list"></div>
+                                    <div class="lesson-item__content--view">
+                                        <i class="fa fa-eye"></i>&nbsp; 0
                                     </div>
-                                </a>
-                            </div>
+                                    <div class="lesson-item__content--decription"></div>
+                                    <div class="rating-list"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="title_lesson_s">Nội dung bài 2: </div>
+                <div class="row">
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="lesson-row">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_258" onclick="xembai(258)">
+                                <div class="lesson-item__avatar">
+                                    <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ka.png">
+                                </div>
+                                <div class="lesson-item__content">
+                                    <div class="lesson-item__content--title">
+                                        Bài 2 : Hàng Ka : ka, ki, ku, ke, ko
+                                    </div>
+                                    <div class="lesson-item__content--view">
+                                        <i class="fa fa-eye"></i>&nbsp; 0
+                                    </div>
+                                    <div class="lesson-item__content--decription"></div>
+                                    <div class="rating-list"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="lesson-row">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_259" onclick="xembai(259)">
+                                <div class="lesson-item__avatar">
+                                    <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ka.png">
+                                </div>
+                                <div class="lesson-item__content">
+                                    <div class="lesson-item__content--title">
+                                        Bài 2 : Luyện tập 1
+                                    </div>
+                                    <div class="lesson-item__content--view">
+                                        <i class="fa fa-eye"></i>&nbsp; 0
+                                    </div>
+                                    <div class="lesson-item__content--decription"></div>
+                                    <div class="rating-list"></div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <a id="btnXemBai" style="display: none" href="javascript:__doPostBack('btnXemBai','')"></a>
-            <input name="txtIDBaiHoc" type="text" id="txtIDBaiHoc" style="display: none">
         </div>
+        <a id="btnXemBai" style="display: none" href="javascript:__doPostBack('btnXemBai','')"></a>
+        <input name="txtIDBaiHoc" type="text" id="txtIDBaiHoc" style="display: none">
+    </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" runat="Server">
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Footer" runat="Server">
+   <%-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const lessons = [
+                // Bài 1: a
+                {
+                    bai: 1,
+                    group: "Bài 1: a",
+                    items: [
+                        { id: 255, img: "/imageGame/Bang_chu_cai_Hiragana/chu-a.png", title: "Lý thuyết", view: 1 },
+                        { id: 256, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-a.png", title: "Ôn tập", view: 0 },
+                        { id: 257, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-a.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 2: i
+                {
+                    bai: 2,
+                    group: "Bài 2: i",
+                    items: [
+                        { id: 300, img: "/imageGame/Bang_chu_cai_Hiragana/chu-i.png", title: "Lý thuyết", view: 2 },
+                        { id: 301, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-i.png", title: "Ôn tập", view: 1 },
+                        { id: 302, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-i.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 3: u
+                {
+                    bai: 3,
+                    group: "Bài 3: u",
+                    items: [
+                        { id: 310, img: "/imageGame/Bang_chu_cai_Hiragana/chu-u.png", title: "Lý thuyết", view: 0 },
+                        { id: 311, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-u.png", title: "Ôn tập", view: 0 },
+                        { id: 312, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-u.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 4: e
+                {
+                    bai: 4,
+                    group: "Bài 4: e",
+                    items: [
+                        { id: 320, img: "/imageGame/Bang_chu_cai_Hiragana/chu-e.png", title: "Lý thuyết", view: 0 },
+                        { id: 321, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-e.png", title: "Ôn tập", view: 0 },
+                        { id: 322, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-e.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 5: o
+                {
+                    bai: 5
+                    group: "Bài 5: o",
+                    items: [
+                        { id: 330, img: "/imageGame/Bang_chu_cai_Hiragana/chu-o.png", title: "Lý thuyết", view: 0 },
+                        { id: 331, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-o.png", title: "Ôn tập", view: 0 },
+                        { id: 332, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-o.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 6: ka
+                {
+                    bai: 6,
+                    group: "Bài 6: ka",
+                    items: [
+                        { id: 340, img: "/imageGame/Bang_chu_cai_Hiragana/chu-ka.png", title: "Lý thuyết", view: 0 },
+                        { id: 341, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ka.png", title: "Ôn tập", view: 0 },
+                        { id: 342, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-ka.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 7: ki
+                {
+                    bai: 7,
+                    group: "Bài 7: ki",
+                    items: [
+                        { id: 350, img: "/imageGame/Bang_chu_cai_Hiragana/chu-ki.png", title: "Lý thuyết", view: 0 },
+                        { id: 351, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ki.png", title: "Ôn tập", view: 0 },
+                        { id: 352, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-ki.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 8: ku
+                {
+                    bai:8,
+                    group: "Bài 8: ku",
+                    items: [
+                        { id: 360, img: "/imageGame/Bang_chu_cai_Hiragana/chu-ku.png", title: "Lý thuyết", view: 0 },
+                        { id: 361, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ku.png", title: "Ôn tập", view: 0 },
+                        { id: 362, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-ku.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 9: ke
+                {
+                    bai:9,
+                    group: "Bài 9: ke",
+                    items: [
+                        { id: 370, img: "/imageGame/Bang_chu_cai_Hiragana/chu-ke.png", title: "Lý thuyết", view: 0 },
+                        { id: 371, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ke.png", title: "Ôn tập", view: 0 },
+                        { id: 372, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-ke.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                },
+
+                // Bài 10: ko
+                {
+                    bai: 10,
+                    groupTitle: "Bài 10: ko",
+                    items: [
+                        { id: 380, img: "/imageGame/Bang_chu_cai_Hiragana/chu-ko.png", title: "Lý thuyết", view: 0 },
+                        { id: 381, img: "/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ko.png", title: "Ôn tập", view: 0 },
+                        { id: 382, img: "/imageGame/Bang_chu_cai_Hiragana/viet-chu-ko.png", title: "Ôn tập (Nâng cao)", view: 0 }
+                    ]
+                }
+            ];
+            const container = document.getElementById("lesson_thing");
+
+            lessons.forEach(bai => {
+                // thêm tiêu đề bài
+                container.innerHTML += `<div class="title_lesson_s">${bai.group}</div><div class="row">`;
+
+                bai.items.forEach(item => {
+                    container.innerHTML +=`
+            <div class="title_lesson_s">${bai.groupTitle}</div>
+            <div class="row">
+        `;
+
+        bai.items.forEach(item => {
+            container.innerHTML += `
+                <div class="col-4 col-sm-4 col-md-4">
+                    <div class="lesson-row">
+                        <a href="javascript:void(0)" class="lesson-item" id="id_${item.id}" onclick="xembai(${item.id})">
+                            <div class="lesson-item__avatar">
+                                <img src="${item.img}">
+                            </div>
+                            <div class="lesson-item__content">
+                                <div class="lesson-item__content--title">${item.title}</div>
+                                <div class="lesson-item__content--view">
+                                    <i class="fa fa-eye"></i>&nbsp; ${item.view}
+                                </div>
+                                <div class="lesson-item__content--decription"></div>
+                                <div class="rating-list"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            `;
+                });
+
+                container.innerHTML += `</div>`; // đóng .row
+            });
+        });
+    </script>--%>
 </asp:Content>
 
