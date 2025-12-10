@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="UI_Hieu.aspx.cs" Inherits="web_module_UI_Hieu_UI_Hieu" %>
 
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu" %>
+<%@ Register Src="~/web_usercontrol/global_LandingPage_Menu_1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu_1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -32,12 +34,13 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
-    <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
+    <%-- <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />--%>
+    <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <asp:ScriptManager runat="server" />
     <div id="" class="step-contact" style="justify-content: center;">
         <div class="back_ui">
             <div class="book-item">
-                <a href="danh-muc-sach-1?khoi=6#id_255" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
+                <a href="<%= hiragana %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
                     <div class="book-card__cover">
                         <div class="book-card__book">
                             <div class="book-card__book-front">
@@ -50,17 +53,16 @@
                     <div>
                         <div class="book-card__title">
                             Bảng chữ cái Hiragana
-                               
                         </div>
                     </div>
                 </a>
             </div>
             <div class="book-item">
-                <a href="danh-muc-sach-1?khoi=6#id_255" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
+                <a href="<%= katakana %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
                     <div class="book-card__cover">
                         <div class="book-card__book">
                             <div class="book-card__book-front">
-                                <img class="book-card__img" src="/images/Bang_chu_cai_Hiragana/Hiragana.jpg">
+                                <img class="book-card__img" src="/images/Bang_chu_cai_Katakana/Katakana.jpg">
                             </div>
                             <div class="book-card__book-back"></div>
                             <div class="book-card__book-side"></div>
@@ -68,8 +70,7 @@
                     </div>
                     <div>
                         <div class="book-card__title">
-                            Bảng chữ cái Hiragana
-                               
+                            Bảng chữ cái Katakana
                         </div>
                     </div>
                 </a>
@@ -82,7 +83,7 @@
 <asp:Content ID="Content6" ContentPlaceHolderID="Footer" runat="Server">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eE7N6jIeHz" crossorigin="anonymous"></script>
 
-    
+
 
 </asp:Content>
 

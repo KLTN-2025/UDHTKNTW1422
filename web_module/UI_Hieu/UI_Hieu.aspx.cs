@@ -16,17 +16,33 @@ public partial class web_module_UI_Hieu_UI_Hieu : System.Web.UI.Page
     {
         int khoi_id = Convert.ToInt32(RouteData.Values["khoi-id"]);
         var getkhoi = from l in db.tbKhoiLops where l.khoilop_id == khoi_id select l;
+    
         var gethiragana = db.tbSoLLDT_LichSuHocSinhXemBaiHocs
-                     .Where(xbh => xbh.sach_id == 1 && xbh.hocsinh_id == hocsinh_id)
-                     .OrderByDescending(xbh => xbh.baihoc_id)
-                     .FirstOrDefault();
+         .Where(xbh => xbh.sach_id == 1 && xbh.hocsinh_id == hocsinh_id)
+         .OrderByDescending(xbh => xbh.baihoc_id)
+         .FirstOrDefault();
         if (gethiragana != null && gethiragana.baihoc_id > 0)
         {
-            hiragana = "danh-muc-sach-1?khoi=6#id_" + (int)gethiragana.baihoc_id;
+            //hiragana = "danh-muc-sach-1?khoi=6#id_" + (int)gethiragana.baihoc_id;
+            hiragana = "danh-muc-sach-1";
         }
         else
         {
             hiragana = "danh-muc-sach-1?khoi=6";
+        }
+        var getkatakana = db.tbSoLLDT_LichSuHocSinhXemBaiHocs
+            .Where(xbh => xbh.sach_id == 2 && xbh.hocsinh_id == hocsinh_id)
+            .OrderByDescending(xbh => xbh.baihoc_id)
+            .FirstOrDefault();
+        if (getkatakana != null && getkatakana.baihoc_id > 0)
+        {
+            //katakana = "danh-muc-sach-2?khoi=6#id_" + (int)getkatakana.baihoc_id;
+            katakana = "danh-muc-sach-2";
+
+        }
+        else
+        {
+            katakana = "danh-muc-sach-2?khoi=6";
         }
     }
 }

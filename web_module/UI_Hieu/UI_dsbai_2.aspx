@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="UI_dsbai.aspx.cs" Inherits="web_module_UI_Hieu_UI_dsbai" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="UI_dsbai_2.aspx.cs" Inherits="web_module_UI_Hieu_UI_dsbai_2" %>
+
 
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu_1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu_1" %>
 
@@ -33,7 +34,7 @@
     <div class="step-contact" style="justify-content:center; background-image: url(/images/bg-red-dangki_nhap-1.png)";>
     <div class="block-main pt-3 pb-5 mb-3 px-3">
         <div id="lessonContainer">
-            <div class="unit-list__title">Học bảng chữ cái Hiragana</div>
+            <div class="unit-list__title">Học bảng chữ cái Katakana</div>
             <div class="container-fluid">
                 <%--<div id="lesson_thing"></div>--%>
                <div class="title_lesson_s"> Bài 1 : Hàng A : a, i, u, e, o </div>
@@ -42,7 +43,7 @@
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_255" onclick="xembai(255)" tabindex="-1">
                                 <div class="lesson-item__avatar">
-                                    <img src="/imageGame/Bang_chu_cai_Hiragana/chu-a.png">
+                                    <img src="/imageGame/Bang_chu_cai_Katakana/chu-a.png">
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
@@ -80,7 +81,7 @@
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_257" onclick="xembai(257)">
                                 <div class="lesson-item__avatar">
-                                    <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-a.png">
+                                    <img src="/imageGame/Bang_chu_cai_Katakana/viet-chu-a.png">
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
@@ -102,7 +103,7 @@
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_258" onclick="xembai(258)">
                                 <div class="lesson-item__avatar">
-                                    <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ka.png">
+                                    <img src="/imageGame/Bang_chu_cai_Katakana/chu-ka.png">
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
@@ -121,7 +122,7 @@
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_259" onclick="xembai(259)">
                                 <div class="lesson-item__avatar">
-                                    <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ka.png">
+                                    <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ka.png">
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
