@@ -19,7 +19,10 @@ public partial class web_usercontrol_global_Popup : System.Web.UI.UserControl
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        tbAccount account = (from tk in db.tbAccounts
+                             where tk.account_sodienthoai == Request.Cookies["taikhoan"].Value
+                             select tk).FirstOrDefault();
+        hocsinh_id = account.account_id;
     }
 
     protected void btnSatrt_ServerClick(object sender, EventArgs e)

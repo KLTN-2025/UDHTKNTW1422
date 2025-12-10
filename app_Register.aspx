@@ -58,7 +58,7 @@
                                                 <div class="input-group-animate">
 
                                                     <input id="txtEmail" type="text" class="form-input" runat="server" name="txtPhone" value="" autocomplete="off" />
-                                                    <label for="" class="lb-input">Gmail </label>
+                                                    <label for="" class="lb-input">Email </label>
                                                 </div>
                                                 <div class="form-contact__input-2">
                                                     <asp:DropDownList ID="ddlLop" CssClass="form-control-select" runat="server"></asp:DropDownList>
