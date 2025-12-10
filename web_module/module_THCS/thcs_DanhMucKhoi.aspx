@@ -39,7 +39,7 @@
                 <img src="/images/button/btn-exit-21.png">
             </a>
             <div class="green-text-up ">
-                DANH SÁCH BÀI HỌC
+                DANH MỤC SÁCH
             </div>
             <div class="block-book">
                 <%--sách khối 6--%>
