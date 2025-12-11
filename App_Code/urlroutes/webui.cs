@@ -149,7 +149,7 @@ public class webui
         list.Add("SachTiengNhatKhoi7Bai10LuyenTap2|sach-tieng-nhat-1-67-284|~/web_module/GameCacKhoi/Khoi_7/LuyenTap2.aspx");
 
         //APP THCS - THPT
-        list.Add("moduledanhmucthcs|app-thcs|~/web_module/module_THCS/thcs_Home.aspx");
+        list.Add("moduledanhmucthcs|app-thcs|~/web_module/module_THCS/thcs_Home2.aspx");
         list.Add("moduledanhmucthpt|app-thpt|~/web_module/module_THPT/thpt_Home.aspx");
         //list.Add("moduledanhmuckhoithcs|app-danh-muc-khoi-thcs-{khoi-id}|~/web_module/module_THCS/thcs_DanhMucSach.aspx");
         list.Add("moduledanhmuckhoithcs_UI|app-danh-muc-khoi-thcs-6|~/web_module/UI_Hieu/UI_Hieu.aspx");
@@ -240,12 +240,12 @@ public class webui
         list.Add("SachTiengNhatDanhMucSach_UI|danh-muc-sach-1|~/web_module/UI_Hieu/UI_dsbai.aspx");
         list.Add("SachTiengNhatDanhMucSach_UI2|danh-muc-sach-2|~/web_module/UI_Hieu/UI_dsbai_2.aspx");
         //list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_THCS/thcs_QuanLyTaiKhoan.aspx");
-        list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_QuanLyTaiKhoan.aspx");
-        list.Add("modulethongtincanhan|app-thong-tin-ca-nhan|~/web_module/module_ThongTinCaNhan.aspx");
-        list.Add("moduledoimatkhau|app-doi-mat-khau|~/web_module/module_DoiMatKhau.aspx");
+        list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_QuanLyTaiKhoan_Desktop.aspx");
+        list.Add("modulethongtincanhan|app-thong-tin-ca-nhan|~/web_module/module_ThongTinCaNhan2.aspx");
+        list.Add("moduledoimatkhau|app-doi-mat-khau|~/web_module/module_THCS/module_DoiMatKhau2.aspx");
         list.Add("weblandingpagelogin|app-login|~/app_Login.aspx");
         list.Add("weblandingpageregister|app-register|~/app_Register.aspx");
-        list.Add("webthongke|app-thong-ke|~/web_module/module_ThongKe.aspx");
+        list.Add("webthongke|app-thong-ke|~/web_module/module_ThongKe2.aspx");
 
         return list;
     }
