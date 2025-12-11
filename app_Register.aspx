@@ -245,7 +245,7 @@
 
 
             $(".next-step").click(function () {
-                if (currentStep < 3) {
+                if (currentStep <= 2) {
                     valid = true;
                     isValidPhone = true;
                     isValidEmail = true;
@@ -358,8 +358,25 @@
                             swal('Không thể kết nối đến máy chủ để kiểm tra số điện thoại.', '', 'error');
                         }
                     });
-                    
+
                 }
+                else {
+                    console.log(currentStep)
+                    // Chuyển step
+                    $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+
+                    //currentStep++;
+
+                    setTimeout(function () {
+                        $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+                        $(".step-" + currentStep)
+                            .show()
+                            .addClass("animate__animated animate__fadeInRight");
+
+                        updateProgressBar();
+                    }, 500);
+                }
+
             });
 
             $(".prev-step").click(function () {
@@ -382,17 +399,18 @@
 
             updateProgressBar = function () {
                 var progressPercentage = ((currentStep - 1)) * 100;
-                if (progressPercentage == 50) {
+                console.log('pc', progressPercentage)
+                if (progressPercentage == 100) {
                     $('.step-two').addClass('active');
                     $('.step-three').removeClass('active');
                 }
-                else if (progressPercentage == 100) {
+                else if (progressPercentage == 200) {
                     $('.step-three').addClass('active');
                 }
                 else {
                     $('.step-circle').removeClass('active');
                 }
-                $(".progress-bar").css("width", progressPercentage + "%");
+                $(".progress-bar").css("width", progressPercentage/2 + "%");
             };
         });
         function checkPass() {
@@ -412,7 +430,7 @@
             return true;
         }
         function submitOtp() {
-            $(".next-step").click();
+            /*$(".next-step").click();*/
             var otp = $("#txtOTP").val();
             if (otp.trim() === "") {
                 alert("Vui lòng nhập OTP!");
@@ -428,6 +446,9 @@
                 success: function (res) {
                     var result = res.d;
                     if (result === "OK") {
+                        //swal('OTP đúng!', '', 'success');
+                        //$(".step-3").css("display", "");
+                        currentStep++;
                         $(".next-step").click();
                     }
                     else if (result === "INVALID") {

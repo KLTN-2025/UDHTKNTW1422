@@ -32,7 +32,7 @@ public partial class web_module_module_THCS_thcs_DanhMucBaiHoc_Old : System.Web.
                 var checkHocSinhTrongLop = from hstl in db.tbAccount_Childrens
                                            where hstl.account_id == checkHocSinh.First().account_id && hstl.account_children_active == true
                                            select hstl;
-                hocsinh_id = checkHocSinhTrongLop.First().account_children_id;
+                hocsinh_id = checkHocSinh.First().account_id;
                 sach = Convert.ToInt32(RouteData.Values["id"]);
                 hfStudentId.Value = hocsinh_id + "";
                 hfSachId.Value = sach + "";
