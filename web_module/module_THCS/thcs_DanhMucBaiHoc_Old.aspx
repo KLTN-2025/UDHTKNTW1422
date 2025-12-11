@@ -76,6 +76,7 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             DisplayLoadingIcon()
+            //debugger
             var studentId = document.getElementById("hfStudentId").value;
             var sachId = document.getElementById("hfSachId").value;
             fetchLessons(studentId, sachId); // Thay 1 bằng studentId thực tế
@@ -99,6 +100,7 @@
             fetch(`GetDataBaiHoc.ashx?action=lessonskhoihai&studentId=${studentId}&sachId=${sachId}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data);
                     const container = document.getElementById("lessonContainer");
                     container.innerHTML = "";
                     data.forEach(lesson => {
@@ -108,13 +110,9 @@
                             let ratingHtml = "";
                             ls.lichSuLamBai.forEach(ls1 => {
                                 ratingHtml += `
-                                        <div class="rating-item" style="${ls1.mystyle2}">
+                                        <div class="rating-item" >
                                             <label>${ls1.lichsulambai_vitribaitap}</label>
                                             <img src="${ls1.sao}" />
-                                        </div>
-
-                                         <div class="rating-item --point" style="${ls1.mystyle}">
-                                            <label>Điểm tốt nhất: ${ls1.lichsulambai_diem}</label>
                                         </div>
                                         `;
                             });

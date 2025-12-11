@@ -989,15 +989,15 @@
     //        targetCard.setAttribute('data-checked', 'true');
     //    }
     //}
-    var caudungtracnghiem = 0, tongtracnghiem = 0;
+    var caudungtracnghiem = 0, tongtracnghiem = 5;
     function btnSubmitTracNghiem() {
 
-        var elementtongtracnghiem = document.getElementById('<%= txtTongTracNghiem.ClientID%>');
+       <%-- var elementtongtracnghiem = document.getElementById('<%= txtTongTracNghiem.ClientID%>');
         if (elementtongtracnghiem == null || elementtongtracnghiem.value == null || elementtongtracnghiem.value == "") {
             tongtracnghiem = 0;
         } else {
             tongtracnghiem = parseInt(elementtongtracnghiem.value, 10);
-        }
+        }--%>
         var answerItems = document.querySelectorAll('.tracnghiem.dung');
         caudungtracnghiem = answerItems.length;
         const answerItem = document.querySelectorAll('.tracnghiem');
@@ -1020,23 +1020,26 @@
 
         });
         let diem = 0;
-        let tongdiem = 10;
-        if (tongtracnghiem == 5) {
-            diem = caudungtracnghiem + caudungstt;
-            //tongdiem = tongtracnghiem + tongstt;
-        }
-        else {
-            const tongCau = tongtracnghiem + tongstt;
-            const weight = 10 / tongCau;
-            diem = (caudungtracnghiem + caudungstt) * weight;
-        }
+        //let tongdiem = 10;
+        //if (tongtracnghiem == 5) {
+        //    diem = caudungtracnghiem + caudungstt;
+        //    //tongdiem = tongtracnghiem + tongstt;
+        //}
+        //else {
+        //    const tongCau = tongtracnghiem + tongstt;
+        //    const weight = 10 / tongCau;
+        //    diem = (caudungtracnghiem + caudungstt) * weight;
+        //}
+        //if (caudungtracnghiem / tongtracnghiem>=8/10) {
+            diem = caudungtracnghiem * 2;
+        //}
         setTimeout(function () {
             let sao;
             let ketqua;
-            if (diem > 8) {
+            if (diem > 3) {
                 sao = '3';
             }
-            else if (diem >= 5) {
+            else if (diem >= 2) {
                 sao = '2';
                 document.getElementById("btnNextLesson").style.pointerEvents = "auto";
                 document.getElementById("btnNextLesson").style.opacity = "1";

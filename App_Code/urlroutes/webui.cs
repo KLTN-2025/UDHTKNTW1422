@@ -236,8 +236,8 @@ public class webui
 
         //My url
         //list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc.aspx");
-        //list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc_Old.aspx");
-        list.Add("SachTiengNhatDanhMucSach_UI|danh-muc-sach-1|~/web_module/UI_Hieu/UI_dsbai.aspx");
+        list.Add("SachTiengNhatDanhMucSach|danh-muc-sach-{id}|~/web_module/module_THCS/thcs_DanhMucBaiHoc_Old.aspx");
+        //list.Add("SachTiengNhatDanhMucSach_UI|danh-muc-sach-1|~/web_module/UI_Hieu/UI_dsbai.aspx");
         list.Add("SachTiengNhatDanhMucSach_UI2|danh-muc-sach-2|~/web_module/UI_Hieu/UI_dsbai_2.aspx");
         //list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_THCS/thcs_QuanLyTaiKhoan.aspx");
         list.Add("modulequanlitaikhoann|app-quan-li-tai-khoan|~/web_module/module_QuanLyTaiKhoan.aspx");

@@ -162,8 +162,8 @@ public class GetDataBaiHoc : IHttpHandler
                                                                 sao = ls.lichsulambai_sao == 1 ? "/images/anhgif/1sao.png"
                                                                      : ls.lichsulambai_sao == 2 ? "/images/anhgif/2sao.png"
                                                                      : "/images/anhgif/3sao.png",
-                                                                mystyle = ls.lichsulambai_diem != null ? "" : "display:none",
-                                                                mystyle2 = ls.lichsulambai_diem != null ? "display:none" : "",
+                                                                //mystyle = ls.lichsulambai_diem != null ? "" : "display:none",
+                                                                //mystyle2 = ls.lichsulambai_diem != null ? "display:none" : "",
                                                             }).ToList()
                                         }).ToList(),
                      };

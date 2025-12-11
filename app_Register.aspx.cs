@@ -56,51 +56,11 @@ public partial class app_Register : System.Web.UI.Page
 
     protected void btnsendMail_ServerClick(object sender, EventArgs e)
     {
-        SendMail(txtEmail.Value.Trim());
+        //SendMail(txtEmail.Value.Trim());
         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "text", "showStep()", true); 
     }
 
-    private bool SendMail(string email)
-    {
-
-        if (email != "")
-        {
-            try
-            {
-                var fromAddress = "thongbaovietnhatschool@gmail.com";//  Email Address from where you send the mail 
-                var toAddress = email;
-                const string fromPassword = "neiabcekdjluofid";
-                string subject, title;
-                title = "Thông báo";
-                subject = "<!DOCTYPE html><html><head><title></title></head><body ><div>" +
-                "<h3 style=\"margin-top:0px; text-align:center; color:#029ada\">Mã OTP của bạn là: <b>12345</b></h3>" +
-                "</div></body></html>";
-                var smtp = new System.Net.Mail.SmtpClient();
-                {
-                    smtp.Host = "smtp.gmail.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-                    smtp.Credentials = new NetworkCredential(fromAddress, fromPassword);
-                    smtp.Timeout = 20000;
-                }
-                MailMessage mm = new MailMessage();
-                mm.From = new MailAddress(fromAddress, "KoiGo");
-                mm.Subject = title;
-                mm.To.Add(toAddress);
-                mm.IsBodyHtml = true;
-                mm.Body = subject;
-                smtp.Send(mm);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        else
-            return false;
-    }
+   
     [System.Web.Services.WebMethod]
     public static string SendOtp(string email)
     {
