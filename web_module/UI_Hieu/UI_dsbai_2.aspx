@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_255" onclick="xembai(255)" tabindex="-1">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_285" onclick="xembai(285)" tabindex="-1">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-a.png">
                                 </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_256" onclick="xembai(256)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_286" onclick="xembai(286)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-a.png">
                                 </div>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_257" onclick="xembai(257)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_287" onclick="xembai(287)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/viet-chu-a.png">
                                 </div>
@@ -140,14 +140,104 @@
                 </div>
             </div>
         </div>
-        <a id="btnXemBai" style="display: none" href="javascript:__doPostBack('btnXemBai','')"></a>
-        <input name="txtIDBaiHoc" type="text" id="txtIDBaiHoc" style="display: none">
+       <a id="btnXemBai" runat="server" onserverclick="btnXemBai_ServerClick" style="display: none"></a>
+            <input type="text" id="txtIDBaiHoc" runat="server" style="display: none" />
     </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" runat="Server">
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="Footer" runat="Server">
+        <script>
+            function DisplayLoadingIcon() {
+                $("#img-loading-icon").show();
+        }
+            function HiddenLoadingIcon() {
+                $("#img-loading-icon").hide();
+        }
+            document.addEventListener("DOMContentLoaded", function () {
+                DisplayLoadingIcon()
+            //debugger
+            var studentId = 11;// document.getElementById("hfStudentId").value;
+            var sachId = 1;//document.getElementById("hfSachId").value;
+            //fetchLessons(studentId, sachId); // Thay 1 bằng studentId thực tế
+
+        });
+            function scrollToHash() {
+            var hash = window.location.hash; // Lấy hash từ URL (ví dụ: #id_334)
+            if (hash) {
+                var targetElement = $(hash);
+            if (targetElement.length) {
+                $("html, body").animate({
+                    scrollTop: targetElement.offset().top
+                }, 0, function () {
+                    targetElement.attr("tabindex", "-1").focus();
+                });
+                }
+            }
+        }
+
+            function fetchLessons(studentId, sachId) {
+                fetch(`/GetDataBaiHoc.ashx?action=lessonskhoihai&studentId=${studentId}&sachId=${sachId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        const container = document.getElementById("lessonContainer");
+                        container.innerHTML = "";
+                        data.forEach(lesson => {
+
+                            let lessonHtml = "";
+                            lesson.listLessons.forEach(ls => {
+                                let ratingHtml = "";
+                                ls.lichSuLamBai.forEach(ls1 => {
+                                    ratingHtml += `
+                                        <div class="rating-item" >
+                                            <label>${ls1.lichsulambai_vitribaitap}</label>
+                                            <img src="${ls1.sao}" />
+                                        </div>
+                                        `;
+                                });
+                                lessonHtml += `
+                                        <div class="lesson-row">
+                                            <a href="javascript:void(0)" class="lesson-item" id="id_${ls.baihoc_id}" onclick="xembai(${ls.baihoc_id})">
+                                                <div class="lesson-item__avatar">
+                                                    <img src="${ls.baihoc_avatar}" />
+                                                </div>
+                                                <div class="lesson-item__content">
+                                                    <div class="lesson-item__content--title">
+                                                        ${ls.baihoc_title}
+                                                    </div>
+                                                    <div class="lesson-item__content--view">
+                                                        <i class="fa fa-eye"></i>&nbsp; ${ls.solan}
+                                                    </div>
+                                                    <div class="lesson-item__content--decription"></div>
+                                                    <div class="rating-list">${ratingHtml}</div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        `;
+                            });
+                            /*  <a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>*/
+
+                            const topicHtml = `
+                         <div class="unit-list__title">${lesson.chudebaihoc_name}</div>
+                            ${lessonHtml}
+                        `;
+                            container.innerHTML += topicHtml;
+                            // Sau khi render xong, thực hiện scroll đến phần tử trên URL
+                            scrollToHash();
+                        });
+                        HiddenLoadingIcon()
+                    })
+                    .catch(error => console.error("Lỗi khi fetch dữ liệu:", error));
+        }
+            function xembai(id) {
+                DisplayLoadingIcon();
+            document.getElementById("<%= txtIDBaiHoc.ClientID%>").value = id;
+            document.getElementById("<%= btnXemBai.ClientID%>").click();
+        }
+
+    </script>
    <%-- <script>
         document.addEventListener("DOMContentLoaded", function () {
             const lessons = [
