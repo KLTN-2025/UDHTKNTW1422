@@ -123,7 +123,7 @@
                                                     <label for="" class="lb-input">Tài khoản:</label>
                                                 </div>
                                                 <div class="input-group-animate --password">
-                                                    <input id="txtPassWord" type="password" class="form-input" runat="server" autocomplete="off" required />
+                                                    <input id="txtPassWord" type="password" class="form-input" runat="server"  autocomplete="off" required />
                                                     <label for="" class="lb-input">Mật khẩu *</label>
                                                     <i class="eye-icon bi bi-eye" data-target="Wrapper_txtPassWord"></i>
                                                 </div>
