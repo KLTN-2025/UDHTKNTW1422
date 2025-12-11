@@ -142,7 +142,487 @@
                             <div class="lesson-row">
                                 <a href="javascript:void(0)" class="lesson-item" id="id_260" onclick="xembai(260)">
                                     <div class="lesson-item__avatar">
-                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-a.png">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-ka.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 3 : Hàng Sa : sa, shi, su, se, so </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_261" onclick="xembai(261)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-sa.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_262" onclick="xembai(262)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-sa.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_263" onclick="xembai(263)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-sa.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 4 : Hàng Ta : ta, chi, tsu, te, to </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_264" onclick="xembai(264)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ta.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_265" onclick="xembai(265)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ta.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_266" onclick="xembai(266)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-ta.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 5 : Hàng Na : na, ni, nu, ne, no </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_267" onclick="xembai(267)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-na.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_268" onclick="xembai(268)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-na.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_269" onclick="xembai(269)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-na.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 6 : Hàng Ha : ha, hi, fu, he, ho </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_270" onclick="xembai(270)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ha.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_271" onclick="xembai(271)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ha.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_272" onclick="xembai(272)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-ha.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 7 : Hàng Ma : ma, mi, mu, me, mo </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_273" onclick="xembai(273)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ma.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_274" onclick="xembai(274)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ma.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_275" onclick="xembai(275)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-ma.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 8 : Hàng Ya : ya, yu, yo </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_276" onclick="xembai(276)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ya.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_277" onclick="xembai(277)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ya.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_278" onclick="xembai(278)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-ya.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 9 : Hàng Ra : ra, ri, ru, re, ro </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_279" onclick="xembai(279)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-ra.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_280" onclick="xembai(280)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ra.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_281" onclick="xembai(281)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-ra.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập (nâng cao)
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title_lesson_s">Bài 10 : Hàng Wa : wa, wo, n </div>
+                    <div class="row">
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_282" onclick="xembai(282)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/chu-wa.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Lý thuyết
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_283" onclick="xembai(283)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-wa.png">
+                                    </div>
+                                    <div class="lesson-item__content">
+                                        <div class="lesson-item__content--title">
+                                            Luyện tập
+                                        </div>
+                                        <div class="lesson-item__content--view">
+                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                        </div>
+                                        <div class="lesson-item__content--decription"></div>
+                                        <div class="rating-list"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <div class="lesson-row">
+                                <a href="javascript:void(0)" class="lesson-item" id="id_284" onclick="xembai(284)">
+                                    <div class="lesson-item__avatar">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/viet-chu-wa.png">
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">

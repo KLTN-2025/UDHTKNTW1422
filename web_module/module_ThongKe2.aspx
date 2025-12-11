@@ -78,19 +78,19 @@
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Nguyễn Văn An</td>
+                    <td>Nguyễn Hoàng Nam</td>
                     <td>10/12/2025</td>
                     <td>9.5</td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Trần Thị Bình</td>
+                    <td>Thái Đăng Duy</td>
                     <td>11/12/2025</td>
                     <td>8.0</td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>Lê Văn Chinh</td>
+                    <td>Trần Hoàng Hiếu</td>
                     <td>11/12/2025</td>
                     <td>10</td>
                 </tr>

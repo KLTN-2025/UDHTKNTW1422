@@ -63,7 +63,7 @@
                     <img src="/images/images-nhatban.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Lớp 6</div>
                     <%--<i class="fa fa-lock" aria-hidden="true" id="iconLock1" runat="server"></i>--%>
-                </a><a id="id_Lop7" runat="server" href="/app-danh-muc-khoi-thcs-7" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
+                </a>                <a id="id_Lop7" runat="server" href="/app-danh-muc-khoi-thcs-7" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
                     <img src="/images/images-nhatban.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Lớp 7</div>
                     <%--<i class="fa fa-lock" aria-hidden="true" id="iconLock2" runat="server"></i>--%>

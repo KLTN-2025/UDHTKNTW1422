@@ -101,7 +101,7 @@
                 <div class="row">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_258" onclick="xembai(258)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_258" onclick="xembai(288)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-ka.png">
                                 </div>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_259" onclick="xembai(259)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_259" onclick="xembai(289)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ka.png">
                                 </div>

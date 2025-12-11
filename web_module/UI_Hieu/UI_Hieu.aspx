@@ -44,7 +44,7 @@
                     <div class="book-card__cover">
                         <div class="book-card__book">
                             <div class="book-card__book-front">
-                                <img class="book-card__img" src="/images/Bang_chu_cai_Hiragana/Hiragana.jpg">
+                                <img class="book-card__img" src="<%= book1_image %>">
                             </div>
                             <div class="book-card__book-back"></div>
                             <div class="book-card__book-side"></div>
@@ -52,7 +52,7 @@
                     </div>
                     <div>
                         <div class="book-card__title">
-                            Bảng chữ cái Hiragana
+                            <%= book1_title %>
                         </div>
                     </div>
                 </a>
@@ -62,7 +62,7 @@
                     <div class="book-card__cover">
                         <div class="book-card__book">
                             <div class="book-card__book-front">
-                                <img class="book-card__img" src="/images/Bang_chu_cai_Katakana/Katakana.jpg">
+                                <img class="book-card__img" src="<%= book2_image %>">
                             </div>
                             <div class="book-card__book-back"></div>
                             <div class="book-card__book-side"></div>
@@ -70,7 +70,7 @@
                     </div>
                     <div>
                         <div class="book-card__title">
-                            Bảng chữ cái Katakana
+                            <%= book2_title %>
                         </div>
                     </div>
                 </a>
