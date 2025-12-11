@@ -17,8 +17,8 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <title>KoiGo!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="css/bootstrap4.6.2.css" rel="stylesheet" />
-    <link href="css/themify-icons.css" rel="stylesheet" />
+    <link href="/css/bootstrap4.6.2.css" rel="stylesheet" />
+    <link href="/css/themify-icons.css" rel="stylesheet" />
     <script src="js/bootstrap462/jquery.slim.min.js"></script>
     <script src="js/bootstrap462/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
