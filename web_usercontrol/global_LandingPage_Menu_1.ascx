@@ -11,14 +11,19 @@
                             Trang chủ
                         </a>
                     </li> 
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link" href="/app-quan-li-tai-khoan" onclick="DisplayLoadingIcon()">
                             Tài khoản
                         </a>
-                    </li>
+                    </li>--%>
                     <li class="nav-item">
                         <a class="nav-link" href="/app-thong-ke" onclick="DisplayLoadingIcon()">
                            Thống kê
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kho-luyen-tap" onclick="DisplayLoadingIcon()">
+                           Kho luyện tập
                         </a>
                     </li>
                 </ul>
@@ -42,6 +47,8 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="/app-quan-li-tai-khoan" onclick="DisplayLoadingIcon()">Tài khoản</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/app-doi-mat-khau" onclick="DisplayLoadingIcon()">Đổi mật khẩu</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#" id="btnLogout" runat="server" onserverclick="btnLogout_ServerClick">Đăng xuất</a></li>
                         </ul>
