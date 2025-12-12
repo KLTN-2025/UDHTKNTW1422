@@ -158,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="title_lesson_s">Bài 3 : Hàng Sa : sa, shi, su, se, so </div>
+                   <%-- <div class="title_lesson_s">Bài 3 : Hàng Sa : sa, shi, su, se, so </div>
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4">
                             <div class="lesson-row">
@@ -636,7 +636,7 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
             </div>
