@@ -26,6 +26,7 @@
         }
     </style>
     <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
+    <asp:ScriptManager runat="server" />
     <div class="custom-login-background shadow">
         <div class="login-container ">
             <div class="login-content-right ">
@@ -48,8 +49,60 @@
                         <input id="btnLogin" runat="server" type="submit" class="buttom-green hvr-pulse-grow" onserverclick="btnLogin_ServerClick" value="Đăng Nhập" />
                     </div>
                     <div class="text-center">
-                        <a id="btnQuenMK" href="/tieu-hoc-quen-mat-khau" class="<%--btn btn-logout btn-outline-primary--%>quen-mk hvr-pulse-grow mt-3">QUÊN MẬT KHẨU ?</a>
+                        <a id="btnQuenMK" href="javascript:void(0)" onclick="openForgotPasswordModal()" class="<%--btn btn-logout btn-outline-primary--%>quen-mk hvr-pulse-grow mt-3">QUÊN MẬT KHẨU ?</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Quên Mật Khẩu -->
+    <div id="forgotPasswordModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px; border-radius: 10px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0; color: #1f6749;">QUÊN MẬT KHẨU</h3>
+                <button onclick="closeForgotPasswordModal()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">&times;</button>
+            </div>
+            
+            <div id="forgotPasswordStep1">
+                <p style="margin-bottom: 20px; color: #666;">Nhập số điện thoại hoặc email để nhận mã OTP:</p>
+                <div class="input-group-animate" style="margin-bottom: 15px;">
+                    <input type="text" id="txtForgotPhoneOrEmail" class="form-input" autocomplete="off" placeholder="Số điện thoại hoặc Email" />
+                    <label class="lb-input">Số điện thoại hoặc Email</label>
+                </div>
+                <div class="text-center">
+                    <button type="button" onclick="sendOtpForgotPassword()" class="buttom-green hvr-pulse-grow" style="width: 100%;">GỬI MÃ OTP</button>
+                </div>
+            </div>
+
+            <div id="forgotPasswordStep2" style="display: none;">
+                <p style="margin-bottom: 20px; color: #666;">Mã OTP đã được gửi đến: <span id="lblForgotEmailShow" style="font-weight: bold; color: green;"></span></p>
+                <div class="input-group-animate" style="margin-bottom: 15px;">
+                    <input type="text" id="txtForgotOTP" class="form-input" autocomplete="off" placeholder="Nhập mã 6 số" maxlength="6" />
+                    <label class="lb-input">Mã OTP</label>
+                </div>
+                <div class="text-center" style="margin-bottom: 15px;">
+                    <button type="button" onclick="verifyOtpForgotPassword()" class="buttom-green hvr-pulse-grow" style="width: 100%;">XÁC NHẬN OTP</button>
+                </div>
+                <div class="text-center">
+                    <a href="javascript:void(0)" onclick="resendOtpForgotPassword()" style="font-size: 14px; color: #1f6749;">Gửi lại mã?</a>
+                </div>
+            </div>
+
+            <div id="forgotPasswordStep3" style="display: none;">
+                <p style="margin-bottom: 20px; color: #666;">Nhập mật khẩu mới:</p>
+                <div class="input-group-animate --password" style="margin-bottom: 15px;">
+                    <input type="password" id="txtNewPassword" class="form-input" autocomplete="off" placeholder="Mật khẩu mới" />
+                    <label class="lb-input">Mật khẩu mới *</label>
+                    <i class="eye-icon bi bi-eye" data-target="txtNewPassword" onclick="togglePasswordVisibility(this)"></i>
+                </div>
+                <div class="input-group-animate --password" style="margin-bottom: 15px;">
+                    <input type="password" id="txtConfirmNewPassword" class="form-input" autocomplete="off" placeholder="Xác nhận mật khẩu mới" />
+                    <label class="lb-input">Xác nhận mật khẩu mới *</label>
+                    <i class="eye-icon bi bi-eye" data-target="txtConfirmNewPassword" onclick="togglePasswordVisibility(this)"></i>
+                </div>
+                <div class="text-center">
+                    <button type="button" onclick="resetPassword()" class="buttom-green hvr-pulse-grow" style="width: 100%;">ĐẶT LẠI MẬT KHẨU</button>
                 </div>
             </div>
         </div>
@@ -70,6 +123,166 @@
                 }, 100); // Đợi 100ms để trình duyệt hoàn tất autofill
             }
         });
+
+        // Quên mật khẩu functions
+        function openForgotPasswordModal() {
+            document.getElementById("forgotPasswordModal").style.display = "flex";
+            resetForgotPasswordSteps();
+        }
+
+        function closeForgotPasswordModal() {
+            document.getElementById("forgotPasswordModal").style.display = "none";
+            resetForgotPasswordSteps();
+        }
+
+        function resetForgotPasswordSteps() {
+            document.getElementById("forgotPasswordStep1").style.display = "block";
+            document.getElementById("forgotPasswordStep2").style.display = "none";
+            document.getElementById("forgotPasswordStep3").style.display = "none";
+            document.getElementById("txtForgotPhoneOrEmail").value = "";
+            document.getElementById("txtForgotOTP").value = "";
+            document.getElementById("txtNewPassword").value = "";
+            document.getElementById("txtConfirmNewPassword").value = "";
+        }
+
+        function sendOtpForgotPassword() {
+            var phoneOrEmail = document.getElementById("txtForgotPhoneOrEmail").value.trim();
+            if (!phoneOrEmail) {
+                swal('Vui lòng nhập số điện thoại hoặc email.', '', 'warning');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "app_Login.aspx/SendOtpForgotPassword",
+                data: JSON.stringify({ phoneOrEmail: phoneOrEmail }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var result = response.d;
+                    if (result === "OK") {
+                        document.getElementById("forgotPasswordStep1").style.display = "none";
+                        document.getElementById("forgotPasswordStep2").style.display = "block";
+                        document.getElementById("lblForgotEmailShow").textContent = phoneOrEmail;
+                        swal('Mã OTP đã được gửi!', '', 'success');
+                    } else if (result === "NOT_FOUND") {
+                        swal('Không tìm thấy tài khoản với số điện thoại/email này.', '', 'warning');
+                    } else {
+                        swal('Không gửi được OTP. Vui lòng thử lại.', '', 'error');
+                    }
+                },
+                error: function () {
+                    swal('Lỗi máy chủ. Vui lòng thử lại.', '', 'error');
+                }
+            });
+        }
+
+        function verifyOtpForgotPassword() {
+            var otp = document.getElementById("txtForgotOTP").value.trim();
+            if (!otp) {
+                swal('Vui lòng nhập mã OTP.', '', 'warning');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "app_Login.aspx/VerifyOtpForgotPassword",
+                data: JSON.stringify({ otpClient: otp }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var result = response.d;
+                    if (result === "OK") {
+                        document.getElementById("forgotPasswordStep2").style.display = "none";
+                        document.getElementById("forgotPasswordStep3").style.display = "block";
+                        swal('OTP đúng!', '', 'success');
+                    } else if (result === "INVALID") {
+                        swal('OTP không đúng!', '', 'warning');
+                    } else if (result === "EXPIRED") {
+                        swal('OTP đã hết hạn, vui lòng gửi lại!', '', 'warning');
+                    } else {
+                        swal('Lỗi xác thực OTP.', '', 'error');
+                    }
+                },
+                error: function () {
+                    swal('Lỗi máy chủ. Vui lòng thử lại.', '', 'error');
+                }
+            });
+        }
+
+        function resendOtpForgotPassword() {
+            var phoneOrEmail = document.getElementById("txtForgotPhoneOrEmail").value.trim();
+            if (!phoneOrEmail) {
+                swal('Vui lòng nhập số điện thoại hoặc email.', '', 'warning');
+                return;
+            }
+            sendOtpForgotPassword();
+        }
+
+        function resetPassword() {
+            var newPassword = document.getElementById("txtNewPassword").value.trim();
+            var confirmPassword = document.getElementById("txtConfirmNewPassword").value.trim();
+
+            if (newPassword.length < 5) {
+                swal('Mật khẩu phải có ít nhất 5 ký tự.', '', 'warning');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                swal('Mật khẩu nhập lại không khớp.', '', 'warning');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "app_Login.aspx/ResetPassword",
+                data: JSON.stringify({ newPassword: newPassword }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    var result = response.d;
+                    if (result === "OK") {
+                        swal('Đặt lại mật khẩu thành công!', '', 'success').then(function () {
+                            closeForgotPasswordModal();
+                            window.location = '/app-login';
+                        });
+                    } else {
+                        swal('Lỗi đặt lại mật khẩu. Vui lòng thử lại.', '', 'error');
+                    }
+                },
+                error: function () {
+                    swal('Lỗi máy chủ. Vui lòng thử lại.', '', 'error');
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        document.getElementById("forgotPasswordModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                closeForgotPasswordModal();
+            }
+        });
+
+        // Toggle password visibility for modal inputs
+        function togglePasswordVisibility(iconElement) {
+            const targetId = iconElement.getAttribute('data-target');
+            const inputField = document.getElementById(targetId);
+
+            if (!inputField) {
+                console.error('Không tìm thấy trường input với ID: ' + targetId);
+                return;
+            }
+
+            if (inputField.type === 'password') {
+                inputField.type = 'text';
+                iconElement.classList.remove('bi-eye');
+                iconElement.classList.add('bi-eye-slash');
+            } else {
+                inputField.type = 'password';
+                iconElement.classList.remove('bi-eye-slash');
+                iconElement.classList.add('bi-eye');
+            }
+        }
     </script>
 </asp:Content>
 

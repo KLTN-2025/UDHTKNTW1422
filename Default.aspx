@@ -96,6 +96,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" />
         <div class="page-view --home ">
             <header class="header-page wow bounceIn">
                 <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />
@@ -450,7 +451,7 @@ Khuyến khích học sinh<span class="highlight"> phấn đấu, nâng cao </sp
                                         <label for="" class="lb-input">Nội dung</label>
                                     </div>
                                     <div class="text-center">
-                                        <a href="javascript:void(0)" class="btn-register hvr-" id="btnSubmitLienHe" runat="server" onclick="return checkNullLienHe()">
+                                        <a href="javascript:void(0)" class="btn-register hvr-" id="btnSubmitLienHe" runat="server" onserverclick="btnSubmitLienHe_ServerClick" onclick="return checkNullLienHe()">
                                             <img src="/images/btn-register.png" alt="Alternate Text" /></a>
                                     </div>
                                 </div>
@@ -570,6 +571,7 @@ Khuyến khích học sinh<span class="highlight"> phấn đấu, nâng cao </sp
                     swal('Vui lòng nhập nội dung cần liên hệ!', '', 'warning').then(function () { noidung.focus(); });
                     return false;
                 }
+                // Return true to allow server-side processing
                 return true;
             }
             // Xử lý sự kiện khi chuyển tab

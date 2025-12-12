@@ -312,7 +312,8 @@
                         data: { phone: phoneInput },
                         success: function (response) {
                             if (response === "exists") {
-                                swal('Số điện thoại này đã được đăng ký trước đó.', '', 'warning');
+                                swal('Số điện thoại đã tồn tại.', '', 'warning').then(function () { document.getElementById("Wrapper_txtSoDienThoai").focus(); });
+                                return;
                             } else if (response === "ok") {
                                 // Check email trùng (chỉ check nếu email đã được nhập)
                                 if (emailInput && emailInput.trim() !== "") {
