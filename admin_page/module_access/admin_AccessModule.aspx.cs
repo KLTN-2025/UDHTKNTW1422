@@ -72,13 +72,13 @@ public partial class admin_page_module_access_admin_AccessModule : System.Web.UI
         cls_AccessModule query = new cls_AccessModule();
         if (Session["_id"].ToString() == "0")
             if (query.Module_Them(txtModule.Text, Convert.ToInt32(txtPosition.Value), txtIcon.Text))
-                ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @" swal({  title: 'Thêm thành công!', icon: 'success' }).then(function() {grvList.UnselectRows(); HiddenLoadingIcon();});", true);
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @" swal({  title: 'Thêm thành công!', icon: 'success' }).then(function () {$('#myModal').modal('hide'); location.reload(); });", true);
             else
                 alert.alert_Error(Page, "Thêm thất bại", "");
         else
             if (query.Module_Sua(Convert.ToInt32(Session["_id"].ToString()), txtModule.Text, Convert.ToInt32(txtPosition.Value), txtIcon.Text))
-            ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @" swal({  title: 'Cập nhật thành công!', icon: 'success' }).then(function() {grvList.UnselectRows(); HiddenLoadingIcon();});", true);
+            ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @"swal({title: 'Cập nhật thành công!',icon: 'success'}).then(function () {$('#myModal').modal('hide'); location.reload(); });", true);
         else
-                alert.alert_Error(Page, "Cập nhật thất bại", "");
+            alert.alert_Error(Page, "Cập nhật thất bại", "");
     }
 }

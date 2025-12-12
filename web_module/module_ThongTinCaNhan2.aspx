@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../admin_js/sweetalert.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Menu" Runat="Server">
 </asp:Content>
@@ -25,7 +26,7 @@
                 <div id="up1" class="user-avatar__image">
                     <asp:FileUpload CssClass="hidden-xs-up" ID="FileUpload1" runat="server" onchange="showPreview1(this)" Style="display: none" accept=".png,.jpeg,.jpg" />
                     <button type="button" class="change-avatar" onclick="clickavatar1()">
-                        <img id="imgPreview1" runat="server" src="../../images/user_noimage.jpg" class="user-avatar__image" />
+                        <img id="imgPreview1" ClientIDMode="Static" runat="server" src="../../images/user_noimage.jpg" class="user-avatar__image" />
                     </button>
                 </div>
             </div>
@@ -117,7 +118,7 @@
             if (input.files && input.files[0]) {
                 var filerdr = new FileReader();
                 filerdr.onload = function (e) {
-                    $('#Wrapper_imgPreview1').attr('src', e.target.result);
+                    $('#imgPreview1').attr('src', e.target.result);
                 }
                 filerdr.readAsDataURL(input.files[0]);
             }
@@ -134,7 +135,7 @@
             }
             return true;
         }
-    </script>
+     </script>
     <script>
         var activeMenu = document.getElementById("menu-user");
         activeMenu.classList.add("active");
