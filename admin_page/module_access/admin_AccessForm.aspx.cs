@@ -75,10 +75,13 @@ public partial class admin_page_module_access_admin_AccessForm : System.Web.UI.P
             foreach (var item in selectedKey)
             {
                 query = new cls_AccessForm();
-                if (query.Form_Xoa(Convert.ToInt32(item)))
+                if (query.Form_Xoa(Convert.ToInt32(item))) { 
                     alert.alert_Success(Page, "Xóa thành công", "");
-                else
+                    ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @"  swal({title: 'Xóa thành công!', icon: 'success' }).then(function() {grvList.UnselectRows(); HiddenLoadingIcon();});", true);
+                }
+                else { 
                     alert.alert_Success(Page, "Xóa thất bại", "");
+                }
             }
         }
         else
@@ -89,17 +92,23 @@ public partial class admin_page_module_access_admin_AccessForm : System.Web.UI.P
         cls_AccessForm query = new cls_AccessForm();
         if (Session["_id"].ToString() == "0")
         {
-            if (query.Form_Them(txtForm.Text, txtLink.Text, Convert.ToInt32(txtPosition.Value), Convert.ToInt32(ddlModule.SelectedItem.Value)))
-                alert.alert_Success(Page, "Thêm thành công", "");
+            if (query.Form_Them(txtForm.Text, txtLink.Text, Convert.ToInt32(txtPosition.Value), Convert.ToInt32(ddlModule.SelectedItem.Value))) { 
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @"swal({title: 'Thêm thành công!',icon: 'success'}).then(function () {$('#myModal').modal('hide'); location.reload(); });", true);
+            }
             else
+            {
                 alert.alert_Error(Page, "Thêm thất bại", "");
+            }
         }
         else
         {
-            if (query.Form_Sua(Convert.ToInt32(Session["_id"].ToString()), txtForm.Text, txtLink.Text, Convert.ToInt32(txtPosition.Value), Convert.ToInt32(ddlModule.SelectedItem.Value)))
-                alert.alert_Success(Page, "Cập nhật thành công", "");
+            if (query.Form_Sua(Convert.ToInt32(Session["_id"].ToString()), txtForm.Text, txtLink.Text, Convert.ToInt32(txtPosition.Value), Convert.ToInt32(ddlModule.SelectedItem.Value))) { 
+                ScriptManager.RegisterStartupScript(Page, this.GetType(), "Alert", @"swal({title: 'Cập nhật thành công!',icon: 'success'}).then(function () {$('#myModal').modal('hide'); location.reload(); });", true);
+            }
             else
+            {
                 alert.alert_Error(Page, "Cập nhật thất bại", "");
+            }
         }
     }
 }

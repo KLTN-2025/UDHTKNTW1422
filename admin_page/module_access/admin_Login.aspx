@@ -16,7 +16,7 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-image: url(/admin_images/Sky-Moon-Background.jpg);
+            background-image: url(/admin_images/bg-red-2.png);
             font-family: Open Sans,Arial,sans-serif;
             background-color: white;
         }

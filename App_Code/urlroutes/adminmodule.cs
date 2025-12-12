@@ -50,7 +50,7 @@ public class adminmodule
         list.Add("modulecauhoitracnghiemphan2|admin-quan-ly-trac-nghiem-phan-hai-{khoi_id}-{mon_id}-{chuong_id}-{baihoc_id}|~/admin_page/module_function/module_TracNghiem/module_QuanLyCauHoiTracNghiem_Part2.aspx");
         list.Add("modulecauhoiphan3|admin-quan-ly-trac-nghiem-phan-ba-{khoi_id}-{mon_id}-{chuong_id}-{baihoc_id}|~/admin_page/module_function/module_TracNghiem/module_QuanLyCauHoiTracNghiem_Part3.aspx");
         //admin Nhập liệu 
-        list.Add("moduleNhapLieuGameTracNghiem|nhap-lieu-game-trac-nghiem|~/admin_page/module_function/module_NhapLieuGame/module_NhapLieuGameTracNghiem.aspx");
+        list.Add("moduleNhapLieuGameTracNghiem|admin-nhap-lieu-game-trac-nghiem|~/admin_page/module_function/module_NhapLieuGame/module_GameTracNghiem.aspx");
         list.Add("moduleDuLieuGameTracNghiem|du-lieu-game-trac-nghiem|~/admin_page/module_function/module_NhapLieuGame/module_LoaiGameTracNghiem.aspx");
         list.Add("moduleChiTietGameTracNghiem|chi-tiet-game-trac-nghiem|~/admin_page/module_function/module_NhapLieuGame/module_ChiTietGameTracNghiem.aspx");
         list.Add("moduleNhapLieuGameChonSo|nhap-lieu-game-chon-so|~/admin_page/module_function/module_NhapLieuGame/module_LoaiGameChonSo.aspx");
@@ -75,6 +75,8 @@ public class adminmodule
         list.Add("moduleTaoBaiKiemTraTieuHoc|admin-tao-bai-kiem-tra-tieu-hoc|~/admin_page/module_function/module_BaiKiemTra/module_BaiKiemTra_TieuHoc_Ver2.aspx");
         list.Add("moduleDanhSachBaiKiemTraTieuHoc|admin-danh-sach-bai-kiem-tra-tieu-hoc|~/admin_page/module_function/module_BaiKiemTra/module_DanhSachBaiKiemTra.aspx");
         list.Add("moduleLichSuBaiKiemTraTieuHoc|admin-lich-su-bai-kiem-tra-tieu-hoc|~/admin_page/module_function/module_BaiKiemTra/module_LichSu_BaiKiemTra.aspx");
+        //noi
+        list.Add("moduleNhapLieuGameNoi|admin-nhap-lieu-game-noi|~/admin_page/module_function/module_NhapLieuGame/module_GameNoi.aspx");
         return list;
     }
 }

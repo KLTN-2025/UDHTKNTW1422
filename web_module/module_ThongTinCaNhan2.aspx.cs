@@ -40,38 +40,18 @@ public partial class web_module_module_ThongTinCaNhan2 : System.Web.UI.Page
             txtSoDienThoai.Value = getThongTinHocSinh.sodienthoai;
             txtEmail.Value = getThongTinHocSinh.account_email;
         }
-        if (!IsPostBack)
-        {
-            var getThongTinHocSinh = (from ac in db.tbAccounts
-                                      join acchil in db.tbAccount_Childrens on ac.account_id equals acchil.account_id
-                                      join l in db.tbLops on acchil.lop_id equals l.lop_id
-                                      where acchil.account_children_active == true && ac.account_sodienthoai == Request.Cookies["taikhoan"].Value && ac.account_active == true
-                                      select new
-                                      {
-                                          name = acchil.account_children_fullname,
-                                          sodienthoai = ac.account_sodienthoai,
-                                          gioitinh = acchil.account_children_gioitinh,
-                                          acchil.account_children_image,
-                                          lop = acchil.lop_id,
-                                          ngaysinh = acchil.account_children_ngaysinh,
-                                          ac.account_email
-                                      }).FirstOrDefault();
-            tendangnhap = getThongTinHocSinh.sodienthoai;
-            txtHoTen.Value = getThongTinHocSinh.name;
-            image1 = getThongTinHocSinh.account_children_image;
-            imgPreview1.Src = image1;
-            //ScriptManager.RegisterClientScriptBlock(Page, this.GetType(), "Detail", "showImg1('" + image1 + "'); ", true);
-            txtLop.Value = getThongTinHocSinh.lop + "";
-            dteNgaySinh.Value = getThongTinHocSinh.ngaysinh != null ? getThongTinHocSinh.ngaysinh.Value.ToString("yyyy-MM-dd").Replace(' ', 'T') : "dd/MM/yyyy";
-            txtSoDienThoai.Value = getThongTinHocSinh.sodienthoai;
-            txtEmail.Value = getThongTinHocSinh.account_email;
-        }
     }
 
     protected void btnSave_ServerClick(object sender, EventArgs e)
     {
         if (Page.IsValid && FileUpload1.HasFile)
         {
+            int maxFileSize = 2 * 1024 * 1024;
+            if (FileUpload1.PostedFile.ContentLength > maxFileSize)
+            {
+                alert.alert_Error(Page, "Ảnh quá lớn! Vui lòng chọn ảnh dưới 2MB.", "");
+                return; 
+            }
             String folderUser = Server.MapPath("~/uploadimages/avatar-hoc-sinh/");
             if (!Directory.Exists(folderUser))
             {
@@ -122,5 +102,6 @@ public partial class web_module_module_ThongTinCaNhan2 : System.Web.UI.Page
         alert.alert_Success(Page, "Đã cập nhật thông tin cá nhân", "");
 
         imgPreview1.Src = update.account_children_image;
+        //ScriptManager.RegisterStartupScript(this, GetType(), "reloadPage", "setTimeout(function(){ location.reload(); }, 1200);", true);
     }
 }
