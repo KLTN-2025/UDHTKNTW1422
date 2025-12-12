@@ -100,10 +100,10 @@
                     <img src="/images/images-nhatban.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Lớp 9</div>
                     <i class="fa fa-lock lock-icon" aria-hidden="true" id="iconLock4" runat="server"></i>
-                </a><a id="KhoLuyenTap" runat="server" href="/kho-luyen-tap" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
+                </a><%--<a id="KhoLuyenTap" runat="server" href="/kho-luyen-tap" onclick="DisplayLoadingIcon()" class="class-item color lock-button">
                     <img src="/images/images-nhatban.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Kho luyện tập</div>
-                </a>
+                </a>--%>
             </div>
         </div>
     </div>

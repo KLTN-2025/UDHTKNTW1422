@@ -768,7 +768,7 @@
                                 <%#Eval("cauhoi_content") %>
                             </ItemTemplate>
                         </asp:Repeater>--%>
-                        <span class="title-page__text">4/Trắc nghiệm</span>
+                        <span class="title-page__text">3/Trắc nghiệm</span>
                     </div>
                     <div class="">
                         <div class="form-mutichoise ">
@@ -1023,19 +1023,19 @@
 
         });
         let diem = 0;
-        //let tongdiem = 10;
-        //if (tongtracnghiem == 5) {
-        //    diem = caudungtracnghiem + caudungstt;
-        //    //tongdiem = tongtracnghiem + tongstt;
-        //}
-        //else {
-        //    const tongCau = tongtracnghiem + tongstt;
-        //    const weight = 10 / tongCau;
-        //    diem = (caudungtracnghiem + caudungstt) * weight;
-        //}
+        let tongdiem = 10;
+        if (tongtracnghiem == 5) {
+            diem = caudungtracnghiem + caudungstt;
+            //tongdiem = tongtracnghiem + tongstt;
+        }
+        else {
+            const tongCau = tongtracnghiem + tongstt;
+            const weight = 10 / tongCau;
+            diem = (caudungtracnghiem + caudungstt) * weight;
+        }
         //if (caudungtracnghiem / tongtracnghiem>=8/10) {
-            diem = caudungtracnghiem * 2;
-        //}
+        //  /*  diem = caudungtracnghiem ;*/
+        ////}
         setTimeout(function () {
             let sao;
             let ketqua;

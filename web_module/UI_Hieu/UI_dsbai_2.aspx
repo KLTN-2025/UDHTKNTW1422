@@ -31,7 +31,7 @@
 <%--    <uc1:global_LandingPage_Menu1 runat="server" ID="global_LandingPage_Menu1" />--%>
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <asp:ScriptManager runat="server" />
-    <div class="step-contact" style="justify-content:center; background-image: url(/images/bg-red-dangki_nhap-1.png)";>
+    <div class="step-contact" style="justify-content:center; background-image: url(/images/bg-game.jpg)";>
     <div class="block-main pt-3 pb-5 mb-3 px-3">
         <div id="lessonContainer">
             <div class="unit-list__title">Học bảng chữ cái Katakana</div>

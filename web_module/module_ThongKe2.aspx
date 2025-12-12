@@ -82,7 +82,7 @@
                     <td>10/12/2025</td>
                     <td>9.5</td>
                 </tr>
-                <tr>
+               <%-- <tr>
                     <td>2</td>
                     <td>Thái Đăng Duy</td>
                     <td>11/12/2025</td>
@@ -93,7 +93,7 @@
                     <td>Trần Hoàng Hiếu</td>
                     <td>11/12/2025</td>
                     <td>10</td>
-                </tr>
+                </tr>--%>
             </tbody>
         </table>
     </div>

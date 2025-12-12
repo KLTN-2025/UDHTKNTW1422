@@ -223,7 +223,7 @@
                                     </div>
                                     <div class="col-md-6 col-lg-5">
                                         <div class="-txt-main">
-                                            <h2 style="font-weight: bold; font-family: 'Open Sans', sans-serif; color: #b51a1a;">TỰ DO – CHỦ ĐỘNG – UY TÍN</h2>
+                                            <h2 style="font-weight: bold; font-family: 'Open Sans', sans-serif; color: #b51a1a;">HIỆU QUẢ – CHỦ ĐỘNG – UY TÍN</h2>
                                             <p><b style="color: red;">Hiệu quả:</b> <b style="color: #b51a1a;">KOIGO</b> tối ưu cách tiếp thu tiếng Nhật, giúp học nhanh – nhớ lâu – áp dụng được ngay.</p>
                                             <p><b style="color: red;">Chủ động:</b> <b style="color: #b51a1a;">KOIGO</b> Ứng dụng khơi dậy niềm hứng thú, khuyến khích học sinh chủ động chinh phục mục tiêu học tập.</p>
                                             <p><b style="color: red;">Uy tín:</b> <b style="color: #b51a1a;">KOIGO</b> cam kết chất lượng qua kết quả rõ ràng, giúp học sinh nắm vững kiến thức nhanh và hiệu quả.</p>
