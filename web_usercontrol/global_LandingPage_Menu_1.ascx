@@ -46,7 +46,7 @@
                             <span id="userName" runat="server" style="font-weight:500;"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="/app-quan-li-tai-khoan" onclick="DisplayLoadingIcon()">Tài khoản</a></li>
+                            <li><a class="dropdown-item" href="/app-thong-tin-ca-nhan" onclick="DisplayLoadingIcon()">Tài khoản</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/app-doi-mat-khau" onclick="DisplayLoadingIcon()">Đổi mật khẩu</a></li>
                             <li><hr class="dropdown-divider"></li>
