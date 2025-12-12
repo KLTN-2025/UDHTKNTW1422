@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="thcs_Home2.aspx.cs" Inherits="web_module_module_THCS_thcs_Home2" %>
 
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu_1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu_1" %>
+<%@ Register Src="~/web_usercontrol/global_AIChatBox.ascx" TagPrefix="uc2" TagName="global_AIChatBox" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
@@ -107,6 +108,7 @@
             </div>
         </div>
     </div>
+    <uc2:global_AIChatBox runat="server" ID="global_AIChatBox" />
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" runat="Server">
 </asp:Content>

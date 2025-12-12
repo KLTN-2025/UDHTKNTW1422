@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu" %>
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu_1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu_1" %>
+<%@ Register Src="~/web_usercontrol/global_AIChatBox.ascx" TagPrefix="uc1" TagName="global_AIChatBox" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -36,6 +38,7 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <%-- <uc1:global_LandingPage_Menu runat="server" ID="global_LandingPage_Menu" />--%>
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
+    <uc1:global_AIChatBox runat="server" ID="global_AIChatBox" />
     <asp:ScriptManager runat="server" />
     <div id="" class="step-contact" style="justify-content: center;">
         <div class="back_ui">

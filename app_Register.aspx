@@ -314,42 +314,69 @@
                             if (response === "exists") {
                                 swal('Số điện thoại này đã được đăng ký trước đó.', '', 'warning');
                             } else if (response === "ok") {
-                                // 🔥 Gửi OTP trước khi chuyển step
-                                $.ajax({
-                                    url: 'app_Register.aspx/SendOtp',
-                                    type: 'POST',
-                                    data: JSON.stringify({ email: emailInput }),
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (otpResult) {
-
-                                        if (otpResult.d === "OK") {
-
-                                            // Gán lại sđt cho input tài khoản
-                                            $("#txtTaiKhoan").val(phoneInput);
-
-                                            // Chuyển step
-                                            $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
-
-                                            currentStep++;
-
-                                            setTimeout(function () {
-                                                $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
-                                                $(".step-" + currentStep)
-                                                    .show()
-                                                    .addClass("animate__animated animate__fadeInRight");
-
-                                                updateProgressBar();
-                                            }, 500);
-
-                                        } else {
-                                            swal('Không gửi được OTP. Vui lòng thử lại.', '', 'error');
+                                // Check email trùng (chỉ check nếu email đã được nhập)
+                                if (emailInput && emailInput.trim() !== "") {
+                                    $.ajax({
+                                        url: '/Handler/checkEmail_Register.ashx',
+                                        type: 'GET',
+                                        data: { email: emailInput },
+                                        success: function (emailResponse) {
+                                            if (emailResponse === "exists") {
+                                                swal('Email này đã có người sử dụng.', '', 'warning').then(function () { document.getElementById("Wrapper_txtEmail").focus(); });
+                                            } else if (emailResponse === "ok") {
+                                                // 🔥 Gửi OTP trước khi chuyển step
+                                                sendOtpAndMoveStep();
+                                            } else {
+                                                swal('Lỗi kiểm tra email. Vui lòng thử lại.', '', 'error');
+                                            }
+                                        },
+                                        error: function () {
+                                            swal('Không thể kết nối đến máy chủ để kiểm tra email.', '', 'error');
                                         }
-                                    },
-                                    error: function () {
-                                        swal('Lỗi máy chủ khi gửi OTP.', '', 'error');
-                                    }
-                                });
+                                    });
+                                } else {
+                                    // Nếu email trống thì bỏ qua check và gửi OTP luôn
+                                    // 🔥 Gửi OTP trước khi chuyển step
+                                    sendOtpAndMoveStep();
+                                }
+                                
+                                function sendOtpAndMoveStep() {
+                                    $.ajax({
+                                        url: 'app_Register.aspx/SendOtp',
+                                        type: 'POST',
+                                        data: JSON.stringify({ email: emailInput }),
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function (otpResult) {
+
+                                            if (otpResult.d === "OK") {
+
+                                                // Gán lại sđt cho input tài khoản
+                                                $("#txtTaiKhoan").val(phoneInput);
+
+                                                // Chuyển step
+                                                $(".step-" + currentStep).addClass("animate__animated animate__fadeOutLeft");
+
+                                                currentStep++;
+
+                                                setTimeout(function () {
+                                                    $(".step").removeClass("animate__animated animate__fadeOutLeft").hide();
+                                                    $(".step-" + currentStep)
+                                                        .show()
+                                                        .addClass("animate__animated animate__fadeInRight");
+
+                                                    updateProgressBar();
+                                                }, 500);
+
+                                            } else {
+                                                swal('Không gửi được OTP. Vui lòng thử lại.', '', 'error');
+                                            }
+                                        },
+                                        error: function () {
+                                            swal('Lỗi máy chủ khi gửi OTP.', '', 'error');
+                                        }
+                                    });
+                                }
                             } else {
                                 swal('Lỗi kiểm tra số điện thoại. Vui lòng thử lại.', '', 'error');
                             }

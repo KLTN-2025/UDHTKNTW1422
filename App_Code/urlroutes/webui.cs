@@ -249,6 +249,7 @@ public class webui
         list.Add("weblandingpagelogin|app-login|~/app_Login.aspx");
         list.Add("weblandingpageregister|app-register|~/app_Register.aspx");
         list.Add("webthongke|app-thong-ke|~/web_module/module_ThongKe2.aspx");
+        list.Add("modulechungchi|app-chung-chi|~/web_module/module_ChungChi.aspx");
 
         return list;
     }

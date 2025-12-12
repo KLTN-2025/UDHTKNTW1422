@@ -18,12 +18,17 @@
                     </li>--%>
                     <li class="nav-item">
                         <a class="nav-link" href="/app-thong-ke" onclick="DisplayLoadingIcon()">
-                           Thống kê
+                           Tiến độ học tập
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/kho-luyen-tap" onclick="DisplayLoadingIcon()">
                            Kho luyện tập
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/app-chung-chi" onclick="DisplayLoadingIcon()">
+                           Chứng chỉ
                         </a>
                     </li>
                 </ul>

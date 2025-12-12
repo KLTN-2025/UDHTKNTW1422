@@ -12,6 +12,7 @@
             color: #c40000;
             text-align: center;
             margin-bottom: 20px;
+            font-family: Calibri, 'Calibri', sans-serif;
         }
 
         table {
@@ -21,6 +22,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-family: Calibri, 'Calibri', sans-serif;
         }
         .table-name th{
             font-weight: 600;
@@ -56,6 +58,50 @@
             display: flex;
             justify-content: center;
         }
+
+        .badge-pass {
+            background-color: #28a745;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .badge-fail {
+            background-color: #dc3545;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            height: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background-color: #28a745;
+            height: 100%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            transition: width 0.3s ease;
+        }
+
+        .progress-bar-fill.fail {
+            background-color: #dc3545;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="Server">
@@ -64,36 +110,74 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
-    <h2 class="mt-3">DANH SÁCH ĐIỂM</h2>
+    <h2 class="mt-3">TIẾN ĐỘ HỌC TẬP</h2>
     <div class="table-thongke">
         <table>
             <thead>
                 <tr class="table-name">
                     <th>STT</th>
-                    <th>TÊN</th>
-                    <th>NGÀY LÀM BÀI</th>
-                    <th>ĐIỂM SỐ</th>
+                    <th>BÀI HỌC</th>
+                    <th>ĐIỂM</th>
+                    <th>HOÀN THÀNH</th>
+                    <th>MỨC ĐỘ HOÀN THÀNH</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Nguyễn Hoàng Nam</td>
-                    <td>10/12/2025</td>
+                    <td>Bài 1: Hàng A - a, i, u, e, o</td>
                     <td>9.5</td>
+                    <td><span class="badge-pass">Pass</span></td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar-fill" style="width: 95%">95%</div>
+                        </div>
+                    </td>
                 </tr>
-               <%-- <tr>
+                <tr>
                     <td>2</td>
-                    <td>Thái Đăng Duy</td>
-                    <td>11/12/2025</td>
+                    <td>Bài 2: Hàng KA - ka, ki, ku, ke, ko</td>
                     <td>8.0</td>
+                    <td><span class="badge-pass">Pass</span></td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar-fill" style="width: 80%">80%</div>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>Trần Hoàng Hiếu</td>
-                    <td>11/12/2025</td>
+                    <td>Bài 3: Hàng SA - sa, shi, su, se, so</td>
+                    <td>5.5</td>
+                    <td><span class="badge-fail">Không pass</span></td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar-fill fail" style="width: 55%">55%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Bài 4: Hàng TA - ta, chi, tsu, te, to</td>
+                    <td>0</td>
+                    <td><span class="badge-fail">Không pass</span></td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar-fill fail" style="width: 0%">0%</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Bài 5: Hàng NA - na, ni, nu, ne, no</td>
                     <td>10</td>
-                </tr>--%>
+                    <td><span class="badge-pass">Pass</span></td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar-fill" style="width: 100%">100%</div>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

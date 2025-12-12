@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="UI_dsbai.aspx.cs" Inherits="web_module_UI_Hieu_UI_dsbai" %>
 
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu_1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu_1" %>
+<%@ Register Src="~/web_usercontrol/global_AIChatBox.ascx" TagPrefix="uc1" TagName="global_AIChatBox" %>
+
 
 
 <%--<%@ Register Src="~/web_usercontrol/global_LandingPage_Menu1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu1" %>--%>
@@ -28,7 +30,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <%-- <asp:HiddenField ID="hfStudentId" runat="server" />
-    <asp:HiddenField ID="hfSachId" runat="server" />--%>
+    <asp:HiddenField ID="hfSachId" runat="server" />--%><uc1:global_AIChatBox runat="server" ID="global_AIChatBox" />
     <%--    <uc1:global_LandingPage_Menu1 runat="server" ID="global_LandingPage_Menu1" />--%>
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <%--<asp:ScriptManager runat="server" />--%>
@@ -70,7 +72,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 2
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -89,7 +91,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 3
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -111,7 +113,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 4
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -130,7 +132,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 5
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -149,7 +151,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 6
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -158,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                   <%-- <div class="title_lesson_s">Bài 3 : Hàng Sa : sa, shi, su, se, so </div>
+                    <div class="title_lesson_s">Bài 3 : Hàng Sa : sa, shi, su, se, so </div>
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4">
                             <div class="lesson-row">
@@ -171,7 +173,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 7
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -190,7 +192,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 8
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -209,7 +211,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 9
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -231,7 +233,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 2
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -250,7 +252,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 3
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -269,7 +271,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 4
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -291,7 +293,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 6
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -310,7 +312,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 7
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -329,7 +331,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 8
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -351,7 +353,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 10
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -370,7 +372,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 1
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -389,7 +391,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 2
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -411,7 +413,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 4
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -430,7 +432,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 5
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -449,7 +451,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 6
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -471,7 +473,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 8
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -490,7 +492,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 9
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -509,7 +511,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 10
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -531,7 +533,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 2
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -550,7 +552,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 3
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -569,7 +571,7 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 4
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -591,7 +593,7 @@
                                             Lý thuyết
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 6
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -610,7 +612,7 @@
                                             Luyện tập
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 7
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
@@ -629,14 +631,14 @@
                                             Luyện tập (nâng cao)
                                         </div>
                                         <div class="lesson-item__content--view">
-                                            <i class="fa fa-eye"></i>&nbsp; 0
+                                            <i class="fa fa-eye"></i>&nbsp; 8
                                         </div>
                                         <div class="lesson-item__content--decription"></div>
                                         <div class="rating-list"></div>
                                     </div>
                                 </a>
                             </div>
-                        </div>--%>
+                        </div>
                     </div>
                 </div>
             </div>
