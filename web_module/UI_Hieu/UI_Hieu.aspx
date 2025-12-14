@@ -15,17 +15,37 @@
         }
 
         .back_ui {
-            background-color: #f3cd8b;
-            padding: 40px;
+            background-color: #F5E6B8;
+            padding: 20px;
             border-radius: 9%;
             position: relative;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 50px;
+            gap: 25px;
             -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            max-width: fit-content;
         }
+
+        .step-contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .step-title {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+            .step-title span {
+                font-size: 22px;
+                font-weight: 700;
+                color: #8B5E34; /* nâu trà */
+                letter-spacing: 0.5px;
+            }
     </style>
 
     <link href="../../css/listBooks.css" rel="stylesheet" />
@@ -42,6 +62,9 @@
     <asp:ScriptManager runat="server" />
     <div id="" class="step-contact" style="justify-content: center;">
         <div class="back_ui">
+            <div class="step-title">
+                <span>Hãy chọn 1 trong 2 sách để học</span>
+            </div>
             <div class="book-item">
                 <a href="<%= hiragana %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
                     <div class="book-card__cover">
