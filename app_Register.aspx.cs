@@ -66,11 +66,20 @@ public partial class app_Register : System.Web.UI.Page
     {
         try
         {
+            // Kiểm tra email có hợp lệ không
+            if (string.IsNullOrEmpty(email) || !email.Contains("@"))
+            {
+                return "INVALID_EMAIL";
+            }
+
             // Tạo OTP
             Random rnd = new Random();
             string otp = rnd.Next(100000, 999999).ToString();
 
+            // Lưu OTP và thời gian vào session
             HttpContext.Current.Session["OTP"] = otp;
+            HttpContext.Current.Session["OTP_Time"] = DateTime.Now;
+            HttpContext.Current.Session["OTP_Email"] = email;
 
             // Gửi email
             MailMessage msg = new MailMessage();
@@ -91,9 +100,14 @@ public partial class app_Register : System.Web.UI.Page
 
             return "OK";
         }
+        catch (SmtpException smtpEx)
+        {
+            // Lỗi gửi email
+            return "SEND_FAILED";
+        }
         catch (Exception ex)
         {
-            return ex.Message;
+            return "ERROR: " + ex.Message;
         }
     }
     [System.Web.Services.WebMethod]
@@ -103,10 +117,37 @@ public partial class app_Register : System.Web.UI.Page
         string otpServer = sessionObj == null ? null : sessionObj.ToString();
 
         if (otpServer == null)
-            return "EXPIRED"; // OTP chưa gửi hoặc đã hết hạn
+        {
+            // Kiểm tra xem có email trong session không để phân biệt chưa gửi hay đã hết hạn
+            var emailObj = HttpContext.Current.Session["OTP_Email"];
+            if (emailObj == null)
+            {
+                return "NOT_SENT"; // OTP chưa được gửi
+            }
+            return "EXPIRED"; // OTP đã hết hạn
+        }
+
+        // Kiểm tra thời gian hết hạn (5 phút)
+        var timeObj = HttpContext.Current.Session["OTP_Time"];
+        if (timeObj != null && timeObj is DateTime)
+        {
+            DateTime otpTime = (DateTime)timeObj;
+            if ((DateTime.Now - otpTime).TotalMinutes > 5)
+            {
+                HttpContext.Current.Session["OTP"] = null;
+                HttpContext.Current.Session["OTP_Time"] = null;
+                return "EXPIRED";
+            }
+        }
 
         if (otpClient == otpServer)
+        {
+            // Xóa OTP sau khi verify thành công
+            HttpContext.Current.Session["OTP"] = null;
+            HttpContext.Current.Session["OTP_Time"] = null;
+            HttpContext.Current.Session["OTP_Email"] = null;
             return "OK";
+        }
 
         return "INVALID";
     }

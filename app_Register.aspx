@@ -349,9 +349,8 @@
                                         contentType: "application/json; charset=utf-8",
                                         dataType: "json",
                                         success: function (otpResult) {
-
-                                            if (otpResult.d === "OK") {
-
+                                            var result = otpResult.d;
+                                            if (result === "OK") {
                                                 // Gán lại sđt cho input tài khoản
                                                 $("#txtTaiKhoan").val(phoneInput);
 
@@ -369,6 +368,10 @@
                                                     updateProgressBar();
                                                 }, 500);
 
+                                            } else if (result === "INVALID_EMAIL") {
+                                                swal('Email không hợp lệ. Vui lòng kiểm tra lại email.', '', 'warning').then(function () { document.getElementById("Wrapper_txtEmail").focus(); });
+                                            } else if (result === "SEND_FAILED") {
+                                                swal('Không thể gửi OTP đến email này. Vui lòng kiểm tra lại địa chỉ email hoặc thử lại sau.', '', 'error');
                                             } else {
                                                 swal('Không gửi được OTP. Vui lòng thử lại.', '', 'error');
                                             }
@@ -480,10 +483,16 @@
                         $(".next-step").click();
                     }
                     else if (result === "INVALID") {
-                        swal('OTP không đúng!', '', 'warning')
+                        swal('Mã OTP không đúng. Vui lòng kiểm tra lại!', '', 'warning')
+                    }
+                    else if (result === "NOT_SENT") {
+                        swal('Mã OTP chưa được gửi. Vui lòng quay lại bước trước và thử lại!', '', 'warning')
                     }
                     else if (result === "EXPIRED") {
-                        swal('OTP đã hết hạn, vui lòng gửi lại!', '', 'warning')
+                        swal('Mã OTP đã hết hạn (quá 5 phút). Vui lòng gửi lại mã mới!', '', 'warning')
+                    }
+                    else {
+                        swal('Lỗi xác thực OTP. Vui lòng thử lại!', '', 'error')
                     }
                 },
                 error: function (err) {
@@ -496,6 +505,40 @@
             $(".next-step").click();
 
         }
+
+        // Xử lý gửi lại OTP
+        $(document).ready(function() {
+            $("#btnResendOTP").click(function() {
+                const emailInput = document.getElementById("Wrapper_txtEmail").value;
+                if (!emailInput || emailInput.trim() === "") {
+                    swal('Vui lòng quay lại bước trước và nhập email.', '', 'warning');
+                    return;
+                }
+
+                $.ajax({
+                    url: 'app_Register.aspx/SendOtp',
+                    type: 'POST',
+                    data: JSON.stringify({ email: emailInput }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (otpResult) {
+                        var result = otpResult.d;
+                        if (result === "OK") {
+                            swal('Mã OTP mới đã được gửi đến email của bạn!', '', 'success');
+                        } else if (result === "INVALID_EMAIL") {
+                            swal('Email không hợp lệ. Vui lòng kiểm tra lại email.', '', 'warning');
+                        } else if (result === "SEND_FAILED") {
+                            swal('Không thể gửi OTP đến email này. Vui lòng kiểm tra lại địa chỉ email hoặc thử lại sau.', '', 'error');
+                        } else {
+                            swal('Không gửi được OTP. Vui lòng thử lại.', '', 'error');
+                        }
+                    },
+                    error: function () {
+                        swal('Lỗi máy chủ khi gửi OTP.', '', 'error');
+                    }
+                });
+            });
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="BottomWrapper" runat="Server">

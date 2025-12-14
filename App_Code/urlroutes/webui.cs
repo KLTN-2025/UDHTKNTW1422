@@ -185,6 +185,7 @@ public class webui
 
         //Kho luyện tập
         list.Add("webdanhsachbailuyentap|kho-luyen-tap|~/web_module/KhoLuyenTap/tiengnhat_KhoLuyenTap.aspx");
+        list.Add("webbaikiemtrachitiet|bai-kiem-tra-chi-tiet-1|~/web_module/KhoLuyenTap/BaiKiemTra_ChiTiet.aspx");
 
 
         //Game Toán+Tiếng_Anh+Tiếng_Việt

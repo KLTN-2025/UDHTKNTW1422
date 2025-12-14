@@ -61,10 +61,8 @@
     <uc1:global_AIChatBox runat="server" ID="global_AIChatBox" />
     <asp:ScriptManager runat="server" />
     <div id="" class="step-contact" style="justify-content: center;">
+            <div class="unit-list__title">Hãy chon 1 trong 2 bảng chữ cái</div>
         <div class="back_ui">
-            <div class="step-title">
-                <span>Hãy chọn 1 trong 2 sách để học</span>
-            </div>
             <div class="book-item">
                 <a href="<%= hiragana %>" class="book-card" onclick="DisplayLoadingIcon()" style="text-decoration: none;">
                     <div class="book-card__cover">

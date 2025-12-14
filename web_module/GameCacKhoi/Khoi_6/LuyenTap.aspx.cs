@@ -43,7 +43,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_Luyen_Tap : System.Web.UI.Pag
                              link_prev = bn.baihoc_back,
                              link_next = bn.baihoc_next,
                          }).FirstOrDefault();
-        lesson_name = getBaiHoc.baihoc_title;
+        lesson_name = "Luyện tập";
         link_next = getBaiHoc.link_next;
         link_prev = getBaiHoc.link_prev;
         baihoc = getBaiHoc.baihoc_title;

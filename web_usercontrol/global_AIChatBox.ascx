@@ -3,7 +3,7 @@
 <div id="aiChatBox" class="ai-chatbox minimized">
     <div id="chatBoxHeader" class="chatbox-header">
         <div class="chatbox-header__info" onclick="toggleChatBox()">
-            <i class="bi bi-robot"></i>
+            <i class="bi bi-messenger"></i>
             <span>AI Assistant</span>
         </div>
         <div class="chatbox-header__actions">
@@ -15,7 +15,7 @@
         <div id="chatMessages" class="chat-messages">
             <div class="message bot-message">
                 <div class="message-avatar">
-                    <i class="bi bi-robot"></i>
+                    <i class="bi bi-messenger"></i>
                 </div>
                 <div class="message-content">
                     <p>Xin chào! Tôi là AI Assistant của KoiGo. Bạn cần giúp gì?</p>
@@ -56,10 +56,41 @@
     }
 
     .ai-chatbox.minimized {
+        width: 60px;
         height: 60px;
+        border-radius: 50%;
+        padding: 0;
     }
 
     .ai-chatbox.minimized .chatbox-body {
+        display: none;
+    }
+
+    .ai-chatbox.minimized .chatbox-header {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #b51a1a 0%, #b51a1a 100%);
+    }
+
+    .ai-chatbox.minimized .chatbox-header__info {
+        justify-content: center;
+        gap: 0;
+    }
+
+    .ai-chatbox.minimized .chatbox-header__info span {
+        display: none;
+    }
+
+    .ai-chatbox.minimized .chatbox-header__info i {
+        font-size: 28px;
+        margin: 0;
+    }
+
+    .ai-chatbox.minimized .chatbox-header__actions {
         display: none;
     }
 
@@ -445,7 +476,7 @@
         
         const avatar = document.createElement('div');
         avatar.className = 'message-avatar';
-        avatar.innerHTML = type === 'user' ? '<i class="bi bi-person-fill"></i>' : '<i class="bi bi-robot"></i>';
+        avatar.innerHTML = type === 'user' ? '<i class="bi bi-person-fill"></i>' : '<i class="bi bi-messenger"></i>';
         
         const content = document.createElement('div');
         content.className = 'message-content';
@@ -470,7 +501,7 @@
         
         const avatar = document.createElement('div');
         avatar.className = 'message-avatar';
-        avatar.innerHTML = '<i class="bi bi-robot"></i>';
+        avatar.innerHTML = '<i class="bi bi-messenger"></i>';
         
         const content = document.createElement('div');
         content.className = 'message-content typing-indicator';

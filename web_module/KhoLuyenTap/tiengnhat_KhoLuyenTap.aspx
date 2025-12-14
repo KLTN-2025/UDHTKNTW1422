@@ -85,6 +85,10 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="block-main pt-3 pb-5 mb-3 px-3">
+                                <div id="divNoData" runat="server" style="text-align: center; padding: 40px; display: none;">
+                                    <p style="font-size: 18px; color: #666;">Chưa có bài luyện tập nào trong khối 6.</p>
+                                    <p style="font-size: 14px; color: #999; margin-top: 10px;">Vui lòng liên hệ quản trị viên để thêm bài luyện tập.</p>
+                                </div>
                                 <asp:Repeater ID="rpDanhSachLuyenTapKhoi6" runat="server">
                                     <ItemTemplate>
                                         <div class="practice-item">

@@ -73,6 +73,11 @@
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
+                                <div class="game-header">
+                        <div class="game-header__title text-center">
+                            Hãy nối các từ giống với hình minh họa
+                        </div>
+                    </div>
                             <div class="game-connect">
 
                                 <div class="pair-horizontal --style-1 pair-horizontal--item-<%= noi %> mt-2">

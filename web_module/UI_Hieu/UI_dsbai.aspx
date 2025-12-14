@@ -36,7 +36,7 @@
     <%--    <uc1:global_LandingPage_Menu1 runat="server" ID="global_LandingPage_Menu1" />--%>
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <%--<asp:ScriptManager runat="server" />--%>
-    <div class="step-contact" style="display: block; background-image: url(/images/bg-red-dangki_nhap-1.png); background-attachment: fixed; background-repeat: no-repeat;">
+    <div class="step-contact" style="display: block; background-image: url(/images/8401725.jpg); background-attachment: fixed; background-repeat: no-repeat;">
         <div class="block-main pt-3 pb-5">
             <div class="container">
                 <div id="lessonContainer">
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 3
@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 6
@@ -210,7 +210,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 9
@@ -270,7 +270,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 4
@@ -330,7 +330,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 8
@@ -390,7 +390,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 2
@@ -450,7 +450,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 6
@@ -487,7 +487,7 @@
                             <div class="lesson-row">
                                 <a href="javascript:void(0)" class="lesson-item" id="id_277" onclick="xembai(277)">
                                     <div class="lesson-item__avatar">
-                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-ya.png">
+                                        <img src="/imageGame/Bang_chu_cai_Hiragana/hinh-chu-yo.png">
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
@@ -510,7 +510,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 10
@@ -570,7 +570,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 4
@@ -630,7 +630,7 @@
                                     </div>
                                     <div class="lesson-item__content">
                                         <div class="lesson-item__content--title">
-                                            Luyện tập (nâng cao)
+                                            Thực hành
                                         </div>
                                         <div class="lesson-item__content--view">
                                             <i class="fa fa-eye"></i>&nbsp; 8

@@ -12,65 +12,96 @@ public partial class web_module_KhoLuyenTap_tiengnhat_KhoLuyenTap : System.Web.U
     private string hocsinh_code;
     protected void Page_Load(object sender, EventArgs e)
     {
-        //if (Request.Cookies["PhuHuynhVietNhat"] != null)
-        //{
-        //    namhoc_id = (from nh in db.tbHoctap_NamHocs orderby nh.namhoc_id descending select nh.namhoc_id).First();
-        //    khoi_id = Convert.ToInt32(RouteData.Values["khoi"]);
-        //    string[] arrListStr = Request.Cookies["PhuHuynhVietNhat"].Value.Split(',');
-        //    if (arrListStr[0] == "hocsinh")// nếu là học sinh đăng nhập
-        //    {
-        //        var checkHS = (from hs in db.tbHocSinhs
-        //                       where hs.hocsinh_taikhoan == arrListStr[1]
-        //                       select hs).Single();
-        //        hocsinh_id = checkHS.hocsinh_id;
-        //        hocsinh_code = checkHS.hocsinh_mahocphi;
-        //        if (!IsPostBack)
-        //        {
-                    loadData();
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Response.Redirect("/login-slldt-viet-nhat");
-        //    }
-
-
-        //}
-        //else Response.Redirect("/login-slldt-viet-nhat");
+        // Initialize default values
+        hocsinh_id = 0;
+        hocsinh_code = "";
+        khoi_id = 0;
+        mon_id = 0;
+        
+        // Check if user is logged in via cookie
+        if (Request.Cookies["taikhoan"] != null)
+        {
+            var account = (from ac in db.tbAccounts
+                         where ac.account_sodienthoai == Request.Cookies["taikhoan"].Value && ac.account_active == true
+                         select ac).FirstOrDefault();
+            
+            if (account != null)
+            {
+                var accountChild = (from acchil in db.tbAccount_Childrens
+                                  where acchil.account_id == account.account_id && acchil.account_children_active == true
+                                  select acchil).FirstOrDefault();
+                
+                if (accountChild != null)
+                {
+                    hocsinh_code = account.account_sodienthoai;
+                    // You may need to map account_children to hocsinh_id if needed
+                }
+            }
+        }
+        
+        if (!IsPostBack)
+        {
+            loadData();
+        }
     }
     protected void loadData()
     {
-        //khối 6
-        var getBaiTap = from bt in db.tbTracNghiem_BaiLuyenTaps
-                        join t in db.tbTracNghiem_Tests on bt.luyentap_id equals t.luyentap_id
-                        where bt.luyentap_status == 2 && t.monhoc_id == 12 && t.khoi_id == 6
-                        && t.hidden == true
-                        select new
-                        {
-                            t.test_id,
-                            bt.luyentap_id,
-                            imgBaiTap = bt.luyentap_path,
-                            bt.luyentap_name,
-                            t.test_link,
-                            khoi_id = khoi_id,
-                            mon_id = mon_id,
-                            count_view = (from rt in db.tbTracNghiem_ResultTests
-                                          join t1 in db.tbTracNghiem_Tests on rt.test_id equals t1.test_id
-                                          where t1.luyentap_id == bt.luyentap_id && rt.hocsinh_code == hocsinh_code
-                                          select rt).Count(),
-                            luyentap_heart_class = (from lth in db.tbTracNghiem_LuyenTap_Hearts
-                                                    where lth.test_id == t.test_id && lth.hocsinh_id == hocsinh_id
-                                                    select lth).Count() > 0 ?
-                                                    (from lth in db.tbTracNghiem_LuyenTap_Hearts
-                                                     where lth.test_id == t.test_id && lth.hocsinh_id == hocsinh_id
-                                                     select lth).FirstOrDefault().luyentap_heart_class == "fa fa-heart" ? "fa fa-heart" : "fa fa-heart-o"
-                                                     : "fa fa-heart-o",
-                            luyentap_star_class = (from s in db.tbTracNghiem_LuyenTap_Stars
-                                                   where s.test_id == t.test_id
-                                                   select s).Count() > 0 ? "fa fa-star" : "fa fa-star-o"
-                        };
-        rpDanhSachLuyenTapKhoi6.DataSource = getBaiTap;
-        rpDanhSachLuyenTapKhoi6.DataBind();
+        try
+        {
+            //khối 6
+            var getBaiTap = from bt in db.tbTracNghiem_BaiLuyenTaps
+                            join t in db.tbTracNghiem_Tests on bt.luyentap_id equals t.luyentap_id
+                            where bt.luyentap_status == 2 && t.monhoc_id == 12 && t.khoi_id == 6
+                            && (t.hidden != true || t.hidden == null)
+                            select new
+                            {
+                                t.test_id,
+                                bt.luyentap_id,
+                                imgBaiTap = bt.luyentap_path,
+                                bt.luyentap_name,
+                                t.test_link,
+                                khoi_id = t.khoi_id ?? 6,
+                                mon_id = t.monhoc_id ?? 12,
+                                count_view = !string.IsNullOrEmpty(hocsinh_code) ? 
+                                    (from rt in db.tbTracNghiem_ResultTests
+                                     join t1 in db.tbTracNghiem_Tests on rt.test_id equals t1.test_id
+                                     where t1.luyentap_id == bt.luyentap_id && rt.hocsinh_code == hocsinh_code
+                                     select rt).Count() : 0,
+                                luyentap_heart_class = hocsinh_id > 0 ?
+                                    (from lth in db.tbTracNghiem_LuyenTap_Hearts
+                                     where lth.test_id == t.test_id && lth.hocsinh_id == hocsinh_id
+                                     select lth).Count() > 0 ?
+                                    (from lth in db.tbTracNghiem_LuyenTap_Hearts
+                                     where lth.test_id == t.test_id && lth.hocsinh_id == hocsinh_id
+                                     select lth).FirstOrDefault().luyentap_heart_class == "fa fa-heart" ? "fa fa-heart" : "fa fa-heart-o"
+                                     : "fa fa-heart-o" : "fa fa-heart-o",
+                                luyentap_star_class = (from s in db.tbTracNghiem_LuyenTap_Stars
+                                                       where s.test_id == t.test_id
+                                                       select s).Count() > 0 ? "fa fa-star" : "fa fa-star-o"
+                            };
+            var listBaiTap = getBaiTap.ToList();
+            
+            if (listBaiTap.Count > 0)
+            {
+                rpDanhSachLuyenTapKhoi6.DataSource = listBaiTap;
+                rpDanhSachLuyenTapKhoi6.DataBind();
+                divNoData.Visible = false;
+            }
+            else
+            {
+                rpDanhSachLuyenTapKhoi6.DataSource = null;
+                rpDanhSachLuyenTapKhoi6.DataBind();
+                divNoData.Visible = true;
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log error or show message
+            System.Diagnostics.Debug.WriteLine("Error loading data: " + ex.Message);
+            divNoData.Visible = true;
+            rpDanhSachLuyenTapKhoi6.DataSource = null;
+            rpDanhSachLuyenTapKhoi6.DataBind();
+        }
         ////khối 7
         //var getBaiTapKhoi7 = from bt in db.tbTracNghiem_BaiLuyenTaps
         //                     join t in db.tbTracNghiem_Tests on bt.luyentap_id equals t.luyentap_id

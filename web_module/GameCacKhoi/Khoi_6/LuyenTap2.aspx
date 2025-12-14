@@ -151,6 +151,11 @@
                                 </ItemTemplate>
                             </asp:Repeater>
                         </div>
+                          <div class="game-header">
+                        <div class="game-header__title text-center">
+                            Hãy điền phiên âm của các từ sau
+                        </div>
+                    </div>
                         <div class="words-combine mt-2">
                             <div class="words-combine-list">
                                 <asp:Repeater ID="rpGhepChu" runat="server">

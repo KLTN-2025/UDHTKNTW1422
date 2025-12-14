@@ -22,7 +22,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/kho-luyen-tap" onclick="DisplayLoadingIcon()">
+                        <a class="nav-link" href="/bai-kiem-tra-chi-tiet-1" onclick="DisplayLoadingIcon()">
                            Kho luyện tập
                         </a>
                     </li>
