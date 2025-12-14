@@ -305,7 +305,7 @@
                 </div>
                 <div class="wow bounceIn">
                     <img width="100%" class="d-none d-md-block" src="images/block-4.png" alt="khám phá" />
-                    <img width="100%" class="d-md-none" src="images/image_THCS/block-4-phone.jpg" alt="khám phá" />
+                    <%--<img width="100%" class="d-md-none" src="images/image_THCS/block-4-phone.jpg" alt="khám phá" />--%>
                 </div>
 
 
