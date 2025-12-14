@@ -147,6 +147,11 @@
                                 font-size: 20px;
                             }
                     </style>
+                    <div class="game-header">
+                        <div class="game-header__title text-center">
+                            Nhấn vào chữ để nghe, bấm vào mic để đọc lại.
+                        </div>
+                    </div>
                     <div class="list-vocabulary --item-<%= itemchucai %>">
                         <asp:Repeater runat="server" ID="rpVocabulary">
                             <ItemTemplate>

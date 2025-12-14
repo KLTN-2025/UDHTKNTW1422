@@ -75,8 +75,9 @@ public class adminmodule
         list.Add("moduleTaoBaiKiemTraTieuHoc|admin-tao-bai-kiem-tra-tieu-hoc|~/admin_page/module_function/module_BaiKiemTra/module_BaiKiemTra_TieuHoc_Ver2.aspx");
         list.Add("moduleDanhSachBaiKiemTraTieuHoc|admin-danh-sach-bai-kiem-tra-tieu-hoc|~/admin_page/module_function/module_BaiKiemTra/module_DanhSachBaiKiemTra.aspx");
         list.Add("moduleLichSuBaiKiemTraTieuHoc|admin-lich-su-bai-kiem-tra-tieu-hoc|~/admin_page/module_function/module_BaiKiemTra/module_LichSu_BaiKiemTra.aspx");
-        //noi
+        //my
         list.Add("moduleNhapLieuGameNoi|admin-nhap-lieu-game-noi|~/admin_page/module_function/module_NhapLieuGame/module_GameNoi.aspx");
+        list.Add("moduleQuanLyNguoiDung|admin-quan-ly-nguoi-dung|~/admin_page/module_function/module_QuanLyNguoiDung.aspx");
         return list;
     }
 }
