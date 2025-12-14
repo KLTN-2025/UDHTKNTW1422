@@ -1,4 +1,7 @@
-﻿.block-book {
+﻿
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&display=swap");
+
+.block-book {
     background: #fff9f9;
     padding-top: 1rem;
     padding-left: 15px;
@@ -125,11 +128,12 @@
 
 .unit-list__title {
     font-family: Lexend, Barlow Semi Condensed, cursive;
-    font-size: 1.25rem;
-    color: #1f6749;
+    font-size: clamp(1.875rem, 0.0972rem + 3.7037vw, 2.875rem);
+    color: orange;
     font-weight: 700;
     text-align: center;
     margin-bottom: 1.5rem;
+    text-shadow: rgb(255, 255, 255) 3px 0px 0px, rgb(255, 255, 255) 2.83487px 0.981584px 0px, rgb(255, 255, 255) 2.35766px 1.85511px 0px, rgb(255, 255, 255) 1.62091px 2.52441px 0px, rgb(255, 255, 255) 0.705713px 2.91581px 0px, rgb(255, 255, 255) -0.287171px 2.98622px 0px, rgb(255, 255, 255) -1.24844px 2.72789px 0px, rgb(255, 255, 255) -2.07227px 2.16926px 0px, rgb(255, 255, 255) -2.66798px 1.37182px 0px, rgb(255, 255, 255) -2.96998px 0.42336px 0px, rgb(255, 255, 255) -2.94502px -0.571704px 0px, rgb(255, 255, 255) -2.59586px -1.50383px 0px, rgb(255, 255, 255) -1.96093px -2.27041px 0px, rgb(255, 255, 255) -1.11013px -2.78704px 0px, rgb(255, 255, 255) -0.137119px -2.99686px 0px, rgb(255, 255, 255) 0.850987px -2.87677px 0px, rgb(255, 255, 255) 1.74541px -2.43999px 0px, rgb(255, 255, 255) 2.44769px -1.73459px 0px, rgb(255, 255, 255) 2.88051px -0.838247px 0px;
 }
 
 .lesson-row {
@@ -158,26 +162,25 @@
     display: block;
     color: #000;
     text-decoration: none;
-    min-height: 260px;
+    /*min-height: 260px;*/
 }
 
     .lesson-item:hover {
-        color: red;
+        color: #e9411b;
     }
 
 .lesson-item__avatar {
     /*width: 20%;
     min-width: 20%;*/
-    
 }
 
-    .lesson-item__avatar img {height: 120px;
-    width: 100%;
-    object-fit: contain;
-    object-position: center;
+    .lesson-item__avatar img {
+        height: 120px;
+        width: 100%;
+        object-fit: contain;
+        object-position: center;
         border-top-left-radius: 0.75rem;
         border-bottom-left-radius: 0.75rem;
-        
         display: block;
     }
 
@@ -188,7 +191,7 @@
 
 .lesson-item__content--title {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: clamp(1.125rem, 0.2361rem + 1.8519vw, 1.625rem);
     margin-bottom: 0.5rem;
     overflow: hidden;
     display: -webkit-box;

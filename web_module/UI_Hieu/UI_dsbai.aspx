@@ -16,8 +16,10 @@
         }
 
         .title_lesson_s {
-            font-size: 30px;
+            text-align: center;
+            font-size: clamp(1.75rem, 0.1944rem + 3.2407vw, 2.625rem);
             font-weight: bold;
+            margin-bottom: .5rem;
             color: black;
         }
     </style>
@@ -34,12 +36,12 @@
     <%--    <uc1:global_LandingPage_Menu1 runat="server" ID="global_LandingPage_Menu1" />--%>
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <%--<asp:ScriptManager runat="server" />--%>
-    <div class="step-contact" style="justify-content: center; background-image: url(/images/bg-red-dangki_nhap-1.png)">
-        <div class="block-main pt-3 pb-5 mb-3 px-3">
+    <div class="step-contact" style="display: block; background-image: url(/images/bg-red-dangki_nhap-1.png); background-attachment: fixed; background-repeat: no-repeat;">
+        <div class="block-main pt-3 pb-5">
+            <div class="container">
+                <div id="lessonContainer">
 
-            <div id="lessonContainer">
-                <div class="unit-list__title">Học bảng chữ cái Hiragana</div>
-                <div class="container-fluid">
+                    <div class="unit-list__title">Học bảng chữ cái Hiragana</div>
                     <div class="title_lesson_s">Bài 1 : Hàng A : a, i, u, e, o </div>
                     <div class="row">
                         <div class="col-4 col-sm-4 col-md-4">
@@ -719,7 +721,7 @@
                                         </div>
                                         `;
                         });
-                      /*  <a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>*/
+                        /*  <a href="${ls.link_in}" class="btn btn-print"><i class="fa fa-print" aria-hidden="true"></i></a>*/
 
                         const topicHtml = `
                          <div class="unit-list__title">${lesson.chudebaihoc_name}</div>
