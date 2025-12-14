@@ -18,27 +18,39 @@ public partial class app_Login : System.Web.UI.Page
     {
         cls_security md5 = new cls_security();
         string passmd5 = md5.HashCode(txtPassword.Value);
-        string userName = txtUser.Value.Trim();
-        tbAccount checkTaiKhoan = (from tb in db.tbAccounts
-                                   where tb.account_sodienthoai == userName.ToLower()
-                                   && tb.account_matkhau == passmd5
-                                   && tb.account_active == true
-                                   select tb).FirstOrDefault();
-        if (checkTaiKhoan != null)
+        string userName = txtUser.Value.Trim().ToLower();
+
+        var checkTaiKhoan = db.tbAccounts
+            .FirstOrDefault(tb =>
+                tb.account_sodienthoai == userName &&
+                tb.account_matkhau == passmd5);
+
+        if (checkTaiKhoan == null)
         {
-            // tạo cookie tài khoản
-            HttpCookie ck = new HttpCookie("taikhoan");
-            string s = ck.Value;
-            ck.Value = userName;
-            ck.Expires = DateTime.Now.AddDays(365);
-            Response.Cookies.Add(ck);
-            Response.Redirect("/app-thcs");
-            //Response.Redirect("/koigo-trang-chu");
+            ScriptManager.RegisterClientScriptBlock(
+                this.Page, this.Page.GetType(),
+                "AlertBox",
+                "swal('Sai tên đăng nhập hoặc mật khẩu!', '', 'warning')",
+                true);
+            return;
         }
-        else
+
+        if (checkTaiKhoan.account_active == false)
         {
-            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "AlertBox", "swal('Sai tên đăng nhập / mật khẩu!', '','warning')", true);
+            ScriptManager.RegisterClientScriptBlock(
+                this.Page, this.Page.GetType(),
+                "AlertBox",
+                "swal('Tài khoản của bạn đã bị chặn. Vui lòng liên hệ bộ phận hỗ trợ!', '', 'warning')",
+                true);
+            return;
         }
+
+        // ✅ LOGIN THÀNH CÔNG
+        HttpCookie ck = new HttpCookie("taikhoan");
+        ck.Value = userName;
+        ck.Expires = DateTime.Now.AddDays(365);
+        Response.Cookies.Add(ck);
+        Response.Redirect("/app-thcs");
     }
 
     [System.Web.Services.WebMethod]

@@ -7,6 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" Runat="Server">
+    <div class="page-view bg-color-1 m-bottom">
       <%--<uc1:global_header_avatar runat="server" ID="global_header_avatar" />--%>
         <div class="block-content no-pd">
 
