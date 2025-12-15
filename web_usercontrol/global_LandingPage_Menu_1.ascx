@@ -22,8 +22,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/bai-kiem-tra-chi-tiet-1" onclick="DisplayLoadingIcon()">
-                           Kho luyện tập
+                        <a class="nav-link" href="/kho-luyen-tap" onclick="DisplayLoadingIcon()">
+                          Bài kiểm tra
                         </a>
                     </li>
                     <li class="nav-item">

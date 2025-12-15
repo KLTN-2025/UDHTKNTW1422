@@ -4,7 +4,7 @@
     <div id="chatBoxHeader" class="chatbox-header">
         <div class="chatbox-header__info" onclick="toggleChatBox()">
             <i class="bi bi-messenger"></i>
-            <span>AI Assistant</span>
+            <span>Trợ Lý KoiGo</span>
         </div>
         <div class="chatbox-header__actions">
             <i class="bi bi-dash" id="minimizeIcon" style="display: none;" onclick="event.stopPropagation(); minimizeChatBox();"></i>
@@ -18,7 +18,7 @@
                     <i class="bi bi-messenger"></i>
                 </div>
                 <div class="message-content">
-                    <p>Xin chào! Tôi là AI Assistant của KoiGo. Bạn cần giúp gì?</p>
+                    <p>Xin chào! Tôi là trợ lý ảo của KoiGo. Bạn cần giúp gì?</p>
                     <div class="quick-reply-buttons">
                         <button class="quick-reply-btn" onclick="sendQuickReply('Học tiếng Nhật')">Học tiếng Nhật</button>
                         <button class="quick-reply-btn" onclick="sendQuickReply('Hướng dẫn sử dụng')">Hướng dẫn sử dụng</button>

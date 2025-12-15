@@ -96,7 +96,7 @@ public partial class web_module_KhoLuyenTap_BaiKiemTra_ChiTiet : System.Web.UI.P
                             title = "Câu " + (questionsList.Count + 1),
                             content = question.question_content ?? "",
                             answers = answers,
-                            correctAnswer = question.cauhoi_dapandung ?? ""
+                            correctAnswer = ""
                         });
                     }
                 }
@@ -126,7 +126,7 @@ public partial class web_module_KhoLuyenTap_BaiKiemTra_ChiTiet : System.Web.UI.P
                             title = "Câu " + (questionsList.Count + 1),
                             content = question.question_content ?? "",
                             answers = answers,
-                            correctAnswer = question.cauhoi_dapandung ?? ""
+                            correctAnswer = ""
                         });
                     }
                 }

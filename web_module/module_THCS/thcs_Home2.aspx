@@ -7,6 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="Server">
     <link href="../../css/gameTieuHoc.min.css" rel="stylesheet" />
     <style>
+
         .step-contact .step-content .section-contact .form-contact__title {
             margin-top: 1rem;
         }
