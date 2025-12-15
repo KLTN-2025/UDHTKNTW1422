@@ -9,6 +9,12 @@
             background-color: unset !important;
             box-shadow: unset !important;
         }
+        .bg-dmk {
+            background-image: url(/images/bg-red-ttcn.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
     </style>
     <link href="../../css/gameTieuHoc.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -21,7 +27,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" Runat="Server">
 <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
-    <div class="">
+    <div class="bg-dmk">
         <div class="block-content">
             <%--<a class="btn-exit hvr-grow" href="/app-quan-li-tai-khoan">
                 <img src="/images/button/btn-exit-21.png">

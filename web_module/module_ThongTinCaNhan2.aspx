@@ -9,6 +9,13 @@
             background-color: unset !important;
             box-shadow: unset !important;
         }
+
+        .bg-ttcn {
+            background-image: url(/images/bg-red-ttcn.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
     </style>
     <link href="../css/gameTieuHoc.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -20,7 +27,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" Runat="Server">
 <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
-    <div class="">
+    <div class="bg-ttcn">
         <div class="header-avatar-edit">
             <div class="user-avatar ">
                 <div id="up1" class="user-avatar__image">
