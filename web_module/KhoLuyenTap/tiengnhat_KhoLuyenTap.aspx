@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        /* Remove all decorative side panels and white stripes */
         html, body {
             background: #f5f5f5 !important;
             overflow-x: hidden !important;
@@ -25,10 +23,29 @@
         form::before, form::after {
             display: none !important;
         }
+        *::before, *::after {
+            background-image: none !important;
+            background: transparent !important;
+        }
+        /* Fix logo to be above quiz container */
+        .header-page {
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+        .header-page.hidden {
+            display: none !important;
+        }
+        .navbar {
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+        .navbar-brand {
+            position: relative !important;
+            z-index: 1001 !important;
+        }
         .home.page-view {
             min-height: 60vh;
             background: #f5f5f5 !important;
-            position: relative;
         }
         .home.page-view::before,
         .home.page-view::after {
@@ -37,7 +54,6 @@
         }
         .block-body {
             background: transparent !important;
-            position: relative;
         }
         .block-body::before,
         .block-body::after {
@@ -51,7 +67,6 @@
             gap: 2rem;
             flex-wrap: wrap;
             background: transparent !important;
-            position: relative;
         }
         .block-body #section-class::before,
         .block-body #section-class::after {
@@ -80,14 +95,18 @@
             transform: scale(1.15);
             opacity: 1;
         }
-        /* Hide any decorative side panels or patterns */
-        [class*="decorative"],
-        [class*="side-panel"],
-        [class*="pattern"],
-        [id*="decorative"],
-        [id*="side-panel"],
-        [id*="pattern"] {
+        /* Hide decorative panels in quiz interface */
+        #testInterface::before,
+        #testInterface::after,
+        #startScreen::before,
+        #startScreen::after,
+        .quiz-container::before,
+        .quiz-container::after,
+        .start-container::before,
+        .start-container::after {
             display: none !important;
+            content: none !important;
+            background: none !important;
         }
     </style>
 </asp:Content>
@@ -104,24 +123,39 @@
         <div class="block-body">
             <div id="section-class">
                 <a href="javascript:void(0)" onclick="startTest(6)" class="class-item color">
-                    <img src="/images/images-nhatban.png" alt="Alternate Text" />
+                    <img src="/images/test.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Lớp 6</div>
                 </a>
                 <a href="javascript:void(0)" class="class-item color locked">
-                    <img src="/images/images-nhatban.png" alt="Alternate Text" />
+                    <img src="/images/test.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Lớp 7</div>
                     <i class="fa fa-lock lock-icon" aria-hidden="true"></i>
                 </a>
                 <a href="javascript:void(0)" class="class-item color locked">
-                    <img src="/images/images-nhatban.png" alt="Alternate Text" />
+                    <img src="/images/test.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Lớp 8</div>
                     <i class="fa fa-lock lock-icon" aria-hidden="true"></i>
                 </a>
                 <a href="javascript:void(0)" class="class-item color locked">
-                    <img src="/images/images-nhatban.png" alt="Alternate Text" />
+                    <img src="/images/test.png" alt="Alternate Text" />
                     <div class="class-item__name green-text">Lớp 9</div>
                     <i class="fa fa-lock lock-icon" aria-hidden="true"></i>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Screen (Shown first) -->
+    <div id="startScreen" style="display: none;">
+        <div class="start-container">
+            <div class="start-content">
+                <h1>Bài Kiểm Tra Lớp 6</h1>
+                <div class="test-info">
+                    <p><strong>Số câu hỏi:</strong> 30 câu</p>
+                    <p><strong>Thời gian:</strong> 15 phút</p>
+                    <p><strong>Hình thức:</strong> Trắc nghiệm</p>
+                </div>
+                <button type="button" class="btn-start" onclick="beginTest()">Bắt đầu làm bài</button>
             </div>
         </div>
     </div>
@@ -131,7 +165,7 @@
         <div class="quiz-container">
             <div class="quiz-header">
                 <div>
-                    <h2>Kho Luyện Tập - Bài Kiểm Tra Lớp 6</h2>
+                    <h2>Bài Kiểm Tra Lớp 6</h2>
                 </div>
                 <div class="timer-container">
                     <div class="timer-circle" id="timerDisplay">15:00</div>
@@ -142,8 +176,46 @@
                 <!-- All 30 questions will be displayed here -->
             </div>
 
-            <div class="submit-container">
-                <button type="button" class="btn-submit" id="btnSubmit" onclick="submitTest()">Nộp bài</button>
+            <div class="submit-container" id="submitContainer">
+                <button type="button" class="btn-submit" id="btnSubmit" onclick="confirmSubmit()">Nộp bài</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Submit Modal -->
+    <div id="confirmModal" class="result-modal" style="display: none;">
+        <div class="result-modal-content confirm-modal-content">
+            <div class="confirm-modal-icon">
+                <div class="warning-icon">!</div>
+            </div>
+            <div class="confirm-modal-body">
+                <h4>Bạn có thực sự muốn nộp bài?</h4>
+                <p>Nếu đồng ý, kết quả sẽ không được thay đổi.</p>
+            </div>
+            <div class="confirm-modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeConfirmModal()">Cancel</button>
+                <button type="button" class="btn-ok" onclick="proceedSubmit()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div id="resultModal" class="result-modal" style="display: none;">
+        <div class="result-modal-content">
+            <div class="result-modal-header">
+                <h3>Kết quả làm bài</h3>
+                <span class="result-modal-close" onclick="closeResultModal()">&times;</span>
+            </div>
+            <div class="result-modal-body">
+                <ul class="result-list">
+                    <li>Tổng số câu: <span id="totalQuestions">30</span></li>
+                    <li>Số câu đúng: <span id="correctAnswers">0</span></li>
+                    <li>Số câu sai: <span id="wrongAnswers">0</span></li>
+                    <li>Thời gian: <span id="timeTaken">00:00</span></li>
+                </ul>
+            </div>
+            <div class="result-modal-footer">
+                <button type="button" class="btn-close-modal" onclick="closeResultModal()">Đóng</button>
             </div>
         </div>
     </div>
@@ -157,12 +229,30 @@
 
 <asp:Content ID="Content6" ContentPlaceHolderID="Footer" Runat="Server">
     <style>
-        body #testInterface {
+        /* Remove all decorative side panels */
+        html, body {
+            background: #f5f5f5 !important;
+            overflow-x: hidden !important;
+        }
+        html::before, html::after,
+        body::before, body::after {
+            display: none !important;
+            content: none !important;
+        }
+        form::before, form::after {
+            display: none !important;
+        }
+        #testInterface,
+        #startScreen {
             background: #f5f5f5 !important;
         }
-        body #testInterface::before,
-        body #testInterface::after {
+        #testInterface::before,
+        #testInterface::after,
+        #startScreen::before,
+        #startScreen::after {
             display: none !important;
+            content: none !important;
+            background: none !important;
         }
         .quiz-container {
             background: #fff;
@@ -171,17 +261,38 @@
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
+            z-index: 1 !important;
         }
         .quiz-container::before,
         .quiz-container::after {
             display: none !important;
+            content: none !important;
+            background: none !important;
+        }
+        /* Ensure header and logo are above quiz container */
+        #testInterface {
+            position: relative;
+            z-index: 1 !important;
+        }
+        #startScreen {
+            position: relative;
+            z-index: 1 !important;
+        }
+        .start-container {
+            background: #f5f5f5 !important;
+        }
+        .start-container::before,
+        .start-container::after {
+            display: none !important;
+            content: none !important;
+            background: none !important;
         }
         .quiz-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #b51a1a 0%, #b51a1a 100%);
             color: white;
             border-radius: 10px;
             margin-bottom: 30px;
@@ -229,7 +340,7 @@
         .question-number {
             font-size: 18px;
             font-weight: 600;
-            color: #667eea;
+            color: #b51a1a;
         }
         .question-content {
             font-size: 22px;
@@ -269,7 +380,7 @@
             color: #333;
         }
         .answer-item.selected {
-            border-color: #667eea;
+            border-color: #b51a1a;
             background: #e8edff;
         }
         .submit-container {
@@ -290,6 +401,262 @@
         .btn-submit:hover {
             background: #218838;
             transform: scale(1.05);
+        }
+        /* Start Screen Styles */
+        .start-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            padding: 2rem;
+        }
+        .start-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 4rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+        .start-content h1 {
+            font-size: 2.5rem;
+            color: #b51a1a;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+        .test-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .test-info p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        .test-info p:last-child {
+            margin-bottom: 0;
+        }
+        .test-info strong {
+            color: #b51a1a;
+            font-weight: 600;
+        }
+        .btn-start {
+            padding: 18px 60px;
+            background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+        }
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4);
+            background: linear-gradient(135deg, #ffb733 0%, #ff9f1a 100%);
+        }
+        .btn-start:active {
+            transform: translateY(0);
+        }
+        /* Result Modal Styles */
+        .result-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        .result-modal-content {
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        .result-modal-header {
+            background-color: #17a2b8;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .result-modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .result-modal-close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: opacity 0.3s;
+        }
+        .result-modal-close:hover {
+            opacity: 0.7;
+        }
+        .result-modal-body {
+            padding: 30px 20px;
+        }
+        .result-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .result-list li {
+            padding: 15px 0;
+            font-size: 1.1rem;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .result-list li:last-child {
+            border-bottom: none;
+        }
+        .result-list li span {
+            font-weight: 600;
+            color: #17a2b8;
+        }
+        .result-modal-footer {
+            padding: 20px;
+            text-align: right;
+            background-color: #f8f9fa;
+        }
+        .btn-close-modal {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-close-modal:hover {
+            background-color: #5a6268;
+        }
+        .submit-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .btn-retry {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 60px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-retry:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        .btn-exit {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 15px 60px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-exit:hover {
+            background-color: #5a6268;
+            transform: scale(1.05);
+        }
+        /* Confirm Modal Styles */
+        .confirm-modal-content {
+            max-width: 400px;
+            text-align: center;
+        }
+        .confirm-modal-icon {
+            margin: 30px 0 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .warning-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ff9800;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: bold;
+            border: 3px solid #ff9800;
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #ff9800;
+        }
+        .confirm-modal-body {
+            padding: 0 30px 30px;
+        }
+        .confirm-modal-body h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 15px 0;
+        }
+        .confirm-modal-body p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0;
+        }
+        .confirm-modal-footer {
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            background-color: #f8f9fa;
+        }
+        .btn-cancel {
+            background-color: #e0e0e0;
+            color: #333;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-cancel:hover {
+            background-color: #d0d0d0;
+        }
+        .btn-ok {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-ok:hover {
+            background-color: #1976D2;
         }
     </style>
     <script>
@@ -480,11 +847,28 @@
         let timeRemaining = 900;
         let timerInterval;
         let userAnswers = {};
+        let startTime = null;
+        let elapsedTime = 0;
 
         function startTest(grade) {
             document.querySelector('.home.page-view').style.display = 'none';
+            document.getElementById('startScreen').style.display = 'block';
+            // Reset timer and answers
+            timeRemaining = 900;
+            userAnswers = {};
+            updateTimerDisplay();
+        }
+
+        function beginTest() {
+            document.getElementById('startScreen').style.display = 'none';
             document.getElementById('testInterface').style.display = 'block';
+            // Hide menu header
+            const headerPage = document.querySelector('.header-page');
+            if (headerPage) {
+                headerPage.style.display = 'none';
+            }
             displayAllQuestions();
+            startTime = new Date();
             startTimer();
         }
 
@@ -560,8 +944,27 @@
             });
         }
 
+        function confirmSubmit() {
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        function proceedSubmit() {
+            closeConfirmModal();
+            submitTest();
+        }
+
         function submitTest() {
             clearInterval(timerInterval);
+            
+            // Calculate elapsed time
+            if (startTime) {
+                const endTime = new Date();
+                elapsedTime = Math.floor((endTime - startTime) / 1000);
+            }
             
             let score = 0;
             questions.forEach(q => {
@@ -570,9 +973,60 @@
                 }
             });
             
-            alert(`Bạn đã hoàn thành bài kiểm tra!\nSố câu đúng: ${score}/${questions.length}\nĐiểm số: ${(score / questions.length * 10).toFixed(1)}/10`);
+            // Format time
+            const minutes = Math.floor(elapsedTime / 60);
+            const seconds = elapsedTime % 60;
+            const timeStr = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Calculate wrong answers
+            const wrongAnswers = questions.length - score;
+            
+            // Display result modal
+            document.getElementById('totalQuestions').textContent = questions.length;
+            document.getElementById('correctAnswers').textContent = score;
+            document.getElementById('wrongAnswers').textContent = wrongAnswers;
+            document.getElementById('timeTaken').textContent = timeStr;
+            document.getElementById('resultModal').style.display = 'flex';
             
             document.getElementById('userAnswers').value = JSON.stringify(userAnswers);
+        }
+
+        function closeResultModal() {
+            document.getElementById('resultModal').style.display = 'none';
+            // Replace submit button with retry and exit buttons
+            const submitContainer = document.getElementById('submitContainer');
+            submitContainer.innerHTML = `
+                <button type="button" class="btn-retry" onclick="retryTest()">Làm lại</button>
+                <button type="button" class="btn-exit" onclick="exitTest()">Thoát</button>
+            `;
+        }
+
+        function retryTest() {
+            // Reset everything
+            timeRemaining = 900;
+            userAnswers = {};
+            elapsedTime = 0;
+            startTime = new Date();
+            // Clear all selected answers
+            document.querySelectorAll('.answer-item').forEach(item => {
+                item.classList.remove('selected');
+                const radio = item.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = false;
+                }
+            });
+            // Reset submit button
+            const submitContainer = document.getElementById('submitContainer');
+            submitContainer.innerHTML = '<button type="button" class="btn-submit" id="btnSubmit" onclick="confirmSubmit()">Nộp bài</button>';
+            // Restart timer
+            clearInterval(timerInterval);
+            updateTimerDisplay();
+            startTimer();
+        }
+
+        function exitTest() {
+            // Redirect to home page
+            window.location.href = '/app-thcs';
         }
 
         window.onload = function() {

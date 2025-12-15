@@ -10903,6 +10903,10 @@ body {
     position: relative;
     margin: 0 auto !important;
     /*max-width: 600px;*/ background-image: url(/images/bg-red-dangki_nhap-1.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
     font-family: "Baloo 2",Nunito,Roboto,"Helvetica Neue",Arial;
 }
 
@@ -10982,7 +10986,7 @@ body {
 }
 
 .home {
-   /* background: linear-gradient(270deg, #ff3a3a, #b51a1a);*/
+    /* background: linear-gradient(270deg, #ff3a3a, #b51a1a);*/
 }
 
     .home .block-body {
@@ -11009,7 +11013,7 @@ body {
 }
 
 .block-body {
-   /* background-image: url(/images/bg-home-thcs.png);*/
+    /* background-image: url(/images/bg-home-thcs.png);*/
     background-position: top center;
     background-repeat: no-repeat;
     background-size: 100% auto;
