@@ -46,6 +46,7 @@
         .home.page-view {
             min-height: 60vh;
             background: #f5f5f5 !important;
+
         }
         .home.page-view::before,
         .home.page-view::after {

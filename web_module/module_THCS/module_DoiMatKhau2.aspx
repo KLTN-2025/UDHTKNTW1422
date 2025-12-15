@@ -4,6 +4,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
     <style>
+        html, body {
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
+        }
         .block-content{
             padding: 0 24rem !important;
             background-color: unset !important;
@@ -11,9 +15,12 @@
         }
         .bg-dmk {
             background-image: url(/images/bg-red-ttcn.png);
-            background-size: cover;
-            background-repeat: no-repeat;
+            background-size: 100% auto !important;
+            background-repeat: no-repeat !important;
+            background-position: top center !important;
             min-height: 100vh;
+            overflow-x: hidden !important;
+            max-width: 100vw !important;
         }
     </style>
     <link href="../../css/gameTieuHoc.min.css" rel="stylesheet" />
