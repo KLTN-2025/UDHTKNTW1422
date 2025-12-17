@@ -165,7 +165,10 @@
     <div id="testInterface" style="display: none;">
         <div class="quiz-container">
             <div class="quiz-header">
-                <div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button type="button" class="btn-back-quiz" onclick="backToStartScreen()">
+                        <i class="bi bi-arrow-left"></i> Quay lại
+                    </button>
                     <h2>Bài Kiểm Tra Lớp 6</h2>
                 </div>
                 <div class="timer-container">
@@ -659,6 +662,55 @@
         .btn-ok:hover {
             background-color: #1976D2;
         }
+        .btn-back-start {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .btn-back-start:hover {
+            background: #5a6268;
+            transform: translateX(-3px);
+        }
+        .btn-back-start i {
+            font-size: 18px;
+        }
+        .start-content {
+            position: relative;
+        }
+        .btn-back-quiz {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-back-quiz:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-3px);
+        }
+        .btn-back-quiz i {
+            font-size: 18px;
+        }
     </style>
     <script>
         // Hardcoded 30 questions for test
@@ -854,6 +906,26 @@
         function startTest(grade) {
             document.querySelector('.home.page-view').style.display = 'none';
             document.getElementById('startScreen').style.display = 'block';
+            // Reset timer and answers
+            timeRemaining = 900;
+            userAnswers = {};
+            updateTimerDisplay();
+        }
+
+        function backToHome() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.querySelector('.home.page-view').style.display = 'block';
+        }
+
+        function backToStartScreen() {
+            clearInterval(timerInterval);
+            document.getElementById('testInterface').style.display = 'none';
+            document.getElementById('startScreen').style.display = 'block';
+            // Show menu header again
+            const headerPage = document.querySelector('.header-page');
+            if (headerPage) {
+                headerPage.style.display = 'block';
+            }
             // Reset timer and answers
             timeRemaining = 900;
             userAnswers = {};

@@ -22,6 +22,23 @@
             margin-bottom: .5rem;
             color: black;
         }
+        .step-contact {
+            position: relative;
+        }
+        .step-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+        .step-contact > * {
+            position: relative;
+            z-index: 1;
+        }
     </style>
     <link href="../../css/listBooks.css" rel="stylesheet" />
     <script src="admin_js/sweetalert.min.js"></script>
@@ -36,7 +53,7 @@
     <%--    <uc1:global_LandingPage_Menu1 runat="server" ID="global_LandingPage_Menu1" />--%>
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <%--<asp:ScriptManager runat="server" />--%>
-    <div class="step-contact" style="display: block; background-image: url(/images/8401725.jpg); background-attachment: fixed; background-repeat: no-repeat;">
+    <div class="step-contact" style="display: block; background-image: url(/images/v733-tang-09b.jpg); background-attachment: fixed; background-repeat: no-repeat;">
         <div class="block-main pt-3 pb-5">
             <div class="container">
                 <div id="lessonContainer">

@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LuyenTap.aspx.cs" Inherits="web_module_GameCacKhoi_Khoi_6_Luyen_Tap" %>
 
 <%@ Register Src="~/web_usercontrol/global_Popup.ascx" TagPrefix="uc1" TagName="global_Popup" %>
+<%@ Register Src="~/web_usercontrol/global_AIChatBox.ascx" TagPrefix="uc2" TagName="global_AIChatBox" %>
 
 
 <!DOCTYPE html>
@@ -8,6 +9,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="/css/books/globalBooks.css" rel="stylesheet" />
     <script src="/js/jquery-3.5.1.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -39,6 +41,7 @@
 <body class="page-contest --bg-body-2">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+        <uc2:global_AIChatBox runat="server" ID="global_AIChatBox" />
         <uc1:global_Popup runat="server" ID="global_Popup" />
         <div class="header-page">
             <div class="container">
