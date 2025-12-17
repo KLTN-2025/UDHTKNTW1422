@@ -70,38 +70,101 @@ public partial class web_module_module_ThongTinCaNhan2 : System.Web.UI.Page
                                         select ac).FirstOrDefault();
         if (getThongTinHocSinh != null)
         {
-            getThongTinHocSinh.account_sodienthoai = txtSoDienThoai.Value;
+            // Check if phone number is being changed
+            string newPhoneNumber = txtSoDienThoai.Value.Trim();
+            string currentPhoneNumber = getThongTinHocSinh.account_sodienthoai;
+            
+            // If phone number is different, check for duplicates
+            if (newPhoneNumber != currentPhoneNumber)
+            {
+                // Check if phone number already exists (excluding current user)
+                bool phoneExists = db.tbAccounts.Any(ac => ac.account_sodienthoai == newPhoneNumber 
+                    && ac.account_id != getThongTinHocSinh.account_id 
+                    && ac.account_active == true);
+                
+                if (phoneExists)
+                {
+                    alert.alert_Error(Page, "Số điện thoại đã tồn tại", "");
+                    return;
+                }
+            }
+            
+            // Check if email is being changed
+            string newEmail = txtEmail.Value.Trim();
+            string currentEmail = getThongTinHocSinh.account_email ?? "";
+            
+            // If email is different, check for duplicates
+            if (!string.IsNullOrEmpty(newEmail) && newEmail.ToLower() != currentEmail.ToLower())
+            {
+                // Check if email already exists (excluding current user)
+                bool emailExists = db.tbAccounts.Any(ac => ac.account_email != null 
+                    && ac.account_email.ToLower() == newEmail.ToLower()
+                    && ac.account_id != getThongTinHocSinh.account_id 
+                    && ac.account_active == true);
+                
+                if (emailExists)
+                {
+                    alert.alert_Error(Page, "Email đã tồn tại", "");
+                    return;
+                }
+            }
+            
+            getThongTinHocSinh.account_sodienthoai = newPhoneNumber;
             // Mục đích lưu lại cookie
             HttpCookie ck = new HttpCookie("taikhoan");
             string s = ck.Value;
             ck.Value = getThongTinHocSinh.account_sodienthoai;
             ck.Expires = DateTime.Now.AddDays(365);
             Response.Cookies.Add(ck);
-            getThongTinHocSinh.account_email = txtEmail.Value;
+            getThongTinHocSinh.account_email = newEmail;
             db.SubmitChanges();
         }
         tbAccount_Children update = (from cr in db.tbAccount_Childrens
                                      where cr.account_id == getThongTinHocSinh.account_id
                                      select cr).FirstOrDefault();
-        update.account_children_fullname = txtHoTen.Value;
-        update.lop_id = Convert.ToInt32(txtLop.Value);
-        if (image1 != null)
+        
+        if (update != null)
         {
-            update.account_children_image = image1;
-        }
-        if (dteNgaySinh.Value != "")
-        {
-            update.account_children_ngaysinh = Convert.ToDateTime(dteNgaySinh.Value);
-        }
+            // Check if full name is being changed
+            string newFullName = txtHoTen.Value.Trim();
+            string currentFullName = update.account_children_fullname ?? "";
+            
+            // If full name is different, check for duplicates
+            if (newFullName != currentFullName)
+            {
+                // Check if full name already exists (excluding current user)
+                bool fullNameExists = db.tbAccount_Childrens.Any(ac => ac.account_children_fullname != null 
+                    && ac.account_children_fullname.Trim() == newFullName
+                    && ac.account_children_id != update.account_children_id 
+                    && ac.account_children_active == true);
+                
+                if (fullNameExists)
+                {
+                    alert.alert_Error(Page, "Họ và tên đã tồn tại", "");
+                    return;
+                }
+            }
+            
+            update.account_children_fullname = newFullName;
+            update.lop_id = Convert.ToInt32(txtLop.Value);
+            if (image1 != null)
+            {
+                update.account_children_image = image1;
+            }
+            if (dteNgaySinh.Value != "")
+            {
+                update.account_children_ngaysinh = Convert.ToDateTime(dteNgaySinh.Value);
+            }
 
-        //        if (rdNam.Checked == true)
-        //update.children_gioitinh = "Nam";
-        //  else
-        //      update.children_gioitinh = "Nữ";
-        db.SubmitChanges();
-        alert.alert_Success(Page, "Đã cập nhật thông tin cá nhân", "");
+            //        if (rdNam.Checked == true)
+            //update.children_gioitinh = "Nam";
+            //  else
+            //      update.children_gioitinh = "Nữ";
+            db.SubmitChanges();
+            alert.alert_Success(Page, "Đã cập nhật thông tin cá nhân", "");
 
-        imgPreview1.Src = update.account_children_image;
+            imgPreview1.Src = update.account_children_image;
+        }
         //ScriptManager.RegisterStartupScript(this, GetType(), "reloadPage", "setTimeout(function(){ location.reload(); }, 1200);", true);
     }
 }
