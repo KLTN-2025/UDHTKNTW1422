@@ -39,7 +39,7 @@
                 <div class="">
                     <div class="input-group-animate">
                         <input name="txtUser" type="text" id="txtUser" runat="server" class="form-input" autocomplete="off" required />
-                        <label for="" class="lb-input">Tên đăng nhập</label>
+                        <label for="" class="lb-input">Số điện thoại</label>
                     </div>
                     <div class="input-group-animate">
                         <input name="txtPassword" type="password" id="txtPassword" runat="server" class="form-input" required />
