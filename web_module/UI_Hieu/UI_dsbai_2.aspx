@@ -20,7 +20,7 @@
             font-size: clamp(1.75rem, 0.1944rem + 3.2407vw, 2.625rem);
             font-weight: bold;
             margin-bottom: .5rem;
-            color: black;
+            color: #fff;
         }
         .step-contact {
             position: relative;
@@ -60,7 +60,7 @@
                     <div class="unit-list__title">Học bảng chữ cái Katakana</div>
                 <%--<div id="lesson_thing"></div>--%>
                <div class="title_lesson_s"> Bài 1 : Hàng A : a, i, u, e, o </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_285" onclick="xembai(285)" tabindex="-1">
@@ -99,7 +99,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                    <%--<div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_287" onclick="xembai(287)">
                                 <div class="lesson-item__avatar">
@@ -117,13 +117,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 2 : Hàng Ka : ka, ki, ku, ke, ko </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_288" onclick="xembai(288)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_287" onclick="xembai(287)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-ka.png">
                                 </div>
@@ -142,7 +142,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_289" onclick="xembai(289)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_288" onclick="xembai(288)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ka.png">
                                 </div>
@@ -159,7 +159,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                    <%--<div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_290" onclick="xembai(290)">
                                 <div class="lesson-item__avatar">
@@ -177,13 +177,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 3 : Hàng Sa : sa, shi, su, se, so </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_291" onclick="xembai(291)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_289" onclick="xembai(289)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-sa.png">
                                 </div>
@@ -202,7 +202,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_292" onclick="xembai(292)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_290" onclick="xembai(290)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-sa.png">
                                 </div>
@@ -219,7 +219,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                  <%--  <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_293" onclick="xembai(293)">
                                 <div class="lesson-item__avatar">
@@ -237,13 +237,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 4 : Hàng Ta : ta, chi, tsu, te, to </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_294" onclick="xembai(294)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_291" onclick="xembai(291)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-ta.png">
                                 </div>
@@ -262,7 +262,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_295" onclick="xembai(295)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_292" onclick="xembai(292)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ta.png">
                                 </div>
@@ -279,7 +279,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                   <%-- <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_296" onclick="xembai(296)">
                                 <div class="lesson-item__avatar">
@@ -297,13 +297,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 5 : Hàng Na : na, ni, nu, ne, no </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_297" onclick="xembai(297)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_293" onclick="xembai(293)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-na.png">
                                 </div>
@@ -322,7 +322,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_298" onclick="xembai(298)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_294" onclick="xembai(294)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-na.png">
                                 </div>
@@ -339,7 +339,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                    <%--<div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_299" onclick="xembai(299)">
                                 <div class="lesson-item__avatar">
@@ -357,13 +357,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 6 : Hàng Ha : ha, hi, fu, he, ho </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_300" onclick="xembai(300)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_295" onclick="xembai(295)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-ha.png">
                                 </div>
@@ -382,7 +382,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_301" onclick="xembai(301)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_296" onclick="xembai(296)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ha.png">
                                 </div>
@@ -399,7 +399,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                   <%-- <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_302" onclick="xembai(302)">
                                 <div class="lesson-item__avatar">
@@ -417,13 +417,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 7 : Hàng Ma : ma, mi, mu, me, mo </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_303" onclick="xembai(303)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_297" onclick="xembai(297)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-ma.png">
                                 </div>
@@ -442,7 +442,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_304" onclick="xembai(304)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_298" onclick="xembai(298)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ma.png">
                                 </div>
@@ -459,7 +459,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                   <%-- <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_305" onclick="xembai(305)">
                                 <div class="lesson-item__avatar">
@@ -477,13 +477,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 8 : Hàng Ya : ya, yu, yo </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_306" onclick="xembai(306)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_299" onclick="xembai(299)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-ya.png">
                                 </div>
@@ -502,7 +502,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_307" onclick="xembai(307)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_300" onclick="xembai(300)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ya.png">
                                 </div>
@@ -519,7 +519,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                   <%-- <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_308" onclick="xembai(308)">
                                 <div class="lesson-item__avatar">
@@ -537,13 +537,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 9 : Hàng Ra : ra, ri, ru, re, ro </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_309" onclick="xembai(309)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_301" onclick="xembai(301)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-ra.png">
                                 </div>
@@ -562,7 +562,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_310" onclick="xembai(310)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_302" onclick="xembai(302)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-ra.png">
                                 </div>
@@ -579,7 +579,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                   <%-- <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_311" onclick="xembai(311)">
                                 <div class="lesson-item__avatar">
@@ -597,13 +597,13 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="title_lesson_s">Bài 10 : Hàng Wa : wa, wo, n </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_312" onclick="xembai(312)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_303" onclick="xembai(303)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/chu-wa.png">
                                 </div>
@@ -622,7 +622,7 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
-                            <a href="javascript:void(0)" class="lesson-item" id="id_313" onclick="xembai(313)">
+                            <a href="javascript:void(0)" class="lesson-item" id="id_304" onclick="xembai(304)">
                                 <div class="lesson-item__avatar">
                                     <img src="/imageGame/Bang_chu_cai_Katakana/hinh-chu-wa.png">
                                 </div>
@@ -639,7 +639,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                   <%-- <div class="col-4 col-sm-4 col-md-4">
                         <div class="lesson-row">
                             <a href="javascript:void(0)" class="lesson-item" id="id_314" onclick="xembai(314)">
                                 <div class="lesson-item__avatar">
@@ -657,7 +657,7 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
             </div>
             <a id="btnXemBai" runat="server" onserverclick="btnXemBai_ServerClick" style="display: none"></a>
@@ -685,18 +685,54 @@
 
         });
             function scrollToHash() {
-            var hash = window.location.hash; // Lấy hash từ URL (ví dụ: #id_334)
+            var hash = window.location.hash; // Lấy hash từ URL (ví dụ: #id_290)
             if (hash) {
-                var targetElement = $(hash);
-            if (targetElement.length) {
-                $("html, body").animate({
-                    scrollTop: targetElement.offset().top
-                }, 0, function () {
-                    targetElement.attr("tabindex", "-1").focus();
-                });
-                }
+                // Đợi một chút để đảm bảo DOM đã render xong
+                setTimeout(function() {
+                    var targetElement = $(hash);
+                    if (targetElement.length) {
+                        // Scroll đến phần tử
+                        $("html, body").animate({
+                            scrollTop: targetElement.offset().top - 100
+                        }, 500, function () {
+                            targetElement.attr("tabindex", "-1").focus();
+                            // Thêm class để highlight
+                            targetElement.addClass('highlighted');
+                            // Tự động remove class sau 3 giây
+                            setTimeout(function() {
+                                targetElement.removeClass('highlighted');
+                            }, 3000);
+                        });
+                    } else {
+                        // Nếu không tìm thấy, thử lại sau 500ms
+                        setTimeout(function() {
+                            var retryElement = $(hash);
+                            if (retryElement.length) {
+                                $("html, body").animate({
+                                    scrollTop: retryElement.offset().top - 100
+                                }, 500, function () {
+                                    retryElement.attr("tabindex", "-1").focus();
+                                    retryElement.addClass('highlighted');
+                                    setTimeout(function() {
+                                        retryElement.removeClass('highlighted');
+                                    }, 3000);
+                                });
+                            }
+                        }, 500);
+                    }
+                }, 100);
             }
         }
+        
+        // Gọi scrollToHash khi trang load
+        $(document).ready(function() {
+            scrollToHash();
+        });
+        
+        // Cũng gọi khi window load xong (đảm bảo tất cả đã sẵn sàng)
+        window.addEventListener('load', function() {
+            scrollToHash();
+        });
 
             function fetchLessons(studentId, sachId) {
                 fetch(`/GetDataBaiHoc.ashx?action=lessonskhoihai&studentId=${studentId}&sachId=${sachId}`)

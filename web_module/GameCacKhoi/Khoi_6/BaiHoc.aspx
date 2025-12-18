@@ -45,12 +45,12 @@
         <div class="header-page">
             <div class="container">
                 <div class="header-content">
-                    <a class="header-content__home btn-menu" id="btnHome" href="/danh-muc-sach-1">
+                    <a class="header-content__home btn-menu" id="btnHome" href="/danh-muc-sach-1#<%=_id_lesson %>">
                         <i class="fa fa-home"></i>
                     </a>
-                   <%-- <a class="header-content__home btn-menu" id="btnHome2" href="/danh-muc-sach-2">
+                    <a class="header-content__home btn-menu" id="btnHome2" href="/danh-muc-sach-2#<%=_id_lesson %>" style="display: none;">
                         <i class="fa fa-home"></i>
-                    </a>--%>
+                    </a>
                     <div class="header-content__title"><%=lesson_name %></div>
                     <div class="button-nav">
                         <a class="btn-menu btn-prev" id="btnPrevLesson" data-href="<%=link_prev %>" onclick="back()">
@@ -850,6 +850,29 @@
     </form>
 </body>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var url = window.location.pathname;
+        // vd: /sach-tieng-nhat-2-68-285
+
+        var parts = url.split("-");
+        var baihocId = parseInt(parts[parts.length - 1]);
+        var _id_lesson = "id_" + baihocId;
+
+        if (baihocId >= 285) {
+            // Sách 2 (Katakana) - baihoc_id từ 285 trở lên
+            document.getElementById("btnHome").style.display = "none";
+            var btnHome2 = document.getElementById("btnHome2");
+            btnHome2.style.display = "inline-block";
+            btnHome2.href = "/danh-muc-sach-2#" + _id_lesson;
+        } else {
+            // Sách 1 (Hiragana) - baihoc_id < 285
+            document.getElementById("btnHome").style.display = "inline-block";
+            var btnHome = document.getElementById("btnHome");
+            btnHome.href = "/danh-muc-sach-1#" + _id_lesson;
+            document.getElementById("btnHome2").style.display = "none";
+        }
+    });
+
     let audio;
     function pauseAudio() {
         if (audio && !audio.paused) {

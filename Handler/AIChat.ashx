@@ -115,7 +115,7 @@ public class AIChat : IHttpHandler
         // Greetings
         if (message.Contains("xin chào") || message.Contains("hello") || message.Contains("chào") || message.Contains("hi"))
         {
-            return "Xin chào! Tôi là AI Assistant của KoiGo. Tôi có thể giúp bạn:\n\n" +
+            return "Xin chào! Tôi là trợ lý ảo của KoiGo. Tôi có thể giúp bạn:\n\n" +
                    "• Trả lời câu hỏi về tiếng Nhật\n" +
                    "• Hướng dẫn sử dụng ứng dụng\n" +
                    "• Giải đáp thắc mắc về bài học\n\n" +

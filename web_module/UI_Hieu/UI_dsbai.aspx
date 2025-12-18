@@ -20,7 +20,7 @@
             font-size: clamp(1.75rem, 0.1944rem + 3.2407vw, 2.625rem);
             font-weight: bold;
             margin-bottom: .5rem;
-            color: black;
+            color: #fff;
         }
         .step-contact {
             position: relative;
@@ -32,7 +32,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.2);
             z-index: 0;
         }
         .step-contact > * {
@@ -685,18 +685,54 @@
 
         });
         function scrollToHash() {
-            var hash = window.location.hash; // Lấy hash từ URL (ví dụ: #id_334)
+            var hash = window.location.hash; // Lấy hash từ URL (ví dụ: #id_260)
             if (hash) {
-                var targetElement = $(hash);
-                if (targetElement.length) {
-                    $("html, body").animate({
-                        scrollTop: targetElement.offset().top
-                    }, 0, function () {
-                        targetElement.attr("tabindex", "-1").focus();
-                    });
-                }
+                // Đợi một chút để đảm bảo DOM đã render xong
+                setTimeout(function() {
+                    var targetElement = $(hash);
+                    if (targetElement.length) {
+                        // Scroll đến phần tử
+                        $("html, body").animate({
+                            scrollTop: targetElement.offset().top - 100
+                        }, 500, function () {
+                            targetElement.attr("tabindex", "-1").focus();
+                            // Thêm class để highlight
+                            targetElement.addClass('highlighted');
+                            // Tự động remove class sau 3 giây
+                            setTimeout(function() {
+                                targetElement.removeClass('highlighted');
+                            }, 3000);
+                        });
+                    } else {
+                        // Nếu không tìm thấy, thử lại sau 500ms
+                        setTimeout(function() {
+                            var retryElement = $(hash);
+                            if (retryElement.length) {
+                                $("html, body").animate({
+                                    scrollTop: retryElement.offset().top - 100
+                                }, 500, function () {
+                                    retryElement.attr("tabindex", "-1").focus();
+                                    retryElement.addClass('highlighted');
+                                    setTimeout(function() {
+                                        retryElement.removeClass('highlighted');
+                                    }, 3000);
+                                });
+                            }
+                        }, 500);
+                    }
+                }, 100);
             }
         }
+        
+        // Gọi scrollToHash khi trang load
+        $(document).ready(function() {
+            scrollToHash();
+        });
+        
+        // Cũng gọi khi window load xong (đảm bảo tất cả đã sẵn sàng)
+        window.addEventListener('load', function() {
+            scrollToHash();
+        });
 
         function fetchLessons(studentId, sachId) {
             fetch(`/GetDataBaiHoc.ashx?action=lessonskhoihai&studentId=${studentId}&sachId=${sachId}`)

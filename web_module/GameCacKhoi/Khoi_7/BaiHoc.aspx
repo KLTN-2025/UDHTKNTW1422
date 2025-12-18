@@ -450,9 +450,19 @@
         const idsach = localStorage.getItem("idsach");
         const idkhoi = localStorage.getItem("idkhoi");
 
+        // Lấy baihoc_id từ URL
+        const url = window.location.pathname;
+        const arr = url.split('-');
+        const baihoc_id = arr.length >= 3 ? arr[arr.length - 1] : null;
+        const _id_lesson = baihoc_id ? `id_${baihoc_id}` : '';
+
         if (idsach && idkhoi) {
             const btn = document.getElementById("btnHome");
-            btn.href = `/danh-muc-sach-${idsach}?khoi=${idkhoi}`;
+            if (_id_lesson) {
+                btn.href = `/danh-muc-sach-${idsach}?khoi=${idkhoi}#${_id_lesson}`;
+            } else {
+                btn.href = `/danh-muc-sach-${idsach}?khoi=${idkhoi}`;
+            }
         }
     });
     let audio;

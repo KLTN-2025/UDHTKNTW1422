@@ -162,11 +162,23 @@
     display: block;
     color: #000;
     text-decoration: none;
-    /*min-height: 260px;*/
 }
+
+    .lesson-item:focus-visible {
+        outline: 4px solid #000; /* dày hơn */
+        outline-offset: 0px;
+    }
 
     .lesson-item:hover {
         color: #e9411b;
+    }
+
+    /* Highlight bài học khi có hash trong URL */
+    .lesson-item:target,
+    .lesson-item.highlighted {
+        border: 3px solid #000 !important;
+        box-shadow: 0 0 10px #000 !important;
+        outline: none;
     }
 
 .lesson-item__avatar {
