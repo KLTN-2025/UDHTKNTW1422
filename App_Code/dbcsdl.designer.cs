@@ -233,6 +233,9 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
   partial void InserttbKhoiLop(tbKhoiLop instance);
   partial void UpdatetbKhoiLop(tbKhoiLop instance);
   partial void DeletetbKhoiLop(tbKhoiLop instance);
+  partial void InserttbWebsiteLienHe(tbWebsiteLienHe instance);
+  partial void UpdatetbWebsiteLienHe(tbWebsiteLienHe instance);
+  partial void DeletetbWebsiteLienHe(tbWebsiteLienHe instance);
   #endregion
 	
 	public dbcsdlDataContext() : 
@@ -806,6 +809,14 @@ public partial class dbcsdlDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<tbKhoiLop>();
+		}
+	}
+	
+	public System.Data.Linq.Table<tbWebsiteLienHe> tbWebsiteLienHes
+	{
+		get
+		{
+			return this.GetTable<tbWebsiteLienHe>();
 		}
 	}
 }
@@ -17526,6 +17537,236 @@ public partial class tbKhoiLop : INotifyPropertyChanging, INotifyPropertyChanged
 				this._khoilop_image = value;
 				this.SendPropertyChanged("khoilop_image");
 				this.Onkhoilop_imageChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="db_owner.tbWebsiteLienHe")]
+public partial class tbWebsiteLienHe : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _lienhe_id;
+	
+	private string _lienhe_hoten;
+	
+	private string _lienhe_sodienthoai;
+	
+	private string _lienhe_noidung;
+	
+	private System.DateTime _lienhe_ngaytao;
+	
+	private string _lienhe_tinhtrangxem;
+	
+	private string _lienhe_phanhoi;
+	
+	private bool _hidden;
+	
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onlienhe_idChanging(int value);
+    partial void Onlienhe_idChanged();
+    partial void Onlienhe_hotenChanging(string value);
+    partial void Onlienhe_hotenChanged();
+    partial void Onlienhe_sodienthoaiChanging(string value);
+    partial void Onlienhe_sodienthoaiChanged();
+    partial void Onlienhe_noidungChanging(string value);
+    partial void Onlienhe_noidungChanged();
+    partial void Onlienhe_ngaytaoChanging(System.DateTime value);
+    partial void Onlienhe_ngaytaoChanged();
+    partial void Onlienhe_tinhtrangxemChanging(string value);
+    partial void Onlienhe_tinhtrangxemChanged();
+    partial void Onlienhe_phanhoiChanging(string value);
+    partial void Onlienhe_phanhoiChanged();
+    partial void OnhiddenChanging(bool value);
+    partial void OnhiddenChanged();
+    #endregion
+	
+	public tbWebsiteLienHe()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lienhe_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int lienhe_id
+	{
+		get
+		{
+			return this._lienhe_id;
+		}
+		set
+		{
+			if ((this._lienhe_id != value))
+			{
+				this.Onlienhe_idChanging(value);
+				this.SendPropertyChanging();
+				this._lienhe_id = value;
+				this.SendPropertyChanged("lienhe_id");
+				this.Onlienhe_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lienhe_hoten", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+	public string lienhe_hoten
+	{
+		get
+		{
+			return this._lienhe_hoten;
+		}
+		set
+		{
+			if ((this._lienhe_hoten != value))
+			{
+				this.Onlienhe_hotenChanging(value);
+				this.SendPropertyChanging();
+				this._lienhe_hoten = value;
+				this.SendPropertyChanged("lienhe_hoten");
+				this.Onlienhe_hotenChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lienhe_sodienthoai", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+	public string lienhe_sodienthoai
+	{
+		get
+		{
+			return this._lienhe_sodienthoai;
+		}
+		set
+		{
+			if ((this._lienhe_sodienthoai != value))
+			{
+				this.Onlienhe_sodienthoaiChanging(value);
+				this.SendPropertyChanging();
+				this._lienhe_sodienthoai = value;
+				this.SendPropertyChanged("lienhe_sodienthoai");
+				this.Onlienhe_sodienthoaiChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lienhe_noidung", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string lienhe_noidung
+	{
+		get
+		{
+			return this._lienhe_noidung;
+		}
+		set
+		{
+			if ((this._lienhe_noidung != value))
+			{
+				this.Onlienhe_noidungChanging(value);
+				this.SendPropertyChanging();
+				this._lienhe_noidung = value;
+				this.SendPropertyChanged("lienhe_noidung");
+				this.Onlienhe_noidungChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lienhe_ngaytao", DbType="DateTime NOT NULL")]
+	public System.DateTime lienhe_ngaytao
+	{
+		get
+		{
+			return this._lienhe_ngaytao;
+		}
+		set
+		{
+			if ((this._lienhe_ngaytao != value))
+			{
+				this.Onlienhe_ngaytaoChanging(value);
+				this.SendPropertyChanging();
+				this._lienhe_ngaytao = value;
+				this.SendPropertyChanged("lienhe_ngaytao");
+				this.Onlienhe_ngaytaoChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lienhe_tinhtrangxem", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+	public string lienhe_tinhtrangxem
+	{
+		get
+		{
+			return this._lienhe_tinhtrangxem;
+		}
+		set
+		{
+			if ((this._lienhe_tinhtrangxem != value))
+			{
+				this.Onlienhe_tinhtrangxemChanging(value);
+				this.SendPropertyChanging();
+				this._lienhe_tinhtrangxem = value;
+				this.SendPropertyChanged("lienhe_tinhtrangxem");
+				this.Onlienhe_tinhtrangxemChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_lienhe_phanhoi", DbType="NVarChar(MAX)")]
+	public string lienhe_phanhoi
+	{
+		get
+		{
+			return this._lienhe_phanhoi;
+		}
+		set
+		{
+			if ((this._lienhe_phanhoi != value))
+			{
+				this.Onlienhe_phanhoiChanging(value);
+				this.SendPropertyChanging();
+				this._lienhe_phanhoi = value;
+				this.SendPropertyChanged("lienhe_phanhoi");
+				this.Onlienhe_phanhoiChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hidden", DbType="Bit NOT NULL")]
+	public bool hidden
+	{
+		get
+		{
+			return this._hidden;
+		}
+		set
+		{
+			if ((this._hidden != value))
+			{
+				this.OnhiddenChanging(value);
+				this.SendPropertyChanging();
+				this._hidden = value;
+				this.SendPropertyChanged("hidden");
+				this.OnhiddenChanged();
 			}
 		}
 	}

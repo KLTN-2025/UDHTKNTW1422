@@ -24,6 +24,7 @@ public class adminmodule
         list.Add("moduledangky|admin-dang-ki|~/admin_page/module_function/module_QuanLy_TaiKhoan/module_DangKy.aspx");
         list.Add("modulequanlitaikhoan|admin-quan-li-tai-khoan|~/admin_page/module_function/module_QuanLy_TaiKhoan/module_Account.aspx");
         list.Add("moduleagiahan|admin-gia-han|~/admin_page/module_function/module_QuanLy_TaiKhoan/module_GiaHan.aspx");
+        list.Add("moduledangkituvan|admin-dang-ki-tu-van|~/admin_page/module_function/module_DangKyTuVan.aspx");
 
         //Module quản lý LandingPage và App Sổ LLĐT
         list.Add("moduleslldtslide|admin-landingpage-slide|~/admin_page/module_function/module_App_SLLDT/module_SLLDT_Slide.aspx");
