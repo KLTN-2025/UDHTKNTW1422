@@ -44,9 +44,10 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
         display: flex;
         flex-direction: column;
-        z-index: 9999;
+        z-index: 99999 !important;
         transition: all 0.3s ease;
         font-family: Calibri, 'Calibri', sans-serif;
+        pointer-events: auto !important;
     }
 
     .ai-chatbox.minimized {
@@ -98,6 +99,9 @@
         align-items: center;
         cursor: pointer;
         user-select: none;
+        pointer-events: auto !important;
+        position: relative;
+        z-index: 100000 !important;
     }
 
     .chatbox-header__info {
@@ -360,11 +364,32 @@
         const chatBox = document.getElementById('aiChatBox');
         const minimizeIcon = document.getElementById('minimizeIcon');
         const closeIcon = document.getElementById('closeIcon');
+        const chatBoxHeaderInfo = document.querySelector('.chatbox-header__info');
         
         if (chatBox && minimizeIcon && closeIcon) {
             chatBox.classList.add('minimized');
             minimizeIcon.style.display = 'none';
             closeIcon.style.display = 'block';
+        }
+        
+        // Thêm event listener cho chat box header để đảm bảo click hoạt động
+        if (chatBoxHeaderInfo) {
+            chatBoxHeaderInfo.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleChatBox();
+            });
+        }
+        
+        // Thêm event listener cho toàn bộ chat box khi minimized
+        if (chatBox) {
+            chatBox.addEventListener('click', function(e) {
+                if (isMinimized && e.target.closest('.chatbox-header__actions') === null) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleChatBox();
+                }
+            });
         }
     });
 
@@ -373,12 +398,14 @@
         if (isMinimized) {
             const chatBox = document.getElementById('aiChatBox');
             const minimizeIcon = document.getElementById('minimizeIcon');
-            const closeIcon = document.getElementById('closeIconKho luyện tập
+            const closeIcon = document.getElementById('closeIcon');
             
-            isMinimized = false;
-            chatBox.classList.remove('minimized');
-            minimizeIcon.style.display = 'block';
-            closeIcon.style.display = 'none';
+            if (chatBox && minimizeIcon && closeIcon) {
+                isMinimized = false;
+                chatBox.classList.remove('minimized');
+                minimizeIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
         }
     }
 
@@ -388,11 +415,17 @@
         const minimizeIcon = document.getElementById('minimizeIcon');
         const closeIcon = document.getElementById('closeIcon');
         
-        isMinimized = true;
-        chatBox.classList.add('minimized');
-        minimizeIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
+        if (chatBox && minimizeIcon && closeIcon) {
+            isMinimized = true;
+            chatBox.classList.add('minimized');
+            minimizeIcon.style.display = 'none';
+            closeIcon.style.display = 'block';
+        }
     }
+
+    // Đảm bảo các hàm có thể được gọi từ onclick
+    window.toggleChatBox = toggleChatBox;
+    window.minimizeChatBox = minimizeChatBox;
 
     function sendQuickReply(message) {
         // Remove quick reply buttons from all bot messages before sending

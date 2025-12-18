@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPageLandingPage.master" AutoEventWireup="true" CodeFile="UI_dsbai_2.aspx.cs" Inherits="web_module_UI_Hieu_UI_dsbai_2" %>
 
 
-<%@ Register Src="~/web_usercontrol/global_LandingPage_Menu_1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu_1" %>
 <%@ Register Src="~/web_usercontrol/global_AIChatBox.ascx" TagPrefix="uc1" TagName="global_AIChatBox" %>
 
 
@@ -39,6 +38,22 @@
             position: relative;
             z-index: 1;
         }
+        .btn-back-fixed:hover {
+            background: linear-gradient(135deg, #d11f1f 0%, #b51a1a 100%);
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(142, 25, 27, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        .btn-back-fixed:active {
+            transform: scale(1.05) translateY(0);
+            box-shadow: 0 2px 8px rgba(142, 25, 27, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        .btn-back-fixed i {
+            transition: transform 0.3s ease;
+        }
+        .btn-back-fixed:hover i {
+            transform: translateX(-3px);
+        }
     </style>
     <link href="../../css/listBooks.css" rel="stylesheet" />
     <script src="admin_js/sweetalert.min.js"></script>
@@ -50,9 +65,10 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <%-- <asp:HiddenField ID="hfStudentId" runat="server" />
     <asp:HiddenField ID="hfSachId" runat="server" />--%><uc1:global_AIChatBox runat="server" ID="global_AIChatBox" />
-    <%--    <uc1:global_LandingPage_Menu1 runat="server" ID="global_LandingPage_Menu1" />--%>
-    <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <%--<asp:ScriptManager runat="server" />--%>
+    <a class="btn-back-fixed" href="/app-danh-muc-khoi-thcs-6" style="position: fixed; top: 20px; left: 20px; width: 50px; height: 50px; line-height: 50px; text-align: center; font-size: 1.8rem; color: #fff; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; border-radius: 50%; background: linear-gradient(135deg, #b51a1a 0%, #8e191b 100%); z-index: 1000; box-shadow: 0 4px 15px rgba(142, 25, 27, 0.4), 0 2px 5px rgba(0, 0, 0, 0.2); border: 2px solid rgba(255, 255, 255, 0.2);">
+        <i class="fa fa-arrow-left"></i>
+    </a>
     <div class="step-contact" style="display: block; background-image: url(/images/back_bai.jpg); background-attachment: fixed; background-repeat: no-repeat;">
         <div class="block-main pt-3 pb-5">
             <div class="container">
