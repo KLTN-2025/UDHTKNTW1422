@@ -3,6 +3,7 @@
 <%@ Register Src="~/web_usercontrol/global_LandingPage_Menu_1.ascx" TagPrefix="uc1" TagName="global_LandingPage_Menu_1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Header" Runat="Server">
+    <script src="../../admin_js/sweetalert.min.js"></script>
     <style>
         html, body {
             overflow-x: hidden !important;
@@ -33,6 +34,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="TopWrapper" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" Runat="Server">
+<asp:ScriptManager runat="server" />
 <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <div class="bg-dmk">
         <div class="block-content">

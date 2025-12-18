@@ -65,10 +65,10 @@
             </div>
             
             <div id="forgotPasswordStep1">
-                <p style="margin-bottom: 20px; color: #666;">Nhập số điện thoại hoặc email để nhận mã OTP:</p>
+                <p style="margin-bottom: 20px; color: #666;">Nhập email đăng ký để nhận mã OTP:</p>
                 <div class="input-group-animate" style="margin-bottom: 15px;">
-                    <input type="text" id="txtForgotPhoneOrEmail" class="form-input" autocomplete="off" placeholder="Số điện thoại hoặc Email" />
-                    <label class="lb-input">Số điện thoại hoặc Email</label>
+                    <input type="email" id="txtForgotEmail" class="form-input" autocomplete="off" placeholder="Email đăng ký" />
+                    <label class="lb-input">Email đăng ký</label>
                 </div>
                 <div class="text-center">
                     <button type="button" onclick="sendOtpForgotPassword()" class="buttom-green hvr-pulse-grow" style="width: 100%;">GỬI MÃ OTP</button>
@@ -139,23 +139,30 @@
             document.getElementById("forgotPasswordStep1").style.display = "block";
             document.getElementById("forgotPasswordStep2").style.display = "none";
             document.getElementById("forgotPasswordStep3").style.display = "none";
-            document.getElementById("txtForgotPhoneOrEmail").value = "";
+            document.getElementById("txtForgotEmail").value = "";
             document.getElementById("txtForgotOTP").value = "";
             document.getElementById("txtNewPassword").value = "";
             document.getElementById("txtConfirmNewPassword").value = "";
         }
 
         function sendOtpForgotPassword() {
-            var phoneOrEmail = document.getElementById("txtForgotPhoneOrEmail").value.trim();
-            if (!phoneOrEmail) {
-                swal('Vui lòng nhập số điện thoại hoặc email.', '', 'warning');
+            var email = document.getElementById("txtForgotEmail").value.trim();
+            if (!email) {
+                swal('Vui lòng nhập email đăng ký.', '', 'warning');
+                return;
+            }
+
+            // Validate email format
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                swal('Email không đúng định dạng. Vui lòng kiểm tra lại.', '', 'warning');
                 return;
             }
 
             $.ajax({
                 type: "POST",
                 url: "app_Login.aspx/SendOtpForgotPassword",
-                data: JSON.stringify({ phoneOrEmail: phoneOrEmail }),
+                data: JSON.stringify({ email: email }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
@@ -163,15 +170,22 @@
                     if (result === "OK") {
                         document.getElementById("forgotPasswordStep1").style.display = "none";
                         document.getElementById("forgotPasswordStep2").style.display = "block";
-                        document.getElementById("lblForgotEmailShow").textContent = phoneOrEmail;
-                        swal('Mã OTP đã được gửi!', '', 'success');
+                        document.getElementById("lblForgotEmailShow").textContent = email;
+                        swal('Mã OTP đã được gửi đến email của bạn!', '', 'success');
                     } else if (result === "NOT_FOUND") {
-                        swal('Không tìm thấy tài khoản với số điện thoại/email này.', '', 'warning');
+                        swal('Không tìm thấy tài khoản với email này.', '', 'warning');
+                    } else if (result === "NO_EMAIL") {
+                        swal('Tài khoản này chưa có email. Vui lòng liên hệ bộ phận hỗ trợ.', '', 'warning');
+                    } else if (result === "LIMIT_EXCEEDED") {
+                        swal('Hệ thống đã vượt quá giới hạn gửi email hôm nay. Vui lòng thử lại sau 24 giờ hoặc liên hệ bộ phận hỗ trợ.', '', 'error');
+                    } else if (result.indexOf("ERROR:") === 0) {
+                        swal('Lỗi gửi email: ' + result.replace("ERROR: ", ""), '', 'error');
                     } else {
                         swal('Không gửi được OTP. Vui lòng thử lại.', '', 'error');
                     }
                 },
-                error: function () {
+                error: function (xhr, status, error) {
+                    console.log("AJAX Error:", status, error);
                     swal('Lỗi máy chủ. Vui lòng thử lại.', '', 'error');
                 }
             });
@@ -211,9 +225,9 @@
         }
 
         function resendOtpForgotPassword() {
-            var phoneOrEmail = document.getElementById("txtForgotPhoneOrEmail").value.trim();
-            if (!phoneOrEmail) {
-                swal('Vui lòng nhập số điện thoại hoặc email.', '', 'warning');
+            var email = document.getElementById("txtForgotEmail").value.trim();
+            if (!email) {
+                swal('Vui lòng nhập email đăng ký.', '', 'warning');
                 return;
             }
             sendOtpForgotPassword();

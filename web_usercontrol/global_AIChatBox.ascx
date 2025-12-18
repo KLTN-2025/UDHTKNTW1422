@@ -19,12 +19,6 @@
                 </div>
                 <div class="message-content">
                     <p>Xin chào! Tôi là trợ lý ảo của KoiGo. Bạn cần giúp gì?</p>
-                    <div class="quick-reply-buttons">
-                        <button class="quick-reply-btn" onclick="sendQuickReply('Học tiếng Nhật')">Học tiếng Nhật</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('Hướng dẫn sử dụng')">Hướng dẫn sử dụng</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('Xem tiến độ học tập')">Xem tiến độ học tập</button>
-                        <button class="quick-reply-btn" onclick="sendQuickReply('Câu hỏi về bài học')">Câu hỏi về bài học</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -379,7 +373,7 @@
         if (isMinimized) {
             const chatBox = document.getElementById('aiChatBox');
             const minimizeIcon = document.getElementById('minimizeIcon');
-            const closeIcon = document.getElementById('closeIcon');
+            const closeIcon = document.getElementById('closeIconKho luyện tập
             
             isMinimized = false;
             chatBox.classList.remove('minimized');
@@ -401,11 +395,9 @@
     }
 
     function sendQuickReply(message) {
-        // Remove quick reply buttons from the first message
-        const firstMessage = document.querySelector('.bot-message .quick-reply-buttons');
-        if (firstMessage) {
-            firstMessage.remove();
-        }
+        // Remove quick reply buttons from all bot messages before sending
+        const allQuickReplies = document.querySelectorAll('.bot-message .quick-reply-buttons');
+        allQuickReplies.forEach(btn => btn.remove());
         
         // Send the quick reply message
         sendMessageWithText(message);
@@ -484,6 +476,18 @@
         // Convert newlines to <br> and preserve formatting
         const formattedText = text.replace(/\n/g, '<br>');
         content.innerHTML = '<p>' + formattedText + '</p>';
+        
+        // Add quick reply buttons only for bot messages (after first greeting)
+        if (type === 'bot') {
+            const quickReplyDiv = document.createElement('div');
+            quickReplyDiv.className = 'quick-reply-buttons';
+            quickReplyDiv.innerHTML = 
+                '<button class="quick-reply-btn" onclick="sendQuickReply(\'Học tiếng Nhật\')">Học tiếng Nhật</button>' +
+                '<button class="quick-reply-btn" onclick="sendQuickReply(\'Hướng dẫn sử dụng\')">Hướng dẫn sử dụng</button>' +
+                '<button class="quick-reply-btn" onclick="sendQuickReply(\'Xem tiến độ học tập\')">Xem tiến độ học tập</button>' +
+                '<button class="quick-reply-btn" onclick="sendQuickReply(\'Cách vào làm bài kiểm tra\')">Cách vào làm bài kiểm tra</button>';
+            content.appendChild(quickReplyDiv);
+        }
         
         messageDiv.appendChild(avatar);
         messageDiv.appendChild(content);

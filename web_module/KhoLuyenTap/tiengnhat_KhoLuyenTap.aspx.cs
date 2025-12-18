@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 public partial class web_module_KhoLuyenTap_tiengnhat_KhoLuyenTap : System.Web.UI.Page
@@ -226,6 +227,66 @@ public partial class web_module_KhoLuyenTap_tiengnhat_KhoLuyenTap : System.Web.U
             }
         }
         loadData();
+    }
+
+    [System.Web.Services.WebMethod(EnableSession = true)]
+    public static string SaveTestResult(int correctAnswers, int totalQuestions, string score, int timeSeconds, string timeStr, object answers)
+    {
+        try
+        {
+            dbcsdlDataContext db = new dbcsdlDataContext();
+            
+            // Get student code from cookie
+            string hocsinh_code = "";
+            if (HttpContext.Current.Request.Cookies["taikhoan"] != null)
+            {
+                var account = (from ac in db.tbAccounts
+                             where ac.account_sodienthoai == HttpContext.Current.Request.Cookies["taikhoan"].Value 
+                             && ac.account_active == true
+                             select ac).FirstOrDefault();
+                
+                if (account != null)
+                {
+                    hocsinh_code = account.account_sodienthoai;
+                }
+            }
+            
+            if (string.IsNullOrEmpty(hocsinh_code))
+            {
+                return "NO_LOGIN";
+            }
+            
+            // Create result record
+            tbTracNghiem_ResultTest result = new tbTracNghiem_ResultTest();
+            result.test_id = 0; // General practice test (kho luyện tập)
+            result.hocsinh_code = hocsinh_code;
+            result.resulttest_datetime = DateTime.Now;
+            result.result_thoigianlambai = timeStr;
+            result.result_type = "Luyện tập";
+            
+            // Store result summary (correct/total)
+            result.resulttest_result = correctAnswers + "/" + totalQuestions;
+            
+            // Convert answers to JSON string and store in result_chuyendiemthuongxuyen
+            System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            string answersJson = serializer.Serialize(answers);
+            result.result_chuyendiemthuongxuyen = answersJson; // Store full answers JSON
+            
+            // Calculate and store score (10 point scale) in result_danhgia
+            double scoreValue = 0;
+            double.TryParse(score, out scoreValue);
+            result.result_danhgia = scoreValue.ToString("F1");
+            
+            db.tbTracNghiem_ResultTests.InsertOnSubmit(result);
+            db.SubmitChanges();
+            
+            return "OK";
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine("Error saving test result: " + ex.ToString());
+            return "ERROR: " + ex.Message;
+        }
     }
 
 }

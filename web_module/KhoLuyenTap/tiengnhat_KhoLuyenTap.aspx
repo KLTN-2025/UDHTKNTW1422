@@ -119,6 +119,7 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
+    <asp:ScriptManager runat="server" />
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
     <div class="home page-view">
         <div class="block-body">
@@ -215,6 +216,7 @@
                     <li>Tổng số câu: <span id="totalQuestions">30</span></li>
                     <li>Số câu đúng: <span id="correctAnswers">0</span></li>
                     <li>Số câu sai: <span id="wrongAnswers">0</span></li>
+                    <li>Điểm: <span id="scoreDisplay">0</span>/<span id="maxScore">30</span></li>
                     <li>Thời gian: <span id="timeTaken">00:00</span></li>
                 </ul>
             </div>
@@ -1054,14 +1056,49 @@
             // Calculate wrong answers
             const wrongAnswers = questions.length - score;
             
+            // Calculate score (10 point scale)
+            const scorePoint = (score / questions.length * 10).toFixed(1);
+            
             // Display result modal
             document.getElementById('totalQuestions').textContent = questions.length;
             document.getElementById('correctAnswers').textContent = score;
             document.getElementById('wrongAnswers').textContent = wrongAnswers;
+            document.getElementById('scoreDisplay').textContent = scorePoint;
+            document.getElementById('maxScore').textContent = '10';
             document.getElementById('timeTaken').textContent = timeStr;
             document.getElementById('resultModal').style.display = 'flex';
             
             document.getElementById('userAnswers').value = JSON.stringify(userAnswers);
+            
+            // Save score to database
+            saveTestResult(score, questions.length, scorePoint, elapsedTime, timeStr);
+        }
+        
+        function saveTestResult(correctAnswers, totalQuestions, scorePoint, timeSeconds, timeStr) {
+            $.ajax({
+                type: "POST",
+                url: "tiengnhat_KhoLuyenTap.aspx/SaveTestResult",
+                data: JSON.stringify({ 
+                    correctAnswers: correctAnswers,
+                    totalQuestions: totalQuestions,
+                    score: scorePoint,
+                    timeSeconds: timeSeconds,
+                    timeStr: timeStr,
+                    answers: userAnswers
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response.d === "OK") {
+                        console.log("Điểm đã được lưu thành công!");
+                    } else {
+                        console.log("Lỗi lưu điểm: " + response.d);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("Lỗi AJAX khi lưu điểm: " + error);
+                }
+            });
         }
 
         function closeResultModal() {
@@ -1095,6 +1132,8 @@
             clearInterval(timerInterval);
             updateTimerDisplay();
             startTimer();
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function exitTest() {

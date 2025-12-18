@@ -39,11 +39,36 @@ public partial class web_module_GameCacKhoi_Khoi_9_LuyenTap : System.Web.UI.Page
                              s.sach_id,
                              s.sach_title,
                              bn.baihoc_title,
+                             bn.baihoc_position,
+                             bn.chudebaihoc_id,
                              bn.baihoc_loaigame,
                              link_prev = bn.baihoc_back,
                              link_next = bn.baihoc_next,
                          }).FirstOrDefault();
-        lesson_name = "Luyện tập";
+        
+        // Lấy số bài từ baihoc_title hoặc tính từ thứ tự
+        string soBai = "";
+        if (getBaiHoc.baihoc_title != null && getBaiHoc.baihoc_title.Contains("Bài"))
+        {
+            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"Bài\s*(\d+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            var match = regex.Match(getBaiHoc.baihoc_title);
+            if (match.Success)
+            {
+                soBai = match.Groups[1].Value;
+            }
+        }
+        
+        if (string.IsNullOrEmpty(soBai))
+        {
+            var allBaiHoc = (from bn in db.tbBaiHocs
+                            where bn.sach_id == sach_id && bn.chudebaihoc_id == getBaiHoc.chudebaihoc_id
+                            orderby bn.baihoc_position ascending
+                            select bn.baihoc_id).ToList();
+            int index = allBaiHoc.IndexOf(baihoc_id);
+            soBai = (index + 1).ToString();
+        }
+        
+        lesson_name = "Bài " + soBai + ": Luyện tập";
         link_next = getBaiHoc.link_next;
         link_prev = getBaiHoc.link_prev;
         baihoc = getBaiHoc.baihoc_title;

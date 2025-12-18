@@ -11113,6 +11113,18 @@ input[type=button].btn-block {
   color: #fff;
   display: inline-block;
   text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.header-content .btn-menu:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.header-content .btn-menu:active {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 .header-content .button-nav {
   white-space: nowrap;

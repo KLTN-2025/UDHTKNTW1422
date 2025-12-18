@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../css/listBooks.css" rel="stylesheet" />
     <style>
         h2 {
             color: #c40000;
@@ -102,6 +103,11 @@
         .progress-bar-fill.fail {
             background-color: #dc3545;
         }
+
+        .unit-list__title{
+            margin-top: 20px;
+            color: #d60000 !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Menu" runat="Server">
@@ -110,7 +116,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="Wrapper" runat="Server">
     <uc1:global_LandingPage_Menu_1 runat="server" ID="global_LandingPage_Menu_1" />
-    <h2 class="mt-3">TIẾN ĐỘ HỌC TẬP</h2>
+    <div class="unit-list__title">TIẾN ĐỘ HỌC TẬP</div>
     <div class="table-thongke">
         <table>
             <thead>
