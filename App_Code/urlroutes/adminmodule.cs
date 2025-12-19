@@ -79,6 +79,7 @@ public class adminmodule
         //my
         list.Add("moduleNhapLieuGameNoi|admin-nhap-lieu-game-noi|~/admin_page/module_function/module_NhapLieuGame/module_GameNoi.aspx");
         list.Add("moduleQuanLyNguoiDung|admin-quan-ly-nguoi-dung|~/admin_page/module_function/module_QuanLyNguoiDung.aspx");
+        list.Add("moduleThongKeNguoiDung|admin-thong-ke-nguoi-dung|~/admin_page/module_function/module_ThongKeNguoiDung.aspx");
         return list;
     }
 }
