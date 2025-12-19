@@ -68,7 +68,7 @@ public partial class web_module_GameCacKhoi_Khoi_6_Luyen_Tap : System.Web.UI.Pag
             soBai = (index + 1).ToString();
         }
         
-        lesson_name = "Bài " + soBai + ": Luyện tập";
+        lesson_name = "Bài " + soBai + ": Bài tập";
         link_next = getBaiHoc.link_next;
         link_prev = getBaiHoc.link_prev;
         baihoc = getBaiHoc.baihoc_title;

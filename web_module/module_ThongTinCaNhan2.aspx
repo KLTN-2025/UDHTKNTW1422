@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="info-user-row">
-                    Lưu ý: Thay đổi số điện thoại sẽ thay đổi tên đăng nhập và số điện thoại mới sẽ sử dụng cho việc lấy lại mật khẩu mới
+                    Lưu ý: Thay đổi số điện thoại sẽ thay đổi tên đăng nhập mới
                 </div>
                 <div class="info-user-row">
                     <div class="info-user-row__left green-text  ">Họ và tên</div>

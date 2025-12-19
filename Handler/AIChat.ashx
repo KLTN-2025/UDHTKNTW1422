@@ -88,18 +88,42 @@ public class AIChat : IHttpHandler
         }
     }
     
+    // Helper function to check if message contains any of the keywords (flexible matching)
+    private bool ContainsAny(string message, params string[] keywords)
+    {
+        if (string.IsNullOrEmpty(message)) return false;
+        message = message.ToLower();
+        foreach (string keyword in keywords)
+        {
+            if (message.Contains(keyword.ToLower())) return true;
+        }
+        return false;
+    }
+    
     private string GenerateSmartAIResponse(string userMessage)
     {
         // Enhanced AI with better pattern matching and context awareness
         string message = userMessage.ToLower().Trim();
         
-        // Remove common Vietnamese question words for better matching
+        // Remove common Vietnamese question words for better matching (more aggressive cleaning)
         string cleanMessage = message
             .Replace("bạn", "")
             .Replace("có thể", "")
             .Replace("cho tôi", "")
             .Replace("giúp tôi", "")
             .Replace("làm ơn", "")
+            .Replace("của", "")
+            .Replace("về", "")
+            .Replace("với", "")
+            .Replace("cho", "")
+            .Replace("trong", "")
+            .Replace("sử dụng", "")
+            .Replace("cách", "")
+            .Replace("làm", "")
+            .Replace("như", "")
+            .Replace("thế", "")
+            .Replace("nào", "")
+            .Replace("gì", "")
             .Trim();
         
         // Use both original and cleaned message for matching
@@ -112,6 +136,48 @@ public class AIChat : IHttpHandler
         if (string.IsNullOrEmpty(cleanMessage))
             cleanMessage = message;
         
+        // Single keyword matching - Very flexible (check first for short messages)
+        if (message.Length <= 10) // Short messages like "hướng dẫn", "học", "bài tập"
+        {
+            string shortMsg = message.Trim();
+            if (shortMsg == "hướng dẫn" || shortMsg == "hướng dẫn sử dụng" || shortMsg == "chỉ" || shortMsg == "chỉ cho")
+                return "Tôi có thể giúp bạn:\n\n" +
+                       "1. **Học tiếng Nhật**: Hỏi về từ vựng, ngữ pháp, cách phát âm\n" +
+                       "2. **Sử dụng ứng dụng**: Hướng dẫn cách học, làm bài tập, xem thống kê\n" +
+                       "3. **Bài học**: Giải thích nội dung bài học, cách làm bài tập\n\n" +
+                       "Hãy đặt câu hỏi cụ thể để tôi hỗ trợ tốt hơn nhé!";
+            
+            if (shortMsg == "học" || shortMsg == "học gì")
+                return "Bạn muốn học gì?\n\n" +
+                       "🔤 **Bảng chữ cái**: Hiragana, Katakana\n" +
+                       "📚 **Từ vựng**: Chào hỏi, số đếm, màu sắc...\n" +
+                       "📖 **Ngữ pháp**: Cấu trúc câu, trợ từ...\n\n" +
+                       "Hãy hỏi cụ thể hơn, ví dụ: \"Học Hiragana\", \"Từ vựng chào hỏi\"!";
+            
+            if (shortMsg == "bài tập" || shortMsg == "bài" || shortMsg == "tập")
+                return "Bạn có thể luyện tập bằng cách:\n\n" +
+                       "• Chọn lớp của bạn\n" +
+                       "• Vào \"Luyện tập\" để làm bài\n" +
+                       "• Chơi các game học tập: trắc nghiệm, nối từ, lật hình\n" +
+                       "• Làm \"Thực hành\" để củng cố kiến thức\n\n" +
+                       "Luyện tập thường xuyên sẽ giúp bạn nhớ lâu hơn!";
+            
+            if (shortMsg == "điểm" || shortMsg == "điểm số" || shortMsg == "kết quả")
+                return "**Về điểm số và kết quả**:\n\n" +
+                       "• **Làm bài tập**: Mỗi câu đúng được tính điểm\n" +
+                       "• **Bài kiểm tra**: Điểm được tính trên thang 10\n" +
+                       "• **Xem kết quả**: Vào \"Thống kê\" để xem điểm của mình\n" +
+                       "• **Cải thiện**: Làm lại bài để cải thiện điểm\n\n" +
+                       "Điểm số giúp bạn biết mình đã học tốt đến đâu!";
+            
+            if (shortMsg == "thống kê" || shortMsg == "tiến độ")
+                return "Bạn có thể xem thống kê học tập bằng cách:\n\n" +
+                       "1. Vào menu \"Tiến độ học tập\"\n" +
+                       "2. Xem số bài đã học, điểm số\n" +
+                       "3. Theo dõi tiến độ theo từng bài\n\n" +
+                       "Thống kê giúp bạn biết mình đã học được những gì!";
+        }
+        
         // Greetings
         if (message.Contains("xin chào") || message.Contains("hello") || message.Contains("chào") || message.Contains("hi"))
         {
@@ -122,8 +188,9 @@ public class AIChat : IHttpHandler
                    "Bạn cần hỗ trợ gì không? 😊";
         }
 
-        // Help
-        if (message.Contains("giúp") || message.Contains("help") || message.Contains("hướng dẫn") || message.Contains("làm sao"))
+        // Help - Very flexible matching (just "hướng dẫn", "giúp", etc.)
+        if (ContainsAny(message, "hướng dẫn", "giúp", "help", "làm sao", "sao làm", "chỉ", "chỉ cho", "dạy", "hỗ trợ") ||
+            ContainsAny(cleanMessage, "hướng dẫn", "giúp", "help", "làm sao"))
         {
             return "Tôi có thể giúp bạn:\n\n" +
                    "1. **Học tiếng Nhật**: Hỏi về từ vựng, ngữ pháp, cách phát âm\n" +
@@ -143,9 +210,9 @@ public class AIChat : IHttpHandler
                    "Bạn có thể bắt đầu học từ trang chủ bằng cách chọn lớp của mình!";
         }
 
-        // Japanese learning - More specific
-        if (message.Contains("tiếng nhật") || message.Contains("hiragana") || message.Contains("katakana") || 
-            message.Contains("từ vựng") || message.Contains("ngữ pháp") || message.Contains("học tiếng nhật"))
+        // Japanese learning - More specific and flexible
+        if (ContainsAny(message, "tiếng nhật", "hiragana", "katakana", "từ vựng", "ngữ pháp", "học tiếng nhật", "học", "tiếng nhật là") ||
+            ContainsAny(cleanMessage, "tiếng nhật", "hiragana", "katakana", "từ vựng", "ngữ pháp"))
         {
             if (message.Contains("học") && (message.Contains("chữ") || message.Contains("ký tự") || message.Contains("từng chữ")))
             {
@@ -199,8 +266,9 @@ public class AIChat : IHttpHandler
                    "Hãy vào trang chủ và chọn lớp của bạn để bắt đầu học!";
         }
 
-        // Study tips
-        if (message.Contains("cách học") || message.Contains("bí quyết") || message.Contains("tips") || message.Contains("học như thế nào"))
+        // Study tips - Flexible matching
+        if (ContainsAny(message, "cách học", "học sao", "học như", "bí quyết", "tips", "học như thế nào", "học thế nào", "học làm sao") ||
+            ContainsAny(cleanMessage, "cách học", "bí quyết", "tips"))
         {
             return "**Bí quyết học tiếng Nhật hiệu quả**:\n\n" +
                    "1. **Học đều đặn**: Dành 15-30 phút mỗi ngày\n" +
@@ -210,8 +278,9 @@ public class AIChat : IHttpHandler
                    "Chúc bạn học tốt! 💪";
         }
 
-        // Questions about features
-        if (message.Contains("thống kê") || message.Contains("tiến độ"))
+        // Questions about features - Flexible matching
+        if (ContainsAny(message, "thống kê", "tiến độ", "kết quả", "điểm", "điểm số", "số điểm") ||
+            ContainsAny(cleanMessage, "thống kê", "tiến độ"))
         {
             return "Bạn có thể xem thống kê học tập bằng cách:\n\n" +
                    "1. Vào menu \"Tiến độ học tập\"\n" +
@@ -220,7 +289,8 @@ public class AIChat : IHttpHandler
                    "Thống kê giúp bạn biết mình đã học được những gì!";
         }
 
-        if (message.Contains("bài tập") || message.Contains("luyện tập") || message.Contains("game"))
+        if (ContainsAny(message, "bài tập", "luyện tập", "game", "chơi", "làm bài", "bài", "tập") ||
+            ContainsAny(cleanMessage, "bài tập", "luyện tập", "game"))
         {
             return "Bạn có thể luyện tập bằng cách:\n\n" +
                    "• Chọn lớp của bạn\n" +
@@ -230,11 +300,9 @@ public class AIChat : IHttpHandler
                    "Luyện tập thường xuyên sẽ giúp bạn nhớ lâu hơn!";
         }
 
-        // Questions about lessons and how to take tests
-        if (message.Contains("câu hỏi về bài học") || message.Contains("cách làm bài kiểm tra") || 
-            message.Contains("cách vào làm bài kiểm tra") || message.Contains("làm bài kiểm tra") || 
-            message.Contains("làm bài thi") || message.Contains("cách làm bài") || 
-            message.Contains("hướng dẫn làm bài") || message.Contains("vào làm bài"))
+        // Questions about lessons and how to take tests - Flexible matching
+        if (ContainsAny(message, "bài kiểm tra", "làm bài kiểm tra", "kiểm tra", "bài thi", "thi", "làm bài", "vào làm bài", "bắt đầu bài") ||
+            ContainsAny(cleanMessage, "kiểm tra", "thi", "làm bài"))
         {
             return "**Cách vào làm bài kiểm tra trong KoiGo**:\n\n" +
                    "📋 **Bước 1: Vào trang bài kiểm tra**\n" +
@@ -351,8 +419,9 @@ public class AIChat : IHttpHandler
             }
         }
         
-        // More specific questions
-        if (message.Contains("bắt đầu") || message.Contains("bắt đầu học") || message.Contains("học từ đâu"))
+        // More specific questions - Flexible matching
+        if (ContainsAny(message, "bắt đầu", "bắt đầu học", "học từ đâu", "bắt đầu", "từ đâu", "bắt đầu sao") ||
+            ContainsAny(cleanMessage, "bắt đầu", "từ đâu"))
         {
             return "Để bắt đầu học tiếng Nhật:\n\n" +
                    "1. **Học bảng chữ cái Hiragana** trước (lớp 6)\n" +
@@ -388,8 +457,9 @@ public class AIChat : IHttpHandler
                    "Nếu có thắc mắc gì khác, cứ hỏi tôi nhé!";
         }
 
-        // Account and registration
-        if (message.Contains("đăng ký") || message.Contains("đăng nhập") || message.Contains("tài khoản") || message.Contains("tạo tài khoản"))
+        // Account and registration - Flexible matching
+        if (ContainsAny(message, "đăng ký", "đăng nhập", "tài khoản", "tạo tài khoản", "đăng kí", "tạo") ||
+            ContainsAny(cleanMessage, "đăng ký", "đăng nhập", "tài khoản"))
         {
             return "Để đăng ký tài khoản KoiGo:\n\n" +
                    "1. Vào trang \"Đăng ký\"\n" +
@@ -410,8 +480,9 @@ public class AIChat : IHttpHandler
                    "Lưu ý: Chỉ có thể lấy lại mật khẩu bằng email Gmail đã đăng ký!";
         }
 
-        // Vocabulary questions
-        if (message.Contains("từ vựng") || message.Contains("từ mới") || message.Contains("vocabulary"))
+        // Vocabulary questions - Flexible matching
+        if (ContainsAny(message, "từ vựng", "từ mới", "vocabulary", "từ", "vựng") ||
+            ContainsAny(cleanMessage, "từ vựng", "từ mới"))
         {
             if (message.Contains("chào hỏi") || message.Contains("greeting"))
             {
@@ -448,8 +519,9 @@ public class AIChat : IHttpHandler
                    "Hãy hỏi cụ thể hơn, ví dụ: \"Từ vựng chào hỏi\"!";
         }
 
-        // Grammar questions
-        if (message.Contains("ngữ pháp") || message.Contains("cấu trúc") || message.Contains("grammar"))
+        // Grammar questions - Flexible matching
+        if (ContainsAny(message, "ngữ pháp", "cấu trúc", "grammar", "pháp") ||
+            ContainsAny(cleanMessage, "ngữ pháp", "cấu trúc"))
         {
             if (message.Contains("desu") || message.Contains("です") || message.Contains("là"))
             {
@@ -480,8 +552,9 @@ public class AIChat : IHttpHandler
                    "Hãy hỏi cụ thể, ví dụ: \"Ngữ pháp desu\"!";
         }
 
-        // Pronunciation
-        if (message.Contains("phát âm") || message.Contains("đọc") || message.Contains("pronunciation"))
+        // Pronunciation - Flexible matching
+        if (ContainsAny(message, "phát âm", "đọc", "pronunciation", "đọc sao", "đọc như") ||
+            ContainsAny(cleanMessage, "phát âm", "đọc"))
         {
             return "**Cách phát âm tiếng Nhật**:\n\n" +
                    "• **Nguyên âm**: あ(a), い(i), う(u), え(e), お(o)\n" +
@@ -708,8 +781,9 @@ public class AIChat : IHttpHandler
                    "Chữ こ là chữ cuối cùng trong nhóm K (かきくけこ)!";
         }
 
-        // More specific vocabulary
-        if (message.Contains("chào") || message.Contains("greeting") || message.Contains("xin chào"))
+        // More specific vocabulary - Flexible matching for greetings
+        if (ContainsAny(message, "chào hỏi", "greeting", "cách chào", "chào sao") ||
+            (message.Contains("chào") && !message.Contains("xin chào") && !message.Contains("chào bạn")))
         {
             return "**Các cách chào hỏi trong tiếng Nhật**:\n\n" +
                    "🌅 **Buổi sáng**:\n" +
@@ -728,8 +802,9 @@ public class AIChat : IHttpHandler
                    "💡 **Lưu ý**: は trong こんにちは và こんばんは đọc là \"wa\", không phải \"ha\"!";
         }
 
-        // Study methods
-        if (message.Contains("nhớ") || message.Contains("học thuộc") || message.Contains("ghi nhớ"))
+        // Study methods - Flexible matching
+        if (ContainsAny(message, "nhớ", "học thuộc", "ghi nhớ", "nhớ sao", "làm sao nhớ") ||
+            ContainsAny(cleanMessage, "nhớ", "học thuộc", "ghi nhớ"))
         {
             return "**Cách nhớ bảng chữ cái tiếng Nhật**:\n\n" +
                    "1. **Học từng nhóm**: Học 5 chữ một lần (あいうえお, かきくけこ...)\n" +
@@ -740,8 +815,9 @@ public class AIChat : IHttpHandler
                    "Kiên trì luyện tập 15-30 phút mỗi ngày sẽ giúp bạn nhớ tốt! 💪";
         }
 
-        // Test and score
-        if (message.Contains("điểm") || message.Contains("kết quả") || message.Contains("bài kiểm tra") || message.Contains("test"))
+        // Test and score - Already covered above, but add more flexibility
+        if (ContainsAny(message, "điểm", "kết quả", "bài kiểm tra", "test", "sao", "số sao") &&
+            !message.Contains("điểm số") && !message.Contains("xem điểm"))
         {
             return "**Về điểm số và kết quả**:\n\n" +
                    "• **Làm bài tập**: Mỗi câu đúng được tính điểm\n" +
@@ -751,8 +827,9 @@ public class AIChat : IHttpHandler
                    "Điểm số giúp bạn biết mình đã học tốt đến đâu!";
         }
 
-        // Features
-        if (message.Contains("tính năng") || message.Contains("chức năng") || message.Contains("features"))
+        // Features - Flexible matching
+        if (ContainsAny(message, "tính năng", "chức năng", "features", "có gì", "gì có", "năng") ||
+            ContainsAny(cleanMessage, "tính năng", "chức năng"))
         {
             return "**Các tính năng của KoiGo**:\n\n" +
                    "📚 **Học lý thuyết**: Bài học với hình ảnh và âm thanh\n" +

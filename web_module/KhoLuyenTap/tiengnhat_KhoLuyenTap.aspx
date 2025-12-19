@@ -389,6 +389,39 @@
             border-color: #b51a1a;
             background: #e8edff;
         }
+        .answer-item.correct {
+            border-color: #28a745;
+            background: #d4edda;
+            color: #155724;
+        }
+        .answer-item.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .answer-item.correct label,
+        .answer-item.incorrect label {
+            color: inherit;
+            font-weight: 600;
+        }
+        .answer-item.correct::after {
+            content: " ✓ Đáp án đúng";
+            color: #155724;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 14px;
+        }
+        /* Nếu đáp án đúng nhưng không chọn (có cả 2 class correct và incorrect) thì vẫn hiển thị text đáp án đúng */
+        .answer-item.correct.incorrect::after {
+            content: " ✓ Đáp án đúng";
+            color: #155724;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
         .submit-container {
             text-align: center;
             padding: 30px 0;
@@ -912,6 +945,11 @@
             timeRemaining = 900;
             userAnswers = {};
             updateTimerDisplay();
+            // Lưu trạng thái vào sessionStorage
+            sessionStorage.setItem('testScreen', 'start');
+            sessionStorage.removeItem('testAnswers');
+            sessionStorage.removeItem('testTimeRemaining');
+            sessionStorage.removeItem('testStartTime');
         }
 
         function backToHome() {
@@ -932,6 +970,11 @@
             timeRemaining = 900;
             userAnswers = {};
             updateTimerDisplay();
+            // Lưu trạng thái vào sessionStorage
+            sessionStorage.setItem('testScreen', 'start');
+            sessionStorage.removeItem('testAnswers');
+            sessionStorage.removeItem('testTimeRemaining');
+            sessionStorage.removeItem('testStartTime');
         }
 
         function beginTest() {
@@ -944,6 +987,11 @@
             }
             displayAllQuestions();
             startTime = new Date();
+            // Lưu trạng thái vào sessionStorage
+            sessionStorage.setItem('testScreen', 'test');
+            sessionStorage.setItem('testStartTime', startTime.getTime().toString());
+            sessionStorage.setItem('testTimeRemaining', timeRemaining.toString());
+            sessionStorage.setItem('testAnswers', JSON.stringify(userAnswers));
             startTimer();
         }
 
@@ -951,6 +999,11 @@
             timerInterval = setInterval(function() {
                 timeRemaining--;
                 updateTimerDisplay();
+                
+                // Lưu thời gian còn lại vào sessionStorage mỗi 5 giây
+                if (timeRemaining % 5 === 0 && sessionStorage.getItem('testScreen') === 'test') {
+                    sessionStorage.setItem('testTimeRemaining', timeRemaining.toString());
+                }
                 
                 if (timeRemaining <= 0) {
                     clearInterval(timerInterval);
@@ -1001,8 +1054,21 @@
             });
         }
 
+        // Biến flag để theo dõi trạng thái đã nộp bài
+        let isTestSubmitted = false;
+
         function selectAnswer(questionId, answerId, element) {
+            // Kiểm tra nếu đã nộp bài thì không cho chọn
+            if (isTestSubmitted) {
+                return;
+            }
+
             userAnswers[questionId] = answerId;
+            
+            // Lưu vào sessionStorage
+            if (sessionStorage.getItem('testScreen') === 'test') {
+                sessionStorage.setItem('testAnswers', JSON.stringify(userAnswers));
+            }
             
             // Update all answer items for this question
             const questionItem = element.closest('.question-item');
@@ -1032,8 +1098,32 @@
             submitTest();
         }
 
+        // Hàm chặn tất cả các câu trả lời
+        function disableAllAnswers() {
+            const answerItems = document.querySelectorAll('.answer-item');
+            answerItems.forEach(item => {
+                item.style.pointerEvents = 'none';
+                item.style.cursor = 'not-allowed';
+                item.style.opacity = '0.7';
+            });
+        }
+
+        // Hàm mở lại tất cả các câu trả lời
+        function enableAllAnswers() {
+            const answerItems = document.querySelectorAll('.answer-item');
+            answerItems.forEach(item => {
+                item.style.pointerEvents = 'auto';
+                item.style.cursor = 'pointer';
+                item.style.opacity = '1';
+            });
+        }
+
         function submitTest() {
             clearInterval(timerInterval);
+            
+            // Đánh dấu đã nộp bài và chặn tất cả các câu trả lời
+            isTestSubmitted = true;
+            disableAllAnswers();
             
             // Calculate elapsed time
             if (startTime) {
@@ -1042,8 +1132,48 @@
             }
             
             let score = 0;
+            
+            // Hiển thị màu sắc cho từng câu trả lời
             questions.forEach(q => {
-                if (userAnswers[q.id] == q.correctAnswer) {
+                const userAnswerId = userAnswers[q.id];
+                const correctAnswerId = q.correctAnswer;
+                
+                // Tìm tất cả các answer-item của câu hỏi này bằng cách tìm radio có name chứa question.id
+                const answerRadios = document.querySelectorAll(`input[name="answer_${q.id}"]`);
+                
+                // Nếu học sinh đã chọn đáp án
+                if (userAnswerId) {
+                    answerRadios.forEach(radio => {
+                        const answerId = parseInt(radio.value);
+                        const answerItem = radio.closest('.answer-item');
+                        
+                        if (answerItem) {
+                            // Đáp án đúng luôn có màu xanh
+                            if (answerId === correctAnswerId) {
+                                answerItem.classList.add('correct');
+                            }
+                            // Nếu học sinh chọn sai, đáp án sai sẽ có màu đỏ
+                            else if (answerId === userAnswerId && answerId !== correctAnswerId) {
+                                answerItem.classList.add('incorrect');
+                            }
+                        }
+                    });
+                }
+                // Nếu học sinh không chọn đáp án nào - TẤT CẢ đều màu đỏ (không hiển thị đáp án đúng)
+                else {
+                    answerRadios.forEach(radio => {
+                        const answerId = parseInt(radio.value);
+                        const answerItem = radio.closest('.answer-item');
+                        
+                        if (answerItem) {
+                            // Tất cả đáp án đều màu đỏ, không hiển thị đáp án đúng
+                            answerItem.classList.add('incorrect');
+                        }
+                    });
+                }
+                
+                // Tính điểm
+                if (userAnswerId == correctAnswerId) {
                     score++;
                 }
             });
@@ -1109,40 +1239,125 @@
                 <button type="button" class="btn-retry" onclick="retryTest()">Làm lại</button>
                 <button type="button" class="btn-exit" onclick="exitTest()">Thoát</button>
             `;
+            // Sau khi nộp bài, không cần lưu state nữa (để khi F5 sẽ về trang chọn lớp)
+            sessionStorage.removeItem('testScreen');
+            sessionStorage.removeItem('testAnswers');
+            sessionStorage.removeItem('testTimeRemaining');
+            sessionStorage.removeItem('testStartTime');
         }
 
         function retryTest() {
+            // Reset flag đã nộp bài
+            isTestSubmitted = false;
+            
             // Reset everything
             timeRemaining = 900;
             userAnswers = {};
             elapsedTime = 0;
             startTime = new Date();
-            // Clear all selected answers
+            
+            // Lưu trạng thái vào sessionStorage
+            sessionStorage.setItem('testScreen', 'test');
+            sessionStorage.setItem('testStartTime', startTime.getTime().toString());
+            sessionStorage.setItem('testTimeRemaining', timeRemaining.toString());
+            sessionStorage.setItem('testAnswers', JSON.stringify(userAnswers));
+            
+            // Mở lại tất cả các câu trả lời
+            enableAllAnswers();
+            
+            // Clear all selected answers và các class màu sắc
             document.querySelectorAll('.answer-item').forEach(item => {
-                item.classList.remove('selected');
+                item.classList.remove('selected', 'correct', 'incorrect');
                 const radio = item.querySelector('input[type="radio"]');
                 if (radio) {
                     radio.checked = false;
                 }
             });
+            
             // Reset submit button
             const submitContainer = document.getElementById('submitContainer');
             submitContainer.innerHTML = '<button type="button" class="btn-submit" id="btnSubmit" onclick="confirmSubmit()">Nộp bài</button>';
+            
             // Restart timer
             clearInterval(timerInterval);
             updateTimerDisplay();
             startTimer();
+            
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function exitTest() {
+            // Xóa sessionStorage
+            sessionStorage.removeItem('testScreen');
+            sessionStorage.removeItem('testAnswers');
+            sessionStorage.removeItem('testTimeRemaining');
+            sessionStorage.removeItem('testStartTime');
             // Redirect to home page
             window.location.href = '/app-thcs';
         }
 
+        // Khôi phục trạng thái khi page load
+        function restoreTestState() {
+            const savedScreen = sessionStorage.getItem('testScreen');
+            
+            if (savedScreen === 'start') {
+                // Khôi phục màn hình start
+                document.querySelector('.home.page-view').style.display = 'none';
+                document.getElementById('startScreen').style.display = 'block';
+            } else if (savedScreen === 'test') {
+                // Khôi phục màn hình test
+                const savedAnswers = sessionStorage.getItem('testAnswers');
+                const savedTimeRemaining = sessionStorage.getItem('testTimeRemaining');
+                const savedStartTime = sessionStorage.getItem('testStartTime');
+                
+                if (savedAnswers) {
+                    userAnswers = JSON.parse(savedAnswers);
+                }
+                if (savedTimeRemaining) {
+                    timeRemaining = parseInt(savedTimeRemaining);
+                }
+                if (savedStartTime) {
+                    const savedTime = parseInt(savedStartTime);
+                    const now = new Date().getTime();
+                    const elapsed = Math.floor((now - savedTime) / 1000);
+                    // Tính lại thời gian còn lại dựa trên thời gian đã trôi qua
+                    if (savedTimeRemaining) {
+                        timeRemaining = Math.max(0, parseInt(savedTimeRemaining) - elapsed);
+                    }
+                    startTime = new Date(savedTime);
+                }
+                
+                // Hiển thị màn hình test
+                document.querySelector('.home.page-view').style.display = 'none';
+                document.getElementById('startScreen').style.display = 'none';
+                document.getElementById('testInterface').style.display = 'block';
+                
+                // Hide menu header
+                const headerPage = document.querySelector('.header-page');
+                if (headerPage) {
+                    headerPage.style.display = 'none';
+                }
+                
+                // Hiển thị câu hỏi và khôi phục đáp án đã chọn
+                displayAllQuestions();
+                
+                // Cập nhật timer
+                updateTimerDisplay();
+                
+                // Nếu còn thời gian thì tiếp tục đếm
+                if (timeRemaining > 0) {
+                    startTimer();
+                } else {
+                    // Hết thời gian thì tự động nộp bài
+                    submitTest();
+                }
+            }
+        }
+
         window.onload = function() {
             updateTimerDisplay();
+            restoreTestState();
         };
     </script>
 </asp:Content>

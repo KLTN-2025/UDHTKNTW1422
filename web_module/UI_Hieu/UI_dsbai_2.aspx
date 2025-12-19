@@ -104,7 +104,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -224,7 +224,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -284,7 +284,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -344,7 +344,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -404,7 +404,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -464,7 +464,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -524,7 +524,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -584,7 +584,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
@@ -644,7 +644,7 @@
                                 </div>
                                 <div class="lesson-item__content">
                                     <div class="lesson-item__content--title">
-                                        Luyện tập
+                                        Bài tập
                                     </div>
                                     <div class="lesson-item__content--view">
                                         <i class="fa fa-eye"></i>&nbsp; 0
