@@ -74,7 +74,7 @@
                     <div class="info-user-row__left  green-text ">Lớp</div>
                     <div class="info-user-row__right">
                         <%--      <%=lop %>--%>
-                        <input name="" type="text" id="txtLop" runat="server" class="form-control-1" onkeypress="return onlyNumberKey(event)" placeholder="Lớp" value="">
+                        <input name="" type="text" id="txtLop" runat="server" class="form-control-1" placeholder="Lớp" value="" readonly="readonly" style="background-color: #f5f5f5; cursor: not-allowed;">
                     </div>
                 </div>
                 <div class="info-user-row">

@@ -146,7 +146,8 @@ public partial class web_module_module_ThongTinCaNhan2 : System.Web.UI.Page
             }
             
             update.account_children_fullname = newFullName;
-            update.lop_id = Convert.ToInt32(txtLop.Value);
+            // Không cho phép cập nhật lớp - giữ nguyên lớp đã chọn từ trước
+            // update.lop_id = Convert.ToInt32(txtLop.Value);
             if (image1 != null)
             {
                 update.account_children_image = image1;
